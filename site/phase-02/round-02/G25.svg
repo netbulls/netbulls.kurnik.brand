@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G25 Horizon Layers — Two wide rectangles with a narrow gap, landscape stacking -->
+<rect x="15" y="30" width="70" height="15" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="15" y="49" width="70" height="21" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

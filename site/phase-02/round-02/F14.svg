@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F14 Necker Square — wireframe cube with ambiguous depth reading -->
+<rect x="25" y="30" width="30" height="30" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<rect x="45" y="40" width="30" height="30" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<line x1="25" y1="30" x2="45" y2="40" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+<line x1="55" y1="30" x2="75" y2="40" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+<line x1="25" y1="60" x2="45" y2="70" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+<line x1="55" y1="60" x2="75" y2="70" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F23 Pixel Evaporation — block of squares at bottom dissolving upward into fewer/smaller elements -->
+<rect x="30" y="70" width="10" height="10" fill="#d4840a"/>
+<rect x="42" y="70" width="10" height="10" fill="#d4840a"/>
+<rect x="54" y="70" width="10" height="10" fill="#d4840a"/>
+<rect x="30" y="57" width="10" height="10" fill="#d4840a"/>
+<rect x="42" y="57" width="10" height="10" fill="#d4840a"/>
+<rect x="56" y="57" width="8" height="8" fill="#d4840a"/>
+<rect x="32" y="44" width="8" height="8" fill="#d4840a"/>
+<rect x="44" y="44" width="7" height="7" fill="#d4840a"/>
+<rect x="36" y="33" width="5" height="5" fill="#d4840a"/>
+<rect x="48" y="31" width="4" height="4" fill="#d4840a"/>
+<rect x="40" y="22" width="3" height="3" fill="#d4840a"/>
+</svg>

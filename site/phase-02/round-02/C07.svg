@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C07 Bar Stack — 5-column grid, horizontal bars of varying width -->
+<rect x="15" y="18" width="70" height="8" fill="#d4840a"/>
+<rect x="15" y="36" width="46" height="8" fill="#d4840a"/>
+<rect x="15" y="54" width="58" height="8" fill="#d4840a"/>
+<rect x="15" y="72" width="34" height="8" fill="#d4840a"/>
+</svg>

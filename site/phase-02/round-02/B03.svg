@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B03 Broken circle frame with triangular void -->
+<path d="M50 8 A42 42 0 1 1 20 80" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M50 32 L68 65 L32 65 Z" fill="#d4840a"/>
+</svg>

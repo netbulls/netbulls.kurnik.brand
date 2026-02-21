@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D25 Quad Stroke Frame — four open rectangles at 90° converging, stroke only -->
+<rect x="44" y="10" width="12" height="26" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<rect x="64" y="44" width="26" height="12" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<rect x="44" y="64" width="12" height="26" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<rect x="10" y="44" width="26" height="12" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+</svg>

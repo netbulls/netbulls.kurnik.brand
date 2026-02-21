@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F13 Absence Boundary — two rectangles with negative space void between forming a threshold -->
+<rect x="18" y="22" width="26" height="56" fill="#d4840a"/>
+<rect x="56" y="22" width="26" height="56" fill="#d4840a"/>
+<rect x="44" y="22" width="12" height="56" fill="none"/>
+<!-- The void IS the mark — negative space as boundary -->
+</svg>

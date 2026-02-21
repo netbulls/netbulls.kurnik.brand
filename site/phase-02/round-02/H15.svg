@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15: Bracket Cross — four bracket shapes arranged around center void -->
+  <path d="M18,30 L18,18 L30,18" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M70,18 L82,18 L82,30" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M82,70 L82,82 L70,82" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M30,82 L18,82 L18,70" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Thin cross connecting brackets -->
+  <line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

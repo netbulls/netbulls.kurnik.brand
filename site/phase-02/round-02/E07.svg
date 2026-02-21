@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E07 Chevron Dialogue — Two chevrons facing each other, gap as mark -->
+<polyline points="12,20 40,50 12,80" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="88,18 60,50 88,82" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

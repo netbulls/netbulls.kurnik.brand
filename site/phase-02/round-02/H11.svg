@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H11: Arc Reticle — 270° arc with two arms inside -->
+  <path d="M50,18 A32,32 0 1,1 18,50" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="50" y1="50" x2="50" y2="22" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="50" y1="50" x2="78" y2="50" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B13 Hexagon with gap at bottom-right edge, upward triangle inside -->
+<path d="M50 8 L88 29 L88 71 L68 82" fill="none" stroke="#d4840a" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M50 92 L12 71 L12 29 L50 8" fill="none" stroke="#d4840a" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,32 66,60 34,60" fill="#d4840a"/>
+</svg>

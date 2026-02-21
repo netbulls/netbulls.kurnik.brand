@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F07 Stripe Dissolution — horizontal stripes, left solid block dissolving to separated stripes right -->
+<rect x="18" y="24" width="25" height="52" fill="#d4840a"/>
+<rect x="48" y="24" width="6" height="8" fill="#d4840a"/>
+<rect x="48" y="35" width="8" height="8" fill="#d4840a"/>
+<rect x="48" y="46" width="10" height="8" fill="#d4840a"/>
+<rect x="48" y="57" width="12" height="8" fill="#d4840a"/>
+<rect x="48" y="68" width="14" height="8" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G22 Isometric Duo — Two isometric cubes side by side, one filled one outlined -->
+<polygon points="35,28 50,37 35,46 20,37" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<line x1="20" y1="37" x2="20" y2="52" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="35" y1="46" x2="35" y2="61" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="20" y1="52" x2="35" y2="61" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<polygon points="65,40 80,49 65,58 50,49" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<line x1="50" y1="49" x2="50" y2="64" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="65" y1="58" x2="65" y2="73" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="50" y1="64" x2="65" y2="73" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="80" y1="49" x2="80" y2="64" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="65" y1="73" x2="80" y2="64" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G17 Parallel Shifts — Two parallelograms shifted right, suggesting motion in depth -->
+<polygon points="20,30 55,30 45,70 10,70" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="55,30 90,30 80,70 45,70" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

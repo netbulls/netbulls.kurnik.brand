@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D14 Pinwheel Quad — four parallelogram blades at 90° with rotational offset -->
+<polygon points="44,10 52,10 48,40 40,40" fill="#d4840a"/>
+<polygon points="90,44 90,52 60,48 60,40" fill="#d4840a"/>
+<polygon points="56,90 48,90 52,60 60,60" fill="#d4840a"/>
+<polygon points="10,56 10,48 40,52 40,60" fill="#d4840a"/>
+</svg>

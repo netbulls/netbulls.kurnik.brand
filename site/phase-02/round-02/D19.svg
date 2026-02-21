@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D19 Hex Dash Ring — six short thick dashes at 60° forming broken ring around void -->
+<rect x="47" y="14" width="6" height="16" fill="#d4840a" transform="rotate(0,50,50)"/>
+<rect x="47" y="14" width="6" height="16" fill="#d4840a" transform="rotate(60,50,50)"/>
+<rect x="47" y="14" width="6" height="16" fill="#d4840a" transform="rotate(120,50,50)"/>
+<rect x="47" y="14" width="6" height="16" fill="#d4840a" transform="rotate(180,50,50)"/>
+<rect x="47" y="14" width="6" height="16" fill="#d4840a" transform="rotate(240,50,50)"/>
+<rect x="47" y="14" width="6" height="16" fill="#d4840a" transform="rotate(300,50,50)"/>
+</svg>

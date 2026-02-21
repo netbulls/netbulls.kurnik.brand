@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D20 Diagonal Quad — four bars at 45° intervals converging on center -->
+<rect x="48" y="6" width="4" height="32" fill="#d4840a" transform="rotate(45,50,50)"/>
+<rect x="48" y="6" width="4" height="32" fill="#d4840a" transform="rotate(135,50,50)"/>
+<rect x="48" y="6" width="4" height="32" fill="#d4840a" transform="rotate(225,50,50)"/>
+<rect x="48" y="6" width="4" height="32" fill="#d4840a" transform="rotate(315,50,50)"/>
+</svg>

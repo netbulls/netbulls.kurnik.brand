@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G20 Impossible Steps — Two interlocking L-shapes creating Escher-like depth -->
+<polygon points="25,25 55,25 55,50 45,50 45,35 25,35" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="45,50 75,50 75,75 55,75 55,65 45,65" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

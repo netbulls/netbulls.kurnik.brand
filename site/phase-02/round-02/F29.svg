@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F29 Particle Jet — solid bar at left shooting particles rightward that diminish -->
+<rect x="15" y="38" width="8" height="24" fill="#d4840a"/>
+<rect x="28" y="40" width="7" height="7" fill="#d4840a"/>
+<rect x="28" y="53" width="7" height="7" fill="#d4840a"/>
+<rect x="40" y="42" width="5.5" height="5.5" fill="#d4840a"/>
+<rect x="40" y="53" width="5.5" height="5.5" fill="#d4840a"/>
+<rect x="51" y="43" width="4.5" height="4.5" fill="#d4840a"/>
+<rect x="51" y="52" width="4.5" height="4.5" fill="#d4840a"/>
+<rect x="61" y="44.5" width="3.5" height="3.5" fill="#d4840a"/>
+<rect x="61" y="52" width="3.5" height="3.5" fill="#d4840a"/>
+<rect x="70" y="46" width="2.5" height="2.5" fill="#d4840a"/>
+<rect x="70" y="52" width="2.5" height="2.5" fill="#d4840a"/>
+<rect x="78" y="47.5" width="2" height="2" fill="#d4840a"/>
+<rect x="78" y="51" width="2" height="2" fill="#d4840a"/>
+</svg>

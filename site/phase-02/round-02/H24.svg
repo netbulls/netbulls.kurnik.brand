@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H24: Level Gauge — horizontal with circle element, ticks, slight asymmetry -->
+  <line x1="12" y1="50" x2="88" y2="50" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <!-- Ticks below -->
+  <line x1="24" y1="50" x2="24" y2="62" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="36" y1="50" x2="36" y2="58" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="48" y1="50" x2="48" y2="62" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="60" y1="50" x2="60" y2="58" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="72" y1="50" x2="72" y2="62" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <!-- Bubble indicator (slightly off-center) -->
+  <circle cx="52" cy="36" r="8" fill="none" stroke="#d4840a" stroke-width="2"/>
+  <circle cx="52" cy="36" r="2" fill="#d4840a"/>
+</svg>

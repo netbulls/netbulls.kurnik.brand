@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I18 Bracket Orbit — square bracket pair with arc passing through -->
+<path d="M28 25 L22 25 L22 75 L28 75" fill="none" stroke="#d4840a" stroke-width="4.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M72 25 L78 25 L78 75 L72 75" fill="none" stroke="#d4840a" stroke-width="4.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M22 55 A28 20 0 0 1 78 45" fill="none" stroke="#d4840a" stroke-width="4.5" stroke-linecap="butt"/>
+</svg>

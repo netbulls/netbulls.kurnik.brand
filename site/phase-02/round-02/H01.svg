@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H01: Interrupted Cross — four arms stop before center, square void -->
+  <line x1="8" y1="50" x2="41" y2="50" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="59" y1="50" x2="92" y2="50" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="50" y1="8" x2="50" y2="41" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="50" y1="59" x2="50" y2="92" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+</svg>

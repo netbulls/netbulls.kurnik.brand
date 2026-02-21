@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I10 Notch Symbiosis — rectangle with curved notch where circle sits -->
+<path d="M20 30 L80 30 L80 70 L60 70 A10 10 0 0 1 40 70 L20 70 Z" fill="#d4840a" stroke="none"/>
+<circle cx="50" cy="70" r="10" fill="#d4840a" stroke="none"/>
+</svg>

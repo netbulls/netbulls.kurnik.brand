@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F30 Möbius Threshold — two interlocking L-shapes creating ambiguous inside/outside -->
+<path d="M25,22 L25,58 L50,58 L50,48 L35,48 L35,22 Z" fill="#d4840a"/>
+<path d="M75,78 L75,42 L50,42 L50,52 L65,52 L65,78 Z" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+</svg>

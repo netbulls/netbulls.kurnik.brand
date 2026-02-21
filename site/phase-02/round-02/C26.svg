@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C26 Baseline Grid — 4x3, bottom-heavy layout with floating header -->
+<rect x="20" y="14" width="14" height="14" fill="#d4840a"/>
+<rect x="20" y="45" width="14" height="14" fill="#d4840a"/>
+<rect x="38" y="45" width="14" height="14" fill="#d4840a"/>
+<rect x="20" y="63" width="14" height="14" fill="#d4840a"/>
+<rect x="38" y="63" width="14" height="14" fill="#d4840a"/>
+<rect x="56" y="63" width="14" height="14" fill="#d4840a"/>
+<rect x="74" y="63" width="14" height="14" fill="#d4840a"/>
+</svg>

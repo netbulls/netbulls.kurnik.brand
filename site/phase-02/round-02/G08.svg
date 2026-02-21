@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G08 Weight Hierarchy Bars — Three horizontal bars with decreasing stroke weight (depth) -->
+<line x1="20" y1="30" x2="80" y2="30" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+<line x1="20" y1="50" x2="80" y2="50" stroke="#d4840a" stroke-width="4.5" stroke-linecap="butt"/>
+<line x1="20" y1="70" x2="80" y2="70" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+</svg>

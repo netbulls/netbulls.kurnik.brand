@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B21 Octagon with offset hexagonal void -->
+<path d="M30 5 H70 L95 30 V70 L70 95 H30 L5 70 V30 Z M48 28 L66 38 L66 58 L48 68 L30 58 L30 38 Z" fill="#d4840a" fill-rule="evenodd"/>
+</svg>

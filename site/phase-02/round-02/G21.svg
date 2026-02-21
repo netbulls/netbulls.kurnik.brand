@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G21 Offset Echo — Same shape repeated with slight offset and thinner stroke -->
+<rect x="22" y="26" width="44" height="44" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="30" y="34" width="44" height="44" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

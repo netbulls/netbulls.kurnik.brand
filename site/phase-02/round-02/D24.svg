@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D24 Tri-Trapezoid Wide — three wide trapezoids at 120° with big center void -->
+<polygon points="38,10 62,10 58,34 42,34" fill="#d4840a" transform="rotate(0,50,50)"/>
+<polygon points="38,10 62,10 58,34 42,34" fill="#d4840a" transform="rotate(120,50,50)"/>
+<polygon points="38,10 62,10 58,34 42,34" fill="#d4840a" transform="rotate(240,50,50)"/>
+</svg>

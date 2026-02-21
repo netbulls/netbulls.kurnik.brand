@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C05 Diagonal Step — 4x4, diagonal blocks with one break -->
+<rect x="12" y="12" width="16" height="16" fill="#d4840a"/>
+<rect x="32" y="32" width="16" height="16" fill="#d4840a"/>
+<rect x="52" y="52" width="16" height="16" fill="#d4840a"/>
+<rect x="72" y="72" width="16" height="16" fill="#d4840a"/>
+<rect x="32" y="12" width="16" height="16" fill="#d4840a"/>
+<rect x="72" y="52" width="16" height="16" fill="#d4840a"/>
+</svg>

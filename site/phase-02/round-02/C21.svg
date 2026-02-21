@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C21 Domino Split — 4x4, two 2x1 dominoes separated by void column -->
+<rect x="14" y="20" width="14" height="14" fill="#d4840a"/>
+<rect x="14" y="38" width="14" height="14" fill="#d4840a"/>
+<rect x="14" y="56" width="14" height="14" fill="#d4840a"/>
+<rect x="33" y="20" width="14" height="14" fill="#d4840a"/>
+<rect x="60" y="38" width="14" height="14" fill="#d4840a"/>
+<rect x="60" y="56" width="14" height="14" fill="#d4840a"/>
+<rect x="60" y="74" width="14" height="14" fill="#d4840a"/>
+</svg>

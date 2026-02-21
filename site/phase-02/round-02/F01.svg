@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F01 Dissolving Square — solid square fragmenting rightward into separated strips -->
+<rect x="20" y="25" width="12" height="50" fill="#d4840a"/>
+<rect x="35" y="25" width="10" height="50" fill="#d4840a"/>
+<rect x="48" y="27" width="8" height="46" fill="#d4840a"/>
+<rect x="59" y="30" width="6" height="40" fill="#d4840a"/>
+<rect x="68" y="34" width="4" height="32" fill="#d4840a"/>
+<rect x="75" y="39" width="3" height="22" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I08 Channel Interface — two parallel bars with a curved bridge connecting them -->
+<line x1="30" y1="25" x2="30" y2="75" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+<line x1="70" y1="25" x2="70" y2="75" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+<path d="M30 50 A20 15 0 0 1 70 50" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+</svg>

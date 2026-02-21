@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B29 Two overlapping circles forming vesica piscis frame -->
+<circle cx="38" cy="50" r="32" fill="#d4840a"/>
+<circle cx="62" cy="50" r="32" fill="#d4840a"/>
+<path d="M50 22 C58 30 62 40 62 50 C62 60 58 70 50 78 C42 70 38 60 38 50 C38 40 42 30 50 22 Z" fill="#0e0c0a"/>
+</svg>

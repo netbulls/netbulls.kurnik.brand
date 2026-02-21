@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E16 Leaning Pillars — Two tall rectangles tilted slightly toward each other -->
+<polygon points="20,88 15,12 33,12 38,88" fill="#d4840a"/>
+<polygon points="62,88 67,12 85,12 80,88" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

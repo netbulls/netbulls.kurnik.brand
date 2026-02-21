@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H08: Corner Focus — single L-bracket with crosshair at its vertex -->
+  <path d="M20,50 L50,50 L50,80" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="50" y1="50" x2="50" y2="16" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="50" x2="84" y2="50" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <!-- Tick marks on thin arms -->
+  <line x1="47" y1="28" x2="53" y2="28" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="72" y1="47" x2="72" y2="53" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

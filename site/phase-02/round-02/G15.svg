@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G15 Depth Wedge — Two triangles offset to create a layered wedge -->
+<polygon points="25,72 50,28 75,72" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="30,78 55,34 80,78" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

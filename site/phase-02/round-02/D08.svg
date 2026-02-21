@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D08 Cruciform Taper — four trapezoids at 90° narrowing toward center -->
+<polygon points="42,8 58,8 54,38 46,38" fill="#d4840a"/>
+<polygon points="92,42 92,58 62,54 62,46" fill="#d4840a"/>
+<polygon points="58,92 42,92 46,62 54,62" fill="#d4840a"/>
+<polygon points="8,58 8,42 38,46 38,54" fill="#d4840a"/>
+</svg>

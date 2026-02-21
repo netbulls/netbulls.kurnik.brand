@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H28: Horseshoe Reticle — open-bottom semicircle with vertical arm and dot -->
+  <path d="M18,60 A32,32 0 0,1 82,60" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="50" y1="18" x2="50" y2="82" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <!-- Tick marks on arc -->
+  <line x1="22" y1="44" x2="28" y2="48" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="28" x2="56" y2="30" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="78" y1="44" x2="72" y2="48" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <!-- Center dot -->
+  <circle cx="50" cy="56" r="3" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- A02 Rift Ascent — parallelogram rising through a baseline cut -->
+<polygon points="30,12 58,12 52,44 24,44" fill="#d4840a"/>
+<rect x="15" y="44" width="70" height="8" fill="#0e0c0a"/>
+<polygon points="24,44 52,44 68,90 15,90" fill="#d4840a"/>
+</svg>

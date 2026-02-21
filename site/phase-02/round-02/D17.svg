@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D17 Tri-Shard Converge — three angular shards converging, near-symmetry -->
+<polygon points="48,10 56,14 52,42 44,38" fill="#d4840a"/>
+<polygon points="48,10 56,14 52,42 44,38" fill="#d4840a" transform="rotate(118,50,50)"/>
+<polygon points="48,10 56,14 52,42 44,38" fill="#d4840a" transform="rotate(238,50,50)"/>
+</svg>

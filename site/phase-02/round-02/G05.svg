@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G05 Occlusion Squares — Two squares, front partially covering back -->
+<rect x="22" y="22" width="38" height="38" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="40" y="40" width="38" height="38" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

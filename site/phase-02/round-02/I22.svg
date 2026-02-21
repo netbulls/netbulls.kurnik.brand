@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I22 Plug Form — angular prong shape fitting into curved socket -->
+<path d="M25 35 L48 35 L48 45 L25 45 Z" fill="#d4840a" stroke="none"/>
+<path d="M25 55 L48 55 L48 65 L25 65 Z" fill="#d4840a" stroke="none"/>
+<path d="M52 25 A25 25 0 0 1 52 75" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt"/>
+</svg>

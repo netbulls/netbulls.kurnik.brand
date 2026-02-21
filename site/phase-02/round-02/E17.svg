@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E17 Horizon Split — Two horizontal wedges meeting at a diagonal gap -->
+<polygon points="10,18 90,18 90,44 10,48" fill="#d4840a"/>
+<polygon points="10,58 90,54 90,82 10,82" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

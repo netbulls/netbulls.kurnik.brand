@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E18 Bracket Pair — Two thick bracket shapes facing each other -->
+<path d="M32,12 L16,12 L16,88 L32,88" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M68,10 L84,10 L84,90 L68,90" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D02 Quad Focus — four tapered blades at 90° pointing inward, square void -->
+<polygon points="44,10 56,10 53,40 47,40" fill="#d4840a"/>
+<polygon points="90,44 90,56 60,53 60,47" fill="#d4840a"/>
+<polygon points="56,90 44,90 47,60 53,60" fill="#d4840a"/>
+<polygon points="10,56 10,44 40,47 40,53" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H04: Partial Sight — three arms only, arc replacing the fourth -->
+  <line x1="50" y1="8" x2="50" y2="42" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="58" y1="50" x2="92" y2="50" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="50" y1="58" x2="50" y2="92" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <path d="M42,50 A20,20 0 0,1 50,42" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+</svg>

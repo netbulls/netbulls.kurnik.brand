@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I17 Pinch Point — two trapezoids nearly touching, gap shaped by one curved and one straight edge -->
+<path d="M20 25 L45 25 L42 48 L20 48 Z" fill="#d4840a" stroke="none"/>
+<path d="M80 75 L55 75 A20 20 0 0 1 58 52 L80 52 Z" fill="#d4840a" stroke="none"/>
+</svg>

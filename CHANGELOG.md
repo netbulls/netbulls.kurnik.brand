@@ -36,3 +36,22 @@ Format: ISO 8601 timestamp · Location, Timezone
 - Round 02 to use 6 new territories: Upward/Emergence, Contained/Portal, Systematic/Grid, Radial/Convergence, Letterform/Abstract K, Tension/Duality
 - Large file lesson: files >50kb must be pushed via local git, not GitHub API
 - CLAUDE.md and .claude/rules/ added to brand repo
+
+## 2026-02-21T19:30:00+01:00 · Warsaw, PL
+
+### 🔄 Phase 02 Round 02 — 270 concepts, 9 territories, shortlist narrowed
+- 270 SVG concepts generated across 9 territories (expanded from 6):
+  - A: Upward/Emergence, B: Contained/Portal, C: Systematic/Grid, D: Radial/Convergence,
+    E: Tension/Duality, F: Threshold/Phase Shift, G: Stack/Depth, H: Precision/Calibration,
+    I: Interface/Symbiosis
+- Territory K (Abstract Letterform) dropped — only makes sense as full K·urnik lockup
+- Three new territories added: Phase Shift, Stack/Depth, Symbiosis
+- Deep research conducted for each territory before generation
+- Individual SVG files per concept (not monolithic HTML)
+- Unified gallery with territory tabs, lightbox, shortlist at round-02-concepts.html
+- **17 shortlisted** from 270: H29, H02, H10, H13, H15, H20, B05, B03, B10, B25, C22, D18, D09, E26, F06, F20, G12
+- **Leading direction: Target/Calibration (Territory H)** — "focus" as core brand message
+- Brand insight: Kurnik helps projects stay focused, hit the target. Most common mistake = drift.
+- User prefers bold and defined marks. Complexity ceiling = F20 (4 chevrons) or G12 (3 planes)
+- Territories A (Emergence) and I (Symbiosis) did not resonate — no picks
+- Round 03 planned: 5 refined tracks exploring top directions

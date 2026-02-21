@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E12 Fractured Diamond — Diamond split vertically with 10px gap -->
+<polygon points="44,10 10,50 44,90" fill="#d4840a"/>
+<polygon points="56,10 90,50 56,90" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

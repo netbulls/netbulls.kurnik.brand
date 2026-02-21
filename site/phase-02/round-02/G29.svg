@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G29 Tectonic Shift — Two large planes separated by a diagonal gap -->
+<polygon points="15,20 75,20 55,50 15,50" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="45,54 85,54 85,80 25,80" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

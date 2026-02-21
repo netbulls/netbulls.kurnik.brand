@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E30 Sentinel Pair — Two tall pentagons standing side by side with a charged gap -->
+<polygon points="22,85 12,85 12,20 22,12 32,20 32,85" fill="#d4840a"/>
+<polygon points="68,85 68,18 78,10 88,18 88,85 78,85 78,22 78,85" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G07 Layered Trapezoids — Two trapezoids creating perspective depth -->
+<polygon points="30,65 70,65 62,40 38,40" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="35,75 65,75 58,50 42,50" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

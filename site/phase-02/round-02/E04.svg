@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E04 Rotational Pair — Same L-shape rotated 180°, facing each other -->
+<path d="M15,15 L48,15 L48,38 L32,38 L32,72 L15,72 Z" fill="#d4840a"/>
+<path d="M85,85 L52,85 L52,62 L68,62 L68,28 L85,28 Z" fill="#d4840a"/>
+</svg>

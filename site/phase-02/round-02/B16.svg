@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B16 Two arcs with gaps at top and bottom, vertical ellipse inside -->
+<path d="M45 9 A42 42 0 0 0 8 55" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt"/>
+<path d="M55 91 A42 42 0 0 0 92 45" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt"/>
+<ellipse cx="50" cy="50" rx="12" ry="22" fill="#d4840a"/>
+</svg>

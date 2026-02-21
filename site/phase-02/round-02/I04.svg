@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I04 Shared Horizon — angular form above, curved form below, sharing one edge -->
+<path d="M25 48 L50 25 L75 48 Z" fill="#d4840a" stroke="none"/>
+<path d="M25 52 A25 18 0 0 0 75 52 Z" fill="#d4840a" stroke="none"/>
+</svg>

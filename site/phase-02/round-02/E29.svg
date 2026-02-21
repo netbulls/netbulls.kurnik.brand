@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E29 Sliding Planes — Two overlapping rectangles offset like tectonic plates -->
+<rect x="10" y="22" width="50" height="30" fill="#d4840a"/>
+<rect x="40" y="48" width="50" height="30" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E08 Parallel Drift — Two parallel bars, one slightly offset vertically -->
+<rect x="15" y="22" width="30" height="56" rx="0" fill="#d4840a"/>
+<rect x="57" y="28" width="28" height="50" rx="0" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

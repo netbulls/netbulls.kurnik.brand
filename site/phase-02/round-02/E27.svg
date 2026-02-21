@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E27 Spine — Two vertical forms with a narrow curved gap running between them -->
+<path d="M12,10 L44,10 Q48,30 42,50 Q48,70 44,90 L12,90 Z" fill="#d4840a"/>
+<path d="M88,10 L56,10 Q52,30 58,50 Q52,70 56,90 L88,90 Z" fill="#d4840a"/>
+</svg>

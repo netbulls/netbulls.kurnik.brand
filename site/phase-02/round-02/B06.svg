@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B06 Circle frame with gap at top, vertical slot void -->
+<path d="M50 8 A42 42 0 0 1 92 50 A42 42 0 0 1 8 50 A42 42 0 0 1 38 10" fill="none" stroke="#d4840a" stroke-width="9" stroke-linecap="butt"/>
+<rect x="44" y="30" width="12" height="35" fill="#d4840a"/>
+</svg>

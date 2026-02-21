@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C24 Scatter Cluster — 5x5, tight cluster of 6 cells with 2 outliers -->
+<rect x="30" y="30" width="12" height="12" fill="#d4840a"/>
+<rect x="46" y="30" width="12" height="12" fill="#d4840a"/>
+<rect x="30" y="46" width="12" height="12" fill="#d4840a"/>
+<rect x="46" y="46" width="12" height="12" fill="#d4840a"/>
+<rect x="62" y="46" width="12" height="12" fill="#d4840a"/>
+<rect x="46" y="62" width="12" height="12" fill="#d4840a"/>
+<rect x="78" y="14" width="12" height="12" fill="#d4840a"/>
+<rect x="14" y="78" width="12" height="12" fill="#d4840a"/>
+</svg>

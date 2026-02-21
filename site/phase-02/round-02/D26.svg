@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D26 Six Blade Pinwheel — six filled blades at 60° with clockwise offset -->
+<polygon points="48,10 52,10 50,38 46,38" fill="#d4840a" transform="rotate(7,50,50)"/>
+<polygon points="48,10 52,10 50,38 46,38" fill="#d4840a" transform="rotate(67,50,50)"/>
+<polygon points="48,10 52,10 50,38 46,38" fill="#d4840a" transform="rotate(127,50,50)"/>
+<polygon points="48,10 52,10 50,38 46,38" fill="#d4840a" transform="rotate(187,50,50)"/>
+<polygon points="48,10 52,10 50,38 46,38" fill="#d4840a" transform="rotate(247,50,50)"/>
+<polygon points="48,10 52,10 50,38 46,38" fill="#d4840a" transform="rotate(307,50,50)"/>
+</svg>

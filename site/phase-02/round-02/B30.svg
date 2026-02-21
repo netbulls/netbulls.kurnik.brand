@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B30 Square frame with two diagonal gaps and diamond void -->
+<rect x="8" y="8" width="84" height="84" fill="#d4840a"/>
+<rect x="20" y="20" width="60" height="60" fill="#0e0c0a"/>
+<rect x="0" y="46" width="18" height="8" fill="#0e0c0a" transform="rotate(45 9 50)"/>
+<rect x="82" y="46" width="18" height="8" fill="#0e0c0a" transform="rotate(-45 91 50)"/>
+<rect x="38" y="38" width="24" height="24" fill="#d4840a" transform="rotate(45 50 50)"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D01 Tri-Converge — three rectangles at 120° converging toward center void -->
+<rect x="46" y="8" width="8" height="32" fill="#d4840a" transform="rotate(0,50,50)"/>
+<rect x="46" y="8" width="8" height="32" fill="#d4840a" transform="rotate(120,50,50)"/>
+<rect x="46" y="8" width="8" height="32" fill="#d4840a" transform="rotate(240,50,50)"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H16: Dual Reticle — two concentric interrupted circles with partial crosshair -->
+  <path d="M50,14 A36,36 0 1,1 14,50" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <path d="M50,26 A24,24 0 1,1 26,50" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <!-- Only bottom and right arms -->
+  <line x1="58" y1="50" x2="90" y2="50" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="58" x2="50" y2="90" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

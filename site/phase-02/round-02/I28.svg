@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I28 Anvil Arc — heavy geometric base with curved top surface -->
+<path d="M22 72 L22 48 L40 48 A18 16 0 0 1 60 48 L78 48 L78 72 Z" fill="#d4840a" stroke="none"/>
+<path d="M35 48 L35 30 L65 30 L65 48" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

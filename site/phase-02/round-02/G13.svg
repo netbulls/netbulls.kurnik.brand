@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G13 Cascading Steps — Three rectangles descending like stairs, partial occlusion -->
+<rect x="18" y="25" width="30" height="20" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="35" y="40" width="30" height="20" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="52" y="55" width="30" height="20" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

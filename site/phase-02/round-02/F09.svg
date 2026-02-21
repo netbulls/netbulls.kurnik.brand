@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F09 Circle to Fragments — circle breaking apart into 5 wedge fragments -->
+<path d="M50 20 A30 30 0 0 1 76 38 L50 50 Z" fill="#d4840a"/>
+<path d="M78 42 A30 30 0 0 1 72 68 L50 50 Z" fill="#d4840a" transform="translate(2,1)"/>
+<path d="M70 72 A30 30 0 0 1 42 79 L50 50 Z" fill="#d4840a" transform="translate(3,3)"/>
+<path d="M38 79 A30 30 0 0 1 22 58 L50 50 Z" fill="#d4840a" transform="translate(-3,4)"/>
+<path d="M22 54 A30 30 0 0 1 48 20 L50 50 Z" fill="#d4840a" transform="translate(-2,-1)"/>
+</svg>

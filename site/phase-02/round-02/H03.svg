@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H03: Crop Brackets — four L-shaped corner marks defining a square -->
+  <path d="M18,18 L18,34" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M18,18 L34,18" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M82,18 L82,34" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M82,18 L66,18" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M18,82 L18,66" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M18,82 L34,82" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M82,82 L82,66" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <path d="M82,82 L66,82" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" fill="none"/>
+  <rect x="46" y="46" width="8" height="8" fill="#d4840a"/>
+</svg>

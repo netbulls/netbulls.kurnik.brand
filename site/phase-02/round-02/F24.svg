@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F24 Dual Reading Trapezoid — two overlapping trapezoids creating ambiguous figure/ground -->
+<polygon points="30,25 70,25 80,55 20,55" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<polygon points="20,45 80,45 70,75 30,75" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+</svg>

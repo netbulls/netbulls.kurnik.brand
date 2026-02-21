@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B25 Squircle with arrow-shaped void pointing up-right -->
+<path d="M50 5 C82 5 95 18 95 50 C95 82 82 95 50 95 C18 95 5 82 5 50 C5 18 18 5 50 5 Z M35 65 L35 45 L55 45 L40 30 L55 30 L70 45 L55 60 L55 50 L45 50 L45 65 Z" fill="#d4840a" fill-rule="evenodd"/>
+</svg>

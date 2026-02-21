@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E05 Scale Echo — Large filled square + smaller outlined square, diagonal tension -->
+<rect x="10" y="10" width="45" height="45" fill="#d4840a"/>
+<rect x="55" y="45" width="28" height="28" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

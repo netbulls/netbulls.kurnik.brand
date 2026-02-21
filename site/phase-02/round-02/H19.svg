@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H19: Double Axis — two parallel lines on each axis, creating grid center -->
+  <line x1="10" y1="44" x2="90" y2="44" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="10" y1="56" x2="90" y2="56" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="44" y1="10" x2="44" y2="90" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="56" y1="10" x2="56" y2="90" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+</svg>

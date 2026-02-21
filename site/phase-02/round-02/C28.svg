@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C28 Modular Stack — 3x3, three rectangles of different proportions stacked -->
+<rect x="15" y="15" width="45" height="18" fill="#d4840a"/>
+<rect x="15" y="41" width="70" height="18" fill="#d4840a"/>
+<rect x="15" y="67" width="30" height="18" fill="#d4840a"/>
+<rect x="60" y="67" width="25" height="18" fill="#d4840a"/>
+</svg>

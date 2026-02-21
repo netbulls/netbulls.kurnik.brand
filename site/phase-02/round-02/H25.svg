@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H25: Precision Point — three converging lines that don't meet, triangle void at center -->
+  <line x1="50" y1="10" x2="44" y2="44" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="14" y1="76" x2="44" y2="56" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="86" y1="76" x2="56" y2="56" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+</svg>

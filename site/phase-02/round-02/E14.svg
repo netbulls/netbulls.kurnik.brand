@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E14 Crossed Beams — Two diagonal bars crossing with a gap at center -->
+<line x1="12" y1="15" x2="42" y2="45" stroke="#d4840a" stroke-width="10" stroke-linecap="butt"/>
+<line x1="58" y1="55" x2="88" y2="85" stroke="#d4840a" stroke-width="10" stroke-linecap="butt"/>
+<line x1="88" y1="15" x2="58" y2="45" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+<line x1="42" y1="55" x2="12" y2="85" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+</svg>

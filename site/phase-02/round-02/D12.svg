@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D12 Wide Quad Wedge — four wide wedges at 90° with generous center void -->
+<polygon points="40,10 60,10 55,36 45,36" fill="#d4840a"/>
+<polygon points="90,40 90,60 64,55 64,45" fill="#d4840a"/>
+<polygon points="60,90 40,90 45,64 55,64" fill="#d4840a"/>
+<polygon points="10,60 10,40 36,45 36,55" fill="#d4840a"/>
+</svg>

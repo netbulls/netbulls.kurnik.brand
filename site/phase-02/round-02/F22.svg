@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F22 Diagonal Tear — square with diagonal split, top-left solid, bottom-right fragmented -->
+<polygon points="22,22 78,22 22,78" fill="#d4840a"/>
+<polygon points="82,28 82,52 60,52" fill="#d4840a"/>
+<polygon points="82,58 82,78 64,78 64,58" fill="#d4840a"/>
+<polygon points="56,58 58,78 42,78" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D21 Stepped Tri — three stepped/staircase bars at 120° converging -->
+<path d="M46,8 L46,20 L42,20 L42,32 L38,32 L38,42 L52,42 L52,32 L48,32 L48,20 L52,20 L52,8 Z" fill="#d4840a" transform="rotate(0,50,50)"/>
+<path d="M46,8 L46,20 L42,20 L42,32 L38,32 L38,42 L52,42 L52,32 L48,32 L48,20 L52,20 L52,8 Z" fill="#d4840a" transform="rotate(120,50,50)"/>
+<path d="M46,8 L46,20 L42,20 L42,32 L38,32 L38,42 L52,42 L52,32 L48,32 L48,20 L52,20 L52,8 Z" fill="#d4840a" transform="rotate(240,50,50)"/>
+</svg>

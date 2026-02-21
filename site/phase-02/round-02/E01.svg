@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E01 Diagonal Rift — Two rectangles split by a diagonal gap -->
+<polygon points="18,15 48,15 38,85 8,85" fill="#d4840a"/>
+<polygon points="58,15 88,15 78,85 48,85" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

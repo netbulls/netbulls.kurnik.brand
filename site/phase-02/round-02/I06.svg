@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I06 Tangent Lock — circle tangent to inner corner of L-bracket -->
+<path d="M22 22 L22 60 L42 60" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<circle cx="60" cy="42" r="20" fill="none" stroke="#d4840a" stroke-width="5"/>
+</svg>

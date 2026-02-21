@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F25 Horizon Line — shape crossing a threshold: solid below, fragmented above -->
+<line x1="15" y1="52" x2="85" y2="52" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+<rect x="35" y="52" width="30" height="26" fill="#d4840a"/>
+<rect x="37" y="40" width="26" height="10" fill="#d4840a"/>
+<rect x="40" y="30" width="10" height="8" fill="#d4840a"/>
+<rect x="54" y="28" width="8" height="8" fill="#d4840a"/>
+<rect x="44" y="19" width="5" height="6" fill="#d4840a"/>
+</svg>

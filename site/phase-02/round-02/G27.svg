@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G27 Split Monolith — Single tall rectangle split by a horizontal background-color gap -->
+<rect x="32" y="18" width="36" height="28" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="32" y="50" width="36" height="32" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

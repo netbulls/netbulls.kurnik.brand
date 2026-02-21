@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C27 Circuit Node — 3x3, center dot with line connections to corners -->
+<circle cx="50" cy="50" r="8" fill="#d4840a"/>
+<rect x="15" y="47" width="20" height="6" fill="#d4840a"/>
+<rect x="65" y="47" width="20" height="6" fill="#d4840a"/>
+<rect x="47" y="15" width="6" height="20" fill="#d4840a"/>
+<rect x="47" y="65" width="6" height="20" fill="#d4840a"/>
+<circle cx="22" cy="22" r="5" fill="#d4840a"/>
+<circle cx="78" cy="78" r="5" fill="#d4840a"/>
+</svg>

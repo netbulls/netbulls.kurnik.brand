@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F28 Staircase Shift — stepped form transitioning from fill to stroke at midpoint -->
+<rect x="18" y="65" width="16" height="16" fill="#d4840a"/>
+<rect x="34" y="50" width="16" height="16" fill="#d4840a"/>
+<rect x="50" y="35" width="16" height="16" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+<rect x="66" y="20" width="16" height="16" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+</svg>

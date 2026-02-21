@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E10 Shifted Squares — Two squares, one filled one stroked, offset on diagonal -->
+<rect x="12" y="18" width="38" height="38" fill="#d4840a"/>
+<rect x="50" y="44" width="38" height="38" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

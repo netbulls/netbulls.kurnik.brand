@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E25 Cantilever — Two L-shapes extending toward each other from opposite corners -->
+<path d="M10,10 L10,55 L28,55 L28,28 L55,28 L55,10 Z" fill="#d4840a"/>
+<path d="M90,90 L90,45 L72,45 L72,72 L45,72 L45,90 Z" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

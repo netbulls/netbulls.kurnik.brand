@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F17 Stacked Phase — three horizontal bars, top solid, middle half-dissolving, bottom outline -->
+<rect x="22" y="24" width="56" height="12" fill="#d4840a"/>
+<rect x="22" y="44" width="28" height="12" fill="#d4840a"/>
+<rect x="54" y="44" width="24" height="12" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+<rect x="22" y="64" width="56" height="12" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+</svg>

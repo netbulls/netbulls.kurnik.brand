@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B05 Squircle with offset squircle void -->
+<path d="M50 5 C80 5 95 20 95 50 C95 80 80 95 50 95 C20 95 5 80 5 50 C5 20 20 5 50 5 Z M48 25 C62 25 72 35 72 48 C72 62 62 72 48 72 C35 72 25 62 25 48 C25 35 35 25 48 25 Z" fill="#d4840a" fill-rule="evenodd"/>
+</svg>

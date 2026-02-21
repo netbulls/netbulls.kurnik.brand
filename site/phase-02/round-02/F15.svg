@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F15 Radial Dissolution — circle fragmenting outward from center into 6 radial shards -->
+<path d="M50,50 L50,20 L58,22 Z" fill="#d4840a"/>
+<path d="M50,50 L76,35 L78,44 Z" fill="#d4840a" transform="translate(2,-1)"/>
+<path d="M50,50 L76,65 L72,73 Z" fill="#d4840a" transform="translate(3,2)"/>
+<path d="M50,50 L50,80 L42,78 Z" fill="#d4840a" transform="translate(0,3)"/>
+<path d="M50,50 L24,65 L22,56 Z" fill="#d4840a" transform="translate(-3,2)"/>
+<path d="M50,50 L24,35 L28,27 Z" fill="#d4840a" transform="translate(-2,-1)"/>
+</svg>

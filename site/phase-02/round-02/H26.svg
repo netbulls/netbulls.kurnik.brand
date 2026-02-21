@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H26: Signal Ticks — asymmetric: long ticks left, short right, along vertical spine -->
+  <line x1="50" y1="10" x2="50" y2="90" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <!-- Long ticks left -->
+  <line x1="22" y1="22" x2="50" y2="22" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="22" y1="38" x2="50" y2="38" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="22" y1="54" x2="50" y2="54" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="22" y1="70" x2="50" y2="70" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <!-- Short ticks right -->
+  <line x1="50" y1="30" x2="62" y2="30" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="46" x2="62" y2="46" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="62" x2="62" y2="62" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="78" x2="62" y2="78" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

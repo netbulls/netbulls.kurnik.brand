@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I27 Window Lens — rectangular frame with one side replaced by a convex arc -->
+<path d="M25 25 L75 25 L75 75 L25 75 Z" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M75 30 A22 20 0 0 1 75 70" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt"/>
+</svg>

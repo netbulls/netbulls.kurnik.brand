@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G26 Diagonal Stack — Three parallelograms stacked along a 30° axis -->
+<polygon points="22,60 42,48 62,60 42,72" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="32,48 52,36 72,48 52,60" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="42,36 62,24 82,36 62,48" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

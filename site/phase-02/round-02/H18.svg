@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H18: Calibration Ring — broken circle with single arm through center and ticks -->
+  <path d="M75,22 A30,30 0 1,1 22,75" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="22" y1="78" x2="78" y2="22" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <!-- Ticks perpendicular to the diagonal line -->
+  <line x1="35" y1="61" x2="39" y2="69" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="46" x2="54" y2="54" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="65" y1="31" x2="69" y2="39" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

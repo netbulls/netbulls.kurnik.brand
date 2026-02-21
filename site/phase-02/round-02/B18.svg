@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B18 Heavy ring with diagonal slot cutting through -->
+<path d="M50 5 A45 45 0 1 1 49.99 5 Z M50 20 A30 30 0 1 1 49.99 20 Z" fill="#d4840a" fill-rule="evenodd"/>
+<rect x="44" y="-5" width="12" height="110" fill="#0e0c0a" transform="rotate(35 50 50)"/>
+</svg>

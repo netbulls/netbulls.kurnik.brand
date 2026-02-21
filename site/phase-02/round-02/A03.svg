@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- A03 Breach Column — vertical form with horizontal negative-space gap -->
+<rect x="32" y="10" width="28" height="35" fill="#d4840a" transform="skewX(-5)"/>
+<rect x="30" y="58" width="32" height="32" fill="#d4840a" transform="skewX(-5)"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I24 Lattice Bulge — 3x1 grid where center cell bulges outward with arc -->
+<rect x="20" y="35" width="18" height="30" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M42 35 L60 35 A15 15 0 0 1 60 65 L42 65 Z" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="64" y="35" width="18" height="30" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F04 Necker Hexagon — dimensional ambiguity, cube-like flip between two readings -->
+<polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="none" stroke="#d4840a" stroke-width="3" stroke-linejoin="miter"/>
+<line x1="50" y1="18" x2="50" y2="82" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+<line x1="22" y1="34" x2="78" y2="66" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+<line x1="78" y1="34" x2="22" y2="66" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+</svg>

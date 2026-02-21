@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F27 Half-Presence — a hexagon where the left three sides are filled bars, right three are thin strokes -->
+<line x1="50" y1="16" x2="22" y2="32" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+<line x1="22" y1="32" x2="22" y2="68" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+<line x1="22" y1="68" x2="50" y2="84" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+<line x1="50" y1="16" x2="78" y2="32" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+<line x1="78" y1="32" x2="78" y2="68" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+<line x1="78" y1="68" x2="50" y2="84" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+</svg>

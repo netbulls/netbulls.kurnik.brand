@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E15 Pinch Point — Two trapezoids narrowing toward a central gap -->
+<polygon points="10,15 44,38 44,62 10,85" fill="#d4840a"/>
+<polygon points="90,13 56,38 56,62 90,87" fill="#d4840a"/>
+</svg>

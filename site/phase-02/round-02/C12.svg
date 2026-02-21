@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C12 Crosshatch — 4x4 grid, plus-sign arrangement with outlier -->
+<rect x="37" y="14" width="14" height="14" fill="#d4840a"/>
+<rect x="18" y="33" width="14" height="14" fill="#d4840a"/>
+<rect x="37" y="33" width="14" height="14" fill="#d4840a"/>
+<rect x="56" y="33" width="14" height="14" fill="#d4840a"/>
+<rect x="37" y="52" width="14" height="14" fill="#d4840a"/>
+<rect x="75" y="71" width="14" height="14" fill="#d4840a"/>
+</svg>

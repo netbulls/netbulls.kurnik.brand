@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F11 Tri-Phase — three triangles: filled, half-filled, outline only -->
+<polygon points="22,70 34,40 46,70" fill="#d4840a"/>
+<polygon points="40,70 52,40 64,70" fill="#d4840a" clip-path="url(#half11)"/>
+<polygon points="40,70 52,40 64,70" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+<polygon points="58,70 70,40 82,70" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+<defs><clipPath id="half11"><rect x="40" y="55" width="24" height="15"/></clipPath></defs>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- D23 Quad Fin Skew — four tall narrow fins at 90° with slight clockwise skew -->
+<polygon points="47,8 53,8 51,40 49,40" fill="#d4840a" transform="rotate(8,50,50)"/>
+<polygon points="47,8 53,8 51,40 49,40" fill="#d4840a" transform="rotate(98,50,50)"/>
+<polygon points="47,8 53,8 51,40 49,40" fill="#d4840a" transform="rotate(188,50,50)"/>
+<polygon points="47,8 53,8 51,40 49,40" fill="#d4840a" transform="rotate(278,50,50)"/>
+</svg>

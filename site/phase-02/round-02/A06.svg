@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- A06 Wedge Through Horizon — angled wedge penetrating a horizontal bar -->
+<polygon points="40,8 56,8 70,55 26,55" fill="#d4840a"/>
+<rect x="15" y="55" width="70" height="8" fill="#0e0c0a"/>
+<rect x="15" y="63" width="70" height="28" fill="#d4840a"/>
+</svg>

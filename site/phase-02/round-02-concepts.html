@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Phase 02 Round 02: Symbol Exploration</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;600;700&display=swap');
+  :root {
+    --bg: #0e0c0a; --surface: #161310; --surface2: #1e1a16; --border: #2a2420;
+    --amber: #d4840a; --amber-light: #f5a623; --amber-dim: #8a5200;
+    --text: #e8ddd0; --text-dim: #7a6e62; --text-muted: #4a4238;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+
+  header { padding: 48px 64px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+  .header-left h1 { font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400; color: var(--text); letter-spacing: -0.5px; }
+  .header-left h1 span { color: var(--amber); }
+  .header-left p { margin-top: 6px; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.05em; }
+  .phase-badge { background: var(--surface2); border: 1px solid var(--border); padding: 8px 16px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  nav { display: flex; gap: 0; padding: 0 64px; border-bottom: 1px solid var(--border); overflow-x: auto; position: sticky; top: 0; background: var(--bg); z-index: 40; }
+  .nav-tab { padding: 16px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; border-top: none; border-left: none; border-right: none; background: none; }
+  .nav-tab:hover { color: var(--text-dim); }
+  .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+  .nav-tab .count { margin-left: 4px; opacity: 0.5; font-size: 10px; }
+
+  main { padding: 40px 64px 100px; }
+
+  .territory-section { margin-bottom: 48px; }
+  .territory-header { margin-bottom: 24px; }
+  .territory-header h2 { font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+  .territory-header p { color: var(--text-dim); font-size: 13px; max-width: 720px; }
+
+  .research-panel { background: var(--surface); border: 1px solid var(--border); padding: 24px 28px; margin-bottom: 24px; max-width: 840px; }
+  .research-panel summary { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); cursor: pointer; list-style: none; }
+  .research-panel summary::-webkit-details-marker { display: none; }
+  .research-panel summary::before { content: '▸ '; }
+  .research-panel[open] summary::before { content: '▾ '; }
+  .research-panel .research-content { margin-top: 16px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+  .research-panel .research-content strong { color: var(--text); }
+  .research-panel .research-content ul { margin: 8px 0; padding-left: 20px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .concept { background: var(--surface); border: 1px solid var(--border); padding: 24px 16px 16px; cursor: pointer; transition: all 0.15s; position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .concept:hover { border-color: var(--amber-dim); background: var(--surface2); transform: translateY(-1px); }
+  .concept.selected { border-color: var(--amber); background: var(--surface2); }
+  .concept.selected::after { content: '✓'; position: absolute; top: 8px; right: 8px; color: var(--amber); font-size: 11px; font-family: 'DM Mono', monospace; }
+  .concept-num { position: absolute; top: 8px; left: 10px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .concept img { width: 80px; height: 80px; }
+  .concept-name { font-size: 11px; color: var(--text-dim); text-align: center; line-height: 1.4; }
+
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { background: var(--surface); border: 1px solid var(--border); padding: 48px; max-width: 500px; width: 90%; position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .lightbox-inner img { width: 240px; height: 240px; }
+  .lightbox-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); }
+  .lightbox-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dim); text-align: center; }
+  .lightbox-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1; }
+  .lightbox-close:hover { color: var(--text); }
+  .lightbox-actions { display: flex; gap: 12px; }
+  .lightbox-nav { display: flex; gap: 8px; }
+  .btn { padding: 10px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: 1px solid var(--border); background: none; color: var(--text-dim); transition: all 0.15s; }
+  .btn:hover { border-color: var(--amber-dim); color: var(--text); }
+  .btn.primary { border-color: var(--amber); color: var(--amber); }
+  .btn.primary:hover { background: var(--amber); color: var(--bg); }
+  .btn.small { padding: 8px 14px; font-size: 10px; }
+
+  .shortlist-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 16px 64px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s; z-index: 50; }
+  .shortlist-bar.visible { transform: translateY(0); }
+  .shortlist-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; }
+  .shortlist-items { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; margin: 0 16px; }
+  .shortlist-chip { background: var(--surface2); border: 1px solid var(--amber-dim); padding: 4px 10px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); cursor: pointer; }
+  .shortlist-chip:hover { border-color: var(--amber); }
+  .shortlist-clear { background: none; border: none; color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; padding: 4px 8px; flex-shrink: 0; }
+  .shortlist-clear:hover { color: var(--text-dim); }
+
+  @media (max-width: 768px) { header, nav, main { padding-left: 24px; padding-right: 24px; } .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } .shortlist-bar { padding: 16px 24px; } nav { padding: 0 24px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <h1><span>Kurnik</span> — Symbol Exploration</h1>
+    <p>Phase 02 · Round 02 · 9 territories · 270 concepts</p>
+  </div>
+  <div class="phase-badge">Phase 02 / R02</div>
+</header>
+<nav>
+  <button class="nav-tab active" onclick="showTab('all', event)">All <span class="count">270</span></button>
+  <button class="nav-tab" onclick="showTab('A', event)">Upward <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('B', event)">Contained <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('C', event)">Systematic <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('D', event)">Radial <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('E', event)">Tension <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('F', event)">Threshold <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('G', event)">Stack <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('H', event)">Precision <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('I', event)">Interface <span class="count">30</span></button>
+  <button class="nav-tab" onclick="showTab('shortlist', event)" id="shortlist-tab">Shortlist <span class="count" id="shortlist-count">0</span></button>
+</nav>
+<main id="main-content">
+
+  <div class="territory-section" id="territory-A" data-territory="A">
+    <div class="territory-header">
+      <h2>Territory A — Upward / Emergence</h2>
+      <p>Shapes rising from or through a boundary. The threshold moment — emergence through subtraction. Asymmetric ascending forms with negative-space thresholds.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> Shape rising from/through a boundary. The threshold moment.</p>
+<ul>
+<li><strong>Key technique:</strong> Emergence through subtraction — cut a horizontal gap or void into ascending form to create the threshold moment.</li>
+<li><strong>Angles:</strong> 55-65° inclines (engineered inevitability). Asymmetric to avoid Vercel territory.</li>
+<li><strong>Fill ratio:</strong> 70-80% fill, 0-20% stroke, 0-30% negative space.</li>
+<li><strong>Bounding box:</strong> Near-square (1:1 to 1:1.25). Tall narrow marks lose legibility.</li>
+</ul>
+<p><strong>DO:</strong> Asymmetric ascending forms, negative-space thresholds, filled shapes as primary mass.<br/>
+<strong>DON'T:</strong> Arrows, rockets, swooshes, mountains, stacked bars/charts, plain equilateral triangles.</p></div>
+    </details>
+    <div class="grid" id="grid-A"></div>
+  </div>
+
+  <div class="territory-section" id="territory-B" data-territory="B">
+    <div class="territory-header">
+      <h2>Territory B — Contained / Portal</h2>
+      <p>The void is the subject, not the frame. Figure-ground reversal where the brain oscillates between filled shape and empty shape. Containment with release.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> The void is the subject, not the frame. Shape within shape.</p>
+<ul>
+<li><strong>Key technique:</strong> Figure-ground reversal — brain oscillates between filled shape and empty shape.</li>
+<li><strong>Proportions:</strong> Inner void = 50-65% of total area. Frame width = 12-20% of diameter.</li>
+<li><strong>Containers:</strong> Circle, rounded square, chamfered rect, hexagon, squircle.</li>
+<li><strong>Void approaches:</strong> Geometric cutout, slot/aperture, offset shape, broken frame with gap.</li>
+</ul>
+<p><strong>DO:</strong> Design void first, build frame around it. Broken frames suggest release.<br/>
+<strong>DON'T:</strong> Literal windows/doors/keyholes. Perfectly centered symmetric shapes. Too-thin or too-thick frames.</p>
+<p><strong>Semantic fit:</strong> "Things grow inside here." Containment with release.</p></div>
+    </details>
+    <div class="grid" id="grid-B"></div>
+  </div>
+
+  <div class="territory-section" id="territory-C" data-territory="C">
+    <div class="territory-header">
+      <h2>Territory C — Systematic / Grid</h2>
+      <p>Modular, constructed, assembled marks. Engineered, not drawn. 3×3 to 5×5 grids with deliberate pattern breaks for focal interest.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> Modular, constructed, assembled marks. Engineered, not drawn.</p>
+<ul>
+<li><strong>Grid size:</strong> 3×3 to 5×5 cells. Not larger.</li>
+<li><strong>Fill ratio:</strong> 30-60% of cells occupied (below 30% = too sparse, above 60% = QR territory).</li>
+<li><strong>Shape vocabulary:</strong> Pick 1-2 per mark: filled square, circle, L-shape, T-shape, line/bar, dot, void.</li>
+<li><strong>One deliberate break</strong> in pattern for focal interest. At least one empty row/column.</li>
+</ul>
+<p><strong>DO:</strong> Negative space as subject. One deliberate break.<br/>
+<strong>DON'T:</strong> Checkerboard. Uniform dot arrays. 4-fold symmetric patterns. More than 2 shape types.</p></div>
+    </details>
+    <div class="grid" id="grid-C"></div>
+  </div>
+
+  <div class="territory-section" id="territory-D" data-territory="D">
+    <div class="territory-header">
+      <h2>Territory D — Radial / Convergence</h2>
+      <p>Elements converging toward center. Inward = focus/precision. 3, 4, or 6 elements with negative-space void at center.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> Elements emanating from or converging toward center.</p>
+<ul>
+<li><strong>Direction:</strong> Convergence (inward) > emanation (outward). Inward = focus. Outward = warmth.</li>
+<li><strong>Element count:</strong> 3 (most dynamic), 4 (most architectural), 6 (most systematic). Never 8+.</li>
+<li><strong>Center:</strong> Leave a negative-space void. Elements converge but don't touch.</li>
+<li><strong>Rotation:</strong> 120° (3 elements), 90° (4), 60° (6). Off-axis adds dynamism.</li>
+</ul>
+<p><strong>DO:</strong> Angular/geometric elements. Varied element lengths. Separated elements.<br/>
+<strong>DON'T:</strong> 8+ elements (spinner). Tapered rays (sun). Curves/rounded caps. Circular boundary (badge).</p></div>
+    </details>
+    <div class="grid" id="grid-D"></div>
+  </div>
+
+  <div class="territory-section" id="territory-E" data-territory="E">
+    <div class="territory-header">
+      <h2>Territory E — Tension / Duality</h2>
+      <p>Two shapes in dialogue. The gap between them IS the mark. Near-symmetry preferred — not perfect mirror, not wild asymmetry.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> Two shapes in dialogue. The gap between them IS the mark.</p>
+<ul>
+<li><strong>Key technique:</strong> Design the gap first, then build shapes around it.</li>
+<li><strong>Gap:</strong> 8-15% of total mark width (visible at 32px = 3-5px gap).</li>
+<li><strong>Symmetry:</strong> Near-symmetry preferred (like Deutsche Bank: 53° not 45°).</li>
+<li><strong>Tension strategies:</strong> Gap-defined, rotational variant, scale contrast, fill/void contrast, directional opposition.</li>
+</ul>
+<p><strong>DO:</strong> Fibonacci ratios. One slightly dominant element. Shared geometric property.<br/>
+<strong>DON'T:</strong> More than 3 elements. Yin-yang trap. Perfect bilateral symmetry. Concentric shapes.</p></div>
+    </details>
+    <div class="grid" id="grid-E"></div>
+  </div>
+
+  <div class="territory-section" id="territory-F" data-territory="F">
+    <div class="territory-header">
+      <h2>Territory F — Threshold / Phase Shift</h2>
+      <p>The exact moment something changes state. Liminal instant between before/after. Fragmentation, fill-to-stroke transitions, element progressions.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> The exact moment something changes state. Liminal instant between before/after.</p>
+<ul>
+<li><strong>Fragmentation:</strong> Shape dissolving from solid to separated elements (IBM stripes).</li>
+<li><strong>Fill-to-stroke:</strong> One part solid, one part outline within single shape.</li>
+<li><strong>Element progression:</strong> 3-5 identical shapes morphing across a sequence.</li>
+<li><strong>Density modulation:</strong> Dot/element size variation (monochrome gradient effect).</li>
+<li><strong>Dimensional ambiguity:</strong> Necker cube effect — perceptual flip between two states.</li>
+</ul>
+<p><strong>DO:</strong> Structural variation (density, weight, fill/void). Frozen moment. Clear direction.<br/>
+<strong>DON'T:</strong> Motion lines/swooshes. Opacity gradients. Organic shapes. Arrows. Tiny vanishing elements.</p></div>
+    </details>
+    <div class="grid" id="grid-F"></div>
+  </div>
+
+  <div class="territory-section" id="territory-G" data-territory="G">
+    <div class="territory-header">
+      <h2>Territory G — Stack / Depth</h2>
+      <p>Overlapping planes, layered forms, z-axis logic. Infrastructure stacking. Depth through background-color gaps, fill vs outline, and weight hierarchy.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> Overlapping planes, layered forms, z-axis logic. Infrastructure stacking.</p>
+<ul>
+<li><strong>Layer count:</strong> 2-3 (more gets noisy at 32px).</li>
+<li><strong>Offset:</strong> 15-25% of layer height. Vertical, diagonal/isometric (30° grid), or same-axis with gap.</li>
+<li><strong>Depth without opacity:</strong> Background-color gaps, fill vs outline, weight hierarchy, partial occlusion, isometric projection.</li>
+<li><strong>Sub-categories:</strong> Horizontal stack, isometric box, overlapping planes, emergent form, impossible stack (Penrose), offset echo.</li>
+</ul>
+<p><strong>DO:</strong> Consistent gap widths. Background color as active element. Test at 32px.<br/>
+<strong>DON'T:</strong> Gradients. Opacity variation. More than 3 layers. Literal boxes/server racks.</p></div>
+    </details>
+    <div class="grid" id="grid-G"></div>
+  </div>
+
+  <div class="territory-section" id="territory-H" data-territory="H">
+    <div class="territory-header">
+      <h2>Territory H — Precision / Calibration</h2>
+      <p>Crosshairs, alignment marks, registration-inspired geometry. The mark feels like a tool, not a decoration. Amber on dark naturally reads as instrument display.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Source domains:</strong> Print registration marks, optical instrument reticles, oscilloscope graticules, engineering drawings, surveying instruments.</p>
+<ul>
+<li><strong>Key technique:</strong> Interrupted crosshairs — lines approach center but stop short, leaving a gap. Shifts perception from "weapon" to "instrument."</li>
+<li><strong>Weapon → Instrument:</strong> Partial circle > complete circle. Open center > filled dot. Asymmetric arms > identical arms. Weight transitions > uniform heavy strokes. Tick marks/graduations > bare lines.</li>
+<li><strong>Line weight:</strong> Primary 1.5-2px at 100px viewBox. Secondary 0.75-1px. Contrast ratio 2:1 to 3:1.</li>
+<li><strong>Stroke caps:</strong> butt or square (never round — machined feel).</li>
+</ul>
+<p><strong>Color bonus:</strong> Amber #d4840a on dark #0e0c0a = oscilloscope/HUD aesthetic for free.</p></div>
+    </details>
+    <div class="grid" id="grid-H"></div>
+  </div>
+
+  <div class="territory-section" id="territory-I" data-territory="I">
+    <div class="territory-header">
+      <h2>Territory I — Interface / Symbiosis</h2>
+      <p>Where organic meets systematic. Human ideas meeting AI/machine logic. The meeting has already happened — show the state of connection, not the process.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Research Context</summary>
+      <div class="research-content"><p><strong>Core idea:</strong> Where organic meets systematic. Human ideas meeting AI/machine logic. NOT literal.</p>
+<ul>
+<li><strong>Key framing:</strong> The meeting has already happened. Show the state of connection, not the process of docking. Stable. Infrastructure.</li>
+<li><strong>Curve-to-angle ratio:</strong> ~60/40 geometric-dominant (for infrastructure feel). Never 50/50.</li>
+<li><strong>Approaches:</strong> The Dock (curved form in geometric receiver), The Morph (angular→curved transition), The Charged Gap, The Shared Edge, The Nested Lattice.</li>
+<li><strong>Construction:</strong> Circle arcs + straight segments. Organic from tangent continuity, not freehand beziers.</li>
+</ul>
+<p><strong>DO:</strong> Circle arcs for organic curves. Uniform stroke weight. 2-3 elements max.<br/>
+<strong>DON'T:</strong> Hexagonal symmetry. Gradient orbs. Neural-network diagrams. DNA/neurons. AI clichés.</p></div>
+    </details>
+    <div class="grid" id="grid-I"></div>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-name" id="lightbox-name"></div>
+    <div class="lightbox-num" id="lightbox-num"></div>
+    <div class="lightbox-nav">
+      <button class="btn small" onclick="navLightbox(-1)">← Prev</button>
+      <button class="btn small" onclick="navLightbox(1)">Next →</button>
+    </div>
+    <div class="lightbox-actions">
+      <button class="btn" onclick="closeLightbox()">Close</button>
+      <button class="btn primary" id="lightbox-select-btn" onclick="toggleFromLightbox()">Add to Shortlist</button>
+    </div>
+  </div>
+</div>
+
+<div class="shortlist-bar" id="shortlist-bar">
+  <span class="shortlist-label">Shortlist</span>
+  <div class="shortlist-items" id="shortlist-items"></div>
+  <button class="shortlist-clear" onclick="clearShortlist()">Clear all</button>
+</div>
+
+<script>
+const concepts = [
+  { id: 'A01', name: 'Threshold Shard', desc: 'asymmetric trapezoid piercing a horizontal void', territory: 'A' },
+  { id: 'A02', name: 'Rift Ascent', desc: 'parallelogram rising through a baseline cut', territory: 'A' },
+  { id: 'A03', name: 'Breach Column', desc: 'vertical form with horizontal negative-space gap', territory: 'A' },
+  { id: 'A04', name: 'Lean Emergence', desc: 'tilted polygon breaking above a flat horizon line', territory: 'A' },
+  { id: 'A05', name: 'Split Monolith', desc: 'near-square mass split by angled negative void', territory: 'A' },
+  { id: 'A06', name: 'Wedge Through Horizon', desc: 'angled wedge penetrating a horizontal bar', territory: 'A' },
+  { id: 'A07', name: 'Displaced Keystone', desc: 'two offset rectangles suggesting upward displacement', territory: 'A' },
+  { id: 'A08', name: 'Cantilevered Rise', desc: 'L-shaped mass with upper portion cantilevered right', territory: 'A' },
+  { id: 'A09', name: 'Fracture Ascent', desc: 'single form fractured by diagonal negative space', territory: 'A' },
+  { id: 'A10', name: 'Inclined Pier', desc: 'leaning filled rectangle with horizontal notch', territory: 'A' },
+  { id: 'A11', name: 'Aperture Rise', desc: 'solid mass with rectangular negative-space window near base', territory: 'A' },
+  { id: 'A12', name: 'Staggered Plates', desc: 'two offset horizontal plates, upper shifted right and up', territory: 'A' },
+  { id: 'A13', name: 'Peel Away', desc: 'shape appearing to peel upward from a base plane', territory: 'A' },
+  { id: 'A14', name: 'Notched Column', desc: 'tall rectangle with asymmetric notch cut from one side', territory: 'A' },
+  { id: 'A15', name: 'Diagonal Breach', desc: 'tilted rectangle bisected by horizontal void, halves offset', territory: 'A' },
+  { id: 'A16', name: 'Emerging Fin', desc: 'narrow tall form rising beside a wide low base', territory: 'A' },
+  { id: 'A17', name: 'Slot Horizon', desc: 'wide mass with narrow vertical slot creating two asymmetric towers', territory: 'A' },
+  { id: 'A18', name: 'Lift Fragment', desc: 'small shape elevated above a larger grounded mass', territory: 'A' },
+  { id: 'A19', name: 'Stepped Ascent', desc: 'two rectangles forming an ascending staircase silhouette', territory: 'A' },
+  { id: 'A20', name: 'Horizon Pierce', desc: 'filled chevron-like form pushing through a horizontal band', territory: 'A' },
+  { id: 'A21', name: 'Shear Gate', desc: 'two parallelograms flanking a vertical negative-space channel', territory: 'A' },
+  { id: 'A22', name: 'Detached Crown', desc: 'outlined rectangle top with solid filled base', territory: 'A' },
+  { id: 'A23', name: 'Cantilever Beam', desc: 'horizontal mass with vertical element rising from one end', territory: 'A' },
+  { id: 'A24', name: 'Cleft Trapezoid', desc: 'wide trapezoid with angled cleft cut from top center', territory: 'A' },
+  { id: 'A25', name: 'Floating Slab', desc: 'heavy base with thin separated slab hovering above', territory: 'A' },
+  { id: 'A26', name: 'Tilted Emergence', desc: 'skewed rectangle emerging from a grounded horizontal plane', territory: 'A' },
+  { id: 'A27', name: 'Negative Ascent', desc: 'solid square with ascending parallelogram cut out', territory: 'A' },
+  { id: 'A28', name: 'Twin Pillars Uneven', desc: 'two vertical bars of different heights sharing a base', territory: 'A' },
+  { id: 'A29', name: 'Cracked Obelisk', desc: 'tapered form with horizontal fracture line, upper half shifted', territory: 'A' },
+  { id: 'A30', name: 'Threshold Slot', desc: 'filled ascending form with thin horizontal slot near midpoint', territory: 'A' },
+  { id: 'B01', name: 'Diamond Portal', desc: 'Circle with offset diamond void', territory: 'B' },
+  { id: 'B02', name: 'Raised Void', desc: 'Rounded square with upward-shifted', territory: 'B' },
+  { id: 'B03', name: 'Broken Ring', desc: 'Broken circle frame with triangular void', territory: 'B' },
+  { id: 'B04', name: 'Hex Slot', desc: 'Hexagon with rectangular slot', territory: 'B' },
+  { id: 'B05', name: 'Offset Squircle', desc: 'Squircle with offset squircle void', territory: 'B' },
+  { id: 'B06', name: 'Open Crown', desc: 'Circle frame with gap', territory: 'B' },
+  { id: 'B07', name: 'Chamfer Eye', desc: 'Chamfered rectangle with circle', territory: 'B' },
+  { id: 'B08', name: 'Weighted Ring', desc: 'Circle with upward-offset circle void', territory: 'B' },
+  { id: 'B09', name: 'Arch Portal', desc: 'Square with arch void (portal doorway)', territory: 'B' },
+  { id: 'B10', name: 'Arc Pentagon', desc: 'Partial circle frame (270deg)', territory: 'B' },
+  { id: 'B11', name: 'Aperture Slit', desc: 'Circle with horizontal aperture slot', territory: 'B' },
+  { id: 'B12', name: 'Tilted Diamond', desc: 'Rounded square with diamond', territory: 'B' },
+  { id: 'B13', name: 'Hex Gap', desc: 'Hexagon with gap at', territory: 'B' },
+  { id: 'B14', name: 'Pill Void', desc: 'Circle with pill-shaped vertical void', territory: 'B' },
+  { id: 'B15', name: 'Nested Rotate', desc: 'Two concentric rounded squares,', territory: 'B' },
+  { id: 'B16', name: 'Split Arc', desc: 'Two arcs with gaps', territory: 'B' },
+  { id: 'B17', name: 'Chamfer Notch', desc: 'Chamfered square with circle', territory: 'B' },
+  { id: 'B18', name: 'Slotted Ring', desc: 'Heavy ring with diagonal', territory: 'B' },
+  { id: 'B19', name: 'Triangle Void', desc: 'Square with rounded triangle void', territory: 'B' },
+  { id: 'B20', name: 'Basin Portal', desc: 'Semicircle container with rectangular', territory: 'B' },
+  { id: 'B21', name: 'Hex Octagon', desc: 'Octagon with offset hexagonal void', territory: 'B' },
+  { id: 'B22', name: 'Double Slit', desc: 'Circle with two stacked horizontal slots', territory: 'B' },
+  { id: 'B23', name: 'Cross Void', desc: 'Rounded square with cross-shaped void', territory: 'B' },
+  { id: 'B24', name: 'Three-Quarter Ring', desc: 'Three-quarter circle frame with', territory: 'B' },
+  { id: 'B25', name: 'Arrow Void', desc: 'Squircle with arrow-shaped void', territory: 'B' },
+  { id: 'B26', name: 'Hex Slot Offset', desc: 'Hexagon with vertical slot', territory: 'B' },
+  { id: 'B27', name: 'Emergence Basin', desc: 'Circle with half-circle void', territory: 'B' },
+  { id: 'B28', name: 'Bisected Portal', desc: 'Rounded rectangle with circular', territory: 'B' },
+  { id: 'B29', name: 'Vesica Lens', desc: 'Two overlapping circles forming', territory: 'B' },
+  { id: 'B30', name: 'Corner Gap Frame', desc: 'Square frame with two', territory: 'B' },
+  { id: 'C01', name: 'Staircase Grid', desc: '3x3, L-shaped fill descending left to right', territory: 'C' },
+  { id: 'C02', name: 'Corner Anchor', desc: '3x3, three corners filled plus center gap', territory: 'C' },
+  { id: 'C03', name: 'Offset Column', desc: '4x4, two columns with one shifted down', territory: 'C' },
+  { id: 'C04', name: 'T-Block', desc: '3x3, T-shape formed by top row and center column', territory: 'C' },
+  { id: 'C05', name: 'Diagonal Step', desc: '4x4, diagonal blocks with one break', territory: 'C' },
+  { id: 'C06', name: 'Void Center', desc: '3x3, ring of 7 cells with center and one corner empty', territory: 'C' },
+  { id: 'C07', name: 'Bar Stack', desc: '5-column grid, horizontal bars of varying width', territory: 'C' },
+  { id: 'C08', name: 'Tetris L', desc: '4x4 grid, L-shaped tetromino plus detached square', territory: 'C' },
+  { id: 'C09', name: 'Dot Matrix', desc: '5x5 grid of dots, asymmetric selection', territory: 'C' },
+  { id: 'C10', name: 'Split Frame', desc: '3x3, frame with gap splitting it into two parts', territory: 'C' },
+  { id: 'C11', name: 'Column Rise', desc: '4x4, three vertical bars of increasing height', territory: 'C' },
+  { id: 'C12', name: 'Crosshatch', desc: '4x4 grid, plus-sign arrangement with outlier', territory: 'C' },
+  { id: 'C13', name: 'Bracket Pair', desc: '3x3, two mirrored L-shapes with gap', territory: 'C' },
+  { id: 'C14', name: 'Sparse Field', desc: '5x5 grid, 7 scattered squares with clear void band', territory: 'C' },
+  { id: 'C15', name: 'Signal Tower', desc: '4x4, vertical spine with horizontal branches', territory: 'C' },
+  { id: 'C16', name: 'Cornerstone', desc: '3x3, heavy bottom-left cluster, single detached top-right', territory: 'C' },
+  { id: 'C17', name: 'Pixel Arrow', desc: '4x4 grid, arrow-like shape pointing up-right', territory: 'C' },
+  { id: 'C18', name: 'Grid Window', desc: '4x4, frame outline with one cell filled inside', territory: 'C' },
+  { id: 'C19', name: 'Cascade', desc: '5x5 grid, waterfall of dots descending right', territory: 'C' },
+  { id: 'C20', name: 'Keystone', desc: '3x3, inverted triangle with floating top block', territory: 'C' },
+  { id: 'C21', name: 'Domino Split', desc: '4x4, two 2x1 dominoes separated by void column', territory: 'C' },
+  { id: 'C22', name: 'Bridge Span', desc: '3x3, two pillars connected by a beam with one gap', territory: 'C' },
+  { id: 'C23', name: 'Pixel Elbow', desc: '5x5 grid, thick L-shape built from small squares', territory: 'C' },
+  { id: 'C24', name: 'Scatter Cluster', desc: '5x5, tight cluster of 6 cells with 2 outliers', territory: 'C' },
+  { id: 'C25', name: 'Strut Assembly', desc: '4x4, structural cross-brace pattern', territory: 'C' },
+  { id: 'C26', name: 'Baseline Grid', desc: '4x3, bottom-heavy layout with floating header', territory: 'C' },
+  { id: 'C27', name: 'Circuit Node', desc: '3x3, center dot with line connections to corners', territory: 'C' },
+  { id: 'C28', name: 'Modular Stack', desc: '3x3, three rectangles of different proportions stacked', territory: 'C' },
+  { id: 'C29', name: 'Fence Post', desc: '5x5, vertical bars with varied height and spacing', territory: 'C' },
+  { id: 'C30', name: 'Displaced Grid', desc: '4x4, regular grid with one cell shifted off-axis', territory: 'C' },
+  { id: 'D01', name: 'Tri-Converge', desc: 'three rectangles at 120° converging toward center void', territory: 'D' },
+  { id: 'D02', name: 'Quad Focus', desc: 'four tapered blades at 90° pointing inward, square void', territory: 'D' },
+  { id: 'D03', name: 'Hex Inset', desc: 'six thin lines at 60° converging, large center void', territory: 'D' },
+  { id: 'D04', name: 'Arrow Triad', desc: 'three chevron arrows pointing inward at 120°', territory: 'D' },
+  { id: 'D05', name: 'Staggered Quad', desc: 'four rectangles at 90°, alternating long/short', territory: 'D' },
+  { id: 'D06', name: 'Tri-Blade Offset', desc: 'three filled parallelograms at 120°, slightly off-center', territory: 'D' },
+  { id: 'D07', name: 'Triangular Pull', desc: 'three triangles pointing inward toward center', territory: 'D' },
+  { id: 'D08', name: 'Cruciform Taper', desc: 'four trapezoids at 90° narrowing toward center', territory: 'D' },
+  { id: 'D09', name: 'Hex Spokes Varied', desc: 'six lines at 60°, alternating thick/thin', territory: 'D' },
+  { id: 'D10', name: 'Pinch Quad', desc: 'four narrow diamonds at 90° converging, tight center gap', territory: 'D' },
+  { id: 'D11', name: 'Asymmetric Tri-Bar', desc: 'three bars at 120° with unequal lengths', territory: 'D' },
+  { id: 'D12', name: 'Wide Quad Wedge', desc: 'four wide wedges at 90° with generous center void', territory: 'D' },
+  { id: 'D13', name: 'Tri-Notch', desc: 'three L-shaped elements at 120° framing center void', territory: 'D' },
+  { id: 'D14', name: 'Pinwheel Quad', desc: 'four parallelogram blades at 90° with rotational offset', territory: 'D' },
+  { id: 'D15', name: 'Six-Point Inward', desc: 'six small triangles at 60° all pointing toward center', territory: 'D' },
+  { id: 'D16', name: 'Broken Cross', desc: 'four stroke segments at 90°, double-line style', territory: 'D' },
+  { id: 'D17', name: 'Tri-Shard Converge', desc: 'three angular shards converging, near-symmetry', territory: 'D' },
+  { id: 'D18', name: 'Quad Bracket', desc: 'four angular brackets at 90° framing center void', territory: 'D' },
+  { id: 'D19', name: 'Hex Dash Ring', desc: 'six short thick dashes at 60° forming broken ring around void', territory: 'D' },
+  { id: 'D20', name: 'Diagonal Quad', desc: 'four bars at 45° intervals converging on center', territory: 'D' },
+  { id: 'D21', name: 'Stepped Tri', desc: 'three stepped/staircase bars at 120° converging', territory: 'D' },
+  { id: 'D22', name: 'Razor Hex', desc: 'six very thin long lines at 60°, minimal center gap', territory: 'D' },
+  { id: 'D23', name: 'Quad Fin Skew', desc: 'four tall narrow fins at 90° with slight clockwise skew', territory: 'D' },
+  { id: 'D24', name: 'Tri-Trapezoid Wide', desc: 'three wide trapezoids at 120° with big center void', territory: 'D' },
+  { id: 'D25', name: 'Quad Stroke Frame', desc: 'four open rectangles at 90° converging, stroke only', territory: 'D' },
+  { id: 'D26', name: 'Six Blade Pinwheel', desc: 'six filled blades at 60° with clockwise offset', territory: 'D' },
+  { id: 'D27', name: 'Tri-Arrow Solid', desc: 'three solid arrow/chevron shapes at 120° pointing inward', territory: 'D' },
+  { id: 'D28', name: 'Quad Double Line', desc: 'four pairs of parallel lines at 90° converging', territory: 'D' },
+  { id: 'D29', name: 'Tri-Wedge Tight', desc: 'three narrow wedges at 120° nearly touching at center', territory: 'D' },
+  { id: 'D30', name: 'Quad Keystone', desc: 'four keystone/arch shapes at 90° converging, architectural', territory: 'D' },
+  { id: 'E01', name: 'Diagonal Rift', desc: 'Two rectangles split by a diagonal gap', territory: 'E' },
+  { id: 'E02', name: 'Opposed Wedges', desc: 'Two triangles pointing at each other across a vertical gap', territory: 'E' },
+  { id: 'E03', name: 'Split Monolith', desc: 'A rectangle cleaved by a 10px angled gap', territory: 'E' },
+  { id: 'E04', name: 'Rotational Pair', desc: 'Same L-shape rotated 180°, facing each other', territory: 'E' },
+  { id: 'E05', name: 'Scale Echo', desc: 'Large filled square + smaller outlined square, diagonal tension', territory: 'E' },
+  { id: 'E06', name: 'Vertical Fissure', desc: 'Two tall forms with a narrow zigzag gap between', territory: 'E' },
+  { id: 'E07', name: 'Chevron Dialogue', desc: 'Two chevrons facing each other, gap as mark', territory: 'E' },
+  { id: 'E08', name: 'Parallel Drift', desc: 'Two parallel bars, one slightly offset vertically', territory: 'E' },
+  { id: 'E09', name: 'Arc Tension', desc: 'Two partial arcs facing each other with a vertical gap', territory: 'E' },
+  { id: 'E10', name: 'Shifted Squares', desc: 'Two squares, one filled one stroked, offset on diagonal', territory: 'E' },
+  { id: 'E11', name: 'Tectonic Plates', desc: 'Two horizontal slabs with a stepped gap', territory: 'E' },
+  { id: 'E12', name: 'Fractured Diamond', desc: 'Diamond split vertically with 10px gap', territory: 'E' },
+  { id: 'E13', name: 'Gravitational Pull', desc: 'Large circle and small circle with taut gap', territory: 'E' },
+  { id: 'E14', name: 'Crossed Beams', desc: 'Two diagonal bars crossing with a gap at center', territory: 'E' },
+  { id: 'E15', name: 'Pinch Point', desc: 'Two trapezoids narrowing toward a central gap', territory: 'E' },
+  { id: 'E16', name: 'Leaning Pillars', desc: 'Two tall rectangles tilted slightly toward each other', territory: 'E' },
+  { id: 'E17', name: 'Horizon Split', desc: 'Two horizontal wedges meeting at a diagonal gap', territory: 'E' },
+  { id: 'E18', name: 'Bracket Pair', desc: 'Two thick bracket shapes facing each other', territory: 'E' },
+  { id: 'E19', name: 'Magnetic Poles', desc: 'Two rounded rectangles with charged gap', territory: 'E' },
+  { id: 'E20', name: 'Fault Line', desc: 'Two hexagonal shapes with a jagged diagonal gap', territory: 'E' },
+  { id: 'E21', name: 'Stacked Offset', desc: 'Two horizontal bars with lateral offset and vertical gap', territory: 'E' },
+  { id: 'E22', name: 'Hinged Gate', desc: 'Two rectangles angled open like doors, gap at center', territory: 'E' },
+  { id: 'E23', name: 'Arrow Duality', desc: 'Two arrow-like shapes pointing in opposite directions', territory: 'E' },
+  { id: 'E24', name: 'Keystone Gap', desc: 'Two angular shapes forming an arch with a gap at the crown', territory: 'E' },
+  { id: 'E25', name: 'Cantilever', desc: 'Two L-shapes extending toward each other from opposite corners', territory: 'E' },
+  { id: 'E26', name: 'Convergent Triangles', desc: 'Two triangles pointing down and up with horizontal gap', territory: 'E' },
+  { id: 'E27', name: 'Spine', desc: 'Two vertical forms with a narrow curved gap running between them', territory: 'E' },
+  { id: 'E28', name: 'Offset Pillars', desc: 'Three vertical bars, two grouped left, one isolated right', territory: 'E' },
+  { id: 'E29', name: 'Sliding Planes', desc: 'Two overlapping rectangles offset like tectonic plates', territory: 'E' },
+  { id: 'E30', name: 'Sentinel Pair', desc: 'Two tall pentagons standing side by side with a charged gap', territory: 'E' },
+  { id: 'F01', name: 'Dissolving Square', desc: 'solid square fragmenting rightward into separated strips', territory: 'F' },
+  { id: 'F02', name: 'Fill-Stroke Circle', desc: 'left half filled, right half stroke only', territory: 'F' },
+  { id: 'F03', name: 'Square Progression', desc: '4 squares from filled to outline', territory: 'F' },
+  { id: 'F04', name: 'Necker Hexagon', desc: 'dimensional ambiguity, cube-like flip between two readings', territory: 'F' },
+  { id: 'F05', name: 'Density Column', desc: 'vertical bar dissolving into dots upward', territory: 'F' },
+  { id: 'F06', name: 'Split Diamond', desc: 'diamond splitting apart at the threshold line', territory: 'F' },
+  { id: 'F07', name: 'Stripe Dissolution', desc: 'horizontal stripes, left solid block dissolving to separated stripes right', territory: 'F' },
+  { id: 'F08', name: 'Phase Gate', desc: 'solid rectangle with a vertical void creating threshold', territory: 'F' },
+  { id: 'F09', name: 'Circle to Fragments', desc: 'circle breaking apart into 5 wedge fragments', territory: 'F' },
+  { id: 'F10', name: 'Dot Matrix Fade', desc: 'grid of squares diminishing in size from left to right', territory: 'F' },
+  { id: 'F11', name: 'Tri-Phase', desc: 'three triangles: filled, half-filled, outline only', territory: 'F' },
+  { id: 'F12', name: 'Vertical Shatter', desc: 'tall rectangle breaking into 6 horizontal fragments drifting apart', territory: 'F' },
+  { id: 'F13', name: 'Absence Boundary', desc: 'two rectangles with negative space void between forming a threshold', territory: 'F' },
+  { id: 'F14', name: 'Necker Square', desc: 'wireframe cube with ambiguous depth reading', territory: 'F' },
+  { id: 'F15', name: 'Radial Dissolution', desc: 'circle fragmenting outward from center into 6 radial shards', territory: 'F' },
+  { id: 'F16', name: 'Morphing Row', desc: '5 circles progressing from filled to outline left-to-right', territory: 'F' },
+  { id: 'F17', name: 'Stacked Phase', desc: 'three horizontal bars, top solid, middle half-dissolving, bottom outline', territory: 'F' },
+  { id: 'F18', name: 'Pentagon Split', desc: 'pentagon with diagonal cut, top half filled, bottom half outline', territory: 'F' },
+  { id: 'F19', name: 'Weight Progression', desc: '4 vertical bars with decreasing stroke weight left to right', territory: 'F' },
+  { id: 'F20', name: 'Chevron Cascade', desc: '4 chevrons dissolving from solid to thin', territory: 'F' },
+  { id: 'F21', name: 'Concentric Dissolve', desc: 'three nested squares, inner filled, middle half, outer outline', territory: 'F' },
+  { id: 'F22', name: 'Diagonal Tear', desc: 'square with diagonal split, top-left solid, bottom-right fragmented', territory: 'F' },
+  { id: 'F23', name: 'Pixel Evaporation', desc: 'block of squares at bottom dissolving upward into fewer/smaller elements', territory: 'F' },
+  { id: 'F24', name: 'Dual Reading Trapezoid', desc: 'two overlapping trapezoids creating ambiguous figure/ground', territory: 'F' },
+  { id: 'F25', name: 'Horizon Line', desc: 'shape crossing a threshold: solid below, fragmented above', territory: 'F' },
+  { id: 'F26', name: 'Ring Collapse', desc: 'concentric rings, outer thin, middle medium, inner thick, density inversion', territory: 'F' },
+  { id: 'F27', name: 'Half-Presence', desc: 'a hexagon where the left three sides are filled bars, right three are thin strokes', territory: 'F' },
+  { id: 'F28', name: 'Staircase Shift', desc: 'stepped form transitioning from fill to stroke at midpoint', territory: 'F' },
+  { id: 'F29', name: 'Particle Jet', desc: 'solid bar at left shooting particles rightward that diminish', territory: 'F' },
+  { id: 'F30', name: 'Möbius Threshold', desc: 'two interlocking L-shapes creating ambiguous inside/outside', territory: 'F' },
+  { id: 'G01', name: 'Stacked Slabs', desc: 'Three horizontal rectangles offset vertically with background gaps', territory: 'G' },
+  { id: 'G02', name: 'Offset Plates', desc: 'Two rectangles with diagonal offset, front filled back outlined', territory: 'G' },
+  { id: 'G03', name: 'Isometric Stack', desc: 'Two parallelograms on 30° grid, stacked with gap', territory: 'G' },
+  { id: 'G04', name: 'Rising Chevrons', desc: 'Three stacked chevron shapes ascending with gaps', territory: 'G' },
+  { id: 'G05', name: 'Occlusion Squares', desc: 'Two squares, front partially covering back', territory: 'G' },
+  { id: 'G06', name: 'Isometric Cube', desc: 'Open isometric cube, three visible faces as lines', territory: 'G' },
+  { id: 'G07', name: 'Layered Trapezoids', desc: 'Two trapezoids creating perspective depth', territory: 'G' },
+  { id: 'G08', name: 'Weight Hierarchy Bars', desc: 'Three horizontal bars with decreasing stroke weight (depth)', territory: 'G' },
+  { id: 'G09', name: 'Penrose Triangle', desc: 'Impossible triangle suggesting infinite stacking', territory: 'G' },
+  { id: 'G10', name: 'Echo Diamonds', desc: 'Two diamonds offset vertically, fill/outline contrast', territory: 'G' },
+  { id: 'G11', name: 'Sliding Panels', desc: 'Two vertical rectangles offset horizontally with background gap', territory: 'G' },
+  { id: 'G12', name: 'Isometric Planes', desc: 'Three flat planes in isometric projection, stacked', territory: 'G' },
+  { id: 'G13', name: 'Cascading Steps', desc: 'Three rectangles descending like stairs, partial occlusion', territory: 'G' },
+  { id: 'G14', name: 'Nested Brackets', desc: 'Two L-shaped brackets creating layered depth', territory: 'G' },
+  { id: 'G15', name: 'Depth Wedge', desc: 'Two triangles offset to create a layered wedge', territory: 'G' },
+  { id: 'G16', name: 'Floating Platform', desc: 'Isometric top face with two visible side faces', territory: 'G' },
+  { id: 'G17', name: 'Parallel Shifts', desc: 'Two parallelograms shifted right, suggesting motion in depth', territory: 'G' },
+  { id: 'G18', name: 'Receding Frames', desc: 'Three concentric rectangles with decreasing stroke, suggesting tunnel', territory: 'G' },
+  { id: 'G19', name: 'Stacked Arrowheads', desc: 'Two arrow/chevron shapes stacked vertically', territory: 'G' },
+  { id: 'G20', name: 'Impossible Steps', desc: 'Two interlocking L-shapes creating Escher-like depth', territory: 'G' },
+  { id: 'G21', name: 'Offset Echo', desc: 'Same shape repeated with slight offset and thinner stroke', territory: 'G' },
+  { id: 'G22', name: 'Isometric Duo', desc: 'Two isometric cubes side by side, one filled one outlined', territory: 'G' },
+  { id: 'G23', name: 'Layered Verticals', desc: 'Three vertical bars with staggered heights and weight hierarchy', territory: 'G' },
+  { id: 'G24', name: 'Folded Plane', desc: 'Single shape that appears folded, two planes meeting at an edge', territory: 'G' },
+  { id: 'G25', name: 'Horizon Layers', desc: 'Two wide rectangles with a narrow gap, landscape stacking', territory: 'G' },
+  { id: 'G26', name: 'Diagonal Stack', desc: 'Three parallelograms stacked along a 30° axis', territory: 'G' },
+  { id: 'G27', name: 'Split Monolith', desc: 'Single tall rectangle split by a horizontal background-color gap', territory: 'G' },
+  { id: 'G28', name: 'Perspective Corridor', desc: 'Converging lines creating depth tunnel with filled end', territory: 'G' },
+  { id: 'G29', name: 'Tectonic Shift', desc: 'Two large planes separated by a diagonal gap', territory: 'G' },
+  { id: 'G30', name: 'Impossible Overlap', desc: 'Two interlocking rectangles that appear to pass through each other', territory: 'G' },
+  { id: 'H01', name: 'Interrupted Cross', desc: 'Four arms stop before center, square void', territory: 'H' },
+  { id: 'H02', name: 'Duplex Reticle', desc: 'Thick outer posts tapering to thin near center', territory: 'H' },
+  { id: 'H03', name: 'Crop Brackets', desc: 'Four L-shaped corner marks with center dot', territory: 'H' },
+  { id: 'H04', name: 'Partial Sight', desc: 'Three arms, arc replacing the fourth', territory: 'H' },
+  { id: 'H05', name: 'Offset Target', desc: 'Circle deliberately off-center from crosshair', territory: 'H' },
+  { id: 'H06', name: 'Graduated Axis', desc: 'Vertical line with asymmetric tick marks', territory: 'H' },
+  { id: 'H07', name: 'Stadia Lines', desc: 'Three horizontal parallels, vertical gapped at center', territory: 'H' },
+  { id: 'H08', name: 'Corner Focus', desc: 'L-bracket with crosshair at vertex, tick marks', territory: 'H' },
+  { id: 'H09', name: 'Datum Split', desc: 'Circle bisected horizontally, vertical extends beyond', territory: 'H' },
+  { id: 'H10', name: 'Floating Dots', desc: 'Interrupted crosshair with dots at 45 degrees', territory: 'H' },
+  { id: 'H11', name: 'Arc Reticle', desc: '270-degree arc with two arms inside', territory: 'H' },
+  { id: 'H12', name: 'Micrometer', desc: 'Ruler edge with ticks meeting angled indicator', territory: 'H' },
+  { id: 'H13', name: 'Center Void', desc: 'Four thick filled arms, square void at center', territory: 'H' },
+  { id: 'H14', name: 'Grid Fragment', desc: 'Oscilloscope graticule with center tick emphasis', territory: 'H' },
+  { id: 'H15', name: 'Bracket Cross', desc: 'Corner brackets connected by thin cross', territory: 'H' },
+  { id: 'H16', name: 'Dual Reticle', desc: 'Two concentric broken circles with partial arms', territory: 'H' },
+  { id: 'H17', name: 'T-Junction', desc: 'Vertical meets horizontal with graduated ticks', territory: 'H' },
+  { id: 'H18', name: 'Calibration Ring', desc: 'Broken circle with diagonal arm and ticks', territory: 'H' },
+  { id: 'H19', name: 'Double Axis', desc: 'Two parallel lines per axis, grid center void', territory: 'H' },
+  { id: 'H20', name: 'Asymmetric Rose', desc: 'Thin cardinal arms, thick short diagonal arms', territory: 'H' },
+  { id: 'H21', name: 'Registration Frame', desc: 'Square with crosshairs at each corner', territory: 'H' },
+  { id: 'H22', name: 'Hairline Overlay', desc: 'Thin full cross with thick partial arms overlay', territory: 'H' },
+  { id: 'H23', name: 'Offset Circles', desc: 'Two circles at different scales, line through centers', territory: 'H' },
+  { id: 'H24', name: 'Level Gauge', desc: 'Horizontal with ticks, bubble indicator above', territory: 'H' },
+  { id: 'H25', name: 'Precision Point', desc: 'Three converging lines, triangle void at center', territory: 'H' },
+  { id: 'H26', name: 'Signal Ticks', desc: 'Asymmetric ticks along vertical spine', territory: 'H' },
+  { id: 'H27', name: 'Engineering Center', desc: 'Cross with dashed extensions and partial circle', territory: 'H' },
+  { id: 'H28', name: 'Horseshoe Reticle', desc: 'Open-bottom semicircle with vertical arm and dot', territory: 'H' },
+  { id: 'H29', name: 'Mil-Dot', desc: 'Interrupted crosshair with evenly spaced dots', territory: 'H' },
+  { id: 'H30', name: 'Compound Instrument', desc: 'Bracket frame plus interrupted cross plus floating arc', territory: 'H' },
+  { id: 'I01', name: 'Arc Dock', desc: 'curved form seated in angular receiver', territory: 'I' },
+  { id: 'I02', name: 'Split Morph', desc: 'single path transitions from angular left to curved right', territory: 'I' },
+  { id: 'I03', name: 'Charged Proximity', desc: 'square and circle with tense gap', territory: 'I' },
+  { id: 'I04', name: 'Shared Horizon', desc: 'angular form above, curved form below, sharing one edge', territory: 'I' },
+  { id: 'I05', name: 'Grid Intrusion', desc: 'rectangular grid with one curved cell', territory: 'I' },
+  { id: 'I06', name: 'Tangent Lock', desc: 'circle tangent to inner corner of L-bracket', territory: 'I' },
+  { id: 'I07', name: 'Half-Fill Morph', desc: 'square that dissolves into semicircle on right side', territory: 'I' },
+  { id: 'I08', name: 'Channel Interface', desc: 'two parallel bars with a curved bridge connecting them', territory: 'I' },
+  { id: 'I09', name: 'Corner Embrace', desc: 'arc wrapping around the corner of a rectangle', territory: 'I' },
+  { id: 'I10', name: 'Notch Symbiosis', desc: 'rectangle with curved notch where circle sits', territory: 'I' },
+  { id: 'I11', name: 'Threshold Line', desc: 'single path: straight segments become arc at center', territory: 'I' },
+  { id: 'I12', name: 'Slotted Arc', desc: 'filled arc seated into a rectangular slot', territory: 'I' },
+  { id: 'I13', name: 'Dual Nature Block', desc: 'single shape: left half angular, right half curved, filled', territory: 'I' },
+  { id: 'I14', name: 'Glyph Socket', desc: 'angular C-bracket receiving a circle', territory: 'I' },
+  { id: 'I15', name: 'Waveform Register', desc: 'three horizontal bars: top angular, middle transitional, bottom curved', territory: 'I' },
+  { id: 'I16', name: 'Keystone', desc: 'diamond shape with curved top edge, geometric bottom', territory: 'I' },
+  { id: 'I17', name: 'Pinch Point', desc: 'two trapezoids nearly touching, gap shaped by one curved and one straight edge', territory: 'I' },
+  { id: 'I18', name: 'Bracket Orbit', desc: 'square bracket pair with arc passing through', territory: 'I' },
+  { id: 'I19', name: 'Nested Breach', desc: 'concentric square with arc cutting through one side', territory: 'I' },
+  { id: 'I20', name: 'Phase Shift', desc: 'two overlapping shapes: angular parallelogram + half-circle, shared center', territory: 'I' },
+  { id: 'I21', name: 'Seam Line', desc: 'vertical line where angular strokes on left meet arc strokes on right', territory: 'I' },
+  { id: 'I22', name: 'Plug Form', desc: 'angular prong shape fitting into curved socket', territory: 'I' },
+  { id: 'I23', name: 'Fused Column', desc: 'vertical rectangle with one curved side and one angular side', territory: 'I' },
+  { id: 'I24', name: 'Lattice Bulge', desc: '3x1 grid where center cell bulges outward with arc', territory: 'I' },
+  { id: 'I25', name: 'Contact Edge', desc: 'filled square and filled circle sharing a tangent line', territory: 'I' },
+  { id: 'I26', name: 'Trace Shift', desc: 'continuous stroke path: angular zigzag transitioning to smooth wave', territory: 'I' },
+  { id: 'I27', name: 'Window Lens', desc: 'rectangular frame with one side replaced by a convex arc', territory: 'I' },
+  { id: 'I28', name: 'Anvil Arc', desc: 'heavy geometric base with curved top surface', territory: 'I' },
+  { id: 'I29', name: 'Aperture Slit', desc: 'circle with a rectangular cut-through creating a gateway', territory: 'I' },
+  { id: 'I30', name: 'Coupled Arcs', desc: 'angular chevron and opposing arc locked together', territory: 'I' }
+];
+
+const territoryInfo = {
+  'A': { name: 'Upward / Emergence', count: 30 },
+  'B': { name: 'Contained / Portal', count: 30 },
+  'C': { name: 'Systematic / Grid', count: 30 },
+  'D': { name: 'Radial / Convergence', count: 30 },
+  'E': { name: 'Tension / Duality', count: 30 },
+  'F': { name: 'Threshold / Phase Shift', count: 30 },
+  'G': { name: 'Stack / Depth', count: 30 },
+  'H': { name: 'Precision / Calibration', count: 30 },
+  'I': { name: 'Interface / Symbiosis', count: 30 }
+};
+
+let shortlist = JSON.parse(localStorage.getItem('kurnik-r02-shortlist') || '[]');
+let currentLightbox = null;
+let currentFilter = 'all';
+let visibleConcepts = [];
+
+function getFilteredConcepts() {
+  if (currentFilter === 'shortlist') return concepts.filter(c => shortlist.includes(c.id));
+  if (currentFilter === 'all') return concepts;
+  return concepts.filter(c => c.territory === currentFilter);
+}
+
+function renderAll() {
+  visibleConcepts = getFilteredConcepts();
+  const territories = [...new Set(visibleConcepts.map(c => c.territory))];
+
+  document.querySelectorAll('.territory-section').forEach(s => {
+    const t = s.dataset.territory;
+    const items = visibleConcepts.filter(c => c.territory === t);
+    if (items.length === 0) {
+      s.style.display = 'none';
+    } else {
+      s.style.display = '';
+      const grid = s.querySelector('.grid');
+      grid.innerHTML = items.map(c => `
+        <div class="concept ${shortlist.includes(c.id) ? 'selected' : ''}" onclick="openLightbox('${c.id}')">
+          <span class="concept-num">${c.id}</span>
+          <img src="round-02/${c.id}.svg" alt="${c.name}" loading="lazy"/>
+          <div class="concept-name">${c.name}</div>
+        </div>
+      `).join('');
+    }
+  });
+}
+
+function showTab(tab, event) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  event.target.closest('.nav-tab').classList.add('active');
+  currentFilter = tab;
+  renderAll();
+  if (tab !== 'all') window.scrollTo(0, 0);
+}
+
+function openLightbox(id) {
+  const c = concepts.find(x => x.id === id);
+  if (!c) return;
+  currentLightbox = id;
+  document.getElementById('lightbox-img').src = `round-02/${c.id}.svg`;
+  document.getElementById('lightbox-name').textContent = c.name;
+  document.getElementById('lightbox-num').textContent = `${c.id} — ${c.desc}`;
+  updateLightboxBtn();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  currentLightbox = null;
+}
+
+function navLightbox(dir) {
+  if (!currentLightbox) return;
+  const filtered = getFilteredConcepts();
+  const idx = filtered.findIndex(c => c.id === currentLightbox);
+  if (idx === -1) return;
+  const next = idx + dir;
+  if (next >= 0 && next < filtered.length) openLightbox(filtered[next].id);
+}
+
+function toggleFromLightbox() {
+  if (!currentLightbox) return;
+  const idx = shortlist.indexOf(currentLightbox);
+  if (idx > -1) shortlist.splice(idx, 1);
+  else shortlist.push(currentLightbox);
+  saveShortlist();
+  updateLightboxBtn();
+  renderAll();
+}
+
+function updateLightboxBtn() {
+  const btn = document.getElementById('lightbox-select-btn');
+  btn.textContent = shortlist.includes(currentLightbox) ? 'Remove from Shortlist' : 'Add to Shortlist';
+}
+
+function saveShortlist() {
+  localStorage.setItem('kurnik-r02-shortlist', JSON.stringify(shortlist));
+  document.getElementById('shortlist-count').textContent = shortlist.length;
+  const bar = document.getElementById('shortlist-bar');
+  bar.classList.toggle('visible', shortlist.length > 0);
+  document.getElementById('shortlist-items').innerHTML = shortlist.map(id =>
+    `<span class="shortlist-chip" onclick="openLightbox('${id}')">${id}</span>`
+  ).join('');
+}
+
+function clearShortlist() {
+  shortlist = [];
+  saveShortlist();
+  renderAll();
+}
+
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+renderAll();
+saveShortlist();
+</script>
+</body>
+</html>

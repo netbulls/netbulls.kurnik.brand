@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I15 Waveform Register — three horizontal bars: top angular, middle transitional, bottom curved -->
+<line x1="25" y1="30" x2="75" y2="30" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+<path d="M25 50 L45 50 A10 6 0 0 1 55 50 L75 50" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+<path d="M25 70 A25 8 0 0 1 75 70" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+</svg>

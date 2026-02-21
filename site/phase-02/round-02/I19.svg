@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- I19 Nested Breach — concentric square with arc cutting through one side -->
+<rect x="25" y="25" width="50" height="50" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+<rect x="37" y="37" width="26" height="26" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M75 38 A18 12 0 0 1 75 62" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt"/>
+</svg>

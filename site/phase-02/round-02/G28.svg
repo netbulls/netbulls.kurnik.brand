@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G28 Perspective Corridor — Converging lines creating depth tunnel with filled end -->
+<line x1="15" y1="15" x2="38" y2="38" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="85" y1="15" x2="62" y2="38" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="15" y1="85" x2="38" y2="62" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<line x1="85" y1="85" x2="62" y2="62" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+<rect x="38" y="38" width="24" height="24" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F16 Morphing Row — 5 circles progressing from filled to outline left-to-right -->
+<circle cx="16" cy="50" r="8" fill="#d4840a"/>
+<circle cx="34" cy="50" r="8" fill="#d4840a"/>
+<circle cx="52" cy="50" r="8" fill="#d4840a" clip-path="url(#half16)"/>
+<circle cx="52" cy="50" r="7" fill="none" stroke="#d4840a" stroke-width="2"/>
+<circle cx="70" cy="50" r="7" fill="none" stroke="#d4840a" stroke-width="2"/>
+<circle cx="86" cy="50" r="7" fill="none" stroke="#d4840a" stroke-width="1.5"/>
+<defs><clipPath id="half16"><rect x="46" y="42" width="6" height="16"/></clipPath></defs>
+</svg>

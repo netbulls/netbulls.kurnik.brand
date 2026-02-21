@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E09 Arc Tension — Two partial arcs facing each other with a vertical gap -->
+<path d="M44,15 A35,35 0 0,0 44,85" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+<path d="M56,13 A35,35 0 0,1 56,87" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+</svg>

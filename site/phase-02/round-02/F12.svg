@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F12 Vertical Shatter — tall rectangle breaking into 6 horizontal fragments drifting apart -->
+<rect x="35" y="16" width="30" height="8" fill="#d4840a"/>
+<rect x="36" y="27" width="30" height="8" fill="#d4840a"/>
+<rect x="38" y="39" width="28" height="7" fill="#d4840a"/>
+<rect x="37" y="51" width="26" height="6" fill="#d4840a"/>
+<rect x="39" y="63" width="24" height="5" fill="#d4840a"/>
+<rect x="40" y="74" width="22" height="4" fill="#d4840a"/>
+<rect x="42" y="83" width="18" height="3" fill="#d4840a"/>
+</svg>

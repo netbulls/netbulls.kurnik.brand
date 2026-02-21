@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- C06 Void Center — 3x3, ring of 7 cells with center and one corner empty -->
+<rect x="15" y="15" width="20" height="20" fill="#d4840a"/>
+<rect x="40" y="15" width="20" height="20" fill="#d4840a"/>
+<rect x="65" y="15" width="20" height="20" fill="#d4840a"/>
+<rect x="15" y="40" width="20" height="20" fill="#d4840a"/>
+<rect x="65" y="40" width="20" height="20" fill="#d4840a"/>
+<rect x="15" y="65" width="20" height="20" fill="#d4840a"/>
+<rect x="40" y="65" width="20" height="20" fill="#d4840a"/>
+</svg>
