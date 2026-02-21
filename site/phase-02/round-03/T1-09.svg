@@ -1,0 +1,11 @@
+<!-- T1-09 Chevron Target — D18 V-brackets as filled solid triangles/chevrons pointing inward -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Top chevron pointing down -->
+  <polygon points="36,8 50,34 64,8" fill="#d4840a"/>
+  <!-- Right chevron pointing left -->
+  <polygon points="92,36 66,50 92,64" fill="#d4840a"/>
+  <!-- Bottom chevron pointing up -->
+  <polygon points="64,92 50,66 36,92" fill="#d4840a"/>
+  <!-- Left chevron pointing right -->
+  <polygon points="8,64 34,50 8,36" fill="#d4840a"/>
+</svg>

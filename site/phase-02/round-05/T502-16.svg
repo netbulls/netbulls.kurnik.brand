@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-16 Fanning out — thick base bar with thin bars spreading apart above -->
+  <rect x="20" y="68" width="60" height="14" fill="#d4840a"/>
+  <rect x="20" y="50" width="60" height="4" fill="#d4840a"/>
+  <rect x="20" y="38" width="60" height="3" fill="#d4840a"/>
+  <rect x="20" y="24" width="60" height="2" fill="#d4840a"/>
+</svg>

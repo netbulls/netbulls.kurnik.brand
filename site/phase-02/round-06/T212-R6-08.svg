@@ -1,0 +1,9 @@
+<!-- T212-R6-08 Brackets + two stacked chevrons pointing up-right inside -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polyline points="20,36 20,20 36,20" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="64,20 80,20 80,36" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="20,64 20,80 36,80" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="64,80 80,80 80,64" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="34,58 50,42 66,58" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="34,70 50,54 66,70" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

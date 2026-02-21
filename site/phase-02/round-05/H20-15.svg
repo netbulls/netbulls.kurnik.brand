@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-15 All tapered wedges — all 8 arms as narrow triangles, radar/compass feel -->
+  <polygon points="48.5,42 51.5,42 50,12" fill="#d4840a"/>
+  <polygon points="58,48.5 58,51.5 88,50" fill="#d4840a"/>
+  <polygon points="51.5,58 48.5,58 50,88" fill="#d4840a"/>
+  <polygon points="42,51.5 42,48.5 12,50" fill="#d4840a"/>
+  <polygon points="44,43 43,44 34,35" fill="#d4840a"/>
+  <polygon points="57,44 56,43 65,34" fill="#d4840a"/>
+  <polygon points="56,57 57,56 65,66" fill="#d4840a"/>
+  <polygon points="43,56 44,57 34,66" fill="#d4840a"/>
+</svg>

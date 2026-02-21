@@ -1,0 +1,7 @@
+<!-- T502-R6-06 T502-11 with expanding gaps between levels — wider gaps toward top -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="12" y="68" width="76" height="14" fill="#d4840a"/>
+  <rect x="22" y="50" width="56" height="10" fill="#d4840a"/>
+  <rect x="32" y="30" width="36" height="7" fill="#d4840a"/>
+  <rect x="40" y="14" width="20" height="4" fill="#d4840a"/>
+</svg>

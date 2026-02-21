@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T212-09 Brackets + bold filled diamond at center (the goal/target) -->
+  <polyline points="10,28 10,10 28,10" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="72,10 90,10 90,28" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="10,72 10,90 28,90" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="72,90 90,90 90,72" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="50,30 70,50 50,70 30,50" fill="#d4840a"/>
+</svg>

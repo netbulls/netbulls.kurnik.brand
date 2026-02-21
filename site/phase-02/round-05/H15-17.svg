@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-17 Double Brackets (nested L-shapes at each corner) -->
+  <path d="M10,30 L10,10 L30,10" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M18,34 L18,18 L34,18" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M70,10 L90,10 L90,30" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M66,18 L82,18 L82,34" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M90,70 L90,90 L70,90" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M82,66 L82,82 L66,82" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M30,90 L10,90 L10,70" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M34,82 L18,82 L18,66" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+</svg>

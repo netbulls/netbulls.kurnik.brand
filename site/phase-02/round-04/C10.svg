@@ -1,0 +1,21 @@
+<!-- C10 Infinite Window — nested squares with impossible connected corners -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Outer square -->
+    <rect x="10" y="10" width="80" height="80"/>
+    <!-- Inner square -->
+    <rect x="30" y="30" width="40" height="40"/>
+    <!-- Impossible corner connections — each corner connects to a non-adjacent inner corner -->
+    <line x1="10" y1="10" x2="70" y2="30"/>
+    <line x1="90" y1="10" x2="30" y2="30"/>
+    <line x1="90" y1="90" x2="30" y2="70"/>
+    <line x1="10" y1="90" x2="70" y2="70"/>
+  </g>
+  <!-- Corner accent blocks -->
+  <g fill="#d4840a" stroke="none">
+    <rect x="7" y="7" width="8" height="8"/>
+    <rect x="85" y="7" width="8" height="8"/>
+    <rect x="85" y="85" width="8" height="8"/>
+    <rect x="7" y="85" width="8" height="8"/>
+  </g>
+</svg>

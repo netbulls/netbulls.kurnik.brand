@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-15 Pillar Connection — Two planes connected by a vertical pillar element -->
+<polygon points="50,18 76,32 50,46 24,32" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,54 76,68 50,82 24,68" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<line x1="50" y1="46" x2="50" y2="54" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+<line x1="24" y1="32" x2="24" y2="68" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+<line x1="76" y1="32" x2="76" y2="68" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

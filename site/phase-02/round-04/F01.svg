@@ -1,0 +1,14 @@
+<!-- F01 Broadcast Tower — concentric arcs radiating from a central point at bottom -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#d4840a" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Central emitter -->
+    <rect x="47" y="68" width="6" height="20" fill="#d4840a"/>
+    <!-- Arcs radiating outward -->
+    <path d="M50 68 Q50 55 37 48" stroke-width="4"/>
+    <path d="M50 68 Q50 55 63 48" stroke-width="4"/>
+    <path d="M50 68 Q50 42 28 32" stroke-width="3.5"/>
+    <path d="M50 68 Q50 42 72 32" stroke-width="3.5"/>
+    <path d="M50 68 Q50 28 18 18" stroke-width="3"/>
+    <path d="M50 68 Q50 28 82 18" stroke-width="3"/>
+  </g>
+</svg>

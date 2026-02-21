@@ -1,0 +1,7 @@
+<!-- T1-10 Concentric Rotated Squares — outer square + inner square rotated 45 degrees -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer square, axis-aligned -->
+  <rect x="12" y="12" width="76" height="76" fill="none" stroke="#d4840a" stroke-width="4" stroke-linejoin="miter"/>
+  <!-- Inner square, rotated 45 degrees -->
+  <rect x="30" y="30" width="40" height="40" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linejoin="miter" transform="rotate(45 50 50)"/>
+</svg>

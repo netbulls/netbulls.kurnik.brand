@@ -1,0 +1,20 @@
+<!-- H15-R6-08 Tight double brackets + center circle (H15-17 tightness + H15-05 center element) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer brackets at 20 -->
+  <path d="M20,38 L20,20 L38,20" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M62,20 L80,20 L80,38" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M80,62 L80,80 L62,80" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M38,80 L20,80 L20,62" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Inner brackets at 30 -->
+  <path d="M30,40 L30,30 L40,30" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M60,30 L70,30 L70,40" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M70,60 L70,70 L60,70" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M40,70 L30,70 L30,60" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Cross arms stopping before center circle -->
+  <line x1="12" y1="50" x2="39" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="61" y1="50" x2="88" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="50" y1="12" x2="50" y2="39" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="50" y1="61" x2="50" y2="88" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <!-- Center circle (stroked, not filled) -->
+  <circle cx="50" cy="50" r="7" fill="none" stroke="#d4840a" stroke-width="3.5"/>
+</svg>

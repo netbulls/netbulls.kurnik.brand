@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-01 Three bold chevrons pointing right, cascade thick to thin -->
+<polyline points="22,28 44,50 22,72" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="44,32 62,50 44,68" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="62,37 78,50 62,63" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

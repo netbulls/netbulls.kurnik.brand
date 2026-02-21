@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-13 Steep Leftward Perspective, Dramatic Angle -->
+  <polygon points="30,18 70,36 70,52 30,34" fill="#d4840a"/>
+  <polygon points="30,44 70,62 70,78 30,60" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

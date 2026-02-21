@@ -1,0 +1,10 @@
+<!-- T1-06 Framed Crosshair — H13 arms with circle ring around the outside -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer circle ring -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#d4840a" stroke-width="3"/>
+  <!-- Four arms pointing inward -->
+  <rect x="10" y="46" width="28" height="8" fill="#d4840a"/>
+  <rect x="62" y="46" width="28" height="8" fill="#d4840a"/>
+  <rect x="46" y="10" width="8" height="28" fill="#d4840a"/>
+  <rect x="46" y="62" width="8" height="28" fill="#d4840a"/>
+</svg>

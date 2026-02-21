@@ -1,0 +1,6 @@
+<!-- B09 Pinion — three overlapping diamonds forming a locked cluster -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 10 L72 36 L50 62 L28 36 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M24 40 L50 62 L24 84 L0 62 Z" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M76 40 L100 62 L76 84 L50 62 Z" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

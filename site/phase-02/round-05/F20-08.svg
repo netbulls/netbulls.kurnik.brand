@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-08 Three chevrons pointing UP-RIGHT at 45deg, bold, wider angle -->
+<polyline points="16,78 36,48 16,48" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="34,66 50,40 34,40" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="52,54 66,32 52,32" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

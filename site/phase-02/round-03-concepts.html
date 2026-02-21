@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Phase 02 Round 03: Refined Directions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;600;700&display=swap');
+  :root {
+    --bg: #0e0c0a; --surface: #161310; --surface2: #1e1a16; --border: #2a2420;
+    --amber: #d4840a; --amber-light: #f5a623; --amber-dim: #8a5200;
+    --text: #e8ddd0; --text-dim: #7a6e62; --text-muted: #4a4238;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+
+  header { padding: 48px 64px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+  .header-left h1 { font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400; color: var(--text); letter-spacing: -0.5px; }
+  .header-left h1 span { color: var(--amber); }
+  .header-left p { margin-top: 6px; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.05em; }
+  .phase-badge { background: var(--surface2); border: 1px solid var(--border); padding: 8px 16px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  nav { display: flex; gap: 0; padding: 0 64px; border-bottom: 1px solid var(--border); overflow-x: auto; position: sticky; top: 0; background: var(--bg); z-index: 40; }
+  .nav-tab { padding: 16px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; border-top: none; border-left: none; border-right: none; background: none; }
+  .nav-tab:hover { color: var(--text-dim); }
+  .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+  .nav-tab .count { margin-left: 4px; opacity: 0.5; font-size: 10px; }
+
+  main { padding: 40px 64px 100px; }
+
+  .track-section { margin-bottom: 48px; }
+  .track-header { margin-bottom: 24px; }
+  .track-header h2 { font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+  .track-header p { color: var(--text-dim); font-size: 13px; max-width: 720px; }
+
+  .research-panel { background: var(--surface); border: 1px solid var(--border); padding: 24px 28px; margin-bottom: 24px; max-width: 840px; }
+  .research-panel summary { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); cursor: pointer; list-style: none; }
+  .research-panel summary::-webkit-details-marker { display: none; }
+  .research-panel summary::before { content: '▸ '; }
+  .research-panel[open] summary::before { content: '▾ '; }
+  .research-panel .research-content { margin-top: 16px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+  .research-panel .research-content strong { color: var(--text); }
+  .research-panel .research-content ul { margin: 8px 0; padding-left: 20px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .concept { background: var(--surface); border: 1px solid var(--border); padding: 24px 16px 16px; cursor: pointer; transition: all 0.15s; position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .concept:hover { border-color: var(--amber-dim); background: var(--surface2); transform: translateY(-1px); }
+  .concept.selected { border-color: var(--amber); background: var(--surface2); }
+  .concept.selected::after { content: '✓'; position: absolute; top: 8px; right: 8px; color: var(--amber); font-size: 11px; font-family: 'DM Mono', monospace; }
+  .concept-num { position: absolute; top: 8px; left: 10px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .concept img { width: 80px; height: 80px; }
+  .concept-name { font-size: 11px; color: var(--text-dim); text-align: center; line-height: 1.4; }
+
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { background: var(--surface); border: 1px solid var(--border); padding: 48px; max-width: 500px; width: 90%; position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .lightbox-inner img { width: 240px; height: 240px; }
+  .lightbox-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); }
+  .lightbox-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dim); text-align: center; }
+  .lightbox-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1; }
+  .lightbox-close:hover { color: var(--text); }
+  .lightbox-actions { display: flex; gap: 12px; }
+  .lightbox-nav { display: flex; gap: 8px; }
+  .btn { padding: 10px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: 1px solid var(--border); background: none; color: var(--text-dim); transition: all 0.15s; }
+  .btn:hover { border-color: var(--amber-dim); color: var(--text); }
+  .btn.primary { border-color: var(--amber); color: var(--amber); }
+  .btn.primary:hover { background: var(--amber); color: var(--bg); }
+  .btn.small { padding: 8px 14px; font-size: 10px; }
+
+  .shortlist-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 16px 64px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s; z-index: 50; }
+  .shortlist-bar.visible { transform: translateY(0); }
+  .shortlist-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; }
+  .shortlist-items { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; margin: 0 16px; }
+  .shortlist-chip { background: var(--surface2); border: 1px solid var(--amber-dim); padding: 4px 10px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); cursor: pointer; }
+  .shortlist-chip:hover { border-color: var(--amber); }
+  .shortlist-clear { background: none; border: none; color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; padding: 4px 8px; flex-shrink: 0; }
+  .shortlist-clear:hover { color: var(--text-dim); }
+
+  .origin-ref { display: inline-block; background: var(--surface2); border: 1px solid var(--border); padding: 2px 8px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--amber-dim); margin: 2px; }
+
+  .origins { margin-bottom: 24px; }
+  .origins-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  .origins-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+  .origin-card { background: var(--surface); border: 1px dashed var(--amber-dim); padding: 16px 12px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; width: 120px; flex-shrink: 0; opacity: 0.7; transition: opacity 0.15s; }
+  .origin-card:hover { opacity: 1; border-color: var(--amber); }
+  .origin-card img { width: 64px; height: 64px; }
+  .origin-card .origin-id { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--amber-dim); letter-spacing: 0.05em; }
+  .origin-card .origin-name { font-size: 10px; color: var(--text-muted); text-align: center; line-height: 1.3; }
+  .origins-arrow { display: flex; align-items: center; color: var(--text-muted); font-size: 20px; padding: 0 4px; flex-shrink: 0; }
+
+  @media (max-width: 768px) { header, nav, main { padding-left: 24px; padding-right: 24px; } .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } .shortlist-bar { padding: 16px 24px; } nav { padding: 0 24px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <h1><span>Kurnik</span> — Refined Directions</h1>
+    <p>Phase 02 · Round 03 · 5 tracks · 60 concepts · from 17 shortlisted R02 picks</p>
+  </div>
+  <div class="phase-badge">Phase 02 / R03</div>
+</header>
+<nav>
+  <button class="nav-tab active" onclick="showTab('all', event)">All <span class="count">60</span></button>
+  <button class="nav-tab" onclick="showTab('T1', event)">Target <span class="count">15</span></button>
+  <button class="nav-tab" onclick="showTab('T2', event)">Target+Progress <span class="count">15</span></button>
+  <button class="nav-tab" onclick="showTab('T3', event)">Directional <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('T4', event)">Tension <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('T5', event)">Foundation <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('shortlist', event)" id="shortlist-tab">Shortlist <span class="count" id="shortlist-count">0</span></button>
+</nav>
+<main id="main-content">
+
+  <div class="track-section" id="track-T1" data-track="T1">
+    <div class="track-header">
+      <h2>Track 1 — Pure Target / Crosshair</h2>
+      <p>The primary direction. Focus is the core brand message. Kurnik helps projects stay on target. Bold, defined, simple.</p>
+    </div>
+    <details class="research-panel" open>
+      <summary>Design Direction</summary>
+      <div class="research-content">
+        <p><strong>Core insight:</strong> "Focus. Most common mistake in projects = lack of focus, lack of priorities. People drift away. Kurnik helps them win, hit the target. Target is simple."</p>
+        <p><strong>Starting from:</strong> <span class="origin-ref">H02</span> <span class="origin-ref">H13</span> <span class="origin-ref">H15</span> <span class="origin-ref">H20</span> <span class="origin-ref">D18</span></p>
+        <ul>
+          <li><strong>Goal:</strong> Find THE boldest, most defined crosshair mark</li>
+          <li><strong>Dropped:</strong> H29 dots (too complicated), H10 floating dots (too busy)</li>
+          <li><strong>Approach:</strong> Simplify, thicken, adjust proportions, test fill vs stroke, try asymmetry</li>
+          <li><strong>Preference:</strong> Bold and defined > subtle and delicate</li>
+        </ul>
+      </div>
+    </details>
+    <div class="origins" id="origins-T1">
+      <div class="origins-label">Starting points from R02</div>
+      <div class="origins-grid">
+        <div class="origin-card"><img src="round-02/H02.svg" alt="H02"/><span class="origin-id">H02</span><span class="origin-name">Duplex Reticle</span></div>
+        <div class="origin-card"><img src="round-02/H13.svg" alt="H13"/><span class="origin-id">H13</span><span class="origin-name">Center Void</span></div>
+        <div class="origin-card"><img src="round-02/H15.svg" alt="H15"/><span class="origin-id">H15</span><span class="origin-name">Bracket Cross</span></div>
+        <div class="origin-card"><img src="round-02/H20.svg" alt="H20"/><span class="origin-id">H20</span><span class="origin-name">Asymmetric Rose</span></div>
+        <div class="origin-card"><img src="round-02/D18.svg" alt="D18"/><span class="origin-id">D18</span><span class="origin-name">Quad Bracket</span></div>
+      </div>
+    </div>
+    <div class="grid" id="grid-T1"></div>
+  </div>
+
+  <div class="track-section" id="track-T2" data-track="T2">
+    <div class="track-header">
+      <h2>Track 2 — Target + Progress</h2>
+      <p>Hybrid: crosshair core with iteration/progress elements. Focus on what matters, iterate toward the goal.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Design Direction</summary>
+      <div class="research-content">
+        <p><strong>Core insight:</strong> Combining the "stay focused" message with "iterative progress." Crosshair + chevrons = focused iteration. Crosshair + incomplete ring = target in progress.</p>
+        <p><strong>Starting from:</strong> <span class="origin-ref">H13</span> + <span class="origin-ref">F20</span> chevrons + <span class="origin-ref">B03</span>/<span class="origin-ref">B10</span> incomplete rings</p>
+        <ul>
+          <li><strong>B03/B10:</strong> "Something in progress but not finished. Progress with a target in the middle."</li>
+          <li><strong>F20:</strong> "Very strong direction through iterations. Each chevron = a step toward the goal."</li>
+          <li><strong>Constraint:</strong> Must not exceed F20 complexity level (4 elements max)</li>
+          <li><strong>Key challenge:</strong> Must feel like a SINGLE cohesive mark, not two symbols forced together</li>
+        </ul>
+      </div>
+    </details>
+    <div class="origins" id="origins-T2">
+      <div class="origins-label">Starting points from R02</div>
+      <div class="origins-grid">
+        <div class="origin-card"><img src="round-02/H13.svg" alt="H13"/><span class="origin-id">H13</span><span class="origin-name">Center Void</span></div>
+        <div class="origin-card"><img src="round-02/F20.svg" alt="F20"/><span class="origin-id">F20</span><span class="origin-name">Chevron Cascade</span></div>
+        <div class="origin-card"><img src="round-02/B03.svg" alt="B03"/><span class="origin-id">B03</span><span class="origin-name">Broken Ring</span></div>
+        <div class="origin-card"><img src="round-02/B10.svg" alt="B10"/><span class="origin-id">B10</span><span class="origin-name">Arc Pentagon</span></div>
+      </div>
+    </div>
+    <div class="grid" id="grid-T2"></div>
+  </div>
+
+  <div class="track-section" id="track-T3" data-track="T3">
+    <div class="track-header">
+      <h2>Track 3 — Directional / Arrow</h2>
+      <p>Solid, definitive direction. Road-sign confidence. Not twisted or decorative — planted and pointing forward.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Design Direction</summary>
+      <div class="research-content">
+        <p><strong>Core insight:</strong> "B25 has nice shape. If we put in a nice arrow, kind of like on a road sign, it symbolizes direction. Solid, definitive, directional — sure. Crippled and twisted — no."</p>
+        <p><strong>Starting from:</strong> <span class="origin-ref">B25</span> concept reimagined</p>
+        <ul>
+          <li><strong>Every arrow must feel confident and solid</strong> — minimum 4px stroke</li>
+          <li><strong>Think:</strong> Road signs, wayfinding, industrial directional markers</li>
+          <li><strong>Test within contained shapes</strong> (portal + direction)</li>
+          <li><strong>Prefer filled shapes over strokes</strong></li>
+        </ul>
+      </div>
+    </details>
+    <div class="origins" id="origins-T3">
+      <div class="origins-label">Starting point from R02</div>
+      <div class="origins-grid">
+        <div class="origin-card"><img src="round-02/B25.svg" alt="B25"/><span class="origin-id">B25</span><span class="origin-name">Arrow Void</span></div>
+      </div>
+    </div>
+    <div class="grid" id="grid-T3"></div>
+  </div>
+
+  <div class="track-section" id="track-T4" data-track="T4">
+    <div class="track-header">
+      <h2>Track 4 — Convergence / Tension</h2>
+      <p>Two shapes in dialogue. Opposites creating productive force. Potential vs realized. The gap IS the mark.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Design Direction</summary>
+      <div class="research-content">
+        <p><strong>Core insight:</strong> Duality as productive force — not conflict, but creative tension.</p>
+        <p><strong>Starting from:</strong> <span class="origin-ref">E26</span> convergent triangles + <span class="origin-ref">F06</span> split diamond</p>
+        <ul>
+          <li><strong>E26:</strong> "Opposites pushing against each other. Interesting and simple. Tension = productive force."</li>
+          <li><strong>F06:</strong> "Diamond that can be empty one direction, full the other. Duality of state — potential vs realized."</li>
+          <li><strong>Use filled vs stroke</strong> to create the two states</li>
+          <li><strong>Complexity ceiling:</strong> 3-4 simple shapes max per mark</li>
+        </ul>
+      </div>
+    </details>
+    <div class="origins" id="origins-T4">
+      <div class="origins-label">Starting points from R02</div>
+      <div class="origins-grid">
+        <div class="origin-card"><img src="round-02/E26.svg" alt="E26"/><span class="origin-id">E26</span><span class="origin-name">Convergent Triangles</span></div>
+        <div class="origin-card"><img src="round-02/F06.svg" alt="F06"/><span class="origin-id">F06</span><span class="origin-name">Split Diamond</span></div>
+      </div>
+    </div>
+    <div class="grid" id="grid-T4"></div>
+  </div>
+
+  <div class="track-section" id="track-T5" data-track="T5">
+    <div class="track-header">
+      <h2>Track 5 — Foundation / Structure</h2>
+      <p>Layers, depth, and bridging. What you see on the surface — foundations matter. Connecting two sides.</p>
+    </div>
+    <details class="research-panel">
+      <summary>Design Direction</summary>
+      <div class="research-content">
+        <p><strong>Core insight:</strong> Infrastructure and depth — the things beneath the surface that make products work.</p>
+        <p><strong>Starting from:</strong> <span class="origin-ref">G12</span> isometric planes + <span class="origin-ref">C22</span> bridge span</p>
+        <ul>
+          <li><strong>G12:</strong> "Many layers to something. What you see on the surface... foundations matter." Infrastructure, depth of product thinking.</li>
+          <li><strong>C22:</strong> "Bridging the gap. Connecting two sides." Something more to do with the squares concept.</li>
+          <li><strong>Complexity ceiling:</strong> G12 (3 planes) = maximum</li>
+          <li><strong>Layer hierarchy:</strong> Use fill, stroke weight, and spacing to show depth</li>
+        </ul>
+      </div>
+    </details>
+    <div class="origins" id="origins-T5">
+      <div class="origins-label">Starting points from R02</div>
+      <div class="origins-grid">
+        <div class="origin-card"><img src="round-02/G12.svg" alt="G12"/><span class="origin-id">G12</span><span class="origin-name">Isometric Planes</span></div>
+        <div class="origin-card"><img src="round-02/C22.svg" alt="C22"/><span class="origin-id">C22</span><span class="origin-name">Bridge Span</span></div>
+      </div>
+    </div>
+    <div class="grid" id="grid-T5"></div>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-name" id="lightbox-name"></div>
+    <div class="lightbox-num" id="lightbox-num"></div>
+    <div class="lightbox-nav">
+      <button class="btn small" onclick="navLightbox(-1)">← Prev</button>
+      <button class="btn small" onclick="navLightbox(1)">Next →</button>
+    </div>
+    <div class="lightbox-actions">
+      <button class="btn" onclick="closeLightbox()">Close</button>
+      <button class="btn primary" id="lightbox-select-btn" onclick="toggleFromLightbox()">Add to Shortlist</button>
+    </div>
+  </div>
+</div>
+
+<div class="shortlist-bar" id="shortlist-bar">
+  <span class="shortlist-label">Shortlist</span>
+  <div class="shortlist-items" id="shortlist-items"></div>
+  <button class="shortlist-clear" onclick="clearShortlist()">Clear all</button>
+</div>
+
+<script>
+const concepts = [
+  { id: 'T1-01', name: 'Bold Center Void', desc: 'H13 with wider arms (10px) and smaller gap (14px)', track: 'T1' },
+  { id: 'T1-02', name: 'Tapered Arms', desc: 'H13 arms that taper inward, trapezoidal filled shapes', track: 'T1' },
+  { id: 'T1-03', name: 'Thick Post Crosshair', desc: 'H02 but only thick posts, no thin sections, bold center gap', track: 'T1' },
+  { id: 'T1-04', name: 'Punched Plus', desc: 'solid plus sign with center square punched out (negative space target)', track: 'T1' },
+  { id: 'T1-05', name: 'L-Shape Crosshair', desc: 'four thick L-shapes framing center void, filled, no thin cross', track: 'T1' },
+  { id: 'T1-06', name: 'Framed Crosshair', desc: 'H13 arms with circle ring around the outside', track: 'T1' },
+  { id: 'T1-07', name: 'Notched Crosshair', desc: 'crosshair with notched/sighting-mark ends on each arm', track: 'T1' },
+  { id: 'T1-08', name: 'Thick Brackets', desc: 'H15 corner brackets but thick (4px stroke), no connecting cross', track: 'T1' },
+  { id: 'T1-09', name: 'Chevron Target', desc: 'D18 V-brackets as filled solid triangles/chevrons pointing inward', track: 'T1' },
+  { id: 'T1-10', name: 'Concentric Rotated Squares', desc: 'outer square + inner square rotated 45 degrees', track: 'T1' },
+  { id: 'T1-11', name: 'Offset Converge', desc: 'four thick bars converging toward center but slightly offset, creating tension', track: 'T1' },
+  { id: 'T1-12', name: 'Calibration Cross', desc: 'H13 arms with perpendicular tick marks at outer ends', track: 'T1' },
+  { id: 'T1-13', name: 'Asymmetric Focus', desc: 'cross with 3 stroke arms and 1 filled arm (right arm solid)', track: 'T1' },
+  { id: 'T1-14', name: 'Framed Reticle', desc: 'square frame (stroke) with crosshair lines inside, gap at center', track: 'T1' },
+  { id: 'T1-15', name: 'Dual Chevron Bar', desc: 'two opposing V-brackets (top + bottom) with horizontal bar through center', track: 'T1' },
+  { id: 'T2-01', name: 'Chevron Arm', desc: 'crosshair with right arm replaced by chevron', track: 'T2' },
+  { id: 'T2-02', name: 'Inward Chevrons', desc: 'four small chevrons pointing inward from cardinal directions', track: 'T2' },
+  { id: 'T2-03', name: 'Ring Crosshair', desc: '270\u00b0 arc with crosshair arms extending to ring', track: 'T2' },
+  { id: 'T2-04', name: 'Signal Target', desc: 'crosshair with 3 concentric incomplete arcs radiating outward', track: 'T2' },
+  { id: 'T2-05', name: 'Stable Progress', desc: 'two vertical arms (stability) + two horizontal chevrons (progress)', track: 'T2' },
+  { id: 'T2-06', name: 'Gapped Frame', desc: 'square frame with gap at bottom-right + crosshair inside', track: 'T2' },
+  { id: 'T2-07', name: 'Fading Arm', desc: 'thick plus with 3 solid arms and 1 stroke-only arm (progress)', track: 'T2' },
+  { id: 'T2-08', name: 'Chevron Cross', desc: 'crosshair where all four arms are chevron-shaped (angled ends)', track: 'T2' },
+  { id: 'T2-09', name: 'Stepped Focus', desc: 'three ascending rectangles left to right + vertical crosshair line', track: 'T2' },
+  { id: 'T2-10', name: 'Gapped Ring', desc: 'circle ring with gap at top + crosshair through center', track: 'T2' },
+  { id: 'T2-11', name: 'Converging Arrows', desc: 'four arrows (arm + triangle tip) pointing inward toward center', track: 'T2' },
+  { id: 'T2-12', name: 'Bracket Cascade', desc: 'four corner brackets + 3 chevrons cascading through center', track: 'T2' },
+  { id: 'T2-13', name: 'Hex Focus', desc: 'incomplete hexagon (5 of 6 sides) with crosshair inside', track: 'T2' },
+  { id: 'T2-14', name: 'Rail Cross', desc: 'crosshair with each arm made of 2 parallel lines (railroad track / layered)', track: 'T2' },
+  { id: 'T2-15', name: 'Arc Bar', desc: 'semi-circle (top half, thick stroke) sitting on horizontal crosshair bar', track: 'T2' },
+  { id: 'T3-01', name: 'Road Arrow', desc: 'Bold solid arrow pointing right, filled triangle head + thick rectangular shaft', track: 'T3' },
+  { id: 'T3-02', name: 'Chevron Head', desc: 'Arrow pointing up-right at 45\u00b0, filled chevron head shape, no shaft', track: 'T3' },
+  { id: 'T3-03', name: 'Contained Arrow', desc: 'Thick right-pointing arrow inside a rounded square frame', track: 'T3' },
+  { id: 'T3-04', name: 'Nested Arrows', desc: 'Outer arrow outline, inner arrow filled. Direction with depth.', track: 'T3' },
+  { id: 'T3-05', name: 'Stepped Arrow', desc: 'Arrow made of 3 stacked horizontal bars, each progressively shorter', track: 'T3' },
+  { id: 'T3-06', name: 'Planted Arrow', desc: 'Solid right-pointing arrow with square T-shape tail at base', track: 'T3' },
+  { id: 'T3-07', name: 'Void Arrow', desc: 'Filled rounded rectangle with arrow-shaped negative space cut out', track: 'T3' },
+  { id: 'T3-08', name: 'Architectural Arrow', desc: 'Upward arrow composed of two angled rectangles meeting at apex', track: 'T3' },
+  { id: 'T3-09', name: 'Breakout Arrow', desc: 'Circular frame with bold arrow breaking through the right side', track: 'T3' },
+  { id: 'T3-10', name: 'Speed Lines', desc: 'Abstract arrow: 3 thick parallel diagonal lines angled up-right', track: 'T3' },
+  { id: 'T4-01', name: 'Compressed Triangles', desc: 'E26 with tighter 6px gap, maximum tension', track: 'T4' },
+  { id: 'T4-02', name: 'Threshold Triangles', desc: 'E26 with horizontal line at meeting point', track: 'T4' },
+  { id: 'T4-03', name: 'Offset Squares', desc: 'filled and stroke squares overlapping at corners', track: 'T4' },
+  { id: 'T4-04', name: 'Horizontal Diamond', desc: 'F06 rotated 90\u00b0, left filled right stroke', track: 'T4' },
+  { id: 'T4-05', name: 'Confronting Arrows', desc: 'two arrows pointing inward, tips almost touching', track: 'T4' },
+  { id: 'T4-06', name: 'Dual Circles', desc: 'filled and stroke circles, vertically offset overlap', track: 'T4' },
+  { id: 'T4-07', name: 'Emergence', desc: 'filled triangle rising from a stroke square, state change', track: 'T4' },
+  { id: 'T4-08', name: 'Z-Bars', desc: 'two thick horizontal bars connected by diagonal, filled vs stroke', track: 'T4' },
+  { id: 'T4-09', name: 'Separated Diamond', desc: 'F06 halves pulling apart, void between states', track: 'T4' },
+  { id: 'T4-10', name: 'Hourglass Nexus', desc: 'two triangles meeting apex-to-apex, tension at center point', track: 'T4' },
+  { id: 'T5-01', name: 'Twin Planes', desc: 'G12 simplified to 2 isometric planes: top filled, bottom stroke', track: 'T5' },
+  { id: 'T5-02', name: 'Stacked Slabs', desc: 'horizontal rectangles stacked front-view: top filled, middle filled, bottom stroke', track: 'T5' },
+  { id: 'T5-03', name: 'Depth Bars', desc: 'three horizontal bars, top thickest/filled, bottom thin/stroke', track: 'T5' },
+  { id: 'T5-04', name: 'Iso Cube', desc: 'isometric cube: top face filled, side faces stroke only', track: 'T5' },
+  { id: 'T5-05', name: 'Gap Grid', desc: '2x2 grid with one square missing (bottom-right), minimalist bridge', track: 'T5' },
+  { id: 'T5-06', name: 'Pillared Bridge', desc: 'two thick vertical pillars connected by thin horizontal beam at top', track: 'T5' },
+  { id: 'T5-07', name: 'Layer Chevrons', desc: 'three downward-pointing chevrons stacked: top filled, rest stroke', track: 'T5' },
+  { id: 'T5-08', name: 'Linked Blocks', desc: 'two squares side by side connected by thin horizontal bridge bar', track: 'T5' },
+  { id: 'T5-09', name: 'Left Perspective Planes', desc: 'G12 isometric planes rotated to leftward view', track: 'T5' },
+  { id: 'T5-10', name: 'Rising Pillars', desc: 'thick horizontal foundation base with two vertical bars rising from it', track: 'T5' }
+];
+
+const trackInfo = {
+  'T1': { name: 'Pure Target / Crosshair', count: 15 },
+  'T2': { name: 'Target + Progress', count: 15 },
+  'T3': { name: 'Directional / Arrow', count: 10 },
+  'T4': { name: 'Convergence / Tension', count: 10 },
+  'T5': { name: 'Foundation / Structure', count: 10 }
+};
+
+let shortlist = JSON.parse(localStorage.getItem('kurnik-r03-shortlist') || '[]');
+let currentLightbox = null;
+let currentFilter = 'all';
+let visibleConcepts = [];
+
+function getFilteredConcepts() {
+  if (currentFilter === 'shortlist') return concepts.filter(c => shortlist.includes(c.id));
+  if (currentFilter === 'all') return concepts;
+  return concepts.filter(c => c.track === currentFilter);
+}
+
+function renderAll() {
+  visibleConcepts = getFilteredConcepts();
+  const tracks = [...new Set(visibleConcepts.map(c => c.track))];
+
+  document.querySelectorAll('.track-section').forEach(s => {
+    const t = s.dataset.track;
+    const items = visibleConcepts.filter(c => c.track === t);
+    const origins = s.querySelector('.origins');
+    if (items.length === 0) {
+      s.style.display = 'none';
+    } else {
+      s.style.display = '';
+      if (origins) origins.style.display = (currentFilter === 'shortlist') ? 'none' : '';
+      const grid = s.querySelector('.grid');
+      grid.innerHTML = items.map(c => `
+        <div class="concept ${shortlist.includes(c.id) ? 'selected' : ''}" onclick="openLightbox('${c.id}')">
+          <span class="concept-num">${c.id}</span>
+          <img src="round-03/${c.id}.svg" alt="${c.name}" loading="lazy"/>
+          <div class="concept-name">${c.name}</div>
+        </div>
+      `).join('');
+    }
+  });
+}
+
+function showTab(tab, event) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  event.target.closest('.nav-tab').classList.add('active');
+  currentFilter = tab;
+  renderAll();
+  if (tab !== 'all') window.scrollTo(0, 0);
+}
+
+function openLightbox(id) {
+  const c = concepts.find(x => x.id === id);
+  if (!c) return;
+  currentLightbox = id;
+  document.getElementById('lightbox-img').src = `round-03/${c.id}.svg`;
+  document.getElementById('lightbox-name').textContent = c.name;
+  document.getElementById('lightbox-num').textContent = `${c.id} — ${c.desc}`;
+  updateLightboxBtn();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  currentLightbox = null;
+}
+
+function navLightbox(dir) {
+  if (!currentLightbox) return;
+  const filtered = getFilteredConcepts();
+  const idx = filtered.findIndex(c => c.id === currentLightbox);
+  if (idx === -1) return;
+  const next = idx + dir;
+  if (next >= 0 && next < filtered.length) openLightbox(filtered[next].id);
+}
+
+function toggleFromLightbox() {
+  if (!currentLightbox) return;
+  const idx = shortlist.indexOf(currentLightbox);
+  if (idx > -1) shortlist.splice(idx, 1);
+  else shortlist.push(currentLightbox);
+  saveShortlist();
+  updateLightboxBtn();
+  renderAll();
+}
+
+function updateLightboxBtn() {
+  const btn = document.getElementById('lightbox-select-btn');
+  btn.textContent = shortlist.includes(currentLightbox) ? 'Remove from Shortlist' : 'Add to Shortlist';
+}
+
+function saveShortlist() {
+  localStorage.setItem('kurnik-r03-shortlist', JSON.stringify(shortlist));
+  document.getElementById('shortlist-count').textContent = shortlist.length;
+  const bar = document.getElementById('shortlist-bar');
+  bar.classList.toggle('visible', shortlist.length > 0);
+  document.getElementById('shortlist-items').innerHTML = shortlist.map(id =>
+    `<span class="shortlist-chip" onclick="openLightbox('${id}')">${id}</span>`
+  ).join('');
+}
+
+function clearShortlist() {
+  shortlist = [];
+  saveShortlist();
+  renderAll();
+}
+
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+renderAll();
+saveShortlist();
+</script>
+</body>
+</html>

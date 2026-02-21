@@ -1,0 +1,7 @@
+<!-- F20-R6-02 4 upward chevrons, reversed cascade (1.5/3/6/10), tight spacing -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<polyline points="40,80 50,73 60,80" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="36,66 50,55 64,66" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="30,50 50,35 70,50" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="22,34 50,14 78,34" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

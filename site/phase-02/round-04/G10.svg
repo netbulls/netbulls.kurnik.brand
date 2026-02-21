@@ -1,0 +1,6 @@
+<!-- G10 Keystone Stack — diamond shapes stacked vertically -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="50,4 62,16 50,28 38,16" fill="#d4840a"/>
+  <polygon points="50,32 66,48 50,64 34,48" fill="#d4840a"/>
+  <polygon points="50,68 62,80 50,92 38,80" fill="#d4840a"/>
+</svg>

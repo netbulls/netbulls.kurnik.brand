@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-02 Extra Bold Brackets — stroke-width 6 brackets, stroke-width 3.5 cross -->
+  <path d="M16,34 L16,16 L34,16" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M66,16 L84,16 L84,34" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M84,66 L84,84 L66,84" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M34,84 L16,84 L16,66" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="28" y1="50" x2="72" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="50" y1="28" x2="50" y2="72" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+</svg>

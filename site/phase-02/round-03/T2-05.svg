@@ -1,0 +1,11 @@
+<!-- T2-05 Stable Progress — two vertical arms (stability) + two horizontal chevrons (progress) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Top vertical arm -->
+  <rect x="46" y="8" width="8" height="30" fill="#d4840a"/>
+  <!-- Bottom vertical arm -->
+  <rect x="46" y="62" width="8" height="30" fill="#d4840a"/>
+  <!-- Left chevron pointing right -->
+  <polyline points="10,38 28,50 10,62" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Right chevron pointing right -->
+  <polyline points="62,38 80,50 62,62" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

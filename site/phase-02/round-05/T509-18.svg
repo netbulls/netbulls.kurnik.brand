@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-18 Two Planes With Thin Connecting Line -->
+  <polygon points="36,20 64,30 64,44 36,34" fill="#d4840a"/>
+  <line x1="36" y1="40" x2="64" y2="50" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <polygon points="36,52 64,62 64,76 36,66" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,5 @@
+<!-- D10 Signet — rounded square with bold inner arch -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="10" y="10" width="80" height="80" rx="12" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M30 75 L30 45 Q30 25 50 25 Q70 25 70 45 L70 75" fill="none" stroke="#0e0c0a" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

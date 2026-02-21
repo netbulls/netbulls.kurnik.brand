@@ -1,0 +1,5 @@
+<!-- T4-05 Confronting Arrows — two arrows pointing inward, tips almost touching -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="12,50 32,34 32,43 47,43 47,57 32,57 32,66" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="88,50 68,34 68,43 53,43 53,57 68,57 68,66" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

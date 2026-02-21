@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-01 Leftward Perspective Bolder, Thicker Stroke -->
+  <polygon points="34,22 66,32 66,50 34,40" fill="#d4840a"/>
+  <polygon points="34,46 66,56 66,74 34,64" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

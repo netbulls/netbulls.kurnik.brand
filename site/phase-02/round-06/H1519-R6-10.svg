@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- H1519-R6-10 Arrows only (no brackets), 8 bold triangles pointing inward + cross -->
+<polygon points="30,10 30,26 44,18" fill="#d4840a"/>
+<polygon points="10,30 26,30 18,44" fill="#d4840a"/>
+<polygon points="70,10 70,26 56,18" fill="#d4840a"/>
+<polygon points="74,30 90,30 82,44" fill="#d4840a"/>
+<polygon points="74,70 90,70 82,56" fill="#d4840a"/>
+<polygon points="70,74 70,90 56,82" fill="#d4840a"/>
+<polygon points="30,74 30,90 44,82" fill="#d4840a"/>
+<polygon points="10,70 26,70 18,56" fill="#d4840a"/>
+<line x1="28" y1="50" x2="72" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+<line x1="50" y1="28" x2="50" y2="72" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+</svg>

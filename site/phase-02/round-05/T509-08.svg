@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-08 Bottom-Up Perspective, Stroke Top Filled Bottom -->
+  <polygon points="20,68 40,68 54,32 34,32" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="46,68 66,68 80,32 60,32" fill="#d4840a"/>
+</svg>

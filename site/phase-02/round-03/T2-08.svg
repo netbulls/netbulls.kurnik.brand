@@ -1,0 +1,11 @@
+<!-- T2-08 Chevron Cross — crosshair where all four arms are chevron-shaped (angled ends) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm chevron pointing inward -->
+  <polyline points="8,36 26,50 8,64" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Right arm chevron pointing inward -->
+  <polyline points="92,36 74,50 92,64" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Top arm chevron pointing inward -->
+  <polyline points="36,8 50,26 64,8" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom arm chevron pointing inward -->
+  <polyline points="36,92 50,74 64,92" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

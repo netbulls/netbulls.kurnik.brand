@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-15 Accelerating gaps — 4 bars, gaps grow exponentially going up -->
+  <rect x="20" y="72" width="60" height="12" fill="#d4840a"/>
+  <rect x="20" y="56" width="60" height="9" fill="#d4840a"/>
+  <rect x="20" y="36" width="60" height="6" fill="#d4840a"/>
+  <rect x="20" y="18" width="60" height="4" fill="#d4840a"/>
+</svg>

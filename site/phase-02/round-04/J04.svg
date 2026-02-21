@@ -1,0 +1,4 @@
+<!-- J04 Fork Glyph — Y-shaped stroke with serifs, feels like alien typography -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M25 15 L50 50 L75 15 M50 50 L50 88 M40 88 L60 88 M17 15 L33 15 M67 15 L83 15" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

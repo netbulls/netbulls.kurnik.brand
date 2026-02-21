@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Lockup Preview</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0e0c0a;--amber:#d4840a;--amber-light:#f5a623;--text:#e8ddd0;--text-dim:#7a6e62;--border:#2a2420;--card-bg:#161310}
+  body{background:#111;color:var(--text);font-family:'Manrope',sans-serif;padding:0 0 80px}
+  .header{padding:40px 48px 24px;border-bottom:1px solid var(--border);background:var(--bg)}
+  .header h1{font-family:'DM Serif Display',serif;font-size:28px;color:var(--amber);margin-bottom:4px}
+  .header p{color:var(--text-dim);font-size:14px;max-width:700px;line-height:1.5}
+  section{padding:32px 48px}
+  section h2{font-family:'DM Serif Display',serif;font-size:20px;color:var(--amber);margin-bottom:6px}
+  .sub{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);margin-bottom:24px;line-height:1.5}
+
+  .symbol-grid{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+  .sym{background:var(--card-bg);border:2px solid var(--border);border-radius:10px;padding:10px;text-align:center;cursor:pointer;transition:all .15s;width:100px}
+  .sym:hover{border-color:#3a3430;transform:translateY(-2px)}
+  .sym.active{border-color:var(--amber)}
+  .sym .sw{width:64px;height:64px;margin:0 auto 6px;background:var(--bg);border-radius:14px;display:flex;align-items:center;justify-content:center}
+  .sym .sw img{width:56%;height:56%}
+  .sym .sid{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber)}
+
+  .controls{display:flex;gap:12px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
+  .ctrl-group{display:flex;gap:4px}
+  .ctrl-btn{font-family:'DM Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--text-dim);cursor:pointer;transition:all .15s}
+  .ctrl-btn:hover{border-color:var(--amber);color:var(--amber)}
+  .ctrl-btn.active{background:var(--amber);color:var(--bg);border-color:var(--amber)}
+  .ctrl-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);margin-right:4px}
+
+  .font-note{font-family:'DM Mono',monospace;font-size:11px;color:var(--amber-light);margin-bottom:20px;padding:8px 12px;background:rgba(212,132,10,0.06);border-radius:6px;border-left:2px solid var(--amber);line-height:1.5}
+
+  .font-grid{display:flex;flex-direction:column;gap:24px}
+  .font-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .15s}
+  .font-card:hover{border-color:#3a3430}
+  .font-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .font-name{font-family:'DM Mono',monospace;font-size:14px;color:var(--amber);font-weight:600}
+  .font-tag{font-family:'DM Mono',monospace;font-size:9px;color:var(--bg);background:var(--text-dim);padding:2px 6px;border-radius:3px;margin-left:8px;text-transform:uppercase;letter-spacing:0.05em}
+  .font-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim)}
+  .font-reason{font-size:12px;color:var(--text-dim);margin-bottom:16px;line-height:1.4}
+
+  .lockup-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:12px}
+  .lockup{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--bg);border-radius:8px}
+  .lockup img{flex-shrink:0}
+  .lockup .wordmark{color:var(--text);white-space:nowrap;line-height:1}
+  .lockup-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);min-width:80px;flex-shrink:0}
+
+  .lockup-sizes{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+  .lockup-size-group{display:flex;flex-direction:column;gap:4px}
+  .lockup-size-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-dim)}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Kurnik — Lockup Preview</h1>
+  <p>6 finalists, each paired with 10 fonts curated for that symbol's specific character. Not the same generic list — every pairing is intentional.</p>
+</div>
+
+<section>
+  <h2>Symbol</h2>
+  <div class="sub">Each mark has a different personality — select one to see fonts chosen for it</div>
+  <div class="symbol-grid" id="symbols"></div>
+</section>
+
+<section>
+  <h2>Options</h2>
+  <div class="controls">
+    <span class="ctrl-label">Case:</span>
+    <div class="ctrl-group" id="case-ctrl">
+      <button class="ctrl-btn active" data-case="lower">kurnik</button>
+      <button class="ctrl-btn" data-case="upper">KURNIK</button>
+      <button class="ctrl-btn" data-case="title">Kurnik</button>
+    </div>
+    <span class="ctrl-label" style="margin-left:16px">Tracking:</span>
+    <div class="ctrl-group" id="track-ctrl">
+      <button class="ctrl-btn" data-track="0">tight</button>
+      <button class="ctrl-btn active" data-track="0.02">normal</button>
+      <button class="ctrl-btn" data-track="0.08">wide</button>
+      <button class="ctrl-btn" data-track="0.16">x-wide</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Horizontal Lockups</h2>
+  <div class="sub">Symbol + wordmark. Weights: 500 (medium), 600 (semibold), 700 (bold).</div>
+  <div class="font-note" id="font-note"></div>
+  <div class="font-grid" id="fonts"></div>
+</section>
+
+<script>
+const symbols = [
+  {id:'F20-R6-03', file:'round-06/F20-R6-03.svg', family:'Chevron Cascade',
+   brief:'5 ascending chevrons, accelerating stroke weight. Maximum upward momentum.',
+   fontNote:'Condensed and dynamic fonts that echo the vertical stacking. Motorsport, industrial, forward-lean energy.'},
+  {id:'F20-R6-02', file:'round-06/F20-R6-02.svg', family:'Chevron Cascade',
+   brief:'4 ascending chevrons, more breathing room. Refined momentum.',
+   fontNote:'Elegant and editorial fonts — refined, warm, breathing. Some serif contrast to test sophistication.'},
+  {id:'H1519-R6-03', file:'round-06/H1519-R6-03.svg', family:'Bracket Arrows',
+   brief:'Corner brackets with bold inward arrows, center dot. Engineering precision.',
+   fontNote:'Technical and engineered fonts — monospace, infrastructure, systematic. The crosshair mark needs code-culture type.'},
+  {id:'T110-R6-01', file:'round-06/T110-R6-01.svg', family:'Rotated Squares',
+   brief:'Three nested squares with progressive rotation. Architectural geometry.',
+   fontNote:'Architectural and constructivist fonts — wide, grounded, grid-aligned. Structural type for a structural mark.'},
+  {id:'T110-R6-08', file:'round-06/T110-R6-08.svg', family:'Rotated Squares',
+   brief:'Three rotated squares, reversed weight (inner heaviest). Concentrated power.',
+   fontNote:'Focused and confident fonts — the inward weight needs type that conveys composure and quiet authority.'},
+  {id:'B25-R6-01', file:'round-06/B25-R6-01.svg', family:'Arrow Void',
+   brief:'Right-turn arrow, thick solid bars, medium arrowhead. Pure direction.',
+   fontNote:'Bold and direct fonts — condensed display, industrial, decisive. The bluntest mark gets the strongest type.'}
+];
+
+const fontsBySymbol = {
+  'F20-R6-03': [
+    {family:'Barlow Semi Condensed', weights:[500,600,700], type:'sans',
+     reason:'Condensed vertical rhythm mirrors the tight chevron stacking. Efficient, no wasted space — acceleration in typographic form.'},
+    {family:'Saira', weights:[500,600,700], type:'sans',
+     reason:'Born from motorsport typography. Semi-condensed with dynamic forward energy — the racing DNA matches the chevrons\' upward thrust.'},
+    {family:'Exo 2', weights:[500,600,700], type:'sans',
+     reason:'Futuristic geometric with a subtle forward lean. The "launch sequence" font — technical precision with momentum.'},
+    {family:'Teko', weights:[500,600,700], type:'sans',
+     reason:'Industrial condensed display. Strong vertical pulse that syncs with the chevron rhythm. Unapologetically tall and narrow.'},
+    {family:'Outfit', weights:[500,600,700], type:'sans',
+     reason:'Round geometric confidence. Softens the chevron sharpness without losing authority — the counterbalance pairing.'},
+    {family:'Red Hat Display', weights:[500,600,700], type:'sans',
+     reason:'Tech brand DNA (Red Hat/IBM ecosystem). Clean display confidence with a hint of editorial warmth. Infrastructure cred.'},
+    {family:'Sora', weights:[500,600,700], type:'sans',
+     reason:'Contemporary geometric with "winning" composure. The ascending chevrons + Sora\'s poise = confidence without shouting.'},
+    {family:'Archivo', weights:[500,600,700], type:'sans',
+     reason:'Originally for newspaper headlines. Condensed authority that grounds the dynamic mark — editorial weight meets upward energy.'},
+    {family:'Oswald', weights:[500,600,700], type:'sans',
+     reason:'Classic condensed with unmistakable vertical presence. The backbone font — disciplined like the chevrons\' stacked rhythm.'},
+    {family:'Rajdhani', weights:[500,600,700], type:'sans',
+     reason:'Technical condensed with angular Devanagari-influenced geometry. Adds cultural depth and unusual character to the cascade.'}
+  ],
+  'F20-R6-02': [
+    {family:'Josefin Sans', weights:[500,600,700], type:'sans',
+     reason:'Tall elegant geometric with Scandinavian roots. High x-height echoes upward energy but with more refinement than the 5-chevron variant needs.'},
+    {family:'Plus Jakarta Sans', weights:[500,600,700], type:'sans',
+     reason:'Warm premium geometric — the "Notion meets Stripe" sweet spot. Refined without being cold, matching this mark\'s breathing quality.'},
+    {family:'Figtree', weights:[500,600,700], type:'sans',
+     reason:'Clean contemporary geometric. Fresh, friendly, minimal — lets the four chevrons provide all the energy while type stays poised.'},
+    {family:'Bricolage Grotesque', weights:[500,600,700], type:'sans',
+     reason:'Editorial grotesque with distinct character. Slightly irregular letterforms create interesting tension against the precise chevrons.'},
+    {family:'Hanken Grotesk', weights:[500,600,700], type:'sans',
+     reason:'Finnish geometric grotesque — precise, clean, northern efficiency. The kind of type a Helsinki design studio would pair with this.'},
+    {family:'Albert Sans', weights:[500,600,700], type:'sans',
+     reason:'Fresh modern grotesque. Contemporary, neutral-warm, well-balanced proportions. Lets the mark lead without typographic ego.'},
+    {family:'Familjen Grotesk', weights:[500,600,700], type:'sans',
+     reason:'Scandinavian editorial character. Designed for editorial contexts — pairs with the fewer, more considered 4-chevron composition.'},
+    {family:'Cormorant Garamond', weights:[500,600,700], type:'serif',
+     reason:'Elegant serif contrast. The refined serif creates dialogue with geometric chevrons — sophistication meets momentum. Bold choice.'},
+    {family:'Lexend', weights:[500,600,700], type:'sans',
+     reason:'Clarity-optimized for screen reading. Modern, clean, functional — maximum legibility, letting the mark do all the talking.'},
+    {family:'Nunito Sans', weights:[500,600,700], type:'sans',
+     reason:'Rounded warmth without being soft. Friendly geometry contrasts the chevrons\' sharpness — approachable brand voice.'}
+  ],
+  'H1519-R6-03': [
+    {family:'IBM Plex Sans', weights:[500,600,700], type:'sans',
+     reason:'Designed by IBM for systematic design at scale. Engineered letterforms match this mark\'s precision. The corporate infrastructure font.'},
+    {family:'Space Grotesk', weights:[500,600,700], type:'sans',
+     reason:'The "infrastructure" font. Quirky k and r give personality within a technical framework. Used by dev tool companies everywhere.'},
+    {family:'Overpass', weights:[500,600,700], type:'sans',
+     reason:'Based on Highway Gothic signage. Systematic, institutional, infrastructure at its most literal. Reads cleanly at every size.'},
+    {family:'Fira Sans', weights:[500,600,700], type:'sans',
+     reason:'Mozilla\'s engineering typeface. Open-source DNA, designed for interfaces and readability. Tech culture embodied in type.'},
+    {family:'Roboto Mono', weights:[500,600,700], type:'mono',
+     reason:'Google\'s monospace. Technical precision in a fixed-width frame — the code editor aesthetic applied to branding. Raw engineering.'},
+    {family:'Titillium Web', weights:[500,600,700], type:'sans',
+     reason:'Born from an Italian university design project. Government/institutional heritage — the font of official technical documentation.'},
+    {family:'Chakra Petch', weights:[500,600,700], type:'sans',
+     reason:'Thai-inspired angular letterforms. Sharp, technical, unconventional — engineering with an edge. The bracket arrows\' sharpness in type form.'},
+    {family:'DM Sans', weights:[500,600,700], type:'sans',
+     reason:'Brand family. Clean geometric that connects to the existing DM Serif Display / DM Mono stack. The safe-but-harmonious choice.'},
+    {family:'IBM Plex Mono', weights:[500,600,700], type:'mono',
+     reason:'IBM\'s monospace variant. Full engineering precision — the crosshair mark meets code\'s grid. Maximum technical authority.'},
+    {family:'Azeret Mono', weights:[500,600,700], type:'mono',
+     reason:'Modern geometric monospace. Cleaner than classic monos, more contemporary feel while maintaining technical credibility.'}
+  ],
+  'T110-R6-01': [
+    {family:'Work Sans', weights:[500,600,700], type:'sans',
+     reason:'Wider proportions, grounded stance. Architectural stability in type — the building-block font for a building-block mark.'},
+    {family:'Inter', weights:[500,600,700], type:'sans',
+     reason:'Grid-aligned systematic precision. The system designer\'s font — as methodical as nested rotating squares.'},
+    {family:'Urbanist', weights:[500,600,700], type:'sans',
+     reason:'Minimal geometric in the Vercel/Linear mold. Infrastructure minimalism — clean lines matching clean geometry.'},
+    {family:'Unbounded', weights:[500,600,700], type:'sans',
+     reason:'Geometric display with bold personality. Rounded, modern, confident — the squares\' geometry amplified in letterform.'},
+    {family:'Big Shoulders Display', weights:[500,600,700], type:'sans',
+     reason:'Wide, strong, industrial. Born from Chicago street signage — urban architecture meets type. Structural presence.'},
+    {family:'Darker Grotesque', weights:[500,600,700], type:'sans',
+     reason:'Geometric with unusual character. Slightly condensed, distinctive personality — like an architect\'s precise but personal handwriting.'},
+    {family:'Libre Franklin', weights:[500,600,700], type:'sans',
+     reason:'Franklin Gothic heritage, open-sourced. Strong, established geometric — the structural engineer\'s typeface. Grounded authority.'},
+    {family:'Rubik', weights:[500,600,700], type:'sans',
+     reason:'Slightly rounded geometric. Russian constructivism modernized — the Bauhaus spirit that nests inside rotating squares.'},
+    {family:'Archivo', weights:[500,600,700], type:'sans',
+     reason:'Condensed headline authority. Newspaper roots give editorial weight that grounds the architectural mark.'},
+    {family:'Georama', weights:[500,600,700], type:'sans',
+     reason:'Condensed geometric variable. Technical precision with editorial range — the draftsman\'s font.'}
+  ],
+  'T110-R6-08': [
+    {family:'Manrope', weights:[500,600,700], type:'sans',
+     reason:'Brand family warm geometric. Natural pairing with the existing DM Serif / DM Mono stack. The safe-but-informed baseline.'},
+    {family:'Sora', weights:[500,600,700], type:'sans',
+     reason:'Contemporary "winning" composure. The concentrated inward weight of the squares mirrors Sora\'s quiet confidence.'},
+    {family:'Plus Jakarta Sans', weights:[500,600,700], type:'sans',
+     reason:'Warm premium modern. Approachable authority — concentrated intensity doesn\'t have to be cold.'},
+    {family:'Poppins', weights:[500,600,700], type:'sans',
+     reason:'Wide geometric with strong vertical rhythm. Round letterforms soften the mark\'s concentrated geometric power.'},
+    {family:'Nunito', weights:[500,600,700], type:'sans',
+     reason:'Rounded geometric warmth. Friendlier counterpoint to the mark\'s intensity — focused power with a human voice.'},
+    {family:'Be Vietnam Pro', weights:[500,600,700], type:'sans',
+     reason:'Clean modern geometric with Vietnamese design heritage. A fresh perspective beyond the usual Western type suspects.'},
+    {family:'Outfit', weights:[500,600,700], type:'sans',
+     reason:'Round geometric confidence. Bold weights feel decisive — matches the bold inner squares\' concentrated energy.'},
+    {family:'Libre Franklin', weights:[500,600,700], type:'sans',
+     reason:'Strong Franklin Gothic foundation. Architectural warmth without Inter\'s coldness. Grounded heritage.'},
+    {family:'Lora', weights:[500,600,700], type:'serif',
+     reason:'Modern serif with calligraphic roots. A serif contrast — the geometric squares meet flowing type. Sophistication test.'},
+    {family:'DM Sans', weights:[500,600,700], type:'sans',
+     reason:'Brand family clean geometric. The DM ecosystem stays connected — safe, solid, harmonious with the existing stack.'}
+  ],
+  'B25-R6-01': [
+    {family:'Archivo', weights:[500,600,700], type:'sans',
+     reason:'Condensed headline authority. "Way bolder, like winning" — this is the font equivalent. No hesitation, pure editorial power.'},
+    {family:'Barlow', weights:[500,600,700], type:'sans',
+     reason:'Slightly condensed, efficient. No wasted space — direct like the arrow itself. The pragmatist\'s font.'},
+    {family:'Red Hat Display', weights:[500,600,700], type:'sans',
+     reason:'Tech brand confident display. Bold enough to stand next to a bold arrow without getting overshadowed.'},
+    {family:'Big Shoulders Display', weights:[500,600,700], type:'sans',
+     reason:'Widest, strongest industrial display. Matches the arrow\'s thick bars — blunt mark meets blunt type.'},
+    {family:'Teko', weights:[500,600,700], type:'sans',
+     reason:'Industrial condensed display. Direct, no-nonsense. The arrow says "go right" — Teko says it louder.'},
+    {family:'Saira', weights:[500,600,700], type:'sans',
+     reason:'Motorsport DNA. Directional energy from racing typography — the arrow\'s purpose expressed in font form.'},
+    {family:'Inter', weights:[500,600,700], type:'sans',
+     reason:'Precise neutral baseline. Clean enough that the arrow carries all the personality. The "let the mark speak" pairing.'},
+    {family:'Space Grotesk', weights:[500,600,700], type:'sans',
+     reason:'Infrastructure technical. Dev tool aesthetic grounds the bold directional mark in tech credibility.'},
+    {family:'IBM Plex Sans', weights:[500,600,700], type:'sans',
+     reason:'Engineered systematic design. Corporate infrastructure meets decisive direction — the enterprise-ready pairing.'},
+    {family:'Oswald', weights:[500,600,700], type:'sans',
+     reason:'Classic condensed strength. Reliable, strong, direct — the workhorse headline font for the most direct mark.'}
+  ]
+};
+
+let currentSym = 0;
+let currentCase = 'lower';
+let currentTrack = 0.02;
+const loadedFontSets = new Set();
+
+function getText() {
+  if (currentCase === 'upper') return 'KURNIK';
+  if (currentCase === 'title') return 'Kurnik';
+  return 'kurnik';
+}
+
+function ensureFontsLoaded(symbolId) {
+  if (loadedFontSets.has(symbolId)) return;
+  const fonts = fontsBySymbol[symbolId];
+  const families = fonts.map(f => {
+    const name = f.family.replace(/ /g, '+');
+    return 'family=' + name + ':wght@500;600;700';
+  }).join('&');
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?' + families + '&display=swap';
+  document.head.appendChild(link);
+  loadedFontSets.add(symbolId);
+}
+
+function init() {
+  buildSymbols();
+  bindControls();
+  ensureFontsLoaded(symbols[0].id);
+  render();
+}
+
+function buildSymbols() {
+  const el = document.getElementById('symbols');
+  symbols.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'sym' + (i === 0 ? ' active' : '');
+    div.onclick = () => {
+      currentSym = i;
+      document.querySelectorAll('.sym').forEach((e, j) => e.classList.toggle('active', j === i));
+      ensureFontsLoaded(symbols[i].id);
+      render();
+    };
+    div.innerHTML = '<div class="sw"><img src="' + s.file + '" alt="' + s.id + '"></div><div class="sid">' + s.id + '</div>';
+    el.appendChild(div);
+  });
+}
+
+function bindControls() {
+  document.getElementById('case-ctrl').addEventListener('click', e => {
+    const btn = e.target.closest('.ctrl-btn');
+    if (!btn) return;
+    currentCase = btn.dataset.case;
+    document.querySelectorAll('#case-ctrl .ctrl-btn').forEach(b => b.classList.toggle('active', b === btn));
+    render();
+  });
+  document.getElementById('track-ctrl').addEventListener('click', e => {
+    const btn = e.target.closest('.ctrl-btn');
+    if (!btn) return;
+    currentTrack = parseFloat(btn.dataset.track);
+    document.querySelectorAll('#track-ctrl .ctrl-btn').forEach(b => b.classList.toggle('active', b === btn));
+    render();
+  });
+}
+
+function makeLockup(font, weight, symFile, iconSize, fontSize) {
+  const fallback = font.type === 'serif' ? 'serif' : font.type === 'mono' ? 'monospace' : 'sans-serif';
+  const wrap = document.createElement('div');
+  wrap.className = 'lockup';
+  wrap.innerHTML = '<img src="' + symFile + '" alt="" style="width:' + iconSize + 'px;height:' + iconSize + 'px">' +
+    '<span class="wordmark" style="font-family:\'' + font.family + '\',' + fallback + ';font-weight:' + weight + ';font-size:' + fontSize + 'px;letter-spacing:' + currentTrack + 'em">' + getText() + '</span>';
+  return wrap;
+}
+
+function render() {
+  const el = document.getElementById('fonts');
+  el.innerHTML = '';
+  const sym = symbols[currentSym];
+  const currentFonts = fontsBySymbol[sym.id];
+
+  // Update font note
+  document.getElementById('font-note').innerHTML =
+    '<strong>' + sym.family + ' — ' + sym.id + '</strong><br>' + sym.fontNote;
+
+  currentFonts.forEach((f, i) => {
+    const card = document.createElement('div');
+    card.className = 'font-card';
+
+    // Header
+    const hdr = document.createElement('div');
+    hdr.className = 'font-header';
+    const nameHtml = '<span class="font-name">' + f.family + '</span>' +
+      (f.type !== 'sans' ? '<span class="font-tag">' + f.type + '</span>' : '');
+    hdr.innerHTML = '<div>' + nameHtml + '</div><span class="font-num">' + String(i + 1).padStart(2, '0') + '/10</span>';
+    card.appendChild(hdr);
+
+    // Reason
+    const reason = document.createElement('div');
+    reason.className = 'font-reason';
+    reason.textContent = f.reason;
+    card.appendChild(reason);
+
+    // Main lockups — 3 weights at display size
+    f.weights.forEach(w => {
+      const row = document.createElement('div');
+      row.className = 'lockup-row';
+
+      const meta = document.createElement('div');
+      meta.className = 'lockup-meta';
+      meta.textContent = w === 500 ? 'medium' : w === 600 ? 'semibold' : 'bold';
+      row.appendChild(meta);
+
+      row.appendChild(makeLockup(f, w, sym.file, 36, 28));
+      card.appendChild(row);
+    });
+
+    // Size variants — best weight (600) at different scales
+    const sizesDiv = document.createElement('div');
+    sizesDiv.className = 'lockup-sizes';
+    sizesDiv.style.marginTop = '12px';
+
+    [{icon:48,text:36,label:'large'},{icon:32,text:24,label:'medium'},{icon:20,text:16,label:'small'},{icon:14,text:11,label:'tiny'}].forEach(sz => {
+      const group = document.createElement('div');
+      group.className = 'lockup-size-group';
+      const lbl = document.createElement('div');
+      lbl.className = 'lockup-size-label';
+      lbl.textContent = sz.label;
+      group.appendChild(lbl);
+      group.appendChild(makeLockup(f, 600, sym.file, sz.icon, sz.text));
+      sizesDiv.appendChild(group);
+    });
+
+    card.appendChild(sizesDiv);
+    el.appendChild(card);
+  });
+}
+
+init();
+</script>
+</body>
+</html>

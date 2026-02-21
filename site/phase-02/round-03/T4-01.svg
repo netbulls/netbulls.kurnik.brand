@@ -1,0 +1,5 @@
+<!-- T4-01 Compressed Triangles — E26 with tighter 6px gap, maximum tension -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="20,14 80,14 50,44" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="22,86 78,86 50,50" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

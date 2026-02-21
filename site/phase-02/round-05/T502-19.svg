@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-19 Diagonal growth — bars shift right going up, showing momentum -->
+  <rect x="14" y="66" width="60" height="14" fill="#d4840a"/>
+  <rect x="20" y="48" width="60" height="10" fill="#d4840a"/>
+  <rect x="26" y="32" width="60" height="7" fill="#d4840a"/>
+</svg>

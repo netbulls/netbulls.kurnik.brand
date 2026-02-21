@@ -1,0 +1,19 @@
+<!-- H15-R6-03 H15-17 double brackets tighter (outer 22, inner 30) + bolder cross -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer brackets at 22 -->
+  <path d="M22,38 L22,22 L38,22" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M62,22 L78,22 L78,38" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M78,62 L78,78 L62,78" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M38,78 L22,78 L22,62" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Inner brackets at 30 -->
+  <path d="M30,40 L30,30 L40,30" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M60,30 L70,30 L70,40" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M70,60 L70,70 L60,70" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M40,70 L30,70 L30,60" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Cross -->
+  <line x1="14" y1="50" x2="44" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="56" y1="50" x2="86" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="50" y1="14" x2="50" y2="44" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="50" y1="56" x2="50" y2="86" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <circle cx="50" cy="50" r="5" fill="#d4840a"/>
+</svg>

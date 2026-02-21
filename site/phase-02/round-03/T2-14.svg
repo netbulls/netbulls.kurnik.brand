@@ -1,0 +1,15 @@
+<!-- T2-14 Rail Cross — crosshair with each arm made of 2 parallel lines (railroad track / layered) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm — two parallel horizontal lines -->
+  <rect x="8" y="42" width="30" height="4" fill="#d4840a"/>
+  <rect x="8" y="54" width="30" height="4" fill="#d4840a"/>
+  <!-- Right arm — two parallel horizontal lines -->
+  <rect x="62" y="42" width="30" height="4" fill="#d4840a"/>
+  <rect x="62" y="54" width="30" height="4" fill="#d4840a"/>
+  <!-- Top arm — two parallel vertical lines -->
+  <rect x="42" y="8" width="4" height="30" fill="#d4840a"/>
+  <rect x="54" y="8" width="4" height="30" fill="#d4840a"/>
+  <!-- Bottom arm — two parallel vertical lines -->
+  <rect x="42" y="62" width="4" height="30" fill="#d4840a"/>
+  <rect x="54" y="62" width="4" height="30" fill="#d4840a"/>
+</svg>

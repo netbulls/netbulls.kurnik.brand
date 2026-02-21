@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Icon Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Serif+Display&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0e0c0a;--amber:#d4840a;--amber-light:#f5a623;--text:#e8ddd0;--text-dim:#7a6e62;--border:#2a2420;--card-bg:#161310;--card-hover:#1c1915}
+  body{background:#111;color:var(--text);font-family:'Manrope',sans-serif;padding:0 0 80px}
+  .header{padding:40px 48px 24px;border-bottom:1px solid var(--border);background:var(--bg)}
+  .header h1{font-family:'DM Serif Display',serif;font-size:28px;color:var(--amber);margin-bottom:4px}
+  .header p{color:var(--text-dim);font-size:14px}
+  .selected-info{color:var(--amber);font-family:'DM Mono',monospace;font-size:13px;margin-top:8px}
+  section{padding:32px 48px}
+  section h2{font-family:'DM Serif Display',serif;font-size:20px;color:var(--amber);margin-bottom:6px}
+  section .sub{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);margin-bottom:24px}
+
+  /* Candidate selector */
+  .candidate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;margin-bottom:32px}
+  .cand{background:var(--card-bg);border:2px solid var(--border);border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:all .15s}
+  .cand:hover{border-color:#3a3430;transform:translateY(-2px)}
+  .cand.active{border-color:var(--amber);box-shadow:0 0 20px rgba(212,132,10,.15)}
+  .cand .icon-wrap{width:80px;height:80px;margin:0 auto 8px;background:var(--bg);border-radius:18px;display:flex;align-items:center;justify-content:center}
+  .cand .icon-wrap img{width:60%;height:60%}
+  .cand .cid{font-family:'DM Mono',monospace;font-size:11px;color:var(--amber)}
+  .cand .cfam{font-size:10px;color:var(--text-dim)}
+
+  /* Background selector */
+  .bg-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;margin-bottom:28px}
+  .bg-opt{background:var(--card-bg);border:2px solid var(--border);border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .15s}
+  .bg-opt:hover{border-color:#3a3430;transform:translateY(-2px)}
+  .bg-opt.active{border-color:var(--amber);box-shadow:0 0 16px rgba(212,132,10,.15)}
+  .bg-opt .swatch{width:88px;height:88px;margin:0 auto 8px;border-radius:22.5%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+  .bg-opt .swatch img{width:56%;height:56%}
+  .bg-opt .bg-name{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);font-weight:500}
+  .bg-opt .bg-desc{font-size:10px;color:var(--text-dim);margin-top:2px}
+  .bg-opt.active .bg-name{color:var(--amber)}
+  .bg-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:4px;background:var(--amber);color:var(--bg);font-weight:600;margin-left:4px;vertical-align:middle;text-transform:uppercase;letter-spacing:.5px}
+
+  /* Platform shapes */
+  .shapes-row{display:flex;gap:40px;align-items:flex-end;flex-wrap:wrap;margin-bottom:40px}
+  .shape-item{text-align:center}
+  .shape-box{display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+  .shape-box img{width:60%;height:60%}
+  .shape-label{margin-top:10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);line-height:1.4}
+
+  /* Size preview */
+  .sizes-row{display:flex;gap:32px;align-items:flex-end;flex-wrap:wrap;margin-bottom:40px}
+  .size-item{text-align:center}
+  .size-box{display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+  .size-box img{width:60%;height:60%}
+  .size-label{margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim)}
+
+  /* Favicon bar */
+  .favicon-bar{display:flex;align-items:center;gap:20px;background:#1a1a1a;border-radius:8px;padding:10px 16px;margin-bottom:40px;max-width:600px}
+  .favicon-bar .tab-mock{display:flex;align-items:center;gap:6px;background:#2a2a2a;border-radius:6px 6px 0 0;padding:6px 12px}
+  .favicon-bar .tab-icon{width:16px;height:16px;border-radius:2px;display:flex;align-items:center;justify-content:center}
+  .favicon-bar .tab-icon img{width:12px;height:12px}
+  .favicon-bar .tab-text{font-size:12px;color:#999}
+  .favicon-bar .address{flex:1;background:#222;border-radius:4px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:11px;color:#666}
+
+  /* Device mockups */
+  .devices{display:flex;gap:40px;flex-wrap:wrap}
+  .phone{background:linear-gradient(180deg,#2a2a2a 0%,#1a1a1a 100%);border-radius:30px;padding:40px 20px;width:280px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+  .phone h4{color:#fff;font-size:14px;font-weight:500;margin-bottom:20px;text-align:center}
+  .app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+  .app-icon{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .app-icon-placeholder{width:52px;height:52px;border-radius:12px;background:#333}
+  .app-icon-placeholder.circle{border-radius:50%}
+  .app-icon-real{width:52px;height:52px;display:flex;align-items:center;justify-content:center}
+  .app-icon-real img{width:60%;height:60%}
+  .app-icon span{font-size:10px;color:#fff}
+
+  /* OG preview */
+  .og-preview{border-radius:12px;overflow:hidden;max-width:600px;box-shadow:0 4px 20px rgba(0,0,0,.4);margin-bottom:20px}
+  .og-image{width:100%;aspect-ratio:1200/630;display:flex;align-items:center;justify-content:center;position:relative}
+  .og-image img{width:20%;height:auto}
+  .og-image .og-text{position:absolute;bottom:20px;left:24px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);opacity:.7}
+  .og-meta{background:#1a1a1a;padding:14px 16px}
+  .og-meta .og-site{font-family:'DM Mono',monospace;font-size:11px;color:#888;margin-bottom:4px}
+  .og-meta .og-title{font-size:14px;color:#fff;font-weight:600}
+  .og-meta .og-desc{font-size:12px;color:#888;margin-top:4px}
+
+  /* All-candidates comparison */
+  .compare-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+  .compare-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+  .compare-card .cmp-id{font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:12px}
+  .compare-sizes{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:12px}
+  .compare-sizes .cs{display:flex;align-items:center;justify-content:center}
+  .compare-sizes .cs img{width:60%;height:60%}
+  .compare-ios{display:flex;justify-content:center;gap:12px}
+  .compare-ios .ci{display:flex;align-items:center;justify-content:center}
+  .compare-ios .ci img{width:60%;height:60%}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Kurnik — Icon Preview</h1>
+  <p>12 shortlisted symbols from Round 06, shown as app icons, favicons, and social previews.</p>
+  <div class="selected-info">Selected: <span id="sel-name">B25-R6-01</span></div>
+</div>
+
+<section>
+  <h2>Select Symbol</h2>
+  <div class="sub">Click to preview across all formats</div>
+  <div class="candidate-grid" id="candidates"></div>
+</section>
+
+<section>
+  <h2>Icon Background</h2>
+  <div class="sub">Click to preview across all formats. No transparency — icons need a filled background.</div>
+  <div class="bg-options" id="bg-options"></div>
+</section>
+
+<section>
+  <h2>Platform Shapes</h2>
+  <div class="sub">How it renders on iOS (squircle), Android (circle), and raw square</div>
+  <div class="shapes-row" id="shapes"></div>
+</section>
+
+<section>
+  <h2>Size Ladder</h2>
+  <div class="sub">512 &rarr; 192 &rarr; 180 &rarr; 120 &rarr; 72 &rarr; 48 &rarr; 32 &rarr; 16</div>
+  <div class="sizes-row" id="sizes"></div>
+</section>
+
+<section>
+  <h2>Browser Tab</h2>
+  <div class="sub">Favicon in context</div>
+  <div class="favicon-bar">
+    <div class="tab-mock">
+      <div class="tab-icon" id="tab-icon" style="background:var(--bg)"></div>
+      <span class="tab-text">Kurnik — AI Incubator</span>
+    </div>
+    <div class="address">brand.kurnik.ai</div>
+  </div>
+</section>
+
+<section>
+  <h2>Device Mockup</h2>
+  <div class="sub">In context on iOS and Android home screens</div>
+  <div class="devices">
+    <div class="phone">
+      <h4>iOS Home Screen</h4>
+      <div class="app-grid" id="ios-grid"></div>
+    </div>
+    <div class="phone">
+      <h4>Android Home Screen</h4>
+      <div class="app-grid" id="android-grid"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Social / OG Preview</h2>
+  <div class="sub">Open Graph card when sharing brand.kurnik.ai</div>
+  <div class="og-preview">
+    <div class="og-image" id="og-image">
+      <img id="og-icon" src="" alt="">
+      <div class="og-text">kurnik</div>
+    </div>
+    <div class="og-meta">
+      <div class="og-site">brand.kurnik.ai</div>
+      <div class="og-title">Kurnik — AI-Powered Product Incubator</div>
+      <div class="og-desc">Where ambitious ideas become real products.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>All Candidates — Side by Side</h2>
+  <div class="sub">Every shortlisted symbol at key sizes: iOS 120px, Android 72px, Favicon 32px, Tab 16px</div>
+  <div class="compare-grid" id="compare"></div>
+</section>
+
+<script>
+const candidates = [
+  {id:'B25-R6-01', parent:'B25', name:'Arrow Void', file:'round-06/B25-R6-01.svg'},
+  {id:'B25-R6-10', parent:'B25', name:'Arrow Void', file:'round-06/B25-R6-10.svg'},
+  {id:'F20-R6-01', parent:'F20', name:'Chevron Cascade', file:'round-06/F20-R6-01.svg'},
+  {id:'F20-R6-02', parent:'F20', name:'Chevron Cascade', file:'round-06/F20-R6-02.svg'},
+  {id:'F20-R6-03', parent:'F20', name:'Chevron Cascade', file:'round-06/F20-R6-03.svg'},
+  {id:'F20-R6-04', parent:'F20', name:'Chevron Cascade', file:'round-06/F20-R6-04.svg'},
+  {id:'H1519-R6-03', parent:'H15-19', name:'Bracket Arrows', file:'round-06/H1519-R6-03.svg'},
+  {id:'H1519-R6-04', parent:'H15-19', name:'Bracket Arrows', file:'round-06/H1519-R6-04.svg'},
+  {id:'H1519-R6-08', parent:'H15-19', name:'Bracket Arrows', file:'round-06/H1519-R6-08.svg'},
+  {id:'T110-R6-01', parent:'T1-10', name:'Rotated Squares', file:'round-06/T110-R6-01.svg'},
+  {id:'T110-R6-07', parent:'T1-10', name:'Rotated Squares', file:'round-06/T110-R6-07.svg'},
+  {id:'T110-R6-08', parent:'T1-10', name:'Rotated Squares', file:'round-06/T110-R6-08.svg'}
+];
+
+const backgrounds = [
+  {id:'brand-flat', name:'Brand Flat', desc:'#0e0c0a solid', css:'#0e0c0a', tag:null},
+  {id:'pure-black', name:'Pure Black', desc:'#000000 OLED', css:'#000000', tag:null},
+  {id:'neutral-dark', name:'Neutral Dark', desc:'#141414 no warmth', css:'#141414', tag:null},
+  {id:'ios-standard', name:'iOS Standard', desc:'Apple top-down lighting', css:'linear-gradient(180deg,#1a1610 0%,#0e0c0a 100%)', tag:'ios'},
+  {id:'diagonal', name:'Diagonal', desc:'Top-left to bottom-right', css:'linear-gradient(135deg,#1c1408 0%,#080604 100%)', tag:null},
+  {id:'warm-ember', name:'Warm Ember', desc:'Radial center glow', css:'radial-gradient(circle at 50% 50%,#201608 0%,#0a0806 100%)', tag:null},
+  {id:'spotlight', name:'Spotlight', desc:'Top-center highlight', css:'radial-gradient(ellipse at 50% 20%,#221a0e 0%,#0e0c0a 60%,#080604 100%)', tag:null},
+  {id:'dark-bronze', name:'Dark Bronze', desc:'Rich warm gradient', css:'linear-gradient(160deg,#2a1e08 0%,#0e0a06 100%)', tag:null},
+  {id:'sunrise', name:'Sunrise', desc:'Bottom-up warmth', css:'linear-gradient(0deg,#1a1208 0%,#0e0c0a 50%,#161210 100%)', tag:null},
+  {id:'deep-warm', name:'Deep Warm', desc:'Subtle amber all-over', css:'linear-gradient(180deg,#181008 0%,#120e08 50%,#0c0a06 100%)', tag:null}
+];
+
+let currentIdx = 0;
+let currentBg = 'brand-flat';
+
+function init() {
+  buildCandidates();
+  buildBgOptions();
+  buildCompareGrid();
+  selectCandidate(0);
+}
+
+function buildCandidates() {
+  const el = document.getElementById('candidates');
+  candidates.forEach((c, i) => {
+    const div = document.createElement('div');
+    div.className = 'cand' + (i === 0 ? ' active' : '');
+    div.onclick = () => selectCandidate(i);
+    div.innerHTML = `<div class="icon-wrap"><img src="${c.file}" alt="${c.id}"></div><div class="cid">${c.id}</div><div class="cfam">${c.name}</div>`;
+    el.appendChild(div);
+  });
+}
+
+function buildBgOptions() {
+  const el = document.getElementById('bg-options');
+  el.innerHTML = '';
+  const c = candidates[currentIdx];
+  backgrounds.forEach(bg => {
+    const div = document.createElement('div');
+    div.className = 'bg-opt' + (bg.id === currentBg ? ' active' : '');
+    div.onclick = () => selectBg(bg.id);
+    const tagHtml = bg.tag ? `<span class="bg-tag">${bg.tag}</span>` : '';
+    div.innerHTML = `<div class="swatch" style="background:${bg.css}"><img src="${c.file}" alt=""></div><div class="bg-name">${bg.name}${tagHtml}</div><div class="bg-desc">${bg.desc}</div>`;
+    el.appendChild(div);
+  });
+}
+
+function selectBg(id) {
+  currentBg = id;
+  refreshAll();
+}
+
+function refreshAll() {
+  const c = candidates[currentIdx];
+  buildBgOptions();
+  buildShapes(c);
+  buildSizes(c);
+  buildTabIcon(c);
+  buildDevices(c);
+  buildOG(c);
+}
+
+function getBgCss() {
+  return backgrounds.find(b => b.id === currentBg)?.css || '#0e0c0a';
+}
+
+function selectCandidate(idx) {
+  currentIdx = idx;
+  const c = candidates[idx];
+  document.getElementById('sel-name').textContent = c.id + ' (' + c.name + ')';
+  document.querySelectorAll('.cand').forEach((el, i) => el.classList.toggle('active', i === idx));
+  refreshAll();
+}
+
+function iconBox(size, radius, c) {
+  const div = document.createElement('div');
+  div.className = 'shape-box';
+  div.style.cssText = `width:${size}px;height:${size}px;border-radius:${radius};background:${getBgCss()}`;
+  const img = document.createElement('img');
+  img.src = c.file;
+  img.alt = c.id;
+  div.appendChild(img);
+  return div;
+}
+
+function buildShapes(c) {
+  const el = document.getElementById('shapes');
+  el.innerHTML = '';
+  const shapes = [
+    {size:120, radius:'22.5%', label:'iOS<br>Squircle'},
+    {size:120, radius:'50%', label:'Android<br>Circle'},
+    {size:120, radius:'0', label:'Square<br>Source'},
+    {size:120, radius:'16px', label:'Web / PWA<br>Rounded'}
+  ];
+  shapes.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'shape-item';
+    item.appendChild(iconBox(s.size, s.radius, c));
+    const lbl = document.createElement('div');
+    lbl.className = 'shape-label';
+    lbl.innerHTML = s.label;
+    item.appendChild(lbl);
+    el.appendChild(item);
+  });
+}
+
+function buildSizes(c) {
+  const el = document.getElementById('sizes');
+  el.innerHTML = '';
+  [512, 192, 180, 120, 72, 48, 32, 16].forEach(sz => {
+    const item = document.createElement('div');
+    item.className = 'size-item';
+    item.appendChild(iconBox(sz, '22.5%', c));
+    const lbl = document.createElement('div');
+    lbl.className = 'size-label';
+    lbl.textContent = sz + 'px';
+    item.appendChild(lbl);
+    el.appendChild(item);
+  });
+}
+
+function buildTabIcon(c) {
+  const el = document.getElementById('tab-icon');
+  el.style.background = getBgCss();
+  el.innerHTML = `<img src="${c.file}" alt="" style="width:12px;height:12px">`;
+}
+
+function buildDevices(c) {
+  buildPhoneGrid('ios-grid', c, '12px', false);
+  buildPhoneGrid('android-grid', c, '50%', true);
+}
+
+function buildPhoneGrid(containerId, c, radius, isCircle) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  const placeholders = [0,1,2,3,4,5,6,7];
+  const appPos = 1; // second position
+  placeholders.forEach((_, i) => {
+    const app = document.createElement('div');
+    app.className = 'app-icon';
+    if (i === appPos) {
+      const wrap = document.createElement('div');
+      wrap.className = 'app-icon-real';
+      wrap.style.cssText = `background:${getBgCss()};border-radius:${radius}`;
+      const img = document.createElement('img');
+      img.src = c.file;
+      img.alt = c.id;
+      wrap.appendChild(img);
+      app.appendChild(wrap);
+      const span = document.createElement('span');
+      span.textContent = 'Kurnik';
+      app.appendChild(span);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'app-icon-placeholder' + (isCircle ? ' circle' : '');
+      const grays = ['#333','#444','#555','#2a2a2a','#383838','#404040','#4a4a4a','#303030'];
+      ph.style.background = grays[i] || '#333';
+      app.appendChild(ph);
+      const span = document.createElement('span');
+      span.textContent = 'App';
+      app.appendChild(span);
+    }
+    el.appendChild(app);
+  });
+}
+
+function buildOG(c) {
+  const ogImg = document.getElementById('og-image');
+  ogImg.style.background = getBgCss();
+  document.getElementById('og-icon').src = c.file;
+}
+
+function buildCompareGrid() {
+  const el = document.getElementById('compare');
+  el.innerHTML = '';
+  candidates.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'compare-card';
+
+    const id = document.createElement('div');
+    id.className = 'cmp-id';
+    id.textContent = c.id;
+    card.appendChild(id);
+
+    // iOS + Android side by side
+    const ios = document.createElement('div');
+    ios.className = 'compare-ios';
+
+    // iOS 120
+    const i1 = document.createElement('div');
+    i1.className = 'ci';
+    i1.style.cssText = 'width:80px;height:80px;border-radius:22.5%;background:#0e0c0a';
+    i1.innerHTML = `<img src="${c.file}" alt="">`;
+    ios.appendChild(i1);
+
+    // Android 72
+    const i2 = document.createElement('div');
+    i2.className = 'ci';
+    i2.style.cssText = 'width:56px;height:56px;border-radius:50%;background:#0e0c0a';
+    i2.innerHTML = `<img src="${c.file}" alt="">`;
+    ios.appendChild(i2);
+
+    // Favicon 32
+    const i3 = document.createElement('div');
+    i3.className = 'ci';
+    i3.style.cssText = 'width:32px;height:32px;border-radius:4px;background:#0e0c0a';
+    i3.innerHTML = `<img src="${c.file}" alt="">`;
+    ios.appendChild(i3);
+
+    // Tab 16
+    const i4 = document.createElement('div');
+    i4.className = 'ci';
+    i4.style.cssText = 'width:16px;height:16px;border-radius:2px;background:#0e0c0a';
+    i4.innerHTML = `<img src="${c.file}" alt="">`;
+    ios.appendChild(i4);
+
+    card.appendChild(ios);
+
+    const fam = document.createElement('div');
+    fam.style.cssText = 'font-size:10px;color:var(--text-dim);margin-top:8px';
+    fam.textContent = c.name;
+    card.appendChild(fam);
+
+    el.appendChild(card);
+  });
+}
+
+init();
+</script>
+</body>
+</html>

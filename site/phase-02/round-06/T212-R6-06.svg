@@ -1,0 +1,9 @@
+<!-- T212-R6-06 Filled solid L-shape brackets (polygon) + bold right arrow -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="16,16 40,16 40,22 22,22 22,40 16,40" fill="#d4840a"/>
+  <polygon points="60,16 84,16 84,40 78,40 78,22 60,22" fill="#d4840a"/>
+  <polygon points="16,60 22,60 22,78 40,78 40,84 16,84" fill="#d4840a"/>
+  <polygon points="60,78 78,78 78,60 84,60 84,84 60,84" fill="#d4840a"/>
+  <line x1="32" y1="50" x2="58" y2="50" stroke="#d4840a" stroke-width="7" stroke-linecap="butt"/>
+  <polygon points="56,39 72,50 56,61" fill="#d4840a"/>
+</svg>

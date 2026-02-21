@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T110-01 Concentric Rotated Squares — thick strokes, 8px outer, 6px inner -->
+  <rect x="12" y="12" width="76" height="76" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="30" y="30" width="40" height="40" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(45 50 50)"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-R6-08 Compass with bezel ring — 4 cardinal wedges + thin concentric circle -->
+  <polygon points="48,42 52,42 50,14" fill="#d4840a"/>
+  <polygon points="58,48 58,52 86,50" fill="#d4840a"/>
+  <polygon points="52,58 48,58 50,86" fill="#d4840a"/>
+  <polygon points="42,52 42,48 14,50" fill="#d4840a"/>
+  <!-- Outer bezel ring -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#d4840a" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,7 @@
+<!-- F20-R6-07 4 upward chevrons, all same weight (6px), tight spacing -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<polyline points="32,76 50,62 68,76" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="32,58 50,44 68,58" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="32,40 50,26 68,40" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="32,22 50,8 68,22" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,8 @@
+<!-- G08 Spine — vertical line with bold horizontal bars -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="46" y="8" width="8" height="84" fill="#d4840a"/>
+  <rect x="26" y="12" width="48" height="10" fill="#d4840a"/>
+  <rect x="30" y="34" width="40" height="10" fill="#d4840a"/>
+  <rect x="34" y="56" width="32" height="10" fill="#d4840a"/>
+  <rect x="26" y="78" width="48" height="10" fill="#d4840a"/>
+</svg>

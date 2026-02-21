@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-14 Convergent Triangles — Tall narrow top, wide flat bottom, proportion contrast -->
+<polygon points="38,6 62,6 50,48" fill="#d4840a"/>
+<polygon points="10,92 90,92 50,58" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

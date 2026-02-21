@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-12 Reversed cascade pointing UPWARD — thin (bottom) to thick (top), building up -->
+<polyline points="40,82 50,74 60,82" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="34,66 50,52 66,66" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="25,46 50,24 75,46" fill="none" stroke="#d4840a" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

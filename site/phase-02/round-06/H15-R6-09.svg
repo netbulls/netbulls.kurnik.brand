@@ -1,0 +1,24 @@
+<!-- H15-R6-09 Triple brackets (3 nested L-shapes per corner) + thin cross — ultra-dense -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer brackets at 16 -->
+  <path d="M16,38 L16,16 L38,16" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M62,16 L84,16 L84,38" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M84,62 L84,84 L62,84" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M38,84 L16,84 L16,62" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Middle brackets at 24 -->
+  <path d="M24,39 L24,24 L39,24" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M61,24 L76,24 L76,39" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M76,61 L76,76 L61,76" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M39,76 L24,76 L24,61" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Inner brackets at 32 -->
+  <path d="M32,40 L32,32 L40,32" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M60,32 L68,32 L68,40" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M68,60 L68,68 L60,68" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M40,68 L32,68 L32,60" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Thin cross -->
+  <line x1="10" y1="50" x2="44" y2="50" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="56" y1="50" x2="90" y2="50" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="50" y1="10" x2="50" y2="44" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="50" y1="56" x2="50" y2="90" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <circle cx="50" cy="50" r="4" fill="#d4840a"/>
+</svg>

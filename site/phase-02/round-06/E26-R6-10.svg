@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-R6-10 Three triangles cascade — top filled, middle stroke small, bottom stroke large, staggered offset -->
+<polygon points="15,6 60,6 37,30" fill="#d4840a"/>
+<polygon points="30,40 65,40 47,58" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="25,66 85,66 55,94" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

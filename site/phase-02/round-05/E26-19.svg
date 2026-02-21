@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-19 Convergent Triangles — Almost interlocking, tips overlapping like teeth -->
+<polygon points="18,6 82,6 50,52" fill="#d4840a"/>
+<polygon points="20,94 80,94 50,48" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

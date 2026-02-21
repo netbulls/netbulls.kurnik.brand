@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Round 05 Iterations</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Serif+Display&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0e0c0a;
+    --amber: #d4840a;
+    --amber-light: #f5a623;
+    --text: #e8ddd0;
+    --text-dim: #7a6e62;
+    --border: #2a2420;
+    --card-bg: #161310;
+    --card-hover: #1c1915;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; }
+
+  /* Header */
+  .header { padding: 40px 48px 24px; border-bottom: 1px solid var(--border); }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--amber); margin-bottom: 4px; }
+  .header p { color: var(--text-dim); font-size: 14px; }
+
+  /* Export bar */
+  .export-bar {
+    position: sticky; top: 0; z-index: 100; background: var(--bg);
+    border-bottom: 1px solid var(--border); padding: 10px 48px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'DM Mono', monospace; font-size: 12px; padding: 7px 14px;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: var(--card-bg); color: var(--text); cursor: pointer; transition: all 0.15s;
+  }
+  .btn:hover { background: var(--card-hover); border-color: var(--amber); color: var(--amber); }
+  .btn-primary { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: 600; }
+  .btn-primary:hover { background: var(--amber-light); border-color: var(--amber-light); }
+  .status { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dim); margin-left: auto; }
+
+  /* Tabs */
+  .tabs { padding: 12px 48px; display: flex; gap: 6px; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+  .tab {
+    font-family: 'DM Mono', monospace; font-size: 12px; padding: 6px 12px;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: transparent; color: var(--text-dim); cursor: pointer; transition: all 0.15s;
+  }
+  .tab:hover { border-color: var(--amber); color: var(--amber); }
+  .tab.active { background: var(--amber); color: var(--bg); border-color: var(--amber); }
+  .tab-count { opacity: 0.6; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px; background: var(--amber); color: var(--bg);
+    padding: 10px 20px; border-radius: 6px; font-family: 'DM Mono', monospace;
+    font-size: 13px; font-weight: 600; opacity: 0; transform: translateY(10px);
+    transition: all 0.3s; pointer-events: none; z-index: 200;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* Section headers */
+  .section-header {
+    padding: 24px 48px 12px; display: flex; align-items: baseline; gap: 12px;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--amber);
+  }
+  .section-meta {
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim);
+  }
+  .section-origin {
+    padding: 0 48px 16px; display: flex; align-items: center; gap: 16px;
+  }
+  .origin-card {
+    width: 64px; height: 64px; background: var(--bg); border: 1px dashed var(--border);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    opacity: 0.7;
+  }
+  .origin-card img { width: 44px; height: 44px; }
+  .origin-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  /* Grid */
+  .grid {
+    padding: 0 48px 32px; display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px; cursor: pointer; transition: all 0.15s; position: relative;
+  }
+  .card:hover { border-color: #3a3430; transform: translateY(-2px); }
+  .card.shortlisted { border-color: var(--amber); }
+  .card .preview {
+    width: 100%; aspect-ratio: 1; background: var(--bg); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
+  }
+  .card .preview img { width: 70%; height: 70%; }
+  .card .card-id {
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); font-weight: 600;
+  }
+  .card .card-desc {
+    font-size: 11px; color: var(--text-dim); line-height: 1.4;
+    max-height: 2.8em; overflow: hidden;
+  }
+  .card .star-btn {
+    position: absolute; top: 8px; right: 8px; width: 24px; height: 24px;
+    border: none; background: transparent; color: var(--text-dim); cursor: pointer;
+    font-size: 14px; transition: all 0.15s; border-radius: 50%;
+  }
+  .card .star-btn:hover { color: var(--amber); background: rgba(212,132,10,0.1); }
+  .card.shortlisted .star-btn { color: var(--amber); }
+
+  /* Lightbox */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: rgba(14,12,10,0.95); align-items: center; justify-content: center;
+    flex-direction: column;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 24px; background: none; border: none;
+    color: var(--text); font-size: 28px; cursor: pointer;
+  }
+  .lightbox-svg { width: 320px; height: 320px; margin-bottom: 16px; }
+  .lightbox-svg img { width: 100%; height: 100%; }
+  .lightbox-info { text-align: center; max-width: 500px; }
+  .lightbox-id { font-family: 'DM Mono', monospace; font-size: 16px; color: var(--amber); margin-bottom: 4px; }
+  .lightbox-desc { font-size: 14px; color: var(--text-dim); margin-bottom: 16px; }
+  .lightbox-nav { display: flex; gap: 12px; }
+  .lightbox-nav button {
+    font-family: 'DM Mono', monospace; font-size: 13px; padding: 8px 20px;
+    border: 1px solid var(--border); border-radius: 6px; background: var(--card-bg);
+    color: var(--text); cursor: pointer;
+  }
+  .lightbox-nav button:hover { border-color: var(--amber); color: var(--amber); }
+
+  /* Comment in lightbox */
+  .lightbox-comment {
+    width: 100%; max-width: 500px; margin-top: 12px;
+  }
+  .lightbox-comment textarea {
+    width: 100%; min-height: 60px; padding: 10px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px; color: var(--text);
+    font-family: 'Manrope', sans-serif; font-size: 13px; resize: vertical;
+  }
+  .lightbox-comment textarea::placeholder { color: #4a4035; }
+  .lightbox-comment textarea:focus { outline: none; border-color: var(--amber); }
+
+  .lightbox-rating { display: flex; gap: 4px; margin-bottom: 8px; }
+  .rating-dot {
+    width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--border);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim);
+    transition: all 0.15s;
+  }
+  .rating-dot:hover { border-color: var(--amber); color: var(--amber); }
+  .rating-dot.active { background: var(--amber); border-color: var(--amber); color: var(--bg); font-weight: 600; }
+
+  .lightbox-tags { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .ltag {
+    font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 10px;
+    border-radius: 20px; border: 1px solid var(--border); background: transparent;
+    color: var(--text-dim); cursor: pointer; transition: all 0.15s;
+  }
+  .ltag:hover { border-color: var(--amber); color: var(--amber); }
+  .ltag.active { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Round 05 — Iterations</h1>
+  <p>220 variants across 11 shortlisted concepts. Rate, tag, comment, export.</p>
+</div>
+
+<div class="export-bar">
+  <button class="btn btn-primary" onclick="exportJSON()">Export JSON</button>
+  <button class="btn" onclick="copyJSON()">Copy to clipboard</button>
+  <button class="btn" onclick="clearAll()">Clear all</button>
+  <span class="status" id="status">0/220 reviewed</span>
+</div>
+
+<div class="tabs" id="tabs">
+    <button class="tab active" data-filter="all">All 220</button>
+    <button class="tab" data-filter="B25">B25 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="H15">H15 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="H20">H20 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="F20">F20 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="T2-12">T2-12 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="E26">E26 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="F06">F06 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="G12">G12 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="T5-02">T5-02 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="T5-09">T5-09 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="T1-10">T1-10 <span class="tab-count">20</span></button>
+    <button class="tab" data-filter="shortlist">Shortlist <span class="tab-count" id="shortlist-count">0</span></button>
+</div>
+
+<div id="content"></div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <div class="lightbox-svg" id="lb-svg"></div>
+  <div class="lightbox-info">
+    <div class="lightbox-id" id="lb-id"></div>
+    <div class="lightbox-desc" id="lb-desc"></div>
+    <div class="lightbox-rating" id="lb-rating"></div>
+    <div class="lightbox-tags" id="lb-tags"></div>
+    <div class="lightbox-comment">
+      <textarea id="lb-comment" placeholder="Notes on this variant..."></textarea>
+    </div>
+    <div class="lightbox-nav">
+      <button onclick="navLightbox(-1)">&larr; Prev</button>
+      <button onclick="toggleShortlist()" id="lb-star-btn">&#9734; Shortlist</button>
+      <button onclick="navLightbox(1)">Next &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'kurnik-r05-review';
+const TAGS = ['iterate','strong','weak','simplify','combine','drop'];
+const concepts = [{"id": "B25-01", "parent": "B25", "desc": "B25-01 Thin straight arrow pointing up-right", "file": "B25-01.svg"}, {"id": "B25-02", "parent": "B25", "desc": "B25-02 Medium straight arrow pointing up-right", "file": "B25-02.svg"}, {"id": "B25-03", "parent": "B25", "desc": "B25-03 Bold straight arrow pointing up-right", "file": "B25-03.svg"}, {"id": "B25-04", "parent": "B25", "desc": "B25-04 Ultra-bold straight arrow pointing up-right", "file": "B25-04.svg"}, {"id": "B25-05", "parent": "B25", "desc": "B25-05 Right-turn arrow (up then right), thin", "file": "B25-05.svg"}, {"id": "B25-06", "parent": "B25", "desc": "B25-06 Right-turn arrow (up then right), medium", "file": "B25-06.svg"}, {"id": "B25-07", "parent": "B25", "desc": "B25-07 Right-turn arrow (up then right), bold", "file": "B25-07.svg"}, {"id": "B25-08", "parent": "B25", "desc": "B25-08 Up-turn arrow (right then up), thin", "file": "B25-08.svg"}, {"id": "B25-09", "parent": "B25", "desc": "B25-09 Up-turn arrow (right then up), medium", "file": "B25-09.svg"}, {"id": "B25-10", "parent": "B25", "desc": "B25-10 Up-turn arrow (right then up), bold", "file": "B25-10.svg"}, {"id": "B25-11", "parent": "B25", "desc": "B25-11 Simple upward arrow, thin", "file": "B25-11.svg"}, {"id": "B25-12", "parent": "B25", "desc": "B25-12 Simple upward arrow, medium", "file": "B25-12.svg"}, {"id": "B25-13", "parent": "B25", "desc": "B25-13 Simple upward arrow, bold", "file": "B25-13.svg"}, {"id": "B25-14", "parent": "B25", "desc": "B25-14 Diagonal arrow at 30 degrees (shallow, more rightward)", "file": "B25-14.svg"}, {"id": "B25-15", "parent": "B25", "desc": "B25-15 Diagonal arrow at 60 degrees (steep, more upward)", "file": "B25-15.svg"}, {"id": "B25-16", "parent": "B25", "desc": "B25-16 Chunky road-sign arrow with tail, pointing up", "file": "B25-16.svg"}, {"id": "B25-17", "parent": "B25", "desc": "B25-17 Chunky road-sign arrow with flat tail, pointing right", "file": "B25-17.svg"}, {"id": "B25-18", "parent": "B25", "desc": "B25-18 Minimal chevron void only, no shaft", "file": "B25-18.svg"}, {"id": "B25-19", "parent": "B25", "desc": "B25-19 Double-headed arrow, up and right from center", "file": "B25-19.svg"}, {"id": "B25-20", "parent": "B25", "desc": "B25-20 Arrow breaking through squircle edge, partially outside", "file": "B25-20.svg"}, {"id": "E26-01", "parent": "E26", "desc": "E26-01 Convergent Triangles \u2014 Tighter gap, high tension vertical", "file": "E26-01.svg"}, {"id": "E26-02", "parent": "E26", "desc": "E26-02 Convergent Triangles \u2014 Wide gap, breathing tension vertical", "file": "E26-02.svg"}, {"id": "E26-03", "parent": "E26", "desc": "E26-03 Convergent Triangles \u2014 Almost touching, minimal gap vertical", "file": "E26-03.svg"}, {"id": "E26-04", "parent": "E26", "desc": "E26-04 Convergent Triangles \u2014 Both filled, large top small bottom", "file": "E26-04.svg"}, {"id": "E26-05", "parent": "E26", "desc": "E26-05 Convergent Triangles \u2014 Both filled, small top large bottom", "file": "E26-05.svg"}, {"id": "E26-06", "parent": "E26", "desc": "E26-06 Convergent Triangles \u2014 Rotated 45deg, diagonal convergence upper-left to lower-right", "file": "E26-06.svg"}, {"id": "E26-07", "parent": "E26", "desc": "E26-07 Convergent Triangles \u2014 Rotated 45deg, both filled, diagonal tension", "file": "E26-07.svg"}, {"id": "E26-08", "parent": "E26", "desc": "E26-08 Convergent Triangles \u2014 Horizontal convergence, left points right, right points left", "file": "E26-08.svg"}, {"id": "E26-09", "parent": "E26", "desc": "E26-09 Convergent Triangles \u2014 Horizontal convergence, both filled, tight gap", "file": "E26-09.svg"}, {"id": "E26-10", "parent": "E26", "desc": "E26-10 Convergent Triangles \u2014 Filled top + bold 8px stroke bottom, vertical", "file": "E26-10.svg"}, {"id": "E26-11", "parent": "E26", "desc": "E26-11 Convergent Triangles \u2014 Filled top + extra bold 10px stroke bottom, vertical", "file": "E26-11.svg"}, {"id": "E26-12", "parent": "E26", "desc": "E26-12 Convergent Triangles \u2014 Both filled, bottom offset right, dynamic tension", "file": "E26-12.svg"}, {"id": "E26-13", "parent": "E26", "desc": "E26-13 Convergent Triangles \u2014 Both filled, bottom offset left, asymmetric tension", "file": "E26-13.svg"}, {"id": "E26-14", "parent": "E26", "desc": "E26-14 Convergent Triangles \u2014 Tall narrow top, wide flat bottom, proportion contrast", "file": "E26-14.svg"}, {"id": "E26-15", "parent": "E26", "desc": "E26-15 Convergent Triangles \u2014 Wide flat top, tall narrow bottom, inverted proportion contrast", "file": "E26-15.svg"}, {"id": "E26-16", "parent": "E26", "desc": "E26-16 Convergent Triangles \u2014 Three triangles, two converging + small center in gap", "file": "E26-16.svg"}, {"id": "E26-17", "parent": "E26", "desc": "E26-17 Convergent Triangles \u2014 Diagonal tension, upper-right pointing down-left, lower-left pointing up-right", "file": "E26-17.svg"}, {"id": "E26-18", "parent": "E26", "desc": "E26-18 Convergent Triangles \u2014 Equilateral triangles, balanced proportions", "file": "E26-18.svg"}, {"id": "E26-19", "parent": "E26", "desc": "E26-19 Convergent Triangles \u2014 Almost interlocking, tips overlapping like teeth", "file": "E26-19.svg"}, {"id": "E26-20", "parent": "E26", "desc": "E26-20 Convergent Triangles \u2014 Solid triangle + thick outline triangle, converging at 30deg angle", "file": "E26-20.svg"}, {"id": "F06-01", "parent": "F06", "desc": "F06-01 Split Diamond \u2014 both halves filled, 6px gap", "file": "F06-01.svg"}, {"id": "F06-02", "parent": "F06", "desc": "F06-02 Split Diamond \u2014 both halves filled, 10px gap", "file": "F06-02.svg"}, {"id": "F06-03", "parent": "F06", "desc": "F06-03 Split Diamond \u2014 both halves filled, 14px gap", "file": "F06-03.svg"}, {"id": "F06-04", "parent": "F06", "desc": "F06-04 Split Diamond \u2014 top filled, bottom thick stroke 5px", "file": "F06-04.svg"}, {"id": "F06-05", "parent": "F06", "desc": "F06-05 Split Diamond \u2014 top filled, bottom ultra-thick stroke 8px", "file": "F06-05.svg"}, {"id": "F06-06", "parent": "F06", "desc": "F06-06 Split Diamond \u2014 top stroke, bottom filled (reversed duality)", "file": "F06-06.svg"}, {"id": "F06-07", "parent": "F06", "desc": "F06-07 Split Diamond \u2014 top thick stroke, bottom filled (reversed, heavier)", "file": "F06-07.svg"}, {"id": "F06-08", "parent": "F06", "desc": "F06-08 Split Diamond \u2014 both stroke, top thin 1.5px bottom thick 5px", "file": "F06-08.svg"}, {"id": "F06-09", "parent": "F06", "desc": "F06-09 Split Diamond \u2014 both stroke, top thick 5px bottom thin 1.5px (reversed weight)", "file": "F06-09.svg"}, {"id": "F06-10", "parent": "F06", "desc": "F06-10 Split Diamond \u2014 vertical split, left filled right stroke", "file": "F06-10.svg"}, {"id": "F06-11", "parent": "F06", "desc": "F06-11 Split Diamond \u2014 vertical split, left stroke right filled", "file": "F06-11.svg"}, {"id": "F06-12", "parent": "F06", "desc": "F06-12 Split Diamond \u2014 diagonal split, upper-left filled lower-right stroke", "file": "F06-12.svg"}, {"id": "F06-13", "parent": "F06", "desc": "F06-13 Split Diamond \u2014 diagonal split, upper-left stroke lower-right filled", "file": "F06-13.svg"}, {"id": "F06-14", "parent": "F06", "desc": "F06-14 Split Diamond \u2014 top filled large, bottom filled small (asymmetric)", "file": "F06-14.svg"}, {"id": "F06-15", "parent": "F06", "desc": "F06-15 Split Diamond \u2014 top small stroke, bottom large filled (emerging from below)", "file": "F06-15.svg"}, {"id": "F06-16", "parent": "F06", "desc": "F06-16 Split Diamond \u2014 three-way split, top filled mid stroke bottom thin stroke", "file": "F06-16.svg"}, {"id": "F06-17", "parent": "F06", "desc": "F06-17 Split Diamond \u2014 three-way split, top thin stroke mid filled bottom thick stroke", "file": "F06-17.svg"}, {"id": "F06-18", "parent": "F06", "desc": "F06-18 Split Diamond \u2014 filled diamond with thin horizontal line through center (minimal split)", "file": "F06-18.svg"}, {"id": "F06-19", "parent": "F06", "desc": "F06-19 Split Diamond \u2014 both halves filled, slightly offset horizontally", "file": "F06-19.svg"}, {"id": "F06-20", "parent": "F06", "desc": "F06-20 Split Diamond \u2014 ultra-bold, both halves thick filled with narrow 4px gap", "file": "F06-20.svg"}, {"id": "F20-01", "parent": "F20", "desc": "F20-01 Three bold chevrons pointing right, cascade thick to thin", "file": "F20-01.svg"}, {"id": "F20-02", "parent": "F20", "desc": "F20-02 Three chevrons pointing right, extra bold first, tight spacing", "file": "F20-02.svg"}, {"id": "F20-03", "parent": "F20", "desc": "F20-03 Three chevrons pointing right, wide spread, heavy weights", "file": "F20-03.svg"}, {"id": "F20-04", "parent": "F20", "desc": "F20-04 Four chevrons pointing UPWARD, cascade thick (bottom) to thin (top)", "file": "F20-04.svg"}, {"id": "F20-05", "parent": "F20", "desc": "F20-05 Three chevrons pointing UPWARD, bold cascade, centered", "file": "F20-05.svg"}, {"id": "F20-06", "parent": "F20", "desc": "F20-06 Three chevrons pointing UPWARD, extra bold, narrow angle", "file": "F20-06.svg"}, {"id": "F20-07", "parent": "F20", "desc": "F20-07 Three chevrons pointing UP-RIGHT at 45deg, cascade thick to thin", "file": "F20-07.svg"}, {"id": "F20-08", "parent": "F20", "desc": "F20-08 Three chevrons pointing UP-RIGHT at 45deg, bold, wider angle", "file": "F20-08.svg"}, {"id": "F20-09", "parent": "F20", "desc": "F20-09 Three chevrons pointing UP, all same weight, no cascade", "file": "F20-09.svg"}, {"id": "F20-10", "parent": "F20", "desc": "F20-10 Three chevrons pointing RIGHT, all same weight, no cascade", "file": "F20-10.svg"}, {"id": "F20-11", "parent": "F20", "desc": "F20-11 Reversed cascade pointing RIGHT \u2014 thin to thick (building momentum)", "file": "F20-11.svg"}, {"id": "F20-12", "parent": "F20", "desc": "F20-12 Reversed cascade pointing UPWARD \u2014 thin (bottom) to thick (top), building up", "file": "F20-12.svg"}, {"id": "F20-13", "parent": "F20", "desc": "F20-13 Filled solid chevron wedges pointing RIGHT, cascade large to small", "file": "F20-13.svg"}, {"id": "F20-14", "parent": "F20", "desc": "F20-14 Filled solid chevron wedges pointing RIGHT, two large one small, bold", "file": "F20-14.svg"}, {"id": "F20-15", "parent": "F20", "desc": "F20-15 Filled solid chevron wedges pointing UPWARD, cascade large (bottom) to small (top)", "file": "F20-15.svg"}, {"id": "F20-16", "parent": "F20", "desc": "F20-16 Filled solid chevron wedges pointing UPWARD, two bold plus one small", "file": "F20-16.svg"}, {"id": "F20-17", "parent": "F20", "desc": "F20-17 Ultra minimal \u2014 2 thick chevrons pointing RIGHT", "file": "F20-17.svg"}, {"id": "F20-18", "parent": "F20", "desc": "F20-18 Ultra minimal \u2014 2 thick chevrons pointing UPWARD", "file": "F20-18.svg"}, {"id": "F20-19", "parent": "F20", "desc": "F20-19 Four chevrons right with accelerating spacing \u2014 tight start, spreading out", "file": "F20-19.svg"}, {"id": "F20-20", "parent": "F20", "desc": "F20-20 Three chevrons pointing right contained in a circle frame", "file": "F20-20.svg"}, {"id": "G12-01", "parent": "G12", "desc": "G12-01 Reversed Weight \u2014 Bottom plane filled (foundation), middle medium stroke, top thin stroke", "file": "G12-01.svg"}, {"id": "G12-02", "parent": "G12", "desc": "G12-02 Reversed Weight Compact \u2014 Bottom filled thick, top hairline, tighter stacking", "file": "G12-02.svg"}, {"id": "G12-03", "parent": "G12", "desc": "G12-03 Reversed Weight Asymmetric \u2014 Bottom filled, middle offset right, top thin offset left", "file": "G12-03.svg"}, {"id": "G12-04", "parent": "G12", "desc": "G12-04 Two Planes Wide Gap \u2014 Filled bottom, stroke top, large vertical separation", "file": "G12-04.svg"}, {"id": "G12-05", "parent": "G12", "desc": "G12-05 Two Planes Wide Gap Reversed \u2014 Stroke bottom, filled top, breathing room", "file": "G12-05.svg"}, {"id": "G12-06", "parent": "G12", "desc": "G12-06 Scaled Planes \u2014 Small top plane, large bottom plane, medium middle", "file": "G12-06.svg"}, {"id": "G12-07", "parent": "G12", "desc": "G12-07 Inverted Scale \u2014 Large top plane, small bottom plane, telescoping down", "file": "G12-07.svg"}, {"id": "G12-08", "parent": "G12", "desc": "G12-08 Offset Drift Right \u2014 Planes shift progressively right, creating diagonal movement", "file": "G12-08.svg"}, {"id": "G12-09", "parent": "G12", "desc": "G12-09 Offset Cascade Left \u2014 Planes drift left on descent, tumbling/dynamic feel", "file": "G12-09.svg"}, {"id": "G12-10", "parent": "G12", "desc": "G12-10 Filled + Open Lines \u2014 Bottom plane filled, top is just two parallel lines (not closed)", "file": "G12-10.svg"}, {"id": "G12-11", "parent": "G12", "desc": "G12-11 Filled + Chevron Lines \u2014 Filled bottom plane, top expressed as two open chevrons", "file": "G12-11.svg"}, {"id": "G12-12", "parent": "G12", "desc": "G12-12 Split Planes \u2014 Each plane has a horizontal gap cut through its center", "file": "G12-12.svg"}, {"id": "G12-13", "parent": "G12", "desc": "G12-13 Split Planes Clean \u2014 Three planes each split at midpoint with clean vertical gap", "file": "G12-13.svg"}, {"id": "G12-14", "parent": "G12", "desc": "G12-14 Perspective Vanishing Point \u2014 Planes converge toward a vanishing point instead of isometric", "file": "G12-14.svg"}, {"id": "G12-15", "parent": "G12", "desc": "G12-15 Pillar Connection \u2014 Two planes connected by a vertical pillar element", "file": "G12-15.svg"}, {"id": "G12-16", "parent": "G12", "desc": "G12-16 Tilting Away \u2014 Bottom plane flat isometric, top plane tilted at different angle", "file": "G12-16.svg"}, {"id": "G12-17", "parent": "G12", "desc": "G12-17 Diverging Planes \u2014 Bottom plane normal, top plane angled opposite direction", "file": "G12-17.svg"}, {"id": "G12-18", "parent": "G12", "desc": "G12-18 Rotated Plane \u2014 Three planes, middle one rotated 90 degrees relative to top and bottom", "file": "G12-18.svg"}, {"id": "G12-19", "parent": "G12", "desc": "G12-19 Floating Element \u2014 Two isometric planes with a diamond floating above", "file": "G12-19.svg"}, {"id": "G12-20", "parent": "G12", "desc": "G12-20 Architectural Pair \u2014 One filled flat rectangle, one stroke rectangle at angle", "file": "G12-20.svg"}, {"id": "H15-01", "parent": "H15", "desc": "H15-01 Bold Brackets \u2014 stroke-width 5 brackets, stroke-width 3 cross", "file": "H15-01.svg"}, {"id": "H15-02", "parent": "H15", "desc": "H15-02 Extra Bold Brackets \u2014 stroke-width 6 brackets, stroke-width 3.5 cross", "file": "H15-02.svg"}, {"id": "H15-03", "parent": "H15", "desc": "H15-03 Heavy Brackets \u2014 stroke-width 4 brackets, stroke-width 4 cross, equal weight", "file": "H15-03.svg"}, {"id": "H15-04", "parent": "H15", "desc": "H15-04 Bold Brackets + Center Diamond Goal", "file": "H15-04.svg"}, {"id": "H15-05", "parent": "H15", "desc": "H15-05 Bold Brackets + Center Circle Goal", "file": "H15-05.svg"}, {"id": "H15-06", "parent": "H15", "desc": "H15-06 Bold Brackets + Center Star", "file": "H15-06.svg"}, {"id": "H15-07", "parent": "H15", "desc": "H15-07 Bold Brackets + Center Asterisk (6-spoke)", "file": "H15-07.svg"}, {"id": "H15-08", "parent": "H15", "desc": "H15-08 Filled Bracket Corners (solid L-shapes) + Thin Cross", "file": "H15-08.svg"}, {"id": "H15-09", "parent": "H15", "desc": "H15-09 Filled Bracket Corners (chunky solid L) + Thin Cross", "file": "H15-09.svg"}, {"id": "H15-10", "parent": "H15", "desc": "H15-10 Filled Bracket Corners + Filled Center Dot", "file": "H15-10.svg"}, {"id": "H15-11", "parent": "H15", "desc": "H15-11 Filled Bracket Corners + Filled Center Diamond", "file": "H15-11.svg"}, {"id": "H15-12", "parent": "H15", "desc": "H15-12 Tight Brackets (close to center) + Bold Cross, compact", "file": "H15-12.svg"}, {"id": "H15-13", "parent": "H15", "desc": "H15-13 Tight Brackets + Bold Cross + Center Dot, dense compact", "file": "H15-13.svg"}, {"id": "H15-14", "parent": "H15", "desc": "H15-14 Wide Brackets (far corners) + Bold Cross, expansive", "file": "H15-14.svg"}, {"id": "H15-15", "parent": "H15", "desc": "H15-15 Wide Brackets (far corners) + Bold Cross + Center Dot, expansive with goal", "file": "H15-15.svg"}, {"id": "H15-16", "parent": "H15", "desc": "H15-16 Asymmetric \u2014 3 stroke brackets + 1 filled bracket (progress indicator)", "file": "H15-16.svg"}, {"id": "H15-17", "parent": "H15", "desc": "H15-17 Double Brackets (nested L-shapes at each corner)", "file": "H15-17.svg"}, {"id": "H15-18", "parent": "H15", "desc": "H15-18 Brackets + Crosshair + Concentric Circle at Center", "file": "H15-18.svg"}, {"id": "H15-19", "parent": "H15", "desc": "H15-19 Brackets with Small Arrows at Tips Pointing Inward", "file": "H15-19.svg"}, {"id": "H15-20", "parent": "H15", "desc": "H15-20 Ultra-minimal \u2014 4 thick dots at corners + thin cross", "file": "H15-20.svg"}, {"id": "H20-01", "parent": "H20", "desc": "H20-01 Reversed weights \u2014 thick cardinal arms, thin diagonal arms", "file": "H20-01.svg"}, {"id": "H20-02", "parent": "H20", "desc": "H20-02 Reversed weights, longer diagonals \u2014 thick cardinal, thin diagonal reaching further", "file": "H20-02.svg"}, {"id": "H20-03", "parent": "H20", "desc": "H20-03 Reversed weights, shorter cardinal arms \u2014 thick stubby cardinals, thin short diagonals", "file": "H20-03.svg"}, {"id": "H20-04", "parent": "H20", "desc": "H20-04 Uniform weight, varied lengths \u2014 cardinal long, diagonal short", "file": "H20-04.svg"}, {"id": "H20-05", "parent": "H20", "desc": "H20-05 Uniform weight, extreme length contrast \u2014 very long cardinals, tiny diagonal stubs", "file": "H20-05.svg"}, {"id": "H20-06", "parent": "H20", "desc": "H20-06 Industrial \u2014 thin cardinal lines, thick diagonal rectangles", "file": "H20-06.svg"}, {"id": "H20-07", "parent": "H20", "desc": "H20-07 All bars industrial \u2014 cardinal as narrow filled rects, diagonal as wide filled rects", "file": "H20-07.svg"}, {"id": "H20-08", "parent": "H20", "desc": "H20-08 Center square anchor \u2014 original arms with small filled square at center", "file": "H20-08.svg"}, {"id": "H20-09", "parent": "H20", "desc": "H20-09 Center diamond anchor \u2014 original arms with rotated square diamond at center", "file": "H20-09.svg"}, {"id": "H20-10", "parent": "H20", "desc": "H20-10 Six arms \u2014 remove left and bottom-right diagonals, directional bias upward-right", "file": "H20-10.svg"}, {"id": "H20-11", "parent": "H20", "desc": "H20-11 Six arms asymmetric \u2014 3 cardinals (no bottom) + 3 diagonals, upward emphasis", "file": "H20-11.svg"}, {"id": "H20-12", "parent": "H20", "desc": "H20-12 Directional asymmetry \u2014 top arm thicker and longer, others thinner", "file": "H20-12.svg"}, {"id": "H20-13", "parent": "H20", "desc": "H20-13 Directional asymmetry \u2014 right arm longest/thickest, progressive weight decay", "file": "H20-13.svg"}, {"id": "H20-14", "parent": "H20", "desc": "H20-14 Tapered wedges \u2014 cardinal arms thick at center tapering to thin tips, radar feel", "file": "H20-14.svg"}, {"id": "H20-15", "parent": "H20", "desc": "H20-15 All tapered wedges \u2014 all 8 arms as narrow triangles, radar/compass feel", "file": "H20-15.svg"}, {"id": "H20-16", "parent": "H20", "desc": "H20-16 Donut void \u2014 arms with gap at center, no elements touch center point", "file": "H20-16.svg"}, {"id": "H20-17", "parent": "H20", "desc": "H20-17 Donut void with circle \u2014 arms radiate from ring, industrial gauge feel", "file": "H20-17.svg"}, {"id": "H20-18", "parent": "H20", "desc": "H20-18 Dashed arms \u2014 broken lines for calibration/technical feel", "file": "H20-18.svg"}, {"id": "H20-19", "parent": "H20", "desc": "H20-19 Mixed elements \u2014 2 thick filled arms (up/down) + 2 thin stroke arms (left/right) + 4 dots at diagonals", "file": "H20-19.svg"}, {"id": "H20-20", "parent": "H20", "desc": "H20-20 Rotated 22.5deg \u2014 breaks cardinal alignment, less religious feel", "file": "H20-20.svg"}, {"id": "T110-01", "parent": "T1-10", "desc": "T110-01 Concentric Rotated Squares \u2014 thick strokes, 8px outer, 6px inner", "file": "T110-01.svg"}, {"id": "T110-02", "parent": "T1-10", "desc": "T110-02 Concentric Rotated Squares \u2014 thick strokes, 8px outer, 6px inner, tighter inner", "file": "T110-02.svg"}, {"id": "T110-03", "parent": "T1-10", "desc": "T110-03 Outer filled solid, inner rotated as negative-space void", "file": "T110-03.svg"}, {"id": "T110-04", "parent": "T1-10", "desc": "T110-04 Outer filled solid, inner rotated void \u2014 larger inner diamond", "file": "T110-04.svg"}, {"id": "T110-05", "parent": "T1-10", "desc": "T110-05 Inner rotated square filled, outer square stroke", "file": "T110-05.svg"}, {"id": "T110-06", "parent": "T1-10", "desc": "T110-06 Inner rotated square filled solid, outer square heavy stroke", "file": "T110-06.svg"}, {"id": "T110-07", "parent": "T1-10", "desc": "T110-07 Both filled \u2014 outer solid square, inner rotated solid square overlapping (star corners)", "file": "T110-07.svg"}, {"id": "T110-08", "parent": "T1-10", "desc": "T110-08 Both filled \u2014 outer solid, inner rotated larger creating pronounced star shape", "file": "T110-08.svg"}, {"id": "T110-09", "parent": "T1-10", "desc": "T110-09 Ultra-thick strokes (10px+) \u2014 shapes almost merging", "file": "T110-09.svg"}, {"id": "T110-10", "parent": "T1-10", "desc": "T110-10 Ultra-thick strokes (14px outer, 12px inner) \u2014 nearly solid mass", "file": "T110-10.svg"}, {"id": "T110-11", "parent": "T1-10", "desc": "T110-11 Outer square + inner rotated square + center dot", "file": "T110-11.svg"}, {"id": "T110-12", "parent": "T1-10", "desc": "T110-12 Outer square + inner rotated square + center circle ring", "file": "T110-12.svg"}, {"id": "T110-13", "parent": "T1-10", "desc": "T110-13 Inner square rotated 22.5\u00b0 \u2014 subtler rotation, heavy strokes", "file": "T110-13.svg"}, {"id": "T110-14", "parent": "T1-10", "desc": "T110-14 Inner square rotated 22.5\u00b0 \u2014 filled inner, stroked outer", "file": "T110-14.svg"}, {"id": "T110-15", "parent": "T1-10", "desc": "T110-15 Inner rotated 45\u00b0 scaled so corners touch outer square edges", "file": "T110-15.svg"}, {"id": "T110-16", "parent": "T1-10", "desc": "T110-16 Inner rotated 45\u00b0 scaled so corners break through outer square", "file": "T110-16.svg"}, {"id": "T110-17", "parent": "T1-10", "desc": "T110-17 Three nested squares \u2014 outer 0\u00b0, middle 22.5\u00b0, inner 45\u00b0", "file": "T110-17.svg"}, {"id": "T110-18", "parent": "T1-10", "desc": "T110-18 Three nested squares \u2014 heavier, outer 0\u00b0, middle 22.5\u00b0, inner 45\u00b0", "file": "T110-18.svg"}, {"id": "T110-19", "parent": "T1-10", "desc": "T110-19 Seal/badge \u2014 outer filled square with inner rotated square carved out as thick stroke void", "file": "T110-19.svg"}, {"id": "T110-20", "parent": "T1-10", "desc": "T110-20 Both filled with gap \u2014 outer solid frame, inner solid diamond, clear gap between", "file": "T110-20.svg"}, {"id": "T212-01", "parent": "T2-12", "desc": "T212-01 Brackets + bold right arrow (thick shaft, large head)", "file": "T212-01.svg"}, {"id": "T212-02", "parent": "T2-12", "desc": "T212-02 Brackets + bold right arrow (filled triangle, no shaft)", "file": "T212-02.svg"}, {"id": "T212-03", "parent": "T2-12", "desc": "T212-03 Brackets + stroked right arrow (open arrowhead, thick shaft)", "file": "T212-03.svg"}, {"id": "T212-04", "parent": "T2-12", "desc": "T212-04 Brackets + bold upward arrow (growth, thick shaft + filled head)", "file": "T212-04.svg"}, {"id": "T212-05", "parent": "T2-12", "desc": "T212-05 Brackets + bold upward arrow (filled triangle, no shaft)", "file": "T212-05.svg"}, {"id": "T212-06", "parent": "T2-12", "desc": "T212-06 Brackets + 3 upward chevrons stacked vertically (ascending)", "file": "T212-06.svg"}, {"id": "T212-07", "parent": "T2-12", "desc": "T212-07 Brackets + 2 upward chevrons (diminishing weight, ascending)", "file": "T212-07.svg"}, {"id": "T212-08", "parent": "T2-12", "desc": "T212-08 Brackets + bold filled circle at center (the goal/target)", "file": "T212-08.svg"}, {"id": "T212-09", "parent": "T2-12", "desc": "T212-09 Brackets + bold filled diamond at center (the goal/target)", "file": "T212-09.svg"}, {"id": "T212-10", "parent": "T2-12", "desc": "T212-10 Brackets + 4 ascending bars (progress/growth chart)", "file": "T212-10.svg"}, {"id": "T212-11", "parent": "T2-12", "desc": "T212-11 Brackets + 3 ascending bars (wider bars, fewer steps)", "file": "T212-11.svg"}, {"id": "T212-12", "parent": "T2-12", "desc": "T212-12 Brackets + single large right chevron (one strong direction signal)", "file": "T212-12.svg"}, {"id": "T212-13", "parent": "T2-12", "desc": "T212-13 Brackets + single large upward chevron (one strong direction signal)", "file": "T212-13.svg"}, {"id": "T212-14", "parent": "T2-12", "desc": "T212-14 Tighter brackets (viewfinder) + bold right arrow", "file": "T212-14.svg"}, {"id": "T212-15", "parent": "T2-12", "desc": "T212-15 Tighter brackets (viewfinder) + bold upward arrow", "file": "T212-15.svg"}, {"id": "T212-16", "parent": "T2-12", "desc": "T212-16 Brackets + crosshair + small upward arrow at center", "file": "T212-16.svg"}, {"id": "T212-17", "parent": "T2-12", "desc": "T212-17 Filled solid L-shape brackets + single bold right chevron", "file": "T212-17.svg"}, {"id": "T212-18", "parent": "T2-12", "desc": "T212-18 Only 2 brackets (top-left, bottom-right) + bold diagonal arrow (progress)", "file": "T212-18.svg"}, {"id": "T212-19", "parent": "T2-12", "desc": "T212-19 Brackets + stacked horizontal bars inside (layers/foundation)", "file": "T212-19.svg"}, {"id": "T212-20", "parent": "T2-12", "desc": "T212-20 Brackets + B25-style arrow void (squircle arrow inside bracket frame)", "file": "T212-20.svg"}, {"id": "T502-01", "parent": "T5-02", "desc": "T502-01 Reversed weight \u2014 thick filled base, medium middle, thin stroke top", "file": "T502-01.svg"}, {"id": "T502-02", "parent": "T5-02", "desc": "T502-02 Reversed weight \u2014 heavy base, medium filled middle, thin filled top", "file": "T502-02.svg"}, {"id": "T502-03", "parent": "T5-02", "desc": "T502-03 Reversed weight \u2014 massive base, medium stroke middle, hairline stroke top", "file": "T502-03.svg"}, {"id": "T502-04", "parent": "T5-02", "desc": "T502-04 Growing detail \u2014 thick base, medium middle, thin stroke top, tiny dash crown", "file": "T502-04.svg"}, {"id": "T502-05", "parent": "T5-02", "desc": "T502-05 Growing detail \u2014 thick base, medium filled, thin filled, two tiny dashes at top", "file": "T502-05.svg"}, {"id": "T502-06", "parent": "T5-02", "desc": "T502-06 Four bars \u2014 bottom thickest, each progressively thinner going up", "file": "T502-06.svg"}, {"id": "T502-07", "parent": "T5-02", "desc": "T502-07 Four bars \u2014 thick filled base, tapering to thin stroke top", "file": "T502-07.svg"}, {"id": "T502-08", "parent": "T5-02", "desc": "T502-08 Pyramid taper \u2014 wide thick base, narrower bars stacking up", "file": "T502-08.svg"}, {"id": "T502-09", "parent": "T5-02", "desc": "T502-09 Pyramid taper \u2014 wide filled base, narrowing upward, stroke at top", "file": "T502-09.svg"}, {"id": "T502-10", "parent": "T5-02", "desc": "T502-10 Stepped pyramid \u2014 base wide and thick, each level shorter and thinner", "file": "T502-10.svg"}, {"id": "T502-11", "parent": "T5-02", "desc": "T502-11 Stepped pyramid \u2014 4 levels, each shorter in width and thinner in height", "file": "T502-11.svg"}, {"id": "T502-12", "parent": "T5-02", "desc": "T502-12 Three bars with upward chevron \u2014 strong base, medium mid, thin top with chevron emerging", "file": "T502-12.svg"}, {"id": "T502-13", "parent": "T5-02", "desc": "T502-13 Three bars with small arrow \u2014 thick base, medium mid, stroke top with upward arrow", "file": "T502-13.svg"}, {"id": "T502-14", "parent": "T5-02", "desc": "T502-14 Accelerating gaps \u2014 bars with increasing spacing going up", "file": "T502-14.svg"}, {"id": "T502-15", "parent": "T5-02", "desc": "T502-15 Accelerating gaps \u2014 4 bars, gaps grow exponentially going up", "file": "T502-15.svg"}, {"id": "T502-16", "parent": "T5-02", "desc": "T502-16 Fanning out \u2014 thick base bar with thin bars spreading apart above", "file": "T502-16.svg"}, {"id": "T502-17", "parent": "T5-02", "desc": "T502-17 Many inputs one output \u2014 5 thin bars at bottom consolidating into 1 thick bar at top", "file": "T502-17.svg"}, {"id": "T502-18", "parent": "T5-02", "desc": "T502-18 Goal at top \u2014 thick base, two thin bars, small filled diamond crown", "file": "T502-18.svg"}, {"id": "T502-19", "parent": "T5-02", "desc": "T502-19 Diagonal growth \u2014 bars shift right going up, showing momentum", "file": "T502-19.svg"}, {"id": "T502-20", "parent": "T5-02", "desc": "T502-20 State change \u2014 bottom filled, middle dashed, top solid thin", "file": "T502-20.svg"}, {"id": "T509-01", "parent": "T5-09", "desc": "T509-01 Leftward Perspective Bolder, Thicker Stroke", "file": "T509-01.svg"}, {"id": "T509-02", "parent": "T5-09", "desc": "T509-02 Leftward Perspective Tighter Gap, Heavy Stroke", "file": "T509-02.svg"}, {"id": "T509-03", "parent": "T5-09", "desc": "T509-03 Rightward Perspective, Filled Top", "file": "T509-03.svg"}, {"id": "T509-04", "parent": "T5-09", "desc": "T509-04 Rightward Perspective, Stroke Top Filled Bottom", "file": "T509-04.svg"}, {"id": "T509-05", "parent": "T5-09", "desc": "T509-05 Top-Down Perspective, Planes Receding Downward", "file": "T509-05.svg"}, {"id": "T509-06", "parent": "T5-09", "desc": "T509-06 Top-Down Perspective, Wider Planes Receding Down", "file": "T509-06.svg"}, {"id": "T509-07", "parent": "T5-09", "desc": "T509-07 Bottom-Up Perspective, Planes Receding Upward", "file": "T509-07.svg"}, {"id": "T509-08", "parent": "T5-09", "desc": "T509-08 Bottom-Up Perspective, Stroke Top Filled Bottom", "file": "T509-08.svg"}, {"id": "T509-09", "parent": "T5-09", "desc": "T509-09 Three Planes Leftward, Fill-Stroke-Fill", "file": "T509-09.svg"}, {"id": "T509-10", "parent": "T5-09", "desc": "T509-10 Three Planes Leftward, All Stroke Varying Weight", "file": "T509-10.svg"}, {"id": "T509-11", "parent": "T5-09", "desc": "T509-11 Rightward Perspective, Top Filled Bottom Stroke", "file": "T509-11.svg"}, {"id": "T509-12", "parent": "T5-09", "desc": "T509-12 Rightward Perspective, Top Filled Bottom Stroke, Tight Gap", "file": "T509-12.svg"}, {"id": "T509-13", "parent": "T5-09", "desc": "T509-13 Steep Leftward Perspective, Dramatic Angle", "file": "T509-13.svg"}, {"id": "T509-14", "parent": "T5-09", "desc": "T509-14 Steep Rightward Perspective, Dramatic Angle", "file": "T509-14.svg"}, {"id": "T509-15", "parent": "T5-09", "desc": "T509-15 Shallow Leftward Perspective, Subtle Wide Planes", "file": "T509-15.svg"}, {"id": "T509-16", "parent": "T5-09", "desc": "T509-16 Shallow Rightward Perspective, Subtle Wide Planes", "file": "T509-16.svg"}, {"id": "T509-17", "parent": "T5-09", "desc": "T509-17 Overlapping Planes, Shared Edge, No Gap", "file": "T509-17.svg"}, {"id": "T509-18", "parent": "T5-09", "desc": "T509-18 Two Planes With Thin Connecting Line", "file": "T509-18.svg"}, {"id": "T509-19", "parent": "T5-09", "desc": "T509-19 Different Widths, Narrow Top Wide Bottom", "file": "T509-19.svg"}, {"id": "T509-20", "parent": "T5-09", "desc": "T509-20 Three Planes Fanning From Shared Left Edge", "file": "T509-20.svg"}];
+const parents = {"B25": {"name": "Arrow Void", "rating": 4, "round": "R02"}, "H15": {"name": "Bracket Cross", "rating": 3, "round": "R02"}, "H20": {"name": "Asymmetric Rose", "rating": 2, "round": "R02"}, "F20": {"name": "Chevron Cascade", "rating": 4, "round": "R02"}, "T2-12": {"name": "Bracket Cascade", "rating": 3, "round": "R03"}, "E26": {"name": "Convergent Triangles", "rating": 4, "round": "R02"}, "F06": {"name": "Split Diamond", "rating": 4, "round": "R02"}, "G12": {"name": "Isometric Planes", "rating": 4, "round": "R02"}, "T5-02": {"name": "Stacked Slabs", "rating": 4, "round": "R03"}, "T5-09": {"name": "Perspective Planes", "rating": 3, "round": "R03"}, "T1-10": {"name": "Rotated Squares", "rating": 4, "round": "R03"}};
+const parentOrder = ["B25", "H15", "H20", "F20", "T2-12", "E26", "F06", "G12", "T5-02", "T5-09", "T1-10"];
+const originPaths = {"B25": "round-02/B25.svg", "H15": "round-02/H15.svg", "H20": "round-02/H20.svg", "F20": "round-02/F20.svg", "T2-12": "round-03/T2-12.svg", "E26": "round-02/E26.svg", "F06": "round-02/F06.svg", "G12": "round-02/G12.svg", "T5-02": "round-03/T5-02.svg", "T5-09": "round-03/T5-09.svg", "T1-10": "round-03/T1-10.svg"};
+
+let currentFilter = 'all';
+let filteredList = [...concepts];
+let lbIndex = -1;
+
+function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; } }
+function saveState(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); updateStatus(); }
+function getS(id) { const s = loadState(); return s[id] || { rating:0, comment:'', tags:[], shortlisted:false }; }
+function setS(id, d) { const s = loadState(); s[id] = { ...getS(id), ...d }; saveState(s); }
+
+function updateStatus() {
+  const s = loadState();
+  const reviewed = Object.values(s).filter(x => x.comment || x.rating > 0 || (x.tags && x.tags.length > 0) || x.shortlisted).length;
+  document.getElementById('status').textContent = reviewed + '/220 reviewed';
+  const sl = Object.entries(s).filter(([k,v]) => v.shortlisted).length;
+  const sc = document.getElementById('shortlist-count');
+  if (sc) sc.textContent = sl;
+}
+
+function showToast(m) {
+  const t = document.getElementById('toast'); t.textContent = m;
+  t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function buildExport() {
+  const s = loadState();
+  return concepts.map(c => {
+    const st = s[c.id] || { rating:0, comment:'', tags:[], shortlisted:false };
+    return { id: c.id, parent: c.parent, parentName: parents[c.parent]?.name || '', rating: st.rating, tags: st.tags||[], shortlisted: !!st.shortlisted, comment: st.comment||'' };
+  }).filter(c => c.rating > 0 || c.comment || c.tags.length > 0 || c.shortlisted);
+}
+
+function exportJSON() {
+  const d = buildExport(); if (!d.length) { showToast('Nothing yet'); return; }
+  const b = new Blob([JSON.stringify(d,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(b);
+  a.download = 'kurnik-r05-review.json'; a.click(); showToast('Exported '+d.length);
+}
+
+function copyJSON() {
+  const d = buildExport(); if (!d.length) { showToast('Nothing yet'); return; }
+  navigator.clipboard.writeText(JSON.stringify(d,null,2)).then(() => showToast('Copied'));
+}
+
+function clearAll() {
+  if (!confirm('Clear everything?')) return;
+  localStorage.removeItem(STORAGE_KEY); render(); showToast('Cleared');
+}
+
+function toggleShortlist(id) {
+  if (!id && lbIndex >= 0) id = filteredList[lbIndex].id;
+  if (!id) return;
+  const s = getS(id); setS(id, { shortlisted: !s.shortlisted });
+  render();
+  if (lbIndex >= 0) updateLightbox();
+}
+
+function render() {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  const state = loadState();
+
+  if (currentFilter === 'shortlist') {
+    filteredList = concepts.filter(c => (state[c.id] || {}).shortlisted);
+    const grid = document.createElement('div'); grid.className = 'grid';
+    grid.style.padding = '24px 48px';
+    filteredList.forEach((c,i) => grid.appendChild(makeCard(c,i,state)));
+    if (!filteredList.length) { content.innerHTML = '<p style="padding:48px;color:var(--text-dim)">No shortlisted variants yet.</p>'; return; }
+    content.appendChild(grid);
+  } else if (currentFilter === 'all') {
+    filteredList = [...concepts];
+    parentOrder.forEach(pid => {
+      const items = concepts.filter(c => c.parent === pid);
+      const p = parents[pid];
+      // Section header
+      const hdr = document.createElement('div'); hdr.className = 'section-header';
+      hdr.innerHTML = '<h2>' + pid + ' — ' + p.name + '</h2><span class="section-meta">' + p.round + ' / strength ' + p.rating + ' / ' + items.length + ' variants</span>';
+      content.appendChild(hdr);
+      // Origin
+      const orig = document.createElement('div'); orig.className = 'section-origin';
+      orig.innerHTML = '<div class="origin-card"><img src="' + originPaths[pid] + '" alt="' + pid + '"></div><span class="origin-label">Source: ' + pid + '</span>';
+      content.appendChild(orig);
+      // Grid
+      const grid = document.createElement('div'); grid.className = 'grid';
+      items.forEach(c => {
+        const gi = filteredList.indexOf(c);
+        grid.appendChild(makeCard(c, gi, state));
+      });
+      content.appendChild(grid);
+    });
+  } else {
+    filteredList = concepts.filter(c => c.parent === currentFilter);
+    const p = parents[currentFilter];
+    const hdr = document.createElement('div'); hdr.className = 'section-header';
+    hdr.innerHTML = '<h2>' + currentFilter + ' — ' + p.name + '</h2><span class="section-meta">' + p.round + ' / strength ' + p.rating + ' / ' + filteredList.length + ' variants</span>';
+    content.appendChild(hdr);
+    const orig = document.createElement('div'); orig.className = 'section-origin';
+    orig.innerHTML = '<div class="origin-card"><img src="' + originPaths[currentFilter] + '" alt="' + currentFilter + '"></div><span class="origin-label">Source: ' + currentFilter + '</span>';
+    content.appendChild(orig);
+    const grid = document.createElement('div'); grid.className = 'grid';
+    filteredList.forEach((c,i) => grid.appendChild(makeCard(c,i,state)));
+    content.appendChild(grid);
+  }
+  updateStatus();
+}
+
+function makeCard(c, idx, state) {
+  const s = state[c.id] || {};
+  const card = document.createElement('div');
+  card.className = 'card' + (s.shortlisted ? ' shortlisted' : '');
+  const hasReview = s.comment || s.rating > 0 || (s.tags && s.tags.length > 0);
+  if (hasReview) card.style.borderLeftWidth = '3px';
+  if (hasReview) card.style.borderLeftColor = 'var(--amber)';
+  // Clean desc: strip the ID prefix if present
+  let desc = c.desc.replace(/^[A-Z0-9]+-\d+\s+/i, '');
+  card.innerHTML = `
+    <div class="preview"><img src="round-05/${c.file}" alt="${c.id}"></div>
+    <div class="card-id">${c.id}</div>
+    <div class="card-desc">${desc}</div>
+    <button class="star-btn" onclick="event.stopPropagation();toggleShortlist('${c.id}')">${s.shortlisted ? '\u2605' : '\u2606'}</button>
+  `;
+  card.addEventListener('click', () => openLightbox(idx));
+  return card;
+}
+
+function openLightbox(idx) {
+  lbIndex = idx; updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  lbIndex = -1;
+}
+
+function navLightbox(dir) {
+  if (lbIndex < 0) return;
+  lbIndex = (lbIndex + dir + filteredList.length) % filteredList.length;
+  updateLightbox();
+}
+
+function updateLightbox() {
+  if (lbIndex < 0 || !filteredList[lbIndex]) return;
+  const c = filteredList[lbIndex];
+  const s = getS(c.id);
+  document.getElementById('lb-svg').innerHTML = '<img src="round-05/' + c.file + '" alt="' + c.id + '">';
+  let desc = c.desc.replace(/^[A-Z0-9]+-\d+\s+/i, '');
+  document.getElementById('lb-id').textContent = c.id + ' (' + c.parent + ' — ' + (parents[c.parent]?.name||'') + ')';
+  document.getElementById('lb-desc').textContent = desc;
+  document.getElementById('lb-star-btn').innerHTML = (s.shortlisted ? '\u2605' : '\u2606') + ' Shortlist';
+  // Rating
+  const rh = document.getElementById('lb-rating');
+  rh.innerHTML = [1,2,3,4,5].map(n => '<div class="rating-dot ' + (s.rating===n?'active':'') + '" onclick="setLbRating(' + n + ')">' + n + '</div>').join('');
+  // Tags
+  const th = document.getElementById('lb-tags');
+  th.innerHTML = TAGS.map(t => '<button class="ltag ' + ((s.tags||[]).includes(t)?'active':'') + '" onclick="toggleLbTag(\'' + t + '\')">' + t + '</button>').join('');
+  // Comment
+  const cm = document.getElementById('lb-comment');
+  cm.value = s.comment || '';
+  cm.oninput = () => { clearTimeout(cm._t); cm._t = setTimeout(() => setS(c.id, {comment: cm.value}), 300); };
+}
+
+function setLbRating(n) {
+  const c = filteredList[lbIndex]; if (!c) return;
+  const s = getS(c.id); const v = s.rating === n ? 0 : n;
+  setS(c.id, {rating: v}); updateLightbox(); render();
+}
+
+function toggleLbTag(t) {
+  const c = filteredList[lbIndex]; if (!c) return;
+  const s = getS(c.id); const tags = s.tags || [];
+  const idx = tags.indexOf(t);
+  if (idx >= 0) tags.splice(idx,1); else tags.push(t);
+  setS(c.id, {tags}); updateLightbox();
+}
+
+// Tab clicks
+document.getElementById('tabs').addEventListener('click', e => {
+  const tab = e.target.closest('.tab'); if (!tab) return;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  currentFilter = tab.dataset.filter;
+  render();
+});
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 's' && lbIndex >= 0) toggleShortlist();
+  if ((e.metaKey||e.ctrlKey) && e.key === 'e') { e.preventDefault(); exportJSON(); }
+});
+
+render();
+</script>
+</body>
+</html>

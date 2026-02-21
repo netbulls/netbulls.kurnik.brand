@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-05 Uniform weight, extreme length contrast — very long cardinals, tiny diagonal stubs -->
+  <line x1="50" y1="6" x2="50" y2="42" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="58" y1="50" x2="94" y2="50" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="50" y1="58" x2="50" y2="94" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="6" y1="50" x2="42" y2="50" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="42" y1="42" x2="45" y2="45" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="55" y1="45" x2="58" y2="42" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="55" y1="55" x2="58" y2="58" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="42" y1="58" x2="45" y2="55" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

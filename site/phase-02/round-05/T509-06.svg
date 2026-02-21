@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-06 Top-Down Perspective, Wider Planes Receding Down -->
+  <polygon points="20,32 40,32 54,68 34,68" fill="#d4840a"/>
+  <polygon points="46,32 66,32 80,68 60,68" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

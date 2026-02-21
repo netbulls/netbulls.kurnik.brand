@@ -1,0 +1,6 @@
+<!-- T5-10 Rising Pillars — thick horizontal foundation base with two thinner vertical bars rising from it -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="16" y="64" width="68" height="12" fill="#d4840a"/>
+  <rect x="28" y="24" width="10" height="40" fill="#d4840a"/>
+  <rect x="62" y="32" width="10" height="32" fill="#d4840a"/>
+</svg>

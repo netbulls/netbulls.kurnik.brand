@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T110-06 Inner rotated square filled solid, outer square heavy stroke -->
+  <rect x="10" y="10" width="80" height="80" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="22" y="22" width="56" height="56" fill="#d4840a" transform="rotate(45 50 50)"/>
+</svg>

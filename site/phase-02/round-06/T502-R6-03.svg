@@ -1,0 +1,7 @@
+<!-- T502-R6-03 Four levels like T502-08 but top bar is stroke only — aspiration vs foundation -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="16" y="66" width="68" height="14" fill="#d4840a"/>
+  <rect x="22" y="48" width="56" height="10" fill="#d4840a"/>
+  <rect x="28" y="34" width="44" height="7" fill="#d4840a"/>
+  <rect x="34" y="22" width="32" height="4" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

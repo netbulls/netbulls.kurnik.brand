@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T110-19 Seal/badge — outer filled square with inner rotated square carved out as thick stroke void -->
+  <defs>
+    <mask id="m19">
+      <rect x="0" y="0" width="100" height="100" fill="white"/>
+      <rect x="24" y="24" width="52" height="52" fill="none" stroke="black" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(45 50 50)"/>
+    </mask>
+  </defs>
+  <rect x="10" y="10" width="80" height="80" fill="#d4840a" mask="url(#m19)"/>
+</svg>

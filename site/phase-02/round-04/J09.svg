@@ -1,0 +1,7 @@
+<!-- J09 Bracket — two mirrored L-shapes that don't quite touch, tension in the gap -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M25 15 L25 50 L48 50" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M75 85 L75 50 L52 50" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M25 15 L45 15" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M75 85 L55 85" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

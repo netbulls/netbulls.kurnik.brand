@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-17 Diverging Planes — Bottom plane normal, top plane angled opposite direction -->
+<polygon points="50,54 76,68 50,82 24,68" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,36 74,50 50,64 26,50" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="44,18 20,32 44,46 68,32" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

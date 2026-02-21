@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-20 Architectural Pair — One filled flat rectangle, one stroke rectangle at angle -->
+<rect x="20" y="58" width="60" height="10" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,18 80,34 50,50 20,34" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

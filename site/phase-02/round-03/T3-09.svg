@@ -1,0 +1,7 @@
+<!-- T3-09 Breakout Arrow — Circular frame with bold arrow breaking through the right side. Direction breaking containment. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Circle frame (open on right) -->
+  <path d="M68,16.5 A38,38 0 1 0 68,83.5" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bold arrow breaking out right -->
+  <polygon points="54,24 90,50 54,76 54,60 38,60 38,40 54,40" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

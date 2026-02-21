@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-02 Three chevrons pointing right, extra bold first, tight spacing -->
+<polyline points="18,25 42,50 18,75" fill="none" stroke="#d4840a" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="40,30 58,50 40,70" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="58,36 74,50 58,64" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-13 Filled solid chevron wedges pointing RIGHT, cascade large to small -->
+<polygon points="18,24 42,50 18,76" fill="#d4840a"/>
+<polygon points="44,30 62,50 44,70" fill="#d4840a"/>
+<polygon points="64,37 78,50 64,63" fill="#d4840a"/>
+</svg>

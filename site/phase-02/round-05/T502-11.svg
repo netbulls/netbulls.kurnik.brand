@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-11 Stepped pyramid — 4 levels, each shorter in width and thinner in height -->
+  <rect x="12" y="68" width="76" height="14" fill="#d4840a"/>
+  <rect x="22" y="52" width="56" height="10" fill="#d4840a"/>
+  <rect x="32" y="38" width="36" height="7" fill="#d4840a"/>
+  <rect x="40" y="26" width="20" height="4" fill="#d4840a"/>
+</svg>

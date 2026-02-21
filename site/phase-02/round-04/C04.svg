@@ -1,0 +1,21 @@
+<!-- C04 Impossible Fork — three-prong Blivet, bold and clean -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Three prongs at top -->
+    <line x1="25" y1="18" x2="25" y2="55"/>
+    <line x1="50" y1="18" x2="50" y2="55"/>
+    <line x1="75" y1="18" x2="75" y2="55"/>
+    <!-- Two channels at bottom -->
+    <line x1="25" y1="55" x2="25" y2="82"/>
+    <line x1="75" y1="55" x2="75" y2="82"/>
+    <!-- Connecting bars that create the impossibility -->
+    <line x1="25" y1="55" x2="50" y2="55"/>
+    <line x1="50" y1="55" x2="75" y2="55"/>
+    <!-- Bottom connecting bar -->
+    <line x1="25" y1="82" x2="75" y2="82"/>
+  </g>
+  <!-- Impossible junction fills -->
+  <rect x="22" y="52" width="6" height="6" fill="#d4840a"/>
+  <rect x="47" y="52" width="6" height="6" fill="#d4840a"/>
+  <rect x="72" y="52" width="6" height="6" fill="#d4840a"/>
+</svg>

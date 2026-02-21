@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-12 Tight Brackets (close to center) + Bold Cross, compact -->
+  <path d="M28,40 L28,28 L40,28" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M60,28 L72,28 L72,40" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M72,60 L72,72 L60,72" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M40,72 L28,72 L28,60" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="22" y1="50" x2="78" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+  <line x1="50" y1="22" x2="50" y2="78" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+</svg>

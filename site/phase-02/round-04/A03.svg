@@ -1,0 +1,8 @@
+<!-- A03 Slash Stack — five diagonal lines fanning out in weight -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M18 8 L8 92" stroke="#d4840a" stroke-width="4" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M36 8 L26 92" stroke="#d4840a" stroke-width="6" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M54 8 L44 92" stroke="#d4840a" stroke-width="8" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M72 8 L62 92" stroke="#d4840a" stroke-width="10" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M92 8 L82 92" stroke="#d4840a" stroke-width="14" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

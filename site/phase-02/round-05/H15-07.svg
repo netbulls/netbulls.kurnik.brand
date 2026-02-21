@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-07 Bold Brackets + Center Asterisk (6-spoke) -->
+  <path d="M18,32 L18,18 L32,18" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M68,18 L82,18 L82,32" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M82,68 L82,82 L68,82" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M32,82 L18,82 L18,68" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <line x1="43" y1="38" x2="57" y2="62" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="57" y1="38" x2="43" y2="62" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt"/>
+</svg>

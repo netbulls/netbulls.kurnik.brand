@@ -1,0 +1,80 @@
+{
+  "group": "B25-R6",
+  "sourceConceptIds": ["B25-07", "B25-13"],
+  "sourceFeedback": {
+    "B25-07": "Make this even thicker. Ensure horizontal bars match the same thickness as vertical bars.",
+    "B25-13": "Rotate so the arrow points right instead of up."
+  },
+  "variants": [
+    {
+      "id": "B25-R6-01",
+      "file": "B25-R6-01.svg",
+      "description": "Right-turn arrow with thick equal-width bars (~22px), medium arrowhead",
+      "source": "B25-07",
+      "notes": "Thickened both horizontal and vertical segments to equal width. Medium-sized triangular arrowhead."
+    },
+    {
+      "id": "B25-R6-02",
+      "file": "B25-R6-02.svg",
+      "description": "Right-turn arrow with thick equal-width bars, large arrowhead",
+      "source": "B25-07",
+      "notes": "Same thick equal bars as 01, but with a significantly larger arrowhead extending further up and down."
+    },
+    {
+      "id": "B25-R6-03",
+      "file": "B25-R6-03.svg",
+      "description": "Right-turn arrow with thick equal-width bars, compact arrowhead",
+      "source": "B25-07",
+      "notes": "Same thick equal bars, compact arrowhead that's tighter and more proportional."
+    },
+    {
+      "id": "B25-R6-04",
+      "file": "B25-R6-04.svg",
+      "description": "Right-pointing arrow (B25-13 rotated 90 degrees clockwise), bold thick shaft",
+      "source": "B25-13",
+      "notes": "The original upward arrow rotated to point right. 20px shaft width, balanced proportions."
+    },
+    {
+      "id": "B25-R6-05",
+      "file": "B25-R6-05.svg",
+      "description": "Right-pointing arrow (B25-13 rotated 90 degrees clockwise), bolder with wider head",
+      "source": "B25-13",
+      "notes": "Same concept as 04 but with a wider arrowhead spread and 24px shaft. More aggressive proportions."
+    },
+    {
+      "id": "B25-R6-06",
+      "file": "B25-R6-06.svg",
+      "description": "Right-pointing arrow, medium shaft thickness (18px)",
+      "source": "B25-13",
+      "notes": "A medium-weight right-pointing arrow. Slightly more refined feel than 04-05."
+    },
+    {
+      "id": "B25-R6-07",
+      "file": "B25-R6-07.svg",
+      "description": "Right-pointing arrow, ultra-bold shaft (26px) with massive triangular head",
+      "source": "B25-13",
+      "notes": "Maximum boldness. 26px shaft fills most of the vertical space, arrowhead reaches near edge of squircle."
+    },
+    {
+      "id": "B25-R6-08",
+      "file": "B25-R6-08.svg",
+      "description": "Right-turn arrow (L-shape), ultra thick and chunky, nearly fills the squircle",
+      "source": "B25-07",
+      "notes": "Pushed the right-turn concept to maximum size. 26px bars, arrowhead extends to edges. Chunky, assertive feel."
+    },
+    {
+      "id": "B25-R6-09",
+      "file": "B25-R6-09.svg",
+      "description": "Diagonal arrow pointing upper-right, thick shaft",
+      "source": "B25-07/B25-13 hybrid",
+      "notes": "45-degree diagonal arrow. Combines the directional energy of both sources. Bold rectangular shaft on the diagonal."
+    },
+    {
+      "id": "B25-R6-10",
+      "file": "B25-R6-10.svg",
+      "description": "Right chevron (no shaft), very bold",
+      "source": "B25-13 derivative",
+      "notes": "Pure directional mark. No shaft, just a thick right-pointing chevron/caret shape cut out of the squircle."
+    }
+  ]
+}

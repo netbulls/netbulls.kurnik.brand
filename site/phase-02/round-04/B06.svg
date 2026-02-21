@@ -1,0 +1,5 @@
+<!-- B06 Bracket Lock — two mirrored brackets with teeth engaged -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M16 12 L44 12 L44 30 L32 30 L32 48 L44 48 L44 70 L16 70 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M84 30 L56 30 L56 52 L68 52 L68 70 L56 70 L56 88 L84 88 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

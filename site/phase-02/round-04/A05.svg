@@ -1,0 +1,11 @@
+<!-- A05 Shattered — bold slash splitting a circle into two halves -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <clipPath id="a05-left">
+    <path d="M0 0 L60 0 L40 100 L0 100 Z"/>
+  </clipPath>
+  <clipPath id="a05-right">
+    <path d="M60 0 L100 0 L100 100 L40 100 Z"/>
+  </clipPath>
+  <circle cx="46" cy="50" r="34" stroke="#d4840a" stroke-width="6" fill="none" clip-path="url(#a05-left)"/>
+  <circle cx="54" cy="50" r="34" stroke="#d4840a" stroke-width="6" fill="none" clip-path="url(#a05-right)"/>
+</svg>

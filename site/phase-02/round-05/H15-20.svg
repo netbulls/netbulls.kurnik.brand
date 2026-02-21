@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-20 Ultra-minimal — 4 thick dots at corners + thin cross -->
+  <circle cx="18" cy="18" r="5" fill="#d4840a"/>
+  <circle cx="82" cy="18" r="5" fill="#d4840a"/>
+  <circle cx="82" cy="82" r="5" fill="#d4840a"/>
+  <circle cx="18" cy="82" r="5" fill="#d4840a"/>
+  <line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

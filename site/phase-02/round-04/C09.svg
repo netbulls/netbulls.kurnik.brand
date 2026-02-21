@@ -1,0 +1,17 @@
+<!-- C09 Paradox Diamond — isometric diamond with contradictory faces -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="none" stroke="#d4840a" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Outer diamond -->
+    <polygon points="50,8 92,50 50,92 8,50" stroke-width="5"/>
+    <!-- Inner diamond rotated — creates impossible intersection -->
+    <polygon points="50,22 78,50 50,78 22,50" stroke-width="5"/>
+    <!-- Contradictory depth lines -->
+    <line x1="50" y1="8" x2="50" y2="22" stroke-width="5"/>
+    <line x1="92" y1="50" x2="78" y2="50" stroke-width="5"/>
+    <line x1="50" y1="92" x2="50" y2="78" stroke-width="5"/>
+    <line x1="8" y1="50" x2="22" y2="50" stroke-width="5"/>
+  </g>
+  <!-- Impossible face fills — opposing faces both appear "front" -->
+  <polygon points="50,22 78,50 50,50" fill="#d4840a" opacity="1"/>
+  <polygon points="50,50 22,50 50,78" fill="#d4840a" opacity="1"/>
+</svg>

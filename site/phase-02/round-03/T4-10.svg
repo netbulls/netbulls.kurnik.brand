@@ -1,0 +1,5 @@
+<!-- T4-10 Hourglass Nexus — two triangles meeting apex-to-apex, tension at center point -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="22,16 78,16 50,50" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="22,84 78,84 50,50" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

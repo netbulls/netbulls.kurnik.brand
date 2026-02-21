@@ -1,0 +1,6 @@
+<!-- T110-R6-03 Outer filled square, inner rotated 45deg thick stroke -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="10" y="10" width="80" height="80" fill="#d4840a"/>
+  <rect x="28" y="28" width="44" height="44" fill="#0e0c0a" transform="rotate(45 50 50)"/>
+  <rect x="28" y="28" width="44" height="44" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(45 50 50)"/>
+</svg>

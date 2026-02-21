@@ -1,0 +1,9 @@
+<!-- T212-R6-01 Bolder brackets (7px) + bolder arrow shaft (8px) + bigger arrowhead -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polyline points="20,36 20,20 36,20" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="64,20 80,20 80,36" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="20,64 20,80 36,80" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="64,80 80,80 80,64" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="30" y1="50" x2="56" y2="50" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+  <polygon points="54,37 72,50 54,63" fill="#d4840a"/>
+</svg>

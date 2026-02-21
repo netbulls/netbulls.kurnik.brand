@@ -1,0 +1,6 @@
+<!-- I01 Slingshot — tight elliptical orbit with dense core -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="8" fill="#d4840a"/>
+  <ellipse cx="50" cy="50" rx="38" ry="18" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(-30 50 50)"/>
+  <ellipse cx="50" cy="50" rx="38" ry="18" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(30 50 50)"/>
+</svg>

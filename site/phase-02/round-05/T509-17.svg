@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-17 Overlapping Planes, Shared Edge, No Gap -->
+  <polygon points="36,22 64,32 64,52 36,42" fill="#d4840a"/>
+  <polygon points="36,42 64,52 64,72 36,62" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

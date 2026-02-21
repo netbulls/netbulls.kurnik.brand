@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-20 State change — bottom filled, middle dashed, top solid thin -->
+  <rect x="20" y="66" width="60" height="14" fill="#d4840a"/>
+  <line x1="20" y1="50" x2="26" y2="50" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+  <line x1="30" y1="50" x2="36" y2="50" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+  <line x1="40" y1="50" x2="46" y2="50" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+  <line x1="50" y1="50" x2="56" y2="50" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+  <line x1="60" y1="50" x2="66" y2="50" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+  <line x1="70" y1="50" x2="76" y2="50" stroke="#d4840a" stroke-width="6" stroke-linecap="butt"/>
+  <rect x="20" y="32" width="60" height="4" fill="#d4840a"/>
+</svg>

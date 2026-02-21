@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T110-14 Inner square rotated 22.5° — filled inner, stroked outer -->
+  <rect x="10" y="10" width="80" height="80" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="24" y="24" width="52" height="52" fill="#d4840a" transform="rotate(22.5 50 50)"/>
+</svg>

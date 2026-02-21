@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-14 Wide Brackets (far corners) + Bold Cross, expansive -->
+  <path d="M8,28 L8,8 L28,8" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M72,8 L92,8 L92,28" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M92,72 L92,92 L72,92" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M28,92 L8,92 L8,72" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+</svg>

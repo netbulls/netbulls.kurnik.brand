@@ -1,0 +1,17 @@
+<!-- T2-12 Bracket Cascade — four corner brackets + 3 chevrons cascading through center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Top-left bracket -->
+  <polyline points="10,28 10,10 28,10" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Top-right bracket -->
+  <polyline points="72,10 90,10 90,28" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom-left bracket -->
+  <polyline points="10,72 10,90 28,90" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom-right bracket -->
+  <polyline points="72,90 90,90 90,72" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Chevron 1 (left, thickest) -->
+  <polyline points="30,34 42,50 30,66" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Chevron 2 (mid) -->
+  <polyline points="44,37 55,50 44,63" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Chevron 3 (right, thinnest) -->
+  <polyline points="58,40 67,50 58,60" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

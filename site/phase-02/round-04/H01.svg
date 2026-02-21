@@ -1,0 +1,7 @@
+<!-- H01 Shattered Square — square broken into four drifting fragments -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="15,18 45,18 45,48 15,48" fill="#d4840a"/>
+  <polygon points="55,15 85,15 85,45 55,45" fill="#d4840a"/>
+  <polygon points="18,55 48,55 48,85 18,85" fill="#d4840a"/>
+  <polygon points="58,58 88,58 88,88 58,88" fill="#d4840a"/>
+</svg>

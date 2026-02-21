@@ -1,0 +1,11 @@
+<!-- T2-02 Inward Chevrons — four small chevrons pointing inward from cardinal directions -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left chevron pointing right -->
+  <polyline points="12,38 28,50 12,62" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Right chevron pointing left -->
+  <polyline points="88,38 72,50 88,62" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Top chevron pointing down -->
+  <polyline points="38,12 50,28 62,12" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom chevron pointing up -->
+  <polyline points="38,88 50,72 62,88" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

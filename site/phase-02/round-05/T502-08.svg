@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-08 Pyramid taper — wide thick base, narrower bars stacking up -->
+  <rect x="16" y="66" width="68" height="14" fill="#d4840a"/>
+  <rect x="22" y="48" width="56" height="10" fill="#d4840a"/>
+  <rect x="28" y="34" width="44" height="7" fill="#d4840a"/>
+  <rect x="34" y="22" width="32" height="4" fill="#d4840a"/>
+</svg>

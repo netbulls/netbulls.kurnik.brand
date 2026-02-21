@@ -1,0 +1,6 @@
+<!-- T5-06 Pillared Bridge — two thick vertical pillars connected by thin horizontal beam at top -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="22" y="22" width="12" height="56" fill="#d4840a"/>
+  <rect x="66" y="22" width="12" height="56" fill="#d4840a"/>
+  <rect x="22" y="22" width="56" height="5" fill="#d4840a"/>
+</svg>

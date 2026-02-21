@@ -1,0 +1,6 @@
+<!-- D07 Press Mark — two heavy overlapping squares, offset -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="10" y="10" width="55" height="55" fill="#d4840a" opacity="1"/>
+  <rect x="35" y="35" width="55" height="55" fill="#d4840a" opacity="1"/>
+  <rect x="35" y="35" width="30" height="30" fill="none" stroke="#0e0c0a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

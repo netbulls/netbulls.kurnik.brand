@@ -1,0 +1,7 @@
+<!-- T3-04 Nested Arrows — Outer arrow outline, inner arrow filled. Direction with depth. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer arrow outline -->
+  <polygon points="58,10 92,50 58,90 58,66 10,66 10,34 58,34" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Inner arrow filled -->
+  <polygon points="56,28 76,50 56,72 56,58 28,58 28,42 56,42" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

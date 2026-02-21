@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-09 Filled Bracket Corners (chunky solid L) + Thin Cross -->
+  <polygon points="12,12 36,12 36,18 18,18 18,36 12,36" fill="#d4840a"/>
+  <polygon points="64,12 88,12 88,36 82,36 82,18 64,18" fill="#d4840a"/>
+  <polygon points="82,64 88,64 88,88 64,88 64,82 82,82" fill="#d4840a"/>
+  <polygon points="12,64 18,64 18,82 36,82 36,88 12,88" fill="#d4840a"/>
+  <line x1="32" y1="50" x2="68" y2="50" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+  <line x1="50" y1="32" x2="50" y2="68" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt"/>
+</svg>

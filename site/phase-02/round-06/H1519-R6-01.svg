@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- H1519-R6-01 Bolder arrows (1.5x), bracket stroke 6, cross stroke 3.5 -->
+<path d="M18,32 L18,18 L32,18" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="32,12 32,24 41,18" fill="#d4840a"/>
+<polygon points="12,32 24,32 18,41" fill="#d4840a"/>
+<path d="M68,18 L82,18 L82,32" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="68,12 68,24 59,18" fill="#d4840a"/>
+<polygon points="76,32 88,32 82,41" fill="#d4840a"/>
+<path d="M82,68 L82,82 L68,82" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="76,68 88,68 82,59" fill="#d4840a"/>
+<polygon points="68,76 68,88 59,82" fill="#d4840a"/>
+<path d="M32,82 L18,82 L18,68" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="32,76 32,88 41,82" fill="#d4840a"/>
+<polygon points="12,68 24,68 18,59" fill="#d4840a"/>
+<line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+<line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+</svg>

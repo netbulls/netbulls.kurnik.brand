@@ -1,0 +1,20 @@
+<!-- C08 Impossible Pillar — two pillars that merge into three, depth contradiction -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="#d4840a" stroke="none">
+    <!-- Left pillar -->
+    <rect x="20" y="14" width="12" height="72"/>
+    <!-- Right pillar -->
+    <rect x="68" y="14" width="12" height="72"/>
+    <!-- Middle pillar — appears only in the middle zone -->
+    <rect x="44" y="32" width="12" height="36"/>
+    <!-- Top crossbar — connects two pillars -->
+    <rect x="20" y="14" width="60" height="8"/>
+    <!-- Bottom crossbar — connects three pillars impossibly -->
+    <rect x="20" y="78" width="60" height="8"/>
+    <!-- Impossible connecting shelves -->
+    <rect x="32" y="32" width="12" height="6"/>
+    <rect x="56" y="32" width="12" height="6"/>
+    <rect x="32" y="62" width="12" height="6"/>
+    <rect x="56" y="62" width="12" height="6"/>
+  </g>
+</svg>

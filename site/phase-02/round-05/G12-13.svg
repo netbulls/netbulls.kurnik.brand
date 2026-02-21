@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-13 Split Planes Clean — Three planes each split at midpoint with clean vertical gap -->
+<path d="M26,64 L48,50 L48,57 L26,71 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,50 L74,64 L74,71 L52,57 Z" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M26,46 L48,32 L48,39 L26,53 Z" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,32 L74,46 L74,53 L52,39 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M26,28 L48,14 L48,21 L26,35 Z" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,14 L74,28 L74,35 L52,21 Z" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

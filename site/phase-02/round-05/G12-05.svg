@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-05 Two Planes Wide Gap Reversed — Stroke bottom, filled top, breathing room -->
+<polygon points="50,56 78,72 50,88 22,72" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,12 78,28 50,44 22,28" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

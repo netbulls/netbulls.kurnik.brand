@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F06-16 Split Diamond — three-way split, top filled mid stroke bottom thin stroke -->
+<polygon points="50,12 63,33 50,36 37,33" fill="#d4840a"/>
+<polygon points="35,42 50,39 65,42 50,60" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="33,66 50,63 67,66 50,88" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

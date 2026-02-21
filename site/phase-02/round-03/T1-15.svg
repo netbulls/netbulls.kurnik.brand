@@ -1,0 +1,9 @@
+<!-- T1-15 Dual Chevron Bar — two opposing V-brackets (top + bottom) with horizontal bar through center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Top V-bracket pointing down -->
+  <polygon points="32,10 50,38 68,10" fill="#d4840a"/>
+  <!-- Bottom V-bracket pointing up -->
+  <polygon points="32,90 50,62 68,90" fill="#d4840a"/>
+  <!-- Horizontal bar through center -->
+  <rect x="8" y="46" width="84" height="8" fill="#d4840a"/>
+</svg>

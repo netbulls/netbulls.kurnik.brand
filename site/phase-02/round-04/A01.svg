@@ -1,0 +1,6 @@
+<!-- A01 Triple Slash — three bold parallel diagonal cuts -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30 10 L10 90" stroke="#d4840a" stroke-width="10" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M55 10 L35 90" stroke="#d4840a" stroke-width="10" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M80 10 L60 90" stroke="#d4840a" stroke-width="10" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

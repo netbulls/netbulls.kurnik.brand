@@ -1,0 +1,4 @@
+<!-- T1-04 Punched Plus — solid plus sign with center square punched out (negative space target) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M40,8 L60,8 L60,40 L92,40 L92,60 L60,60 L60,92 L40,92 L40,60 L8,60 L8,40 L40,40 Z M44,44 L44,56 L56,56 L56,44 Z" fill="#d4840a" fill-rule="evenodd"/>
+</svg>

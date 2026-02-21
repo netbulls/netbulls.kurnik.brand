@@ -1,0 +1,8 @@
+<!-- B08 Zipper — alternating teeth from left and right -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M14 14 L48 14 L48 30 L14 30 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M52 30 L86 30 L86 46 L52 46 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M14 46 L48 46 L48 62 L14 62 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M52 62 L86 62 L86 78 L52 78 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="46" y="14" width="8" height="64" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

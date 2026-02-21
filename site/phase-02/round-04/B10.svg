@@ -1,0 +1,5 @@
+<!-- B10 Shackle — two angular U-bolts interlocked -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M18 18 L18 60 L40 60 L40 40 L60 40 L60 18 Z" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M82 82 L82 40 L60 40 L60 60 L40 60 L40 82 Z" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

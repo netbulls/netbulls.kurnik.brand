@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- H1519-R6-07 Filled L-brackets (polygon) + bold arrow tips + cross -->
+<polygon points="14,14 36,14 36,22 22,22 22,36 14,36" fill="#d4840a"/>
+<polygon points="36,10 36,26 48,18" fill="#d4840a"/>
+<polygon points="10,36 26,36 18,48" fill="#d4840a"/>
+<polygon points="64,14 86,14 86,36 78,36 78,22 64,22" fill="#d4840a"/>
+<polygon points="64,10 64,26 52,18" fill="#d4840a"/>
+<polygon points="74,36 90,36 82,48" fill="#d4840a"/>
+<polygon points="86,64 86,86 64,86 64,78 78,78 78,64" fill="#d4840a"/>
+<polygon points="74,64 90,64 82,52" fill="#d4840a"/>
+<polygon points="64,74 64,90 52,82" fill="#d4840a"/>
+<polygon points="14,64 22,64 22,78 36,78 36,86 14,86" fill="#d4840a"/>
+<polygon points="36,74 36,90 48,82" fill="#d4840a"/>
+<polygon points="10,64 26,64 18,52" fill="#d4840a"/>
+<line x1="30" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+<line x1="50" y1="30" x2="50" y2="70" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt"/>
+</svg>

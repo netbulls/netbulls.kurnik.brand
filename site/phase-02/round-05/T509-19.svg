@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-19 Different Widths, Narrow Top Wide Bottom -->
+  <polygon points="40,22 60,28 60,42 40,36" fill="#d4840a"/>
+  <polygon points="30,50 70,62 70,80 30,68" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

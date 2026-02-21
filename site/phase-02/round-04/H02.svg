@@ -1,0 +1,6 @@
+<!-- H02 Fractured Circle — circle split into three arcing shards -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50,12 A38,38 0 0,1 83,62 L50,50 Z" fill="#d4840a"/>
+  <path d="M83,62 A38,38 0 0,1 22,72 L50,50 Z" fill="#d4840a" transform="translate(3,4)"/>
+  <path d="M22,72 A38,38 0 0,1 50,12 L50,50 Z" fill="#d4840a" transform="translate(-5,2)"/>
+</svg>

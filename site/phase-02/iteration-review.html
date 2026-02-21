@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Iteration Review</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Serif+Display&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0c0a;
+    --amber: #d4840a;
+    --amber-light: #f5a623;
+    --text: #e8ddd0;
+    --text-dim: #7a6e62;
+    --border: #2a2420;
+    --card-bg: #161310;
+    --card-hover: #1c1915;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    padding: 40px 48px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  /* Export bar */
+  .export-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .export-bar .status {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn:hover {
+    background: var(--card-hover);
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: var(--bg);
+    border-color: var(--amber);
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    background: var(--amber-light);
+    border-color: var(--amber-light);
+    color: var(--bg);
+  }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--amber);
+    color: var(--bg);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Rating system */
+  .rating-group {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .rating-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .rating-dot:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .rating-dot.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--bg);
+    font-weight: 600;
+  }
+
+  /* Concept cards */
+  .concepts {
+    padding: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .concept-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    padding: 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .concept-card:hover {
+    border-color: #3a3430;
+  }
+  .concept-card.has-comment {
+    border-left: 3px solid var(--amber);
+  }
+
+  /* SVG preview */
+  .svg-preview {
+    width: 200px;
+    height: 200px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .svg-preview img {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* Card content */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .concept-id {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .concept-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--text);
+  }
+  .concept-round {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    background: #1c1915;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .concept-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* Rating row */
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rating-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Comment area */
+  .comment-area {
+    margin-top: 4px;
+  }
+  .comment-area label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .comment-area textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.15s;
+  }
+  .comment-area textarea::placeholder {
+    color: #4a4035;
+  }
+  .comment-area textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+  }
+
+  /* Tags */
+  .tags-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tags-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .tag-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .tag-btn.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--bg);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Iteration Review</h1>
+  <p>11 shortlisted concepts from Rounds 02 & 03. Rate, comment, tag — then export JSON.</p>
+</div>
+
+<div class="export-bar">
+  <button class="btn btn-primary" onclick="exportJSON()">Export JSON</button>
+  <button class="btn" onclick="copyJSON()">Copy to clipboard</button>
+  <button class="btn" onclick="clearAll()">Clear all</button>
+  <span class="status" id="status"></span>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="concepts" id="concepts"></div>
+
+<script>
+const STORAGE_KEY = 'kurnik-iteration-review';
+
+const TAGS = ['iterate', 'strong', 'weak', 'simplify', 'combine', 'drop'];
+
+const concepts = [
+  {
+    id: 'B25',
+    name: 'Arrow Void',
+    desc: 'Squircle with arrow-shaped void pointing up-right. Direction with containment.',
+    round: 'R02',
+    src: 'round-02/B25.svg'
+  },
+  {
+    id: 'H15',
+    name: 'Bracket Cross',
+    desc: 'Four bracket shapes arranged around center void with thin connecting cross.',
+    round: 'R02',
+    src: 'round-02/H15.svg'
+  },
+  {
+    id: 'H20',
+    name: 'Asymmetric Rose',
+    desc: '4 thin cardinal arms at 0/90\u00b0, 4 short thick arms at 45\u00b0. Mixed weight creates hierarchy.',
+    round: 'R02',
+    src: 'round-02/H20.svg'
+  },
+  {
+    id: 'F20',
+    name: 'Chevron Cascade',
+    desc: '4 right-pointing chevrons dissolving from solid to thin. Iterative progress.',
+    round: 'R02',
+    src: 'round-02/F20.svg'
+  },
+  {
+    id: 'T2-12',
+    name: 'Bracket Cascade',
+    desc: 'Four corner brackets + 3 chevrons cascading through center. Target meets progress.',
+    round: 'R03',
+    src: 'round-03/T2-12.svg'
+  },
+  {
+    id: 'E26',
+    name: 'Convergent Triangles',
+    desc: 'Two triangles pointing at each other — top filled, bottom stroke. Productive tension.',
+    round: 'R02',
+    src: 'round-02/E26.svg'
+  },
+  {
+    id: 'F06',
+    name: 'Split Diamond',
+    desc: 'Diamond splitting apart at threshold line — top filled, bottom stroke. State change.',
+    round: 'R02',
+    src: 'round-02/F06.svg'
+  },
+  {
+    id: 'G12',
+    name: 'Isometric Planes',
+    desc: 'Three flat planes in isometric projection, stacked. Top filled, others stroke. Depth, foundation.',
+    round: 'R02',
+    src: 'round-02/G12.svg'
+  },
+  {
+    id: 'T5-02',
+    name: 'Stacked Slabs',
+    desc: 'Horizontal rectangles stacked front-view: top filled, middle filled thinner, bottom stroke.',
+    round: 'R03',
+    src: 'round-03/T5-02.svg'
+  },
+  {
+    id: 'T5-09',
+    name: 'Left Perspective Planes',
+    desc: 'G12 isometric planes rotated to leftward view: top filled, bottom stroke.',
+    round: 'R03',
+    src: 'round-03/T5-09.svg'
+  },
+  {
+    id: 'T1-10',
+    name: 'Concentric Rotated Squares',
+    desc: 'Outer axis-aligned square + inner square rotated 45\u00b0. Precision, containment.',
+    round: 'R03',
+    src: 'round-03/T1-10.svg'
+  }
+];
+
+// Load saved state
+function loadState() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  } catch { return {}; }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  updateStatus();
+}
+
+function getState(id) {
+  const state = loadState();
+  return state[id] || { rating: 0, comment: '', tags: [] };
+}
+
+function setState(id, data) {
+  const state = loadState();
+  state[id] = { ...getState(id), ...data };
+  saveState(state);
+  // Update border
+  const card = document.querySelector(`[data-id="${id}"]`);
+  if (card) {
+    const s = state[id];
+    const hasContent = s.comment || s.rating > 0 || (s.tags && s.tags.length > 0);
+    card.classList.toggle('has-comment', hasContent);
+  }
+}
+
+function updateStatus() {
+  const state = loadState();
+  const commented = Object.values(state).filter(s => s.comment || s.rating > 0 || (s.tags && s.tags.length > 0)).length;
+  document.getElementById('status').textContent = `${commented}/${concepts.length} reviewed`;
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function buildExportData() {
+  const state = loadState();
+  return concepts.map(c => {
+    const s = state[c.id] || { rating: 0, comment: '', tags: [] };
+    return {
+      id: c.id,
+      name: c.name,
+      round: c.round,
+      rating: s.rating,
+      tags: s.tags || [],
+      comment: s.comment || ''
+    };
+  }).filter(c => c.rating > 0 || c.comment || c.tags.length > 0);
+}
+
+function exportJSON() {
+  const data = buildExportData();
+  if (data.length === 0) {
+    showToast('Nothing to export yet');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'kurnik-iteration-review.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast(`Exported ${data.length} reviews`);
+}
+
+function copyJSON() {
+  const data = buildExportData();
+  if (data.length === 0) {
+    showToast('Nothing to copy yet');
+    return;
+  }
+  navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(() => {
+    showToast('Copied to clipboard');
+  });
+}
+
+function clearAll() {
+  if (!confirm('Clear all ratings, tags, and comments?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  render();
+  showToast('Cleared');
+}
+
+function render() {
+  const container = document.getElementById('concepts');
+  container.innerHTML = '';
+
+  concepts.forEach(c => {
+    const s = getState(c.id);
+    const hasContent = s.comment || s.rating > 0 || (s.tags && s.tags.length > 0);
+
+    const card = document.createElement('div');
+    card.className = 'concept-card' + (hasContent ? ' has-comment' : '');
+    card.dataset.id = c.id;
+
+    card.innerHTML = `
+      <div class="svg-preview">
+        <img src="${c.src}" alt="${c.id} ${c.name}">
+      </div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="concept-id">${c.id}</span>
+          <span class="concept-name">${c.name}</span>
+          <span class="concept-round">${c.round}</span>
+        </div>
+        <div class="concept-desc">${c.desc}</div>
+        <div class="rating-row">
+          <span class="rating-label">Strength</span>
+          <div class="rating-group" data-concept="${c.id}">
+            ${[1,2,3,4,5].map(n => `
+              <div class="rating-dot ${s.rating === n ? 'active' : ''}"
+                   data-value="${n}"
+                   onclick="setRating('${c.id}', ${n})">${n}</div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tags-label">Tags</span>
+          ${TAGS.map(t => `
+            <button class="tag-btn ${(s.tags || []).includes(t) ? 'active' : ''}"
+                    data-tag="${t}"
+                    data-concept="${c.id}"
+                    onclick="toggleTag('${c.id}', '${t}', this)">${t}</button>
+          `).join('')}
+        </div>
+        <div class="comment-area">
+          <label for="comment-${c.id}">Notes</label>
+          <textarea id="comment-${c.id}"
+                    placeholder="What works, what doesn't, what to try next..."
+                    oninput="debounceComment('${c.id}', this.value)">${s.comment || ''}</textarea>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  updateStatus();
+}
+
+function setRating(id, value) {
+  const current = getState(id);
+  // Toggle off if clicking same value
+  const newRating = current.rating === value ? 0 : value;
+  setState(id, { rating: newRating });
+  // Update dots
+  const dots = document.querySelectorAll(`.rating-group[data-concept="${id}"] .rating-dot`);
+  dots.forEach(d => {
+    d.classList.toggle('active', parseInt(d.dataset.value) === newRating);
+  });
+}
+
+function toggleTag(id, tag, btn) {
+  const current = getState(id);
+  const tags = current.tags || [];
+  const idx = tags.indexOf(tag);
+  if (idx >= 0) tags.splice(idx, 1);
+  else tags.push(tag);
+  setState(id, { tags });
+  btn.classList.toggle('active');
+}
+
+let commentTimers = {};
+function debounceComment(id, value) {
+  clearTimeout(commentTimers[id]);
+  commentTimers[id] = setTimeout(() => {
+    setState(id, { comment: value });
+  }, 300);
+}
+
+// Keyboard shortcut: Cmd+E to export
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'e') {
+    e.preventDefault();
+    exportJSON();
+  }
+});
+
+render();
+</script>
+</body>
+</html>

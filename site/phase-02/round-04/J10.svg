@@ -1,0 +1,5 @@
+<!-- J10 Pillar Script — vertical bar with horizontal tick marks, like a tally or alien text column -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 8 L50 92" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M50 20 L72 20 M50 38 L30 38 M50 55 L68 55 M50 72 L34 72 M50 86 L65 86" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

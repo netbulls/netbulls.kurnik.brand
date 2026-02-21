@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-R6-09 Opposite offsets — top shifted left, bottom shifted right, top filled bottom stroke -->
+<polygon points="8,10 68,10 38,44" fill="#d4840a"/>
+<polygon points="38,90 98,90 68,56" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

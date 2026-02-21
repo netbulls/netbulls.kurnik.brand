@@ -1,0 +1,26 @@
+<!-- H15-R6-05 H15-19 arrow-tip brackets, arrows 2x bigger, bracket strokes 6px -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Corner brackets with arrow tips pointing inward -->
+  <!-- Top-left bracket -->
+  <path d="M26,42 L26,26 L42,26" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Top-left arrow tip (pointing toward center) -->
+  <path d="M26,26 L36,32 M26,26 L32,36" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Top-right bracket -->
+  <path d="M58,26 L74,26 L74,42" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Top-right arrow tip -->
+  <path d="M74,26 L68,36 M74,26 L64,32" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom-right bracket -->
+  <path d="M74,58 L74,74 L58,74" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom-right arrow tip -->
+  <path d="M74,74 L64,68 M74,74 L68,64" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom-left bracket -->
+  <path d="M42,74 L26,74 L26,58" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Bottom-left arrow tip -->
+  <path d="M26,74 L36,68 M26,74 L32,64" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Cross -->
+  <line x1="16" y1="50" x2="44" y2="50" stroke="#d4840a" stroke-width="4" stroke-linecap="butt"/>
+  <line x1="56" y1="50" x2="84" y2="50" stroke="#d4840a" stroke-width="4" stroke-linecap="butt"/>
+  <line x1="50" y1="16" x2="50" y2="44" stroke="#d4840a" stroke-width="4" stroke-linecap="butt"/>
+  <line x1="50" y1="56" x2="50" y2="84" stroke="#d4840a" stroke-width="4" stroke-linecap="butt"/>
+  <circle cx="50" cy="50" r="5" fill="#d4840a"/>
+</svg>

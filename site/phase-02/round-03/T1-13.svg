@@ -1,0 +1,11 @@
+<!-- T1-13 Asymmetric Focus — cross with 3 stroke arms and 1 filled arm (right arm solid) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm — stroke only -->
+  <rect x="8" y="46" width="30" height="8" fill="none" stroke="#d4840a" stroke-width="2" stroke-linejoin="miter"/>
+  <!-- Top arm — stroke only -->
+  <rect x="46" y="8" width="8" height="30" fill="none" stroke="#d4840a" stroke-width="2" stroke-linejoin="miter"/>
+  <!-- Bottom arm — stroke only -->
+  <rect x="46" y="62" width="8" height="30" fill="none" stroke="#d4840a" stroke-width="2" stroke-linejoin="miter"/>
+  <!-- Right arm — FILLED (the asymmetric one) -->
+  <rect x="62" y="44" width="30" height="12" fill="#d4840a"/>
+</svg>

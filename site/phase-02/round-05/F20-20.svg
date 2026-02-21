@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-20 Three chevrons pointing right contained in a circle frame -->
+<circle cx="50" cy="50" r="44" fill="none" stroke="#d4840a" stroke-width="2.5"/>
+<polyline points="28,32 44,50 28,68" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="42,36 56,50 42,64" fill="none" stroke="#d4840a" stroke-width="4.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="56,40 68,50 56,60" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

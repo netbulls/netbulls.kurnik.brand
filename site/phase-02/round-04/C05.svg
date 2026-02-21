@@ -1,0 +1,18 @@
+<!-- C05 Möbius Square — square strip with a half-twist, impossible loop -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="none" stroke="#d4840a" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Outer path of the twisted square -->
+    <path d="M25,20 L75,20 L80,25 L80,75 L75,80 L25,80 L20,75 L20,25 Z" stroke-width="3"/>
+    <!-- Inner path offset — creates band effect -->
+    <path d="M32,27 L68,27 L73,32 L73,68 L68,73 L32,73 L27,68 L27,32 Z" stroke-width="3"/>
+    <!-- Twist crossover at top — impossible junction -->
+    <line x1="25" y1="20" x2="32" y2="27" stroke-width="3"/>
+    <line x1="75" y1="20" x2="68" y2="27" stroke-width="3"/>
+    <!-- Twist crossover at bottom — crosses opposite way -->
+    <line x1="25" y1="80" x2="68" y2="73" stroke-width="3"/>
+    <line x1="75" y1="80" x2="32" y2="73" stroke-width="3"/>
+    <!-- Fill strips to emphasize the twist -->
+    <path d="M25,20 L32,27 L68,27 L75,20 Z" fill="#d4840a"/>
+    <path d="M25,80 L68,73 L32,73 L75,80 Z" fill="#d4840a"/>
+  </g>
+</svg>

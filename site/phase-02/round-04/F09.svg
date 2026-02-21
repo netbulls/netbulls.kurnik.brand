@@ -1,0 +1,12 @@
+<!-- F09 Echo Chamber — nested semicircles creating a tunnel/echo effect -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#d4840a" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Left-facing nested arcs -->
+    <path d="M75 15 A42 42 0 0 0 75 85" stroke-width="4"/>
+    <path d="M65 22 A33 33 0 0 0 65 78" stroke-width="4"/>
+    <path d="M55 29 A25 25 0 0 0 55 71" stroke-width="4"/>
+    <path d="M45 36 A17 17 0 0 0 45 64" stroke-width="4"/>
+    <!-- Core dot -->
+    <circle cx="35" cy="50" r="5" fill="#d4840a"/>
+  </g>
+</svg>

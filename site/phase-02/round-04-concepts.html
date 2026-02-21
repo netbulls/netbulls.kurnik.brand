@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurnik — Phase 02 Round 04: Fresh Exploration</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;600;700&display=swap');
+  :root {
+    --bg: #0e0c0a; --surface: #161310; --surface2: #1e1a16; --border: #2a2420;
+    --amber: #d4840a; --amber-light: #f5a623; --amber-dim: #8a5200;
+    --text: #e8ddd0; --text-dim: #7a6e62; --text-muted: #4a4238;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+
+  header { padding: 48px 64px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+  .header-left h1 { font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400; color: var(--text); letter-spacing: -0.5px; }
+  .header-left h1 span { color: var(--amber); }
+  .header-left p { margin-top: 6px; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.05em; }
+  .phase-badge { background: var(--surface2); border: 1px solid var(--border); padding: 8px 16px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  nav { display: flex; gap: 0; padding: 0 64px; border-bottom: 1px solid var(--border); overflow-x: auto; position: sticky; top: 0; background: var(--bg); z-index: 40; }
+  .nav-tab { padding: 16px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; border-top: none; border-left: none; border-right: none; background: none; }
+  .nav-tab:hover { color: var(--text-dim); }
+  .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+  .nav-tab .count { margin-left: 4px; opacity: 0.5; font-size: 10px; }
+
+  main { padding: 40px 64px 100px; }
+
+  .track-section { margin-bottom: 48px; }
+  .track-header { margin-bottom: 24px; }
+  .track-header h2 { font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+  .track-header p { color: var(--text-dim); font-size: 13px; max-width: 720px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .concept { background: var(--surface); border: 1px solid var(--border); padding: 24px 16px 16px; cursor: pointer; transition: all 0.15s; position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .concept:hover { border-color: var(--amber-dim); background: var(--surface2); transform: translateY(-1px); }
+  .concept.selected { border-color: var(--amber); background: var(--surface2); }
+  .concept.selected::after { content: '✓'; position: absolute; top: 8px; right: 8px; color: var(--amber); font-size: 11px; font-family: 'DM Mono', monospace; }
+  .concept-num { position: absolute; top: 8px; left: 10px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .concept img { width: 80px; height: 80px; }
+  .concept-name { font-size: 11px; color: var(--text-dim); text-align: center; line-height: 1.4; }
+
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { background: var(--surface); border: 1px solid var(--border); padding: 48px; max-width: 500px; width: 90%; position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .lightbox-inner img { width: 240px; height: 240px; }
+  .lightbox-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); }
+  .lightbox-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dim); text-align: center; }
+  .lightbox-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1; }
+  .lightbox-close:hover { color: var(--text); }
+  .lightbox-actions { display: flex; gap: 12px; }
+  .lightbox-nav { display: flex; gap: 8px; }
+  .btn { padding: 10px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: 1px solid var(--border); background: none; color: var(--text-dim); transition: all 0.15s; }
+  .btn:hover { border-color: var(--amber-dim); color: var(--text); }
+  .btn.primary { border-color: var(--amber); color: var(--amber); }
+  .btn.primary:hover { background: var(--amber); color: var(--bg); }
+  .btn.small { padding: 8px 14px; font-size: 10px; }
+
+  .shortlist-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 16px 64px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s; z-index: 50; }
+  .shortlist-bar.visible { transform: translateY(0); }
+  .shortlist-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; }
+  .shortlist-items { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; margin: 0 16px; }
+  .shortlist-chip { background: var(--surface2); border: 1px solid var(--amber-dim); padding: 4px 10px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); cursor: pointer; }
+  .shortlist-chip:hover { border-color: var(--amber); }
+  .shortlist-clear { background: none; border: none; color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; padding: 4px 8px; flex-shrink: 0; }
+  .shortlist-clear:hover { color: var(--text-dim); }
+
+  @media (max-width: 768px) { header, nav, main { padding-left: 24px; padding-right: 24px; } .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } .shortlist-bar { padding: 16px 24px; } nav { padding: 0 24px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <h1><span>Kurnik</span> — Fresh Exploration</h1>
+    <p>Phase 02 · Round 04 · 10 territories · 100 concepts · no constraints, just vibes</p>
+  </div>
+  <div class="phase-badge">Phase 02 / R04</div>
+</header>
+<nav>
+  <button class="nav-tab active" onclick="showTab('all', event)">All <span class="count">100</span></button>
+  <button class="nav-tab" onclick="showTab('A', event)">Slash <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('B', event)">Lock <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('C', event)">Impossible <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('D', event)">Stamp <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('E', event)">Knot <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('F', event)">Signal <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('G', event)">Totem <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('H', event)">Fragment <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('I', event)">Orbit <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('J', event)">Glyph <span class="count">10</span></button>
+  <button class="nav-tab" onclick="showTab('shortlist', event)" id="shortlist-tab">Shortlist <span class="count" id="shortlist-count">0</span></button>
+</nav>
+<main id="main-content">
+
+  <div class="track-section" id="track-A" data-track="A">
+    <div class="track-header">
+      <h2>Slash</h2>
+      <p>Diagonal energy. Cuts, angles, slashes.</p>
+    </div>
+    <div class="grid" id="grid-A"></div>
+  </div>
+
+  <div class="track-section" id="track-B" data-track="B">
+    <div class="track-header">
+      <h2>Lock</h2>
+      <p>Interlocking forms. Shapes that hook into each other.</p>
+    </div>
+    <div class="grid" id="grid-B"></div>
+  </div>
+
+  <div class="track-section" id="track-C" data-track="C">
+    <div class="track-header">
+      <h2>Impossible</h2>
+      <p>Optical illusions. Impossible geometry that tricks the eye.</p>
+    </div>
+    <div class="grid" id="grid-C"></div>
+  </div>
+
+  <div class="track-section" id="track-D" data-track="D">
+    <div class="track-header">
+      <h2>Stamp</h2>
+      <p>Heavy, punchy, ink-stamp energy. Strong presence.</p>
+    </div>
+    <div class="grid" id="grid-D"></div>
+  </div>
+
+  <div class="track-section" id="track-E" data-track="E">
+    <div class="track-header">
+      <h2>Knot</h2>
+      <p>Intertwined paths, woven forms. Continuous lines that weave.</p>
+    </div>
+    <div class="grid" id="grid-E"></div>
+  </div>
+
+  <div class="track-section" id="track-F" data-track="F">
+    <div class="track-header">
+      <h2>Signal</h2>
+      <p>Broadcast, pulse, radar. Expanding waves, transmission.</p>
+    </div>
+    <div class="grid" id="grid-F"></div>
+  </div>
+
+  <div class="track-section" id="track-G" data-track="G">
+    <div class="track-header">
+      <h2>Totem</h2>
+      <p>Stacked vertical forms. Totemic, monumental.</p>
+    </div>
+    <div class="grid" id="grid-G"></div>
+  </div>
+
+  <div class="track-section" id="track-H" data-track="H">
+    <div class="track-header">
+      <h2>Fragment</h2>
+      <p>Broken pieces of a larger whole. Shattered geometry.</p>
+    </div>
+    <div class="grid" id="grid-H"></div>
+  </div>
+
+  <div class="track-section" id="track-I" data-track="I">
+    <div class="track-header">
+      <h2>Orbit</h2>
+      <p>Circular paths, planetary motion. Arcs and orbital rings.</p>
+    </div>
+    <div class="grid" id="grid-I"></div>
+  </div>
+
+  <div class="track-section" id="track-J" data-track="J">
+    <div class="track-header">
+      <h2>Glyph</h2>
+      <p>Abstract letterform-like symbols. Alien alphabet vibes.</p>
+    </div>
+    <div class="grid" id="grid-J"></div>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-name" id="lightbox-name"></div>
+    <div class="lightbox-num" id="lightbox-num"></div>
+    <div class="lightbox-nav">
+      <button class="btn small" onclick="navLightbox(-1)">← Prev</button>
+      <button class="btn small" onclick="navLightbox(1)">Next →</button>
+    </div>
+    <div class="lightbox-actions">
+      <button class="btn" onclick="closeLightbox()">Close</button>
+      <button class="btn primary" id="lightbox-select-btn" onclick="toggleFromLightbox()">Add to Shortlist</button>
+    </div>
+  </div>
+</div>
+
+<div class="shortlist-bar" id="shortlist-bar">
+  <span class="shortlist-label">Shortlist</span>
+  <div class="shortlist-items" id="shortlist-items"></div>
+  <button class="shortlist-clear" onclick="clearShortlist()">Clear all</button>
+</div>
+
+<script>
+const concepts = [
+  { id: 'A01', name: 'Triple Slash', desc: 'three bold parallel diagonal cuts', territory: 'A' },
+  { id: 'A02', name: 'Cross Cut', desc: 'two bold slashes crossing at center', territory: 'A' },
+  { id: 'A03', name: 'Slash Stack', desc: 'five diagonal lines fanning out in weight', territory: 'A' },
+  { id: 'A04', name: 'Slash Square', desc: 'diagonal cut through a square frame', territory: 'A' },
+  { id: 'A05', name: 'Shattered', desc: 'bold slash splitting a circle into two halves', territory: 'A' },
+  { id: 'A06', name: 'Arrow Slash', desc: 'angular arrow form cutting upward-right', territory: 'A' },
+  { id: 'A07', name: 'Wedge', desc: 'solid triangular slash, like a blade tip', territory: 'A' },
+  { id: 'A08', name: 'Double Strike', desc: 'two offset thick diagonal slashes', territory: 'A' },
+  { id: 'A09', name: 'Zigzag', desc: 'sharp angular zigzag bolt form', territory: 'A' },
+  { id: 'A10', name: 'Slash Grid', desc: 'four diagonal cuts through horizontal bars', territory: 'A' },
+  { id: 'B01', name: 'Clasp', desc: 'two U-shapes hooking into each other horizontally', territory: 'B' },
+  { id: 'B02', name: 'Dovetail', desc: 'two L-shapes interlocking with gap', territory: 'B' },
+  { id: 'B03', name: 'Interlink', desc: 'two thick chain links at 90 degrees', territory: 'B' },
+  { id: 'B04', name: 'Puzzle', desc: 'two shapes with tab-and-slot interlock', territory: 'B' },
+  { id: 'B05', name: 'Weave', desc: 'two overlapping bars creating an impossible lock', territory: 'B' },
+  { id: 'B06', name: 'Bracket Lock', desc: 'two mirrored brackets with teeth engaged', territory: 'B' },
+  { id: 'B07', name: 'Torus Link', desc: 'two thick rings interlocking at angle', territory: 'B' },
+  { id: 'B08', name: 'Zipper', desc: 'alternating teeth from left and right', territory: 'B' },
+  { id: 'B09', name: 'Pinion', desc: 'three overlapping diamonds forming a locked cluster', territory: 'B' },
+  { id: 'B10', name: 'Shackle', desc: 'two angular U-bolts interlocked', territory: 'B' },
+  { id: 'C01', name: 'Penrose Triangle', desc: 'classic impossible triangle, bold strokes', territory: 'C' },
+  { id: 'C02', name: 'Impossible Cube', desc: 'Necker cube with contradictory edges', territory: 'C' },
+  { id: 'C03', name: 'Infinite Staircase', desc: 'Penrose steps in a square loop', territory: 'C' },
+  { id: 'C04', name: 'Impossible Fork', desc: 'three-prong Blivet, bold and clean', territory: 'C' },
+  { id: 'C05', name: 'Möbius Square', desc: 'square strip with a half-twist, impossible loop', territory: 'C' },
+  { id: 'C06', name: 'Impossible Hexagon', desc: 'three interlocking bars forming a hexagonal shape with contradictory depth', territory: 'C' },
+  { id: 'C07', name: 'Escher Knot', desc: 'interlocking loops that pass through each other impossibly', territory: 'C' },
+  { id: 'C08', name: 'Impossible Pillar', desc: 'two pillars that merge into three, depth contradiction', territory: 'C' },
+  { id: 'C09', name: 'Paradox Diamond', desc: 'isometric diamond with contradictory faces', territory: 'C' },
+  { id: 'C10', name: 'Infinite Window', desc: 'nested squares with impossible connected corners', territory: 'C' },
+  { id: 'D01', name: 'Anvil Block', desc: 'massive square with punched-out corner notch', territory: 'D' },
+  { id: 'D02', name: 'Heavy Seal', desc: 'thick ring with a bold bar cutting through', territory: 'D' },
+  { id: 'D03', name: 'Pressed Stack', desc: 'three heavy horizontal bars, stamped feel', territory: 'D' },
+  { id: 'D04', name: 'Wax Stamp', desc: 'bold octagon with thick inner diamond', territory: 'D' },
+  { id: 'D05', name: 'Impact', desc: 'arrow-like chevron, thick and punchy, pointing up', territory: 'D' },
+  { id: 'D06', name: 'Branded Iron', desc: 'bold K-shaped negative space cut from solid block', territory: 'D' },
+  { id: 'D07', name: 'Press Mark', desc: 'two heavy overlapping squares, offset', territory: 'D' },
+  { id: 'D08', name: 'Forge', desc: 'heavy circle with bold cross cutout', territory: 'D' },
+  { id: 'D09', name: 'Monolith', desc: 'tall solid rectangle with angled slash', territory: 'D' },
+  { id: 'D10', name: 'Signet', desc: 'rounded square with bold inner arch', territory: 'D' },
+  { id: 'E01', name: 'Trefoil Loop', desc: 'three-lobed continuous knot, bold strokes', territory: 'E' },
+  { id: 'E02', name: 'Square Knot', desc: 'two interlocked rounded squares, over-under weave', territory: 'E' },
+  { id: 'E03', name: 'Infinity Weave', desc: 'figure-8 continuous path with crossing', territory: 'E' },
+  { id: 'E04', name: 'Chain Link', desc: 'two interlocking oval links, bold and tight', territory: 'E' },
+  { id: 'E05', name: 'Quad Braid', desc: 'four bands weaving through a central square', territory: 'E' },
+  { id: 'E06', name: 'Triple Twist', desc: 'three strands braided vertically', territory: 'E' },
+  { id: 'E07', name: 'Borromean Rings', desc: 'three interlocked circles, no two linked without the third', territory: 'E' },
+  { id: 'E08', name: 'Diamond Weave', desc: 'two diamond shapes interlocked at 45 degrees', territory: 'E' },
+  { id: 'E09', name: 'Woven Cross', desc: 'two thick bands crossing with over-under at center', territory: 'E' },
+  { id: 'E10', name: 'Celtic Square', desc: 'continuous path forming a square knot with rounded corners', territory: 'E' },
+  { id: 'F01', name: 'Broadcast Tower', desc: 'concentric arcs radiating from a central point at bottom', territory: 'F' },
+  { id: 'F02', name: 'Radar Sweep', desc: 'concentric circle arcs with a bold radial line', territory: 'F' },
+  { id: 'F03', name: 'Pulse Wave', desc: 'horizontal signal pulse like a heartbeat monitor', territory: 'F' },
+  { id: 'F04', name: 'Sonar Rings', desc: 'concentric circles expanding from offset center', territory: 'F' },
+  { id: 'F05', name: 'Signal Bars', desc: 'ascending bars like Wi-Fi strength with arc cap', territory: 'F' },
+  { id: 'F06', name: 'Beacon', desc: 'diamond emitter with radiating arcs on both sides', territory: 'F' },
+  { id: 'F07', name: 'Ripple Grid', desc: 'concentric squares expanding outward', territory: 'F' },
+  { id: 'F08', name: 'Transmission', desc: 'upward pointing triangle with wave arcs above', territory: 'F' },
+  { id: 'F09', name: 'Echo Chamber', desc: 'nested semicircles creating a tunnel/echo effect', territory: 'F' },
+  { id: 'F10', name: 'Crosswave', desc: 'two signal sources creating intersecting wave patterns', territory: 'F' },
+  { id: 'G01', name: 'Monolith Stack', desc: 'three bold rectangles stacked with gaps', territory: 'G' },
+  { id: 'G02', name: 'Pillar Trio', desc: 'three vertical bars, center taller', territory: 'G' },
+  { id: 'G03', name: 'Cairn', desc: 'stacked circles decreasing upward', territory: 'G' },
+  { id: 'G04', name: 'Stele', desc: 'tapered vertical slab with horizontal notches', territory: 'G' },
+  { id: 'G05', name: 'Totem Blocks', desc: 'offset stacked squares', territory: 'G' },
+  { id: 'G06', name: 'Signal Tower', desc: 'stacked chevrons pointing up', territory: 'G' },
+  { id: 'G07', name: 'Obelisk', desc: 'tall narrow form with stepped base', territory: 'G' },
+  { id: 'G08', name: 'Spine', desc: 'vertical line with bold horizontal bars', territory: 'G' },
+  { id: 'G09', name: 'Stacked Arcs', desc: 'concentric arcs piled vertically', territory: 'G' },
+  { id: 'G10', name: 'Keystone Stack', desc: 'diamond shapes stacked vertically', territory: 'G' },
+  { id: 'H01', name: 'Shattered Square', desc: 'square broken into four drifting fragments', territory: 'H' },
+  { id: 'H02', name: 'Fractured Circle', desc: 'circle split into three arcing shards', territory: 'H' },
+  { id: 'H03', name: 'Exploded Diamond', desc: 'diamond blown into four triangles drifting outward', territory: 'H' },
+  { id: 'H04', name: 'Broken Monolith', desc: 'tall rectangle cracked into offset slabs', territory: 'H' },
+  { id: 'H05', name: 'Scatter Hex', desc: 'hexagon shattered into six triangular shards drifting apart', territory: 'H' },
+  { id: 'H06', name: 'Split Beam', desc: 'thick diagonal bar broken into three offset segments', territory: 'H' },
+  { id: 'H07', name: 'Burst Grid', desc: '3x3 grid of squares blown outward from center', territory: 'H' },
+  { id: 'H08', name: 'Cracked Ring', desc: 'thick ring with wedge gaps creating broken arc segments', territory: 'H' },
+  { id: 'H09', name: 'Falling Plates', desc: 'stack of horizontal bars collapsing and separating', territory: 'H' },
+  { id: 'H10', name: 'Shattered Prism', desc: 'large triangle fractured into offset shards', territory: 'H' },
+  { id: 'I01', name: 'Slingshot', desc: 'tight elliptical orbit with dense core', territory: 'I' },
+  { id: 'I02', name: 'Perihelion', desc: 'three concentric orbit arcs, offset center', territory: 'I' },
+  { id: 'I03', name: 'Rings', desc: 'tilted planetary rings around a solid circle', territory: 'I' },
+  { id: 'I04', name: 'Satellite', desc: 'small body orbiting with visible arc trail', territory: 'I' },
+  { id: 'I05', name: 'Vortex', desc: 'three arc segments spiraling inward', territory: 'I' },
+  { id: 'I06', name: 'Eclipse', desc: 'two overlapping circles with thick orbital arc', territory: 'I' },
+  { id: 'I07', name: 'Orrery', desc: 'three dots on distinct orbital paths', territory: 'I' },
+  { id: 'I08', name: 'Gravity Well', desc: 'thick broken ring with central mass', territory: 'I' },
+  { id: 'I09', name: 'Flyby', desc: 'sweeping arc with two bodies at different scales', territory: 'I' },
+  { id: 'I10', name: 'Apoapsis', desc: 'half-ring cradling a dot, open at bottom', territory: 'I' },
+  { id: 'J01', name: 'Sigil', desc: 'asymmetric glyph with a vertical spine and branching strokes', territory: 'J' },
+  { id: 'J02', name: 'Rune Gate', desc: 'tall narrow arch with a crossbar and descender', territory: 'J' },
+  { id: 'J03', name: 'Broken Monolith', desc: 'thick vertical slab split by a diagonal gap', territory: 'J' },
+  { id: 'J04', name: 'Fork Glyph', desc: 'Y-shaped stroke with serifs, feels like alien typography', territory: 'J' },
+  { id: 'J05', name: 'Notch', desc: 'blocky filled glyph with a rectangular bite taken out', territory: 'J' },
+  { id: 'J06', name: 'Thorn', desc: 'angular stroke mark, like a calligraphic alien character', territory: 'J' },
+  { id: 'J07', name: 'Stacked Beams', desc: 'three horizontal bars offset left-right, connected by a diagonal', territory: 'J' },
+  { id: 'J08', name: 'Keystone', desc: 'filled wedge shape with an internal void, monumental glyph', territory: 'J' },
+  { id: 'J09', name: 'Bracket', desc: 'two mirrored L-shapes that don\'t quite touch, tension in the gap', territory: 'J' },
+  { id: 'J10', name: 'Pillar Script', desc: 'vertical bar with horizontal tick marks, like a tally or alien text column', territory: 'J' }
+];
+
+const trackInfo = {
+  'A': { name: 'Slash', count: 10 },
+  'B': { name: 'Lock', count: 10 },
+  'C': { name: 'Impossible', count: 10 },
+  'D': { name: 'Stamp', count: 10 },
+  'E': { name: 'Knot', count: 10 },
+  'F': { name: 'Signal', count: 10 },
+  'G': { name: 'Totem', count: 10 },
+  'H': { name: 'Fragment', count: 10 },
+  'I': { name: 'Orbit', count: 10 },
+  'J': { name: 'Glyph', count: 10 }
+};
+
+let shortlist = JSON.parse(localStorage.getItem('kurnik-r04-shortlist') || '[]');
+let currentLightbox = null;
+let currentFilter = 'all';
+let visibleConcepts = [];
+
+function getFilteredConcepts() {
+  if (currentFilter === 'shortlist') return concepts.filter(c => shortlist.includes(c.id));
+  if (currentFilter === 'all') return concepts;
+  return concepts.filter(c => c.territory === currentFilter);
+}
+
+function renderAll() {
+  visibleConcepts = getFilteredConcepts();
+  document.querySelectorAll('.track-section').forEach(s => {
+    const t = s.dataset.track;
+    const items = visibleConcepts.filter(c => c.territory === t);
+    if (items.length === 0) {
+      s.style.display = 'none';
+    } else {
+      s.style.display = '';
+      const grid = s.querySelector('.grid');
+      grid.innerHTML = items.map(c => `
+        <div class="concept ${shortlist.includes(c.id) ? 'selected' : ''}" onclick="openLightbox('${c.id}')">
+          <span class="concept-num">${c.id}</span>
+          <img src="round-04/${c.id}.svg" alt="${c.name}" loading="lazy"/>
+          <div class="concept-name">${c.name}</div>
+        </div>
+      `).join('');
+    }
+  });
+}
+
+function showTab(tab, event) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  event.target.closest('.nav-tab').classList.add('active');
+  currentFilter = tab;
+  renderAll();
+  if (tab !== 'all') window.scrollTo(0, 0);
+}
+
+function openLightbox(id) {
+  const c = concepts.find(x => x.id === id);
+  if (!c) return;
+  currentLightbox = id;
+  document.getElementById('lightbox-img').src = `round-04/${c.id}.svg`;
+  document.getElementById('lightbox-name').textContent = c.name;
+  document.getElementById('lightbox-num').textContent = `${c.id} — ${c.desc}`;
+  updateLightboxBtn();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  currentLightbox = null;
+}
+
+function navLightbox(dir) {
+  if (!currentLightbox) return;
+  const filtered = getFilteredConcepts();
+  const idx = filtered.findIndex(c => c.id === currentLightbox);
+  if (idx === -1) return;
+  const next = idx + dir;
+  if (next >= 0 && next < filtered.length) openLightbox(filtered[next].id);
+}
+
+function toggleFromLightbox() {
+  if (!currentLightbox) return;
+  const idx = shortlist.indexOf(currentLightbox);
+  if (idx > -1) shortlist.splice(idx, 1);
+  else shortlist.push(currentLightbox);
+  saveShortlist();
+  updateLightboxBtn();
+  renderAll();
+}
+
+function updateLightboxBtn() {
+  const btn = document.getElementById('lightbox-select-btn');
+  btn.textContent = shortlist.includes(currentLightbox) ? 'Remove from Shortlist' : 'Add to Shortlist';
+}
+
+function saveShortlist() {
+  localStorage.setItem('kurnik-r04-shortlist', JSON.stringify(shortlist));
+  document.getElementById('shortlist-count').textContent = shortlist.length;
+  const bar = document.getElementById('shortlist-bar');
+  bar.classList.toggle('visible', shortlist.length > 0);
+  document.getElementById('shortlist-items').innerHTML = shortlist.map(id =>
+    `<span class="shortlist-chip" onclick="openLightbox('${id}')">${id}</span>`
+  ).join('');
+}
+
+function clearShortlist() {
+  shortlist = [];
+  saveShortlist();
+  renderAll();
+}
+
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+renderAll();
+saveShortlist();
+</script>
+</body>
+</html>

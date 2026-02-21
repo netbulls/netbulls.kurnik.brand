@@ -1,0 +1,4 @@
+<!-- T3-06 Planted Arrow — Solid right-pointing arrow with square T-shape tail at base. Planted but directional. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="60,20 88,50 60,80 60,62 30,62 30,80 14,80 14,20 30,20 30,38 60,38" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-13 Three bars with small arrow — thick base, medium mid, stroke top with upward arrow -->
+  <rect x="20" y="66" width="60" height="14" fill="#d4840a"/>
+  <rect x="20" y="50" width="60" height="8" fill="#d4840a"/>
+  <rect x="20" y="38" width="60" height="5" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="50" y1="30" x2="50" y2="18" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+  <polyline points="44,23 50,17 56,23" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

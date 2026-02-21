@@ -1,0 +1,15 @@
+<!-- T2-11 Converging Arrows — four arrows (arm + triangle tip) pointing inward toward center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arrow -->
+  <rect x="8" y="46" width="24" height="8" fill="#d4840a"/>
+  <polygon points="32,38 48,50 32,62" fill="#d4840a"/>
+  <!-- Right arrow -->
+  <rect x="68" y="46" width="24" height="8" fill="#d4840a"/>
+  <polygon points="68,38 52,50 68,62" fill="#d4840a"/>
+  <!-- Top arrow -->
+  <rect x="46" y="8" width="8" height="24" fill="#d4840a"/>
+  <polygon points="38,32 50,48 62,32" fill="#d4840a"/>
+  <!-- Bottom arrow -->
+  <rect x="46" y="68" width="8" height="24" fill="#d4840a"/>
+  <polygon points="38,68 50,52 62,68" fill="#d4840a"/>
+</svg>

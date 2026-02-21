@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- B25-14 Diagonal arrow at 30 degrees (shallow, more rightward) -->
+<path d="M50 5 C82 5 95 18 95 50 C95 82 82 95 50 95 C18 95 5 82 5 50 C5 18 18 5 50 5 Z M60 24 L80 24 L80 44 L72 36 L40 56 L48 64 L28 76 L20 56 L40 48 L72 28 Z" fill="#d4840a" fill-rule="evenodd"/>
+</svg>

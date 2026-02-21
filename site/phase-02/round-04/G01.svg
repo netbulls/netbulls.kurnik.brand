@@ -1,0 +1,6 @@
+<!-- G01 Monolith Stack — three bold rectangles stacked with gaps -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="30" y="8" width="40" height="22" rx="2" fill="#d4840a"/>
+  <rect x="25" y="38" width="50" height="22" rx="2" fill="#d4840a"/>
+  <rect x="20" y="68" width="60" height="22" rx="2" fill="#d4840a"/>
+</svg>

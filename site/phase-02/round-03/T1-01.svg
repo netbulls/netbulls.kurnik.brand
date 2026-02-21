@@ -1,0 +1,7 @@
+<!-- T1-01 Bold Center Void — H13 with wider arms (10px) and smaller gap (14px) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="6" y="45" width="31" height="10" fill="#d4840a"/>
+  <rect x="63" y="45" width="31" height="10" fill="#d4840a"/>
+  <rect x="45" y="6" width="10" height="31" fill="#d4840a"/>
+  <rect x="45" y="63" width="10" height="31" fill="#d4840a"/>
+</svg>

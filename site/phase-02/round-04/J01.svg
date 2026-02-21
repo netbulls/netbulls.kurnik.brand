@@ -1,0 +1,4 @@
+<!-- J01 Sigil — asymmetric glyph with a vertical spine and branching strokes -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 10 L50 90 M50 30 L30 18 M50 45 L72 35 M50 62 L28 70 M50 78 L68 85" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

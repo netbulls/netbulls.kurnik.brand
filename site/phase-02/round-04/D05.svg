@@ -1,0 +1,4 @@
+<!-- D05 Impact — arrow-like chevron, thick and punchy, pointing up -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 10 L88 55 L68 55 L68 90 L32 90 L32 55 L12 55 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

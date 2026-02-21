@@ -1,0 +1,13 @@
+<!-- T1-14 Framed Reticle — square frame (stroke) with crosshair lines inside, gap at center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer square frame -->
+  <rect x="10" y="10" width="80" height="80" fill="none" stroke="#d4840a" stroke-width="4" stroke-linejoin="miter"/>
+  <!-- Horizontal crosshair — left segment -->
+  <line x1="10" y1="50" x2="38" y2="50" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <!-- Horizontal crosshair — right segment -->
+  <line x1="62" y1="50" x2="90" y2="50" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <!-- Vertical crosshair — top segment -->
+  <line x1="50" y1="10" x2="50" y2="38" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <!-- Vertical crosshair — bottom segment -->
+  <line x1="50" y1="62" x2="50" y2="90" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+</svg>

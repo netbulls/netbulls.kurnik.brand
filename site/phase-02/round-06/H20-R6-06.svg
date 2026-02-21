@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-R6-06 Directional bias — north filled, other 3 cardinals as stroke outlines -->
+  <!-- North wedge — filled -->
+  <polygon points="47,40 53,40 50,10" fill="#d4840a"/>
+  <!-- East wedge — outline -->
+  <polygon points="60,47 60,53 90,50" fill="none" stroke="#d4840a" stroke-width="2" stroke-linejoin="miter"/>
+  <!-- South wedge — outline -->
+  <polygon points="53,60 47,60 50,90" fill="none" stroke="#d4840a" stroke-width="2" stroke-linejoin="miter"/>
+  <!-- West wedge — outline -->
+  <polygon points="40,53 40,47 10,50" fill="none" stroke="#d4840a" stroke-width="2" stroke-linejoin="miter"/>
+</svg>

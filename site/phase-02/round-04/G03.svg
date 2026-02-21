@@ -1,0 +1,7 @@
+<!-- G03 Cairn — stacked circles decreasing upward -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="80" r="16" fill="#d4840a"/>
+  <circle cx="50" cy="52" r="12" fill="#d4840a"/>
+  <circle cx="50" cy="30" r="9" fill="#d4840a"/>
+  <circle cx="50" cy="14" r="6" fill="#d4840a"/>
+</svg>

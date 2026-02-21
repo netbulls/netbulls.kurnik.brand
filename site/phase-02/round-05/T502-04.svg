@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-04 Growing detail — thick base, medium middle, thin stroke top, tiny dash crown -->
+  <rect x="20" y="64" width="60" height="16" fill="#d4840a"/>
+  <rect x="20" y="46" width="60" height="10" fill="#d4840a"/>
+  <rect x="20" y="32" width="60" height="6" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="42" y1="24" x2="58" y2="24" stroke="#d4840a" stroke-width="2" stroke-linecap="butt"/>
+</svg>

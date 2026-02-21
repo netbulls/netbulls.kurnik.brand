@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F06-11 Split Diamond — vertical split, left stroke right filled -->
+<polygon points="47,15 47,50 15,50" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="53,15 85,50 53,50" fill="#d4840a"/>
+<polygon points="15,50 47,50 47,85" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="53,50 53,85 85,50" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,5 @@
+<!-- T110-R6-10 Outer thick stroke square, inner filled diamond corners touching outer sides -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="10" y="10" width="80" height="80" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="24.55" y="24.55" width="50.91" height="50.91" fill="#d4840a" transform="rotate(45 50 50)"/>
+</svg>

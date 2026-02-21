@@ -1,0 +1,7 @@
+<!-- G06 Signal Tower — stacked chevrons pointing up -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="50,8 66,28 34,28" fill="#d4840a"/>
+  <polygon points="50,30 70,50 30,50" fill="#d4840a"/>
+  <polygon points="50,52 74,72 26,72" fill="#d4840a"/>
+  <rect x="42" y="74" width="16" height="18" fill="#d4840a"/>
+</svg>

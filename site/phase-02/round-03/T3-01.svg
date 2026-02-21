@@ -1,0 +1,4 @@
+<!-- T3-01 Road Arrow — Bold solid arrow pointing right, filled triangle head + thick rectangular shaft. Road-sign confidence. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="60,18 88,50 60,82 60,62 14,62 14,38 60,38" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

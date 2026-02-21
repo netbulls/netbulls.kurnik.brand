@@ -1,0 +1,6 @@
+<!-- T502-R6-01 Three bold levels from T502-08 base — bigger bars, bolder pyramid -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="14" y="60" width="72" height="18" fill="#d4840a"/>
+  <rect x="24" y="38" width="52" height="14" fill="#d4840a"/>
+  <rect x="36" y="20" width="28" height="10" fill="#d4840a"/>
+</svg>

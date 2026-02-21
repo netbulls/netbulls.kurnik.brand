@@ -1,0 +1,11 @@
+<!-- T1-07 Notched Crosshair — crosshair with notched/sighting-mark ends on each arm -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm with notched end -->
+  <polygon points="8,44 8,56 14,56 14,52 38,52 38,48 14,48 14,44" fill="#d4840a"/>
+  <!-- Right arm with notched end -->
+  <polygon points="92,44 92,56 86,56 86,52 62,52 62,48 86,48 86,44" fill="#d4840a"/>
+  <!-- Top arm with notched end -->
+  <polygon points="44,8 56,8 56,14 52,14 52,38 48,38 48,14 44,14" fill="#d4840a"/>
+  <!-- Bottom arm with notched end -->
+  <polygon points="44,92 56,92 56,86 52,86 52,62 48,62 48,86 44,86" fill="#d4840a"/>
+</svg>

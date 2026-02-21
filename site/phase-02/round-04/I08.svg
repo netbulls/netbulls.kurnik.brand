@@ -1,0 +1,7 @@
+<!-- I08 Gravity Well — thick broken ring with central mass -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="10" fill="#d4840a"/>
+  <path d="M 50 10 A 40 40 0 0 1 90 50" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M 86 58 A 40 40 0 0 1 50 90" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M 42 89 A 40 40 0 0 1 10 50" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

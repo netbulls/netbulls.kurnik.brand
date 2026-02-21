@@ -1,0 +1,22 @@
+<!-- C03 Infinite Staircase — Penrose steps in a square loop -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="#d4840a" stroke="none">
+    <!-- Step 1 - bottom left going right -->
+    <rect x="15" y="70" width="16" height="8"/>
+    <rect x="31" y="62" width="16" height="8"/>
+    <rect x="47" y="54" width="16" height="8"/>
+    <rect x="63" y="46" width="16" height="8"/>
+    <!-- Step 2 - right side going up -->
+    <rect x="72" y="38" width="8" height="16"/>
+    <rect x="72" y="22" width="8" height="16"/>
+    <!-- Step 3 - top going left -->
+    <rect x="56" y="18" width="16" height="8"/>
+    <rect x="40" y="26" width="16" height="8"/>
+    <rect x="24" y="34" width="16" height="8"/>
+    <!-- Step 4 - left side going down — connects impossibly back to start -->
+    <rect x="15" y="38" width="8" height="16"/>
+    <rect x="15" y="54" width="8" height="16"/>
+  </g>
+  <!-- Outline frame for clarity -->
+  <rect x="15" y="18" width="65" height="60" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

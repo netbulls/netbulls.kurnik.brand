@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-02 Reversed Weight Compact — Bottom filled thick, top hairline, tighter stacking -->
+<polygon points="50,52 76,67 50,82 24,67" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,37 73,50 50,63 27,50" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,22 70,33 50,44 30,33" fill="none" stroke="#d4840a" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

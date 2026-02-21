@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-15 Shallow Leftward Perspective, Subtle Wide Planes -->
+  <polygon points="24,30 76,36 76,50 24,44" fill="#d4840a"/>
+  <polygon points="24,52 76,58 76,72 24,66" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

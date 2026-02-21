@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-06 Convergent Triangles — Rotated 45deg, diagonal convergence upper-left to lower-right -->
+<polygon points="10,10 46,4 4,46" fill="#d4840a"/>
+<polygon points="90,90 54,96 96,54" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

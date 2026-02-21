@@ -1,0 +1,5 @@
+<!-- J03 Broken Monolith — thick vertical slab split by a diagonal gap -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M35 8 L35 42 L65 52 L65 8 Z" fill="#d4840a" stroke="none"/>
+  <path d="M35 58 L65 48 L65 92 L35 92 Z" fill="#d4840a" stroke="none"/>
+</svg>

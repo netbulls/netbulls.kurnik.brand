@@ -1,0 +1,6 @@
+<!-- G02 Pillar Trio — three vertical bars, center taller -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="16" y="30" width="16" height="60" fill="#d4840a"/>
+  <rect x="42" y="10" width="16" height="80" fill="#d4840a"/>
+  <rect x="68" y="30" width="16" height="60" fill="#d4840a"/>
+</svg>

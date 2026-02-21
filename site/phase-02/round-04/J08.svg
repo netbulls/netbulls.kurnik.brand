@@ -1,0 +1,4 @@
+<!-- J08 Keystone — filled wedge shape with an internal void, monumental glyph -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 8 L78 92 L22 92 Z M50 38 L62 75 L38 75 Z" fill="#d4840a" fill-rule="evenodd" stroke="none"/>
+</svg>

@@ -1,0 +1,19 @@
+<!-- T1-12 Calibration Cross — H13 arms with perpendicular tick marks at outer ends -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm -->
+  <rect x="8" y="46" width="30" height="8" fill="#d4840a"/>
+  <!-- Left tick (vertical at end) -->
+  <rect x="8" y="38" width="4" height="24" fill="#d4840a"/>
+  <!-- Right arm -->
+  <rect x="62" y="46" width="30" height="8" fill="#d4840a"/>
+  <!-- Right tick -->
+  <rect x="88" y="38" width="4" height="24" fill="#d4840a"/>
+  <!-- Top arm -->
+  <rect x="46" y="8" width="8" height="30" fill="#d4840a"/>
+  <!-- Top tick -->
+  <rect x="38" y="8" width="24" height="4" fill="#d4840a"/>
+  <!-- Bottom arm -->
+  <rect x="46" y="62" width="8" height="30" fill="#d4840a"/>
+  <!-- Bottom tick -->
+  <rect x="38" y="88" width="24" height="4" fill="#d4840a"/>
+</svg>

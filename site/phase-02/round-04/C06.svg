@@ -1,0 +1,13 @@
+<!-- C06 Impossible Hexagon — three interlocking bars forming a hexagonal shape with contradictory depth -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="#d4840a" stroke="none">
+    <!-- Bar A — top-left to bottom-right -->
+    <polygon points="50,12 58,12 82,54 82,62 78,62 78,58 58,20 54,20"/>
+    <polygon points="18,54 22,54 42,88 50,88 50,92 38,92"/>
+    <!-- Bar B — top-right to bottom-left -->
+    <polygon points="82,38 82,46 58,84 50,84 50,88 62,88"/>
+    <polygon points="50,12 46,12 18,58 18,50 22,50 22,54 42,16 46,16"/>
+    <!-- Bar C — horizontal middle -->
+    <polygon points="18,62 18,54 46,54 46,50 50,50 50,54 82,54 82,46 86,46 86,62"/>
+  </g>
+</svg>

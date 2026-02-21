@@ -1,0 +1,5 @@
+<!-- I03 Rings — tilted planetary rings around a solid circle -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="14" fill="#d4840a"/>
+  <ellipse cx="50" cy="50" rx="42" ry="12" fill="none" stroke="#d4840a" stroke-width="3.5" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(-20 50 50)"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-R6-01 Top filled, bottom stroke (3px), offset right — base variant -->
+<polygon points="18,10 78,10 48,44" fill="#d4840a"/>
+<polygon points="28,90 88,90 58,56" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

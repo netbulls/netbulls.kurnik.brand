@@ -58,19 +58,15 @@ DM Serif Display · Manrope · DM Mono
 | Phase | Status | Output |
 |-------|--------|--------|
 | 01 Brand Foundation | ✅ Complete | `site/brand-foundation.html` |
-| 02 Symbol Exploration | 🔄 Round 01 done, Round 02 next | `site/phase-02/` |
-| 03 Refinement | ⏳ | top 3 candidates → scoring |
+| 02 Symbol Exploration | ✅ Complete (850 concepts → 6 finalists) | `site/phase-02/` |
+| 03 Assessment + Refinement | 🔄 Starting | score finalists, pick winner |
 | 04 Final mark | ⏳ | lockup, color system, usage rules |
 
-**Phase 02 Round 02 territories:**
-1. Upward / Emergence
-2. Contained / Portal
-3. Systematic / Grid
-4. Radial / Convergence
-5. Letterform / Abstract K
-6. Tension / Duality
-
-Semi-promising from R01: A20 (systematic/circuit), B13 (arch structure), B10 (emergence)
+**Phase 02 finalists (4 families, 6 symbols):**
+- F20-R6-03, F20-R6-02 — Chevron Cascade (ascending momentum)
+- H1519-R6-03 — Bracket Arrows (engineering precision)
+- T110-R6-01, T110-R6-08 — Rotated Squares (architectural geometry)
+- B25-R6-01 — Arrow Void (bold direction)
 
 ---
 
@@ -79,12 +75,20 @@ Semi-promising from R01: A20 (systematic/circuit), B13 (arch structure), B10 (em
 ```
 site/
   index.html
-  brand-foundation.html       # Phase 01
+  brand-foundation.html              # Phase 01
   phase-02/
-    round-01-concepts.html    # 90 SVG concepts (inconclusive)
-    round-02-concepts.html    # 120 concepts ← next
+    round-01-concepts.html           # R01: 90 concepts
+    round-02-concepts.html           # R02: 270 concepts
+    round-03-concepts.html           # R03: 60 refined
+    round-04-concepts.html           # R04: 100 fresh
+    round-05-iterations.html         # R05: 220 iterations
+    round-06-refinements.html        # R06: 110 refinements
+    iteration-review.html            # Deep feedback
+    icon-preview.html                # App icon testing
+    lockup-preview.html              # Lockup font pairing
+    round-03/ through round-06/      # SVG files
 CHANGELOG.md
-DECISIONS.md                  # ← full history and rationale
+DECISIONS.md                         # Full history and rationale
 .claude/rules/
   brand-rules.md
   directory-boundaries.md

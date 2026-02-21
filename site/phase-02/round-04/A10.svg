@@ -1,0 +1,8 @@
+<!-- A10 Slash Grid — four diagonal cuts through horizontal bars -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="12" width="80" height="8" fill="#d4840a"/>
+  <rect x="10" y="34" width="80" height="8" fill="#d4840a"/>
+  <rect x="10" y="56" width="80" height="8" fill="#d4840a"/>
+  <rect x="10" y="78" width="80" height="8" fill="#d4840a"/>
+  <path d="M70 5 L30 95" stroke="#0e0c0a" stroke-width="14" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

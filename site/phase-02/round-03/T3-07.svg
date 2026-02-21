@@ -1,0 +1,9 @@
+<!-- T3-07 Void Arrow — Filled rounded rectangle with arrow-shaped negative space cut out. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="arrow-void">
+      <path d="M6,6 H94 V94 H6 Z M58,30 L58,40 L24,40 L24,60 L58,60 L58,70 L80,50 Z" clip-rule="evenodd"/>
+    </clipPath>
+  </defs>
+  <path d="M16,6 H84 A10,10 0 0 1 94,16 V84 A10,10 0 0 1 84,94 H16 A10,10 0 0 1 6,84 V16 A10,10 0 0 1 16,6 Z M58,30 L80,50 L58,70 L58,60 L24,60 L24,40 L58,40 Z" fill="#d4840a" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

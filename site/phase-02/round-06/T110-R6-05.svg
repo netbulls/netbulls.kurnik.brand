@@ -1,0 +1,12 @@
+<!-- T110-R6-05 Three nested: outer filled, middle 22.5deg stroke, inner 45deg filled -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <mask id="m-r6-05">
+      <rect x="0" y="0" width="100" height="100" fill="white"/>
+      <rect x="20" y="20" width="60" height="60" fill="black" transform="rotate(22.5 50 50)"/>
+    </mask>
+  </defs>
+  <rect x="8" y="8" width="84" height="84" fill="#d4840a" mask="url(#m-r6-05)"/>
+  <rect x="20" y="20" width="60" height="60" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(22.5 50 50)"/>
+  <rect x="33" y="33" width="34" height="34" fill="#d4840a" transform="rotate(45 50 50)"/>
+</svg>

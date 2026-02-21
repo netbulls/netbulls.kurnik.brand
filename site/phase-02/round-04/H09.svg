@@ -1,0 +1,8 @@
+<!-- H09 Falling Plates — stack of horizontal bars collapsing and separating -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="10" width="55" height="10" fill="#d4840a" rx="1" transform="rotate(-2 50 15)"/>
+  <rect x="22" y="28" width="55" height="10" fill="#d4840a" rx="1" transform="rotate(1 50 33)"/>
+  <rect x="18" y="48" width="55" height="10" fill="#d4840a" rx="1" transform="rotate(-3 50 53)"/>
+  <rect x="25" y="68" width="55" height="10" fill="#d4840a" rx="1" transform="rotate(2 50 73)"/>
+  <rect x="16" y="86" width="55" height="10" fill="#d4840a" rx="1" transform="rotate(-1 50 91)"/>
+</svg>

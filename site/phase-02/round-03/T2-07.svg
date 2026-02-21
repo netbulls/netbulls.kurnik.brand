@@ -1,0 +1,13 @@
+<!-- T2-07 Fading Arm — thick plus with 3 solid arms and 1 stroke-only arm (progress) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm — solid -->
+  <rect x="8" y="44" width="30" height="12" fill="#d4840a"/>
+  <!-- Top arm — solid -->
+  <rect x="44" y="8" width="12" height="30" fill="#d4840a"/>
+  <!-- Bottom arm — solid -->
+  <rect x="44" y="62" width="12" height="30" fill="#d4840a"/>
+  <!-- Center — solid -->
+  <rect x="38" y="38" width="24" height="24" fill="#d4840a"/>
+  <!-- Right arm — stroke only (in progress) -->
+  <rect x="62" y="44" width="30" height="12" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linejoin="miter"/>
+</svg>

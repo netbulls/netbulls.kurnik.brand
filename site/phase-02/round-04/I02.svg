@@ -1,0 +1,7 @@
+<!-- I02 Perihelion — three concentric orbit arcs, offset center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="42" cy="50" r="7" fill="#d4840a"/>
+  <path d="M 80 30 A 32 32 0 1 1 42 82" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M 72 22 A 40 40 0 1 1 30 86" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M 88 35 A 24 24 0 1 1 52 76" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

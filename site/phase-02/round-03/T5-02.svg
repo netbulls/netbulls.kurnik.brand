@@ -1,0 +1,6 @@
+<!-- T5-02 Stacked Slabs — horizontal rectangles stacked front-view: top filled, middle filled thinner, bottom stroke -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="20" y="24" width="60" height="14" fill="#d4840a"/>
+  <rect x="20" y="44" width="60" height="10" fill="#d4840a"/>
+  <rect x="20" y="60" width="60" height="8" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

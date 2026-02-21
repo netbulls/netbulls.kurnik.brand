@@ -1,0 +1,6 @@
+<!-- T5-07 Layer Chevrons — three downward-pointing chevrons stacked: top filled, middle and bottom stroke -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="22,26 50,44 78,26 78,36 50,54 22,36" fill="#d4840a"/>
+  <polyline points="22,48 50,66 78,48" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="28,62 50,76 72,62" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

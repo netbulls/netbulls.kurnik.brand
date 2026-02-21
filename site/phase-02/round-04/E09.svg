@@ -1,0 +1,15 @@
+<!-- E09 Woven Cross — two thick bands crossing with over-under at center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <mask id="e09m">
+      <rect width="100" height="100" fill="white"/>
+      <rect x="40" y="40" width="20" height="20" fill="black"/>
+    </mask>
+  </defs>
+  <!-- Horizontal bar, full -->
+  <rect x="15" y="40" width="70" height="20" rx="3" fill="#d4840a"/>
+  <!-- Vertical bar, with center masked to go "under" -->
+  <rect x="40" y="15" width="20" height="70" rx="3" fill="#d4840a" mask="url(#e09m)"/>
+  <!-- Top of vertical bar redrawn on top -->
+  <rect x="40" y="15" width="20" height="28" rx="3" fill="#d4840a"/>
+</svg>

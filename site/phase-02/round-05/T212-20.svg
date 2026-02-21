@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T212-20 Brackets + B25-style arrow void (squircle arrow inside bracket frame) -->
+  <polyline points="10,28 10,10 28,10" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="72,10 90,10 90,28" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="10,72 10,90 28,90" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polyline points="72,90 90,90 90,72" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Squircle (rounded square) with arrow cutout -->
+  <rect x="26" y="30" width="48" height="40" rx="10" ry="10" fill="#d4840a"/>
+  <!-- Arrow void cut from the squircle (dark arrow shape) -->
+  <polygon points="38,40 58,50 38,60" fill="#0e0c0a"/>
+</svg>

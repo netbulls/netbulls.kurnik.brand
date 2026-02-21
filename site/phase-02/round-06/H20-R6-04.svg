@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-R6-04 Direction hierarchy — 4 large cardinal wedges + 4 smaller diagonal wedges -->
+  <!-- Cardinal wedges — large -->
+  <polygon points="47,40 53,40 50,8" fill="#d4840a"/>
+  <polygon points="60,47 60,53 92,50" fill="#d4840a"/>
+  <polygon points="53,60 47,60 50,92" fill="#d4840a"/>
+  <polygon points="40,53 40,47 8,50" fill="#d4840a"/>
+  <!-- Diagonal wedges — smaller -->
+  <polygon points="55,44 56,45 66,34" fill="#d4840a"/>
+  <polygon points="56,55 55,56 66,66" fill="#d4840a"/>
+  <polygon points="45,56 44,55 34,66" fill="#d4840a"/>
+  <polygon points="44,45 45,44 34,34" fill="#d4840a"/>
+</svg>

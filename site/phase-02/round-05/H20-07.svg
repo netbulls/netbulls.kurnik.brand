@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-07 All bars industrial — cardinal as narrow filled rects, diagonal as wide filled rects -->
+  <rect x="49" y="10" width="2" height="30" fill="#d4840a"/>
+  <rect x="60" y="49" width="30" height="2" fill="#d4840a"/>
+  <rect x="49" y="60" width="2" height="30" fill="#d4840a"/>
+  <rect x="10" y="49" width="30" height="2" fill="#d4840a"/>
+  <rect x="34" y="35" width="12" height="5" transform="rotate(-45 40 37.5)" fill="#d4840a"/>
+  <rect x="54" y="35" width="12" height="5" transform="rotate(45 60 37.5)" fill="#d4840a"/>
+  <rect x="54" y="60" width="12" height="5" transform="rotate(-45 60 62.5)" fill="#d4840a"/>
+  <rect x="34" y="60" width="12" height="5" transform="rotate(45 40 62.5)" fill="#d4840a"/>
+</svg>

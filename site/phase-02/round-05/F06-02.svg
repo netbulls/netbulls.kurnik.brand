@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F06-02 Split Diamond — both halves filled, 10px gap -->
+<polygon points="50,15 68,42 50,45 32,42" fill="#d4840a"/>
+<polygon points="32,58 50,55 68,58 50,85" fill="#d4840a"/>
+</svg>

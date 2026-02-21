@@ -1,0 +1,13 @@
+<!-- E04 Chain Link — two interlocking oval links, bold and tight -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <mask id="e04m">
+      <rect width="100" height="100" fill="white"/>
+      <rect x="44" y="20" width="12" height="25" fill="black"/>
+    </mask>
+  </defs>
+  <!-- Left link -->
+  <ellipse cx="38" cy="50" rx="20" ry="30" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <!-- Right link with weave -->
+  <ellipse cx="62" cy="50" rx="20" ry="30" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter" mask="url(#e04m)"/>
+</svg>

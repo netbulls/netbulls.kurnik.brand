@@ -1,0 +1,6 @@
+<!-- D03 Pressed Stack — three heavy horizontal bars, stamped feel -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="15" y="18" width="70" height="16" fill="#d4840a"/>
+  <rect x="15" y="42" width="70" height="16" fill="#d4840a"/>
+  <rect x="15" y="66" width="70" height="16" fill="#d4840a"/>
+</svg>

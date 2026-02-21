@@ -1,0 +1,5 @@
+<!-- A04 Slash Square — diagonal cut through a square frame -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="15" y="15" width="70" height="70" stroke="#d4840a" stroke-width="6" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M75 10 L25 90" stroke="#d4840a" stroke-width="8" fill="none" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

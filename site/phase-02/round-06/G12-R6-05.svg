@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-R6-05 Deconstructed Top — Bottom filled, middle filled, top as thick 8px line -->
+<polygon points="50,55 80,72 50,89 20,72" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polygon points="50,38 70,50 50,62 30,50" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<line x1="42" y1="26" x2="58" y2="26" stroke="#d4840a" stroke-width="8" stroke-linecap="butt"/>
+</svg>

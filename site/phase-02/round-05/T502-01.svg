@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-01 Reversed weight — thick filled base, medium middle, thin stroke top -->
+  <rect x="20" y="60" width="60" height="16" fill="#d4840a"/>
+  <rect x="20" y="42" width="60" height="10" fill="#d4840a"/>
+  <rect x="20" y="28" width="60" height="6" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

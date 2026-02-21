@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- E26-16 Convergent Triangles — Three triangles, two converging + small center in gap -->
+<polygon points="20,8 80,8 50,42" fill="#d4840a"/>
+<polygon points="22,92 78,92 50,58" fill="#d4840a"/>
+<polygon points="42,46 58,46 50,54" fill="#d4840a"/>
+</svg>

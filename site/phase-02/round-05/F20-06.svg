@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-06 Three chevrons pointing UPWARD, extra bold, narrow angle -->
+<polyline points="28,85 50,58 72,85" fill="none" stroke="#d4840a" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="32,60 50,38 68,60" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="37,38 50,20 63,38" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

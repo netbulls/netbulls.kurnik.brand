@@ -1,0 +1,7 @@
+<!-- G09 Stacked Arcs — concentric arcs piled vertically -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M24 90 A26 26 0 0 1 76 90" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M28 66 A22 22 0 0 1 72 66" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M32 44 A18 18 0 0 1 68 44" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M38 24 A12 12 0 0 1 62 24" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

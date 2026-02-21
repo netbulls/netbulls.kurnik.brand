@@ -1,0 +1,5 @@
+<!-- T4-09 Separated Diamond — F06 halves pulling apart, void between states -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="50,10 68,34 50,40 32,34" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="32,66 50,60 68,66 50,90" fill="none" stroke="#d4840a" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

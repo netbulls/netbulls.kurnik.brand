@@ -1,0 +1,6 @@
+<!-- T502-R6-04 Three levels — bottom and middle filled, top as upward chevron breaking out -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="14" y="62" width="72" height="16" fill="#d4840a"/>
+  <rect x="26" y="42" width="48" height="12" fill="#d4840a"/>
+  <polyline points="38,28 50,18 62,28" fill="none" stroke="#d4840a" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

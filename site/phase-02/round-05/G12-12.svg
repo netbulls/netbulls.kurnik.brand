@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- G12-12 Split Planes — Each plane has a horizontal gap cut through its center -->
+<polygon points="50,52 40,58 26,66 50,80 74,66 60,58" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M26,66 L50,52 L74,66" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M28,49 L48,37 L50,38" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,38 L72,49" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M28,55 L48,43" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,43 L72,55" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M28,35 L48,23" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,23 L72,35" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M28,41 L48,29" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+<path d="M52,29 L72,41" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

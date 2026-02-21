@@ -1,0 +1,12 @@
+<!-- F04 Sonar Rings — concentric circles expanding from offset center -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#d4840a" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- Core -->
+    <circle cx="35" cy="55" r="5" fill="#d4840a"/>
+    <!-- Expanding rings -->
+    <circle cx="35" cy="55" r="14" stroke-width="4"/>
+    <circle cx="35" cy="55" r="26" stroke-width="3.5"/>
+    <circle cx="35" cy="55" r="38" stroke-width="3"/>
+    <circle cx="35" cy="55" r="50" stroke-width="2.5"/>
+  </g>
+</svg>

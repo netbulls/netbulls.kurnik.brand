@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- F20-18 Ultra minimal — 2 thick chevrons pointing UPWARD -->
+<polyline points="22,78 50,50 78,78" fill="none" stroke="#d4840a" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+<polyline points="28,52 50,30 72,52" fill="none" stroke="#d4840a" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

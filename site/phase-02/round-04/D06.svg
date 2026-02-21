@@ -1,0 +1,4 @@
+<!-- D06 Branded Iron — bold K-shaped negative space cut from solid block -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M10 10 H90 V90 H10 Z M30 20 V80 H42 V56 L66 80 H82 L54 52 L78 20 H62 L42 48 V20 Z" fill="#d4840a" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

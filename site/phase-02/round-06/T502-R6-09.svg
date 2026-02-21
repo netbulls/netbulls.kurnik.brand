@@ -1,0 +1,7 @@
+<!-- T502-R6-09 T502-08 but all bars same height — different widths only — cleaner pyramid silhouette -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="14" y="64" width="72" height="10" fill="#d4840a"/>
+  <rect x="24" y="48" width="52" height="10" fill="#d4840a"/>
+  <rect x="34" y="32" width="32" height="10" fill="#d4840a"/>
+  <rect x="44" y="16" width="12" height="10" fill="#d4840a"/>
+</svg>

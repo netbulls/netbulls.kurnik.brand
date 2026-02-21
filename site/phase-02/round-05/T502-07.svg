@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T502-07 Four bars — thick filled base, tapering to thin stroke top -->
+  <rect x="20" y="68" width="60" height="14" fill="#d4840a"/>
+  <rect x="20" y="52" width="60" height="10" fill="#d4840a"/>
+  <rect x="20" y="39" width="60" height="7" fill="none" stroke="#d4840a" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="20" y="26" width="60" height="4" fill="none" stroke="#d4840a" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

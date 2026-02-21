@@ -1,0 +1,11 @@
+<!-- T1-02 Tapered Arms — H13 arms that taper inward, trapezoidal filled shapes -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm: wide at left edge, narrow toward center -->
+  <polygon points="6,42 36,46 36,54 6,58" fill="#d4840a"/>
+  <!-- Right arm -->
+  <polygon points="94,42 64,46 64,54 94,58" fill="#d4840a"/>
+  <!-- Top arm -->
+  <polygon points="42,6 46,36 54,36 58,6" fill="#d4840a"/>
+  <!-- Bottom arm -->
+  <polygon points="42,94 46,64 54,64 58,94" fill="#d4840a"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H15-05 Bold Brackets + Center Circle Goal -->
+  <path d="M18,32 L18,18 L32,18" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M68,18 L82,18 L82,32" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M82,68 L82,82 L68,82" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M32,82 L18,82 L18,68" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="30" y1="50" x2="43" y2="50" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <line x1="57" y1="50" x2="70" y2="50" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <line x1="50" y1="30" x2="50" y2="43" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <line x1="50" y1="57" x2="50" y2="70" stroke="#d4840a" stroke-width="3" stroke-linecap="butt"/>
+  <circle cx="50" cy="50" r="5" fill="#d4840a"/>
+</svg>

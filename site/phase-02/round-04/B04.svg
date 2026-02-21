@@ -1,0 +1,5 @@
+<!-- B04 Puzzle — two shapes with tab-and-slot interlock -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M12 16 L46 16 L46 38 L56 38 L56 62 L46 62 L46 84 L12 84 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M88 16 L56 16 L56 38 L46 38 L46 62 L56 62 L56 84 L88 84 Z" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

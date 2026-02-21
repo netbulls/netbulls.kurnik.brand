@@ -1,0 +1,6 @@
+<!-- T3-05 Stepped Arrow — Arrow made of 3 stacked horizontal bars, each progressively shorter. Stepped direction. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="12" y="14" width="76" height="18" rx="2" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="12" y="41" width="56" height="18" rx="2" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="12" y="68" width="36" height="18" rx="2" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

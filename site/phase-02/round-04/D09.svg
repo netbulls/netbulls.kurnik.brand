@@ -1,0 +1,5 @@
+<!-- D09 Monolith — tall solid rectangle with angled slash -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M25 8 H75 V92 H25 Z" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <path d="M25 68 L75 32" stroke="#0e0c0a" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

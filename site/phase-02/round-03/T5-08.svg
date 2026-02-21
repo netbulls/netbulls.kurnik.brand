@@ -1,0 +1,6 @@
+<!-- T5-08 Linked Blocks — two squares side by side connected by a thin horizontal bridge bar -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="14" y="30" width="26" height="26" fill="#d4840a"/>
+  <rect x="60" y="30" width="26" height="26" fill="#d4840a"/>
+  <rect x="40" y="39" width="20" height="8" fill="#d4840a"/>
+</svg>

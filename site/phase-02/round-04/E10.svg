@@ -1,0 +1,19 @@
+<!-- E10 Celtic Square — continuous path forming a square knot with rounded corners -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <mask id="e10a">
+      <rect width="100" height="100" fill="white"/>
+      <rect x="14" y="44" width="20" height="12" fill="black"/>
+      <rect x="66" y="44" width="20" height="12" fill="black"/>
+    </mask>
+    <mask id="e10b">
+      <rect width="100" height="100" fill="white"/>
+      <rect x="44" y="14" width="12" height="20" fill="black"/>
+      <rect x="44" y="66" width="12" height="20" fill="black"/>
+    </mask>
+  </defs>
+  <!-- Outer rounded square -->
+  <rect x="16" y="16" width="68" height="68" rx="14" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter" mask="url(#e10a)"/>
+  <!-- Inner rounded square, rotated 45deg -->
+  <rect x="24" y="24" width="52" height="52" rx="10" fill="none" stroke="#d4840a" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(45 50 50)" mask="url(#e10b)"/>
+</svg>

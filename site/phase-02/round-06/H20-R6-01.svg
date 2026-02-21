@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- H20-R6-01 Full compass rose — all 8 arms as tapered wedges, cardinal and diagonal -->
+  <!-- Cardinal wedges (N, E, S, W) -->
+  <polygon points="48,42 52,42 50,10" fill="#d4840a"/>
+  <polygon points="58,48 58,52 90,50" fill="#d4840a"/>
+  <polygon points="52,58 48,58 50,90" fill="#d4840a"/>
+  <polygon points="42,52 42,48 10,50" fill="#d4840a"/>
+  <!-- Diagonal wedges (NE, SE, SW, NW) -->
+  <polygon points="55,43 57,45 72,28" fill="#d4840a"/>
+  <polygon points="57,55 55,57 72,72" fill="#d4840a"/>
+  <polygon points="45,57 43,55 28,72" fill="#d4840a"/>
+  <polygon points="43,45 45,43 28,28" fill="#d4840a"/>
+</svg>

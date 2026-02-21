@@ -1,0 +1,6 @@
+<!-- B05 Weave — two overlapping bars creating an impossible lock -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="20" y="15" width="22" height="70" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="58" y="15" width="22" height="70" fill="#d4840a" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="15" y="38" width="70" height="24" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

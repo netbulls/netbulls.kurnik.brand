@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T509-04 Rightward Perspective, Stroke Top Filled Bottom -->
+  <polygon points="64,22 36,32 36,50 64,40" fill="none" stroke="#d4840a" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <polygon points="64,48 36,58 36,76 64,66" fill="#d4840a"/>
+</svg>

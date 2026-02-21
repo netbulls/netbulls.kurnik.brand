@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- T110-15 Inner rotated 45° scaled so corners touch outer square edges -->
+  <rect x="10" y="10" width="80" height="80" fill="none" stroke="#d4840a" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="21.72" y="21.72" width="56.57" height="56.57" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter" transform="rotate(45 50 50)"/>
+</svg>

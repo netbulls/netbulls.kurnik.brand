@@ -1,0 +1,10 @@
+<!-- T2-10 Gapped Ring — circle ring with gap at top + crosshair through center -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 300° arc, gap at top -->
+  <path d="M 30.36 16.7 A 38 38 0 1 0 69.64 16.7" fill="none" stroke="#d4840a" stroke-width="5" stroke-linecap="butt"/>
+  <!-- Crosshair arms -->
+  <rect x="12" y="47" width="28" height="6" fill="#d4840a"/>
+  <rect x="60" y="47" width="28" height="6" fill="#d4840a"/>
+  <rect x="47" y="12" width="6" height="28" fill="#d4840a"/>
+  <rect x="47" y="60" width="6" height="28" fill="#d4840a"/>
+</svg>
