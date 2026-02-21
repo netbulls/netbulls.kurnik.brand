@@ -30,13 +30,13 @@ brand/              Final brand assets (upcoming)
 
 ## Design Process
 
-1. \u2705 Brand Foundation — positioning, audience, personality, evaluation framework
-2. \u2B1C Symbol Exploration — 15-20 concepts across 4 territories
-3. \u2B1C Scientific Ranking — 100-point evaluation
-4. \u2B1C Refinement — top 3 deep dive
-5. \u2B1C Logo Development — variants, colors, responsive
-6. \u2B1C Brand Book — final identity package
+1. ✅ Brand Foundation — positioning, audience, personality, evaluation framework
+2. ⬜ Symbol Exploration — 15-20 concepts across 4 territories
+3. ⬜ Scientific Ranking — 100-point evaluation
+4. ⬜ Refinement — top 3 deep dive
+5. ⬜ Logo Development — variants, colors, responsive
+6. ⬜ Brand Book — final identity package
 
 ---
 
-Built by [netbulls](https://github.com/netbulls) \u00b7 kurnik.ai
+Built by [netbulls](https://github.com/netbulls) · kurnik.ai
