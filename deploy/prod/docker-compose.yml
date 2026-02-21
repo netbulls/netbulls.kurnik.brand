@@ -1,0 +1,21 @@
+name: kurnik-brand-prod
+
+services:
+  web:
+    container_name: kurnik-brand-prod
+    image: caddy:2-alpine
+    restart: unless-stopped
+    volumes:
+      - /opt/kurnik-brand/site:/srv:ro
+    command: caddy file-server --root /srv --listen :80
+    networks:
+      - proxy
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 64M
+
+networks:
+  proxy:
+    external: true

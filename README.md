@@ -7,7 +7,7 @@ Brand identity assets and documentation for [Kurnik](https://kurnik.ai) — an A
 ## Structure
 
 ```
-docs/               Brand documentation
+site/               Brand documentation (deployable)
   brand-foundation.html   Phase 1: Brand Foundation (positioning, personality, audience)
 phase-2/            Symbol exploration (upcoming)
 phase-3/            Ranking & evaluation (upcoming)
