@@ -1,10 +1,23 @@
 # Kurnik Brand — CLAUDE.md
 
+> **Do NOT run `/init` on this project** — it will overwrite these instructions.
+
+## Session start
+
+**Read these files before doing anything:**
+1. `DECISIONS.md` — full brand history, rationale, and phase context
+2. `.claude/rules/brand-rules.md` — strict mark constraints
+3. `.claude/rules/directory-boundaries.md` — file conventions
+
+If Redis MCP is available, also read key `current_session_reality` for live session state.
+
+---
+
 ## What this repo is
 
 Brand assets, design explorations, and the public-facing brand site for **Kurnik** — an AI-powered product incubator.
 
-Deployed at: **brand.kurnik.ai** ← `site/` directory  
+Deployed at: **brand.kurnik.ai** ← `site/` directory
 Org: **netbulls** (never `erace`)
 
 ---
@@ -13,57 +26,51 @@ Org: **netbulls** (never `erace`)
 
 - Deploy directory is `site/` — not `docs/`, not `public/`
 - Every milestone gets a `CHANGELOG.md` entry: ISO 8601 + timezone + location
-  - Example: `2026-02-21T18:00:00+01:00 · Warsaw, PL`
-- Large HTML files (>50kb) must be pushed via script, not the GitHub API directly
-- Phase explorations live at `site/phase-NN/round-NN-concepts.html`
+- Large HTML files (>50kb) must be pushed via local git, NOT the GitHub API
+- Phase explorations: `site/phase-NN/round-NN-concepts.html`
+- Each round = one commit. Never leave exploration files local-only.
 
 ---
 
-## Brand foundation
+## Mark rules (strict — do not deviate)
 
-**Name:** Kurnik — Polish for "chicken coop." Inside joke. The mark does NOT illustrate this.
+- **Monochrome only** — `#d4840a` on `#0e0c0a`. No opacity tricks for color variation.
+- **Abstract** — NOT chicken, rooster, egg, comb, feather. The name is an inside joke; the mark does not illustrate it.
+- **Scalable** — must read at 32px. No detail that disappears small.
+- **Sensibility** — Figma, Linear, Vercel. Infrastructure-feel. Confident, minimal.
+- **Vary via** — stroke weight, fill vs outline, positive/negative space, geometry
 
-**Personality:** Warm & confident. Notion meets Stripe. Premium incubator feel.
+## Colors
+| Token | Hex |
+|-------|-----|
+| Background | `#0e0c0a` |
+| Amber (mark) | `#d4840a` |
+| Amber light | `#f5a623` |
+| Text | `#e8ddd0` |
 
-**Colors:**
-- Background: `#0e0c0a`
-- Accent / mark color: `#d4840a` (amber)
-- Text: `#e8ddd0`
-
-**Mark rules (strict):**
-- Monochrome only — `#d4840a` on dark. No multi-color, no opacity tricks for color variation.
-- Abstract, timeless, infrastructure-feel — think Figma, Linear, Vercel
-- NOT chicken, rooster, egg, comb, or feather references
-- Must read at 32px. No decorative detail that disappears small.
-- Vary via: stroke weight, fill vs outline, positive/negative space, geometry
+## Typography
+DM Serif Display · Manrope · DM Mono
 
 ---
 
 ## Phase status
 
-### Phase 01 — Brand Foundation ✅
-- Brand Foundation document: `site/brand-foundation.html`
-- Live at brand.kurnik.ai/brand-foundation.html
+| Phase | Status | Output |
+|-------|--------|--------|
+| 01 Brand Foundation | ✅ Complete | `site/brand-foundation.html` |
+| 02 Symbol Exploration | 🔄 Round 01 done, Round 02 next | `site/phase-02/` |
+| 03 Refinement | ⏳ | top 3 candidates → scoring |
+| 04 Final mark | ⏳ | lockup, color system, usage rules |
 
-### Phase 02 — Symbol Exploration 🔄
-- Round 01: `site/phase-02/round-01-concepts.html` — 90 concepts, 4 territories. None compelling.
-- Round 02+: 120 concepts, 6 territories (see below), done in local code due to file size.
+**Phase 02 Round 02 territories:**
+1. Upward / Emergence
+2. Contained / Portal
+3. Systematic / Grid
+4. Radial / Convergence
+5. Letterform / Abstract K
+6. Tension / Duality
 
-**Round 02 territories:**
-1. Upward / Emergence — shapes rising from a base
-2. Contained / Portal — negative space as subject
-3. Systematic / Grid — modular, engineered, precise
-4. Radial / Convergence — elements emanating from/toward center
-5. Letterform / Abstract K — not a literal K, distorted/reconstructed
-6. Tension / Duality — two shapes in dialogue
-
-**Semi-promising from R01:** A20 (constructed/systematic), B13 (arch structure), B10 (emergence)
-
-### Phase 03 — Refinement ⏳
-Top candidates from Phase 02 → 3 refined directions → scoring
-
-### Phase 04 — Final mark ⏳
-Selected direction → lockup → color system → usage rules
+Semi-promising from R01: A20 (systematic/circuit), B13 (arch structure), B10 (emergence)
 
 ---
 
@@ -71,27 +78,15 @@ Selected direction → lockup → color system → usage rules
 
 ```
 site/
-  index.html                    # Brand site landing
-  brand-foundation.html         # Phase 01 document
+  index.html
+  brand-foundation.html       # Phase 01
   phase-02/
-    round-01-concepts.html      # 90 SVG concepts (R01)
-    round-02-concepts.html      # 120 SVG concepts (R02) ← next
-    round-NN-concepts.html      # future rounds
-  phase-03/
-    ...
+    round-01-concepts.html    # 90 SVG concepts (inconclusive)
+    round-02-concepts.html    # 120 concepts ← next
 CHANGELOG.md
-README.md
-deploy/                         # deploy scripts
-```
-
----
-
-## Pushing large files
-
-Files >50kb must be pushed via local git or a script — the GitHub API truncates large `content` fields.
-
-```bash
-git add site/phase-02/round-02-concepts.html
-git commit -m "Phase 02 Round 02 — 120 SVG concepts, 6 territories"
-git push
+DECISIONS.md                  # ← full history and rationale
+.claude/rules/
+  brand-rules.md
+  directory-boundaries.md
+  workflow.md
 ```
