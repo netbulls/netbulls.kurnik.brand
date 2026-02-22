@@ -618,12 +618,60 @@
 <div class="header">
   <div class="phase-tag">Phase 03 — Assessment</div>
   <h1>Kurnik — Symbol Assessment</h1>
-  <p>Score 6 finalist symbols across weighted criteria. Each symbol is paired with a curated font — pick the best pairing, then rate the combination. The page calculates weighted rankings and persists your scores locally.</p>
+  <p>Score finalist symbols across weighted criteria. Each symbol is paired with a curated font — pick the best pairing, then rate the combination. The page calculates weighted rankings and persists your scores locally.</p>
+</div>
+
+<!-- ════ PROCESS ════ -->
+<div class="legend">
+  <h2>Process</h2>
+  <p style="color:var(--text-dim);font-size:13px;line-height:1.7;margin-bottom:16px;max-width:720px">
+    Phase 02 generated <strong>850 SVG brand mark concepts</strong> across 6 rounds — from broad territory exploration (270 concepts across 9 directions) through focused refinement (110 variants of 11 shortlisted families). The field was narrowed to <strong>9 finalists</strong> across 4 concept families through a combination of manual curation and AI blind scoring.
+  </p>
+  <p style="color:var(--text-dim);font-size:13px;line-height:1.7;margin-bottom:16px;max-width:720px">
+    <strong>AI blind scoring pipeline:</strong> All 760 SVGs (Rounds 02–06) were evaluated in two passes. <em>Pass 1</em> scored structural fitness (geometric clarity, silhouette strength, uniqueness signal) to triage down to 76 survivors. <em>Pass 2</em> applied the 6 weighted criteria below for deep semantic scoring. The AI had no knowledge of which symbols were manually selected — it scored purely on the SVG structure and brand fit.
+  </p>
+  <p style="color:var(--text-dim);font-size:13px;line-height:1.7;margin-bottom:24px;max-width:720px">
+    <strong>This assessment tool</strong> is for human scoring of the finalists. The AI scoring revealed that human curation favored narrative richness while the AI prioritized structural scalability — the final choice should balance both lenses.
+  </p>
+</div>
+
+<!-- ════ CRITERIA DEFINITIONS ════ -->
+<div class="legend">
+  <h2>Criteria Definitions</h2>
+  <p style="color:var(--text-dim);font-size:13px;line-height:1.7;margin-bottom:20px;max-width:720px">
+    Each symbol is scored on 6 criteria. The two most important criteria (<strong>Scalability</strong> and <strong>Brand Narrative</strong>) carry a ×2 weight; the remaining four carry ×1.5. Maximum score is 100 points.
+  </p>
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:720px;margin-bottom:24px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:6px">Scalability <span style="color:var(--text-muted);font-size:10px">×2 weight · max 20pt</span></div>
+      <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin:0">Does the mark survive size reduction? Test at 80px (display), 32px (app icon), and 16px (favicon). Fine details that disappear at small sizes are penalized. Bold, simple forms that maintain their identity at every scale score highest. The AI scoring showed this was the single biggest differentiator between top-ranked and low-ranked marks.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:6px">Brand Narrative <span style="color:var(--text-muted);font-size:10px">×2 weight · max 20pt</span></div>
+      <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin:0">Does the shape tell a story about Kurnik? The incubator narrative — focus, progress, direction, building, launching — should be legible in the geometry. Marks that feel like pure decoration score low. Marks where the form <em>means</em> something (ascending momentum, expansion from center, contained precision) score high. This is where human judgment matters most — the AI can read structure but you read intent.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:6px">Distinctiveness <span style="color:var(--text-muted);font-size:10px">×1.5 weight · max 15pt</span></div>
+      <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin:0">Would anyone confuse this with another company's mark? Chevron stacks exist in analytics tools. Plus signs exist in healthcare. Crosshairs exist in camera apps. The mark needs to occupy its own visual territory. Score based on: could you describe this to someone and they'd know it wasn't [Stripe, Figma, Vercel, Linear, etc.]?</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:6px">Lockup Harmony <span style="color:var(--text-muted);font-size:10px">×1.5 weight · max 15pt</span></div>
+      <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin:0">How well does symbol + wordmark sit together? Check horizontal lockup (mark left, "kurnik" right) and stacked lockup (mark above, text below). Evaluate: weight balance, visual center alignment, breathing room, whether the mark fights or flows with the typography. Font pairing matters here — the lockup preview lets you test different fonts per symbol.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:6px">Icon Presence <span style="color:var(--text-muted);font-size:10px">×1.5 weight · max 15pt</span></div>
+      <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin:0">App icon quality. How does the mark look inside a squircle (iOS) or circle (Android) frame on a dark background? Does it fill the frame well or float with too much empty space? Does it have enough visual mass to stand out in a grid of app icons? The icon preview page tests this at multiple platform shapes and sizes.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:6px">Emotional Resonance <span style="color:var(--text-muted);font-size:10px">×1.5 weight · max 15pt</span></div>
+      <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin:0">Does it <em>feel</em> like Kurnik? The target emotion is "warm and confident" — infrastructure-grade quality with human warmth. Not cold/clinical (too Figma), not playful/casual (too Slack), not aggressive/corporate (too consulting). Think: the feeling of a well-made tool that's also inviting. Sensibility references: Linear's precision, Vercel's confidence, with more warmth than either.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ════ SCORING LEGEND ════ -->
 <div class="legend">
-  <h2>Scoring Criteria</h2>
+  <h2>Quick Reference</h2>
   <div class="legend-grid" id="legend-grid"></div>
 </div>
 
@@ -787,6 +835,63 @@ const SYMBOLS = [
       { name: 'Space Grotesk', fallback: 'sans-serif' },
       { name: 'IBM Plex Sans', fallback: 'sans-serif' },
       { name: 'Oswald', fallback: 'sans-serif' },
+    ]
+  },
+  {
+    id: 'H1519-R6-05',
+    file: '../phase-02/round-06/H1519-R6-05.svg',
+    family: 'Bracket Arrows',
+    brief: 'Four bold bracket-arrows pointing outward, open center',
+    narrative: 'Expansion from frame, launching outward, infinite possibility',
+    fonts: [
+      { name: 'Space Grotesk', fallback: 'sans-serif' },
+      { name: 'Inter', fallback: 'sans-serif' },
+      { name: 'IBM Plex Sans', fallback: 'sans-serif' },
+      { name: 'Overpass', fallback: 'sans-serif' },
+      { name: 'Fira Sans', fallback: 'sans-serif' },
+      { name: 'Urbanist', fallback: 'sans-serif' },
+      { name: 'DM Sans', fallback: 'sans-serif' },
+      { name: 'Manrope', fallback: 'sans-serif' },
+      { name: 'Azeret Mono', fallback: 'monospace' },
+      { name: 'Chakra Petch', fallback: 'sans-serif' },
+    ]
+  },
+  {
+    id: 'R05/T110-17',
+    file: '../phase-02/round-05/T110-17.svg',
+    family: 'Rotated Squares',
+    brief: 'Three progressive rotation steps (0°/22.5°/45°)',
+    narrative: 'Iteration, process, refinement through repetition',
+    fonts: [
+      { name: 'Work Sans', fallback: 'sans-serif' },
+      { name: 'Inter', fallback: 'sans-serif' },
+      { name: 'Darker Grotesque', fallback: 'sans-serif' },
+      { name: 'Rubik', fallback: 'sans-serif' },
+      { name: 'Sora', fallback: 'sans-serif' },
+      { name: 'Libre Franklin', fallback: 'sans-serif' },
+      { name: 'Urbanist', fallback: 'sans-serif' },
+      { name: 'Plus Jakarta Sans', fallback: 'sans-serif' },
+      { name: 'Space Grotesk', fallback: 'sans-serif' },
+      { name: 'Georama', fallback: 'sans-serif' },
+    ]
+  },
+  {
+    id: 'R02/F20',
+    file: '../phase-02/round-02/F20.svg',
+    family: 'Chevron Cascade',
+    brief: 'Three bold dissolving-weight chevrons',
+    narrative: 'Velocity fading into space, progress and momentum',
+    fonts: [
+      { name: 'Barlow Semi Condensed', fallback: 'sans-serif' },
+      { name: 'Red Hat Display', fallback: 'sans-serif' },
+      { name: 'Sora', fallback: 'sans-serif' },
+      { name: 'Outfit', fallback: 'sans-serif' },
+      { name: 'Saira', fallback: 'sans-serif' },
+      { name: 'Archivo', fallback: 'sans-serif' },
+      { name: 'Exo 2', fallback: 'sans-serif' },
+      { name: 'Teko', fallback: 'sans-serif' },
+      { name: 'Plus Jakarta Sans', fallback: 'sans-serif' },
+      { name: 'Manrope', fallback: 'sans-serif' },
     ]
   }
 ];
