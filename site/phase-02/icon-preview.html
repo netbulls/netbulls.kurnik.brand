@@ -10,12 +10,12 @@
   :root{--bg:#0e0c0a;--amber:#d4840a;--amber-light:#f5a623;--text:#e8ddd0;--text-dim:#7a6e62;--border:#2a2420;--card-bg:#161310;--card-hover:#1c1915}
   body{background:#111;color:var(--text);font-family:'Manrope',sans-serif;padding:0 0 80px}
   .header{padding:40px 48px 24px;border-bottom:1px solid var(--border);background:var(--bg)}
-  .header h1{font-family:'DM Serif Display',serif;font-size:28px;color:var(--amber);margin-bottom:4px}
-  .header p{color:var(--text-dim);font-size:14px}
-  .selected-info{color:var(--amber);font-family:'DM Mono',monospace;font-size:13px;margin-top:8px}
+  .header h1{font-family:'DM Serif Display',serif;font-size:30px;color:var(--amber);margin-bottom:4px}
+  .header p{color:var(--text-dim);font-size:16px}
+  .selected-info{color:var(--amber);font-family:'DM Mono',monospace;font-size:15px;margin-top:8px}
   section{padding:32px 48px}
-  section h2{font-family:'DM Serif Display',serif;font-size:20px;color:var(--amber);margin-bottom:6px}
-  section .sub{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);margin-bottom:24px}
+  section h2{font-family:'DM Serif Display',serif;font-size:22px;color:var(--amber);margin-bottom:6px}
+  section .sub{font-family:'DM Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:24px}
 
   /* Candidate selector */
   .candidate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;margin-bottom:32px}
@@ -24,8 +24,8 @@
   .cand.active{border-color:var(--amber);box-shadow:0 0 20px rgba(212,132,10,.15)}
   .cand .icon-wrap{width:80px;height:80px;margin:0 auto 8px;background:var(--bg);border-radius:18px;display:flex;align-items:center;justify-content:center}
   .cand .icon-wrap img{width:60%;height:60%}
-  .cand .cid{font-family:'DM Mono',monospace;font-size:11px;color:var(--amber)}
-  .cand .cfam{font-size:10px;color:var(--text-dim)}
+  .cand .cid{font-family:'DM Mono',monospace;font-size:13px;color:var(--amber)}
+  .cand .cfam{font-size:12px;color:var(--text-dim)}
 
   /* Background selector */
   .bg-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;margin-bottom:28px}
@@ -34,59 +34,59 @@
   .bg-opt.active{border-color:var(--amber);box-shadow:0 0 16px rgba(212,132,10,.15)}
   .bg-opt .swatch{width:88px;height:88px;margin:0 auto 8px;border-radius:22.5%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.4)}
   .bg-opt .swatch img{width:56%;height:56%}
-  .bg-opt .bg-name{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);font-weight:500}
-  .bg-opt .bg-desc{font-size:10px;color:var(--text-dim);margin-top:2px}
+  .bg-opt .bg-name{font-family:'DM Mono',monospace;font-size:13px;color:var(--text);font-weight:500}
+  .bg-opt .bg-desc{font-size:12px;color:var(--text-dim);margin-top:2px}
   .bg-opt.active .bg-name{color:var(--amber)}
-  .bg-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:4px;background:var(--amber);color:var(--bg);font-weight:600;margin-left:4px;vertical-align:middle;text-transform:uppercase;letter-spacing:.5px}
+  .bg-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;padding:1px 6px;border-radius:4px;background:var(--amber);color:var(--bg);font-weight:600;margin-left:4px;vertical-align:middle;text-transform:uppercase;letter-spacing:.5px}
 
   /* Platform shapes */
   .shapes-row{display:flex;gap:40px;align-items:flex-end;flex-wrap:wrap;margin-bottom:40px}
   .shape-item{text-align:center}
   .shape-box{display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.5)}
   .shape-box img{width:60%;height:60%}
-  .shape-label{margin-top:10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);line-height:1.4}
+  .shape-label{margin-top:10px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text-dim);line-height:1.4}
 
   /* Size preview */
   .sizes-row{display:flex;gap:32px;align-items:flex-end;flex-wrap:wrap;margin-bottom:40px}
   .size-item{text-align:center}
   .size-box{display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.4)}
   .size-box img{width:60%;height:60%}
-  .size-label{margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim)}
+  .size-label{margin-top:8px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim)}
 
   /* Favicon bar */
   .favicon-bar{display:flex;align-items:center;gap:20px;background:#1a1a1a;border-radius:8px;padding:10px 16px;margin-bottom:40px;max-width:600px}
   .favicon-bar .tab-mock{display:flex;align-items:center;gap:6px;background:#2a2a2a;border-radius:6px 6px 0 0;padding:6px 12px}
   .favicon-bar .tab-icon{width:16px;height:16px;border-radius:2px;display:flex;align-items:center;justify-content:center}
   .favicon-bar .tab-icon img{width:12px;height:12px}
-  .favicon-bar .tab-text{font-size:12px;color:#999}
-  .favicon-bar .address{flex:1;background:#222;border-radius:4px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:11px;color:#666}
+  .favicon-bar .tab-text{font-size:14px;color:#999}
+  .favicon-bar .address{flex:1;background:#222;border-radius:4px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:13px;color:#666}
 
   /* Device mockups */
   .devices{display:flex;gap:40px;flex-wrap:wrap}
   .phone{background:linear-gradient(180deg,#2a2a2a 0%,#1a1a1a 100%);border-radius:30px;padding:40px 20px;width:280px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
-  .phone h4{color:#fff;font-size:14px;font-weight:500;margin-bottom:20px;text-align:center}
+  .phone h4{color:#fff;font-size:16px;font-weight:500;margin-bottom:20px;text-align:center}
   .app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
   .app-icon{display:flex;flex-direction:column;align-items:center;gap:5px}
   .app-icon-placeholder{width:52px;height:52px;border-radius:12px;background:#333}
   .app-icon-placeholder.circle{border-radius:50%}
   .app-icon-real{width:52px;height:52px;display:flex;align-items:center;justify-content:center}
   .app-icon-real img{width:60%;height:60%}
-  .app-icon span{font-size:10px;color:#fff}
+  .app-icon span{font-size:12px;color:#fff}
 
   /* OG preview */
   .og-preview{border-radius:12px;overflow:hidden;max-width:600px;box-shadow:0 4px 20px rgba(0,0,0,.4);margin-bottom:20px}
   .og-image{width:100%;aspect-ratio:1200/630;display:flex;align-items:center;justify-content:center;position:relative}
   .og-image img{width:20%;height:auto}
-  .og-image .og-text{position:absolute;bottom:20px;left:24px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);opacity:.7}
+  .og-image .og-text{position:absolute;bottom:20px;left:24px;font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);opacity:.7}
   .og-meta{background:#1a1a1a;padding:14px 16px}
-  .og-meta .og-site{font-family:'DM Mono',monospace;font-size:11px;color:#888;margin-bottom:4px}
-  .og-meta .og-title{font-size:14px;color:#fff;font-weight:600}
-  .og-meta .og-desc{font-size:12px;color:#888;margin-top:4px}
+  .og-meta .og-site{font-family:'DM Mono',monospace;font-size:13px;color:#888;margin-bottom:4px}
+  .og-meta .og-title{font-size:16px;color:#fff;font-weight:600}
+  .og-meta .og-desc{font-size:14px;color:#888;margin-top:4px}
 
   /* All-candidates comparison */
   .compare-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
   .compare-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-  .compare-card .cmp-id{font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);margin-bottom:12px}
+  .compare-card .cmp-id{font-family:'DM Mono',monospace;font-size:14px;color:var(--amber);margin-bottom:12px}
   .compare-sizes{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:12px}
   .compare-sizes .cs{display:flex;align-items:center;justify-content:center}
   .compare-sizes .cs img{width:60%;height:60%}
@@ -411,7 +411,7 @@ function buildCompareGrid() {
     card.appendChild(ios);
 
     const fam = document.createElement('div');
-    fam.style.cssText = 'font-size:10px;color:var(--text-dim);margin-top:8px';
+    fam.style.cssText = 'font-size:12px;color:var(--text-dim);margin-top:8px';
     fam.textContent = c.name;
     card.appendChild(fam);
 
