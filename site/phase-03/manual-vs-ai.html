@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual vs AI — Ranking Comparison | Kurnik Phase 03</title>
+<meta name="description" content="Where do the 6 manually-curated finalists rank in the AI blind scoring? Side-by-side comparison with family head-to-head analysis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root {
+  --bg: #0e0c0a;
+  --surface: #161310;
+  --elevated: #1c1917;
+  --amber: #d4840a;
+  --amber-light: #f5a623;
+  --amber-dim: rgba(212,132,10,0.08);
+  --amber-border: rgba(212,132,10,0.2);
+  --text: #e8ddd0;
+  --text-dim: #7a6e62;
+  --text-muted: #4a4238;
+  --border: #2a2420;
+  --border-hover: #3a3430;
+  --green: #3a9a5c;
+  --red: #b04040;
+  --blue: #4a8ab5;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* ── Layout ── */
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.narrow{max-width:880px}
+
+/* ── Header ── */
+.header{padding:48px 0 32px;border-bottom:1px solid var(--border)}
+.breadcrumb{margin-bottom:24px}
+.breadcrumb a{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);text-decoration:none;letter-spacing:0.05em}
+.breadcrumb a:hover{color:var(--amber)}
+.phase-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);background:var(--amber-dim);border:1px solid var(--amber-border);padding:3px 8px;border-radius:4px;margin-bottom:12px;letter-spacing:0.06em;text-transform:uppercase}
+h1{font-family:'DM Serif Display',serif;font-size:32px;color:var(--amber);margin-bottom:8px;font-weight:400}
+.subtitle{color:var(--text-dim);font-size:13px;max-width:720px;line-height:1.6}
+
+/* ── Stats bar ── */
+.stats-bar{display:flex;gap:32px;padding:20px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'DM Mono',monospace;font-size:28px;color:var(--amber);font-weight:500}
+.stat-label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px}
+
+/* ── Section headers ── */
+.section{padding:40px 0;border-bottom:1px solid var(--border)}
+.section:last-child{border-bottom:none}
+.section h2{font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);margin-bottom:4px;font-weight:400}
+.section h2 .accent{color:var(--amber)}
+.section-desc{font-size:12px;color:var(--text-dim);margin-bottom:24px}
+
+/* ── Ranking Ladder ── */
+.ladder{display:flex;flex-direction:column;gap:3px}
+.ladder-row{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:6px;cursor:pointer;transition:background 0.15s}
+.ladder-row:hover{background:rgba(212,132,10,0.04)}
+.ladder-row.is-finalist{background:rgba(212,132,10,0.08);border:1px solid var(--amber-border);box-shadow:0 0 12px rgba(212,132,10,0.06)}
+.ladder-row.is-finalist:hover{background:rgba(212,132,10,0.12)}
+.lr-rank{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);width:28px;text-align:right;flex-shrink:0}
+.lr-img{width:32px;height:32px;background:var(--surface);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);overflow:hidden}
+.lr-img img{width:24px;height:24px}
+.lr-id{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);width:130px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lr-track{flex:1;height:18px;background:var(--surface);border-radius:4px;overflow:hidden;position:relative;border:1px solid rgba(42,36,32,0.5)}
+.lr-fill{height:100%;border-radius:3px;transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+.lr-fill.amber{background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+.lr-fill.dim{background:var(--text-muted)}
+.lr-score{font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);width:40px;text-align:right;flex-shrink:0;font-weight:500}
+.finalist-badge{font-family:'DM Mono',monospace;font-size:9px;background:var(--amber);color:var(--bg);padding:1px 5px;border-radius:3px;margin-left:4px;text-transform:uppercase;letter-spacing:0.04em}
+.lr-gap{text-align:center;padding:8px 0;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.04em}
+
+/* ── Head-to-Head Cards ── */
+.h2h-grid{display:flex;flex-direction:column;gap:20px}
+.h2h-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.h2h-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border);background:var(--elevated)}
+.h2h-family{font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);text-transform:uppercase;letter-spacing:0.04em}
+.h2h-delta{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;padding:4px 10px;border-radius:6px;background:rgba(58,154,92,0.15);color:var(--green);border:1px solid rgba(58,154,92,0.3)}
+.h2h-body{display:grid;grid-template-columns:1fr auto 1fr;gap:0}
+.h2h-side{padding:20px}
+.h2h-vs{display:flex;align-items:center;justify-content:center;padding:0 12px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.h2h-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
+.h2h-preview{width:80px;height:80px;background:var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);margin-bottom:10px}
+.h2h-preview img{width:60px;height:60px}
+.h2h-id{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);margin-bottom:2px}
+.h2h-score-big{font-family:'DM Mono',monospace;font-size:24px;color:var(--amber);font-weight:500}
+.h2h-rank{font-size:11px;color:var(--text-dim);margin-bottom:12px}
+.h2h-criteria{display:flex;flex-direction:column;gap:4px}
+.h2h-cr{display:flex;align-items:center;gap:6px}
+.h2h-cr-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);width:20px;flex-shrink:0;text-transform:uppercase}
+.h2h-cr-track{flex:1;height:8px;background:rgba(42,36,32,0.5);border-radius:2px;overflow:hidden}
+.h2h-cr-fill{height:100%;border-radius:2px;transition:width 0.4s ease}
+.h2h-cr-fill.manual{background:var(--text-dim)}
+.h2h-cr-fill.ai{background:var(--amber)}
+.h2h-cr-val{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-dim);width:14px;text-align:right;flex-shrink:0}
+.h2h-text{margin-top:12px;padding-top:10px;border-top:1px solid var(--border)}
+.h2h-text p{font-size:10px;color:var(--text-dim);line-height:1.4}
+.h2h-text .strength{color:var(--green)}
+.h2h-text .weakness{color:var(--red)}
+
+/* ── Criteria Gap Chart ── */
+.gap-chart{display:flex;flex-direction:column;gap:12px;max-width:600px}
+.gap-row{display:flex;align-items:center;gap:12px}
+.gap-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);width:140px;flex-shrink:0}
+.gap-bars{flex:1;display:flex;flex-direction:column;gap:3px}
+.gap-bar{display:flex;align-items:center;gap:8px}
+.gap-bar-tag{font-family:'DM Mono',monospace;font-size:8px;color:var(--text-muted);width:50px;flex-shrink:0;text-transform:uppercase}
+.gap-bar-track{flex:1;height:10px;background:rgba(42,36,32,0.5);border-radius:3px;overflow:hidden}
+.gap-bar-fill{height:100%;border-radius:3px}
+.gap-bar-fill.manual-fill{background:var(--text-dim)}
+.gap-bar-fill.ai-fill{background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+.gap-bar-val{font-family:'DM Mono',monospace;font-size:10px;color:var(--text);width:28px;text-align:right;flex-shrink:0}
+.gap-legend{display:flex;gap:20px;margin-bottom:16px}
+.gap-legend-item{display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim)}
+.gap-legend-swatch{width:12px;height:8px;border-radius:2px}
+
+/* ── Insight box ── */
+.insight-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px}
+.insight-box h3{font-family:'DM Serif Display',serif;font-size:16px;color:var(--text);margin-bottom:12px;font-weight:400}
+.insight-box p{font-size:12px;color:var(--text-dim);line-height:1.7;margin-bottom:12px}
+.insight-box p:last-child{margin-bottom:0}
+.insight-box .highlight{color:var(--amber);font-weight:500}
+
+/* ── Detail modal ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;padding:32px}
+.modal-close{float:right;font-size:24px;color:var(--text-dim);cursor:pointer;background:none;border:none;padding:4px 8px;line-height:1}
+.modal-close:hover{color:var(--text)}
+.modal-head{display:flex;gap:20px;margin-bottom:24px}
+.modal-preview{width:120px;height:120px;background:var(--surface);border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);flex-shrink:0}
+.modal-preview img{width:88px;height:88px}
+.modal-meta h3{font-family:'DM Mono',monospace;font-size:14px;color:var(--amber);margin-bottom:4px}
+.modal-meta .m-desc{font-size:12px;color:var(--text-dim);line-height:1.5}
+.modal-meta .m-round{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);margin-top:4px}
+.modal-scores{margin-bottom:20px}
+.modal-scores h4{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);text-transform:uppercase;margin-bottom:10px;letter-spacing:0.04em}
+.ms-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ms-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);width:130px;flex-shrink:0}
+.ms-track{flex:1;height:10px;background:var(--surface);border-radius:3px;overflow:hidden}
+.ms-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+.ms-val{font-family:'DM Mono',monospace;font-size:12px;color:var(--text);width:30px;text-align:right;flex-shrink:0}
+.modal-text h4{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);text-transform:uppercase;margin-bottom:6px;letter-spacing:0.04em}
+.modal-text p{font-size:12px;color:var(--text-dim);line-height:1.6;margin-bottom:16px}
+.modal-text .strength{color:var(--green)}
+.modal-text .weakness{color:var(--red)}
+.modal-sizes{display:flex;gap:16px;align-items:flex-end;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.modal-sizes .sz{display:flex;flex-direction:column;align-items:center;gap:4px}
+.modal-sizes .sz-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.modal-sizes .sz-box{background:var(--surface);border-radius:6px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .container{padding:0 16px}
+  .stats-bar{gap:16px}
+  .lr-id{width:80px}
+  .h2h-body{grid-template-columns:1fr;gap:0}
+  .h2h-vs{border-left:none;border-right:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:8px 0}
+  .gap-label{width:100px}
+}
+
+/* ── Utility ── */
+.hidden{display:none!important}
+.mt-16{margin-top:16px}
+</style>
+</head>
+<body>
+
+<div class="container narrow">
+  <div class="header">
+    <nav class="breadcrumb"><a href="./">&larr; Phase 03</a></nav>
+    <span class="phase-tag">Phase 03 &middot; Comparison</span>
+    <h1>Manual vs AI &mdash; Ranking Comparison</h1>
+    <p class="subtitle">Where do the 6 manually-curated finalists land in the AI blind scoring? This tool visualizes the gap between human curation and algorithmic evaluation across all 76 Pass&nbsp;2 survivors.</p>
+  </div>
+</div>
+
+<div class="container narrow">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Manual Finalists</div></div>
+    <div class="stat"><div class="stat-num">#52</div><div class="stat-label">Avg Rank /76</div></div>
+    <div class="stat"><div class="stat-num">60.2</div><div class="stat-label">Avg Score</div></div>
+    <div class="stat"><div class="stat-num">#23</div><div class="stat-label">Best (H1519-R6-03)</div></div>
+    <div class="stat"><div class="stat-num">80.7</div><div class="stat-label">AI Top-8 Avg</div></div>
+  </div>
+</div>
+
+<!-- Ranking Ladder -->
+<div class="container narrow">
+  <div class="section">
+    <h2>The <span class="accent">Ranking Ladder</span></h2>
+    <p class="section-desc">All 76 Pass 2 survivors ranked by AI score. Manual finalists are highlighted &mdash; notice how they cluster in the lower half.</p>
+    <div class="ladder" id="ladder"></div>
+  </div>
+</div>
+
+<!-- Family Head-to-Head -->
+<div class="container narrow">
+  <div class="section">
+    <h2>Family <span class="accent">Head-to-Head</span></h2>
+    <p class="section-desc">For each of the 4 finalist families, the manual pick vs the AI&rsquo;s top choice from the same family. Per-criteria bars show where the scores diverge.</p>
+    <div class="h2h-grid" id="h2hGrid"></div>
+  </div>
+</div>
+
+<!-- Criteria Gap Analysis -->
+<div class="container narrow">
+  <div class="section">
+    <h2>Criteria <span class="accent">Gap Analysis</span></h2>
+    <p class="section-desc">Average per-criterion scores: manual finalists vs AI top 8. The widest gaps reveal what the AI prioritizes differently.</p>
+    <div class="gap-legend">
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--text-dim)"></div> Manual Finalists (avg)</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--amber)"></div> AI Top 8 (avg)</div>
+    </div>
+    <div class="gap-chart" id="gapChart"></div>
+  </div>
+</div>
+
+<!-- Key Insights -->
+<div class="container narrow">
+  <div class="section">
+    <h2>Key <span class="accent">Insights</span></h2>
+    <p class="section-desc">What explains the divergence between human and AI ranking?</p>
+    <div class="insight-box">
+      <h3>Two different evaluation lenses</h3>
+      <p>The AI scoring pipeline emphasizes <span class="highlight">structural simplicity and scalability</span> &mdash; marks that survive at 16px favicon, fill a squircle icon frame, and maintain legibility without fine detail. This is a <em>technical</em> evaluation of mark fitness.</p>
+      <p>Human curation valued <span class="highlight">brand narrative and emotional resonance</span> &mdash; the story a mark tells about Kurnik as an incubator, the tension between precision and emergence, the feeling of "infrastructure-grade but warm." This is a <em>conceptual</em> evaluation of brand fit.</p>
+      <p>The biggest gaps are in <span class="highlight">scalability</span> (AI avg 8.0 vs manual avg 5.5) and <span class="highlight">distinctiveness</span> (AI avg 7.6 vs manual avg 5.7). The manual picks tend to be more conceptually ambitious marks that carry richer narratives but sacrifice small-size legibility for visual complexity.</p>
+      <p>Neither lens is wrong. The best mark for Kurnik likely lives at the intersection: <span class="highlight">structurally sound enough to work at every size, but narratively rich enough to feel like more than geometry.</span> H1519-R6-03, the highest-ranked finalist at #23, comes closest to this balance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const P2={"R05/F06-11":{"sc":7.0,"bn":7.0,"di":9.0,"lh":8.0,"ip":8.0,"er":8.0,"p2":84.0,"str":"Vertical split fill/stroke on a diamond silhouette is the most distinctive form in the entire batch \u2014 not obviously associated with any major brand; diamond outer shape scales cleanly and fills squircle icon frame perfectly; duality narrative (fill vs outline, left vs right) is rich \u2014 could speak to the \"inside/outside\" or \"building vs vision\" tension; pairs exceptionally well with text lockup due to balanced diamond silhouette","wk":"The split is subtle \u2014 at 32px the internal vertical division (6px gap between left and right polygons) may lose definition; four separate polygons could simplify to two for cleaner construction; the duality narrative while rich may not have a clear Kurnik-specific meaning; \"split diamond\" is a known jewelry/card symbol"},"R05/F20-14":{"sc":9.0,"bn":8.0,"di":8.0,"lh":8.0,"ip":8.0,"er":8.0,"p2":83.0,"str":"solid filled polygons scale to any size without loss, mass differential creates strong visual rhythm, powerful silhouette even at 16px, directional energy is unmistakable, warm and confident","wk":"three-chevron family has some precedent, the size decrease reads as dissolution rather than growth depending on orientation"},"R05/F20-16":{"sc":8.0,"bn":8.0,"di":6.0,"lh":8.0,"ip":8.0,"er":8.0,"p2":82.0,"str":"Dramatic size contrast (large base, tiny apex) creates strongest \"launch\" or \"ascent\" narrative in the batch; filled solid forms survive all scales including 16px favicon; foundation-plus-peak reads as progress from base to point; confident and warm in amber","wk":"Stacked filled triangles/chevrons is a crowded territory (analytics icons, performance charts); the dramatic size jump (large/medium/tiny) may feel uneven rather than cascading; rightmost points differ slightly between top two chevrons creating subtle misalignment"},"R02/F20":{"sc":8.0,"bn":9.0,"di":8.0,"lh":8.0,"ip":7.0,"er":8.0,"p2":81.5,"str":"the dissolving weight narrative is one of the strongest brand stories in the set \u2014 velocity fading into space, progress and momentum, clean directional reading, three bold chevrons hold at 32px, pairs naturally with text for lockup","wk":"thinnest chevron at 1.5px drops at 16px favicon (intentional but worth noting), four-chevron family has some visual precedent in corporate mark families"},"T110-R6-10":{"sc":8.0,"bn":6.0,"di":7.0,"lh":8.0,"ip":8.0,"er":7.0,"p2":80.5,"str":"Locked tension between kissing diamond and stroke square creates genuine sophistication; two-element clarity survives small scale; strong icon silhouette in squircle","wk":"Brand narrative is \"contained precision\" not directional progress; square+diamond language exists (see Figma); the kissing proportion feels slightly accidental at first read"},"R03/T3-07":{"sc":8.0,"bn":8.0,"di":7.0,"lh":8.0,"ip":9.0,"er":8.0,"p2":80.5,"str":"rounded rectangle container is inherently icon-ready \u2014 fills squircle frame by design, right-pointing arrow void is immediately directional, bold fill with negative-space arrow is highly legible","wk":"the rounded-rect-with-arrow-void is a common mobile app icon approach, may read as a \"button\" or \"UI element\" rather than a mark, arrow tail detail compresses at 16px"},"R05/B25-18":{"sc":8.0,"bn":7.0,"di":8.0,"lh":8.0,"ip":9.0,"er":8.0,"p2":80.0,"str":"circle fills squircle icon frame perfectly, chevron void reads even at 32px, elegant restraint with maximum negative space tension, warm and minimal, pairs naturally with wordmark","wk":"no-shaft chevron void is more subtle than expected at very small favicon, circles-with-cutouts are not entirely unique territory"},"H1519-R6-05":{"sc":8.0,"bn":8.0,"di":8.0,"lh":8.0,"ip":8.0,"er":8.0,"p2":80.0,"str":"Purest expression of H1519 \u2014 four bold bracket-arrows pointing outward define frame while simultaneously pointing beyond it; perfect balance of precision (brackets) and direction (arrows); 6px strokes read well at 32px; open center implies infinite possibility \u2014 incubator narrative of launching things outward; distinctive combination of bracket plus arrowhead at each corner is genuinely unusual in mark landscape; fills squircle frame with energy at all four corners; pairs cleanly with logotype as weight is well-distributed","wk":"Arrow-bracket corners at 32px require clean rendering \u2014 the arrowhead polygons should survive but tight; no center element means the interior is pure void which may feel empty in some icon contexts; the motif has some kinship with expand/fullscreen icons which could create confusion in UI contexts"},"R05/F20-15":{"sc":8.0,"bn":7.0,"di":6.0,"lh":8.0,"ip":8.0,"er":7.0,"p2":79.5,"str":"Clean even cascade of three upward solid chevrons \u2014 the most readable of the upward family; strong scalability; textbook icon presence; lockup pairing is straightforward","wk":"Even cascade is also the most common chevron-stack pattern \u2014 analytics/dashboard icon territory; the exact equal-step progression feels familiar; less distinctive than F20-16's dramatic contrast; medium emotional resonance"},"R05/F20-13":{"sc":8.0,"bn":7.0,"di":7.0,"lh":7.0,"ip":7.0,"er":7.0,"p2":78.5,"str":"Right-pointing direction is less saturated than upward-pointing in the mark landscape; forward momentum narrative is strong; three solid fills survive all scales; clean cascade","wk":"Right-alignment creates off-center icon in squircle \u2014 the wedge mass sits right-of-center; lockup harmony slightly awkward \u2014 mark and text both push right; the three rightward chevrons pattern still exists (play buttons, media icons)"},"R05/T110-17":{"sc":7.0,"bn":8.0,"di":9.0,"lh":6.0,"ip":6.0,"er":7.0,"p2":77.5,"str":"Three progressive rotation steps (0/22.5/45) is the strongest conceptual logic in the batch \u2014 iteration, time, process; high distinctiveness \u2014 no common logos use 22.5\u00b0 middle step; strong brand narrative of iteration","wk":"Three outline-only strokes at 5-6px will merge at 32px losing the 22.5\u00b0 middle layer; entirely stroke-based feels lighter/less confident than Kurnik's premium sensibility; lockup harmony weaker \u2014 outline marks read as more delicate against bold text; icon presence limited in squircle"},"R05/F20-06":{"sc":7.0,"bn":7.0,"di":7.0,"lh":7.0,"ip":7.0,"er":7.0,"p2":77.0,"str":"Stroke-based taper (12\u21927\u21923px) creates dramatic weight progression unique among the F20 group; open V forms feel lighter and more premium than solid wedges; tapered stroke is rare in the chevron-stack space","wk":"3px top stroke approaches hairline at 32px and disappears at 16px favicon; open forms feel slightly less confident/warmer than solid; the graduation from thick to thin may read as unfinished rather than intentional at small scale"},"R04/J03":{"sc":9.0,"bn":8.0,"di":8.0,"lh":6.0,"ip":7.0,"er":7.0,"p2":76.5,"str":"just two shapes \u2014 maximum graphic clarity, diagonal split creates powerful visual tension and momentum, scales perfectly to any size","wk":"vertically tall silhouette makes lockup pairing difficult, the slab-with-diagonal-cut reads more \"construction\" than \"incubator premium,\" limited warmth"},"R02/E02":{"sc":9.0,"bn":7.0,"di":6.0,"lh":7.0,"ip":9.0,"er":7.0,"p2":75.5,"str":"Two opposed wedge triangles are the most scalable form in entire batch \u2014 bold solid fills, zero fine detail, reads at 16px favicon without issue; tension/duality is immediately legible; fills squircle frame excellently; arrow-like directionality suggests forward motion","wk":"Distinctiveness is the major weakness \u2014 opposed triangles/chevrons is a very common motif; close family resemblance to Puma and various tech marks; narrative of duality could conflict with Kurnik's singular incubator vision; not warm or particularly premium"},"R02/A20":{"sc":8.0,"bn":8.0,"di":7.0,"lh":7.0,"ip":8.0,"er":7.0,"p2":75.5,"str":"Chevron-arrow with horizontal band cut is a strong breakthrough/progress narrative \u2014 directional momentum piercing a plane; the rect cut creates layered depth that reads as sophistication; bold fill scales well; the form is distinctive and unusual in execution","wk":"The background-color rect cut technique may read as artifact at small sizes or fail on non-black backgrounds; hexagonal arrow base has some precedent; cut band breaks solid mass which slightly reduces icon frame fill impact"},"T110-R6-04":{"sc":8.0,"bn":5.0,"di":6.0,"lh":8.0,"ip":8.0,"er":7.0,"p2":75.0,"str":"Maximum clarity \u2014 two elements, strong contrast, nothing to lose at small scale; pairs cleanly with text lockup; very strong icon silhouette","wk":"The basic square+diamond relation is the most precedented of this family; lacks the tension/specificity of R6-10; neutral narrative, nothing unique to Kurnik's story"},"R04/I10":{"sc":7.0,"bn":8.0,"di":7.0,"lh":7.0,"ip":7.0,"er":8.0,"p2":75.0,"str":"Cradle + dot is a distinctly warm and nurturing form \u2014 \"holding potential\" is perfect incubator metaphor; three-element composition is minimal but rich; endpoint dots add grounding; emotional resonance is strongest in batch \u2014 protective without being soft","wk":"At favicon scale (16px) the three separate circles may merge with arc termini creating blob; open-bottom form is directionally downward which reads as \"below\" not \"above\"; arc mark category is well-populated"},"R05/T110-20":{"sc":8.0,"bn":7.0,"di":7.0,"lh":7.0,"ip":8.0,"er":7.0,"p2":74.0,"str":"two-layer geometry creates architectural depth, clear octagonal-frame silhouette, fills icon frame symmetrically, strong positive/negative interplay","wk":"diamond/rotated-square motif is well-trodden in logo space, inner gap may compress at 16px favicon, somewhat cold and geometric without directional energy"},"R05/T110-19":{"sc":7.0,"bn":6.0,"di":7.0,"lh":7.0,"ip":7.0,"er":7.0,"p2":74.0,"str":"Carved void logic (filled square, diamond ring removed) is architecturally satisfying; single SVG shape makes it the most \"resolved\" of T110 family; strong silhouette","wk":"Diamond channel void may read ambiguously at small scale (is it void or fill?); less conceptually layered than multi-element versions; mild narrative \u2014 \"container with opening\" doesn't push far enough"},"R02/E15":{"sc":9.0,"bn":7.0,"di":6.0,"lh":7.0,"ip":8.0,"er":7.0,"p2":74.0,"str":"Two trapezoids pinching toward central vertical gap is bold and immediately readable at any size; the gap/void is the mark \u2014 high concept; scalability is excellent; fills squircle frame powerfully; tension/duality narrative works for two-sided incubator (founders + capital)","wk":"Distinctiveness is moderate \u2014 pinch/tension is a motif shared with several marks; trapezoid shape is less elegant than wedge; the pinch void reads as constraint as easily as focus; not strongly differentiated from E02"},"T212-R6-10":{"sc":7.0,"bn":8.0,"di":7.0,"lh":7.0,"ip":7.0,"er":7.0,"p2":73.5,"str":"arrow-breaking-through-frame is a compelling narrative of escape velocity and breakthrough, corner brackets add engineering/precision layer, bold 7px arrow shaft holds at small sizes","wk":"at 32px the corner brackets and arrowhead compete for attention, the concept is strong but execution feels slightly composed-by-committee, bracket-plus-arrow is a readable but somewhat expected \"breaking out\" visual metaphor"},"R02/G16":{"sc":7.0,"bn":8.0,"di":7.0,"lh":7.0,"ip":7.0,"er":8.0,"p2":73.5,"str":"Isometric platform is the strongest single-read narrative metaphor in batch \u2014 platform/foundation maps directly to Kurnik as incubator; filled top plus outlined sides creates visual hierarchy with depth; warm infrastructure feel closest to Figma/Linear sensibility; distinctive without being alien","wk":"Isometric forms can be tricky at 32px \u2014 outlined side faces may lose distinction; polygon complexity requires precise rendering; isometric has had trendiness cycles (may date); lockup requires careful baseline alignment"},"H1519-R6-03":{"sc":7.0,"bn":8.0,"di":7.0,"lh":7.0,"ip":8.0,"er":7.0,"p2":73.5,"str":"Strongest brand narrative in batch \u2014 outward-burst arrows from center dot reads as expansion from single origin point; 8px strokes survive 32px; fills squircle frame architecturally with corners anchoring; unusual motif not easily confused with existing logos","wk":"At 16px the two-per-corner arrowheads merge into corner blobs; eight arrowheads create complexity that rewards large-scale viewing more than small"},"T110-R6-06":{"sc":6.0,"bn":5.0,"di":8.0,"lh":7.0,"ip":6.0,"er":7.0,"p2":72.5,"str":"Triple-layer hierarchy (fill/void/re-fill) is conceptually clever; diamond void punched through square is graphically original; high distinctiveness","wk":"Diamond void may collapse at 32px making it read as plain square; the tiny center diamond disappears at favicon scale; composition complexity undermines scalability; narrative unclear"},"R05/E26-09":{"sc":8.0,"bn":7.0,"di":5.0,"lh":6.0,"ip":8.0,"er":7.0,"p2":72.5,"str":"Exceptionally bold at all sizes \u2014 two solid polygons impossible to misread; convergence metaphor strongly fits incubator (two forces meeting); fills squircle icon frame boldly; confident and direct without being sterile","wk":"Paired inward triangles exist in many marks (Mitsubishi adjacent, crypto logos); horizontal wide form creates lockup spacing challenge; slightly aggressive rather than warm; no sense of upward trajectory"},"R04/J08":{"sc":7.0,"bn":7.0,"di":7.0,"lh":7.0,"ip":8.0,"er":6.0,"p2":72.5,"str":"monumental keystone silhouette is strong and memorable, triangular frame with inner void creates architectural quality, scales to favicon well as a broad triangle","wk":"archaic/monumental energy skews toward \"institution\" not \"startup incubator,\" inner void is small relative to outer triangle making it feel heavy, limited forward momentum"},"H1519-R6-09":{"sc":7.0,"bn":8.0,"di":7.0,"lh":7.0,"ip":7.0,"er":7.0,"p2":72.0,"str":"Four bracket-arrows pointing outward plus center diamond is a strong composition; center diamond adds focal anchor and geometric rhythm; bracket-arrow language conveys precision and direction; bold 6px strokes scale well","wk":"Eight arrowheads create visual complexity at 32px \u2014 distinguishing individual arrows from bracket corners becomes harder; center diamond competes with corner arrows for attention; more elements means more failure modes at small sizes; overloaded compared to R6-05"},"R05/H15-08":{"sc":7.0,"bn":5.0,"di":7.0,"lh":7.0,"ip":7.0,"er":6.0,"p2":70.5,"str":"Best balance in H15 family \u2014 corner weight and cross weight are proportionally considered; four-corner structure creates strong frame negative space; clean lockup silhouette","wk":"Cross lines still become marginal at 32px; the 4-corner-frame motif is recognizable but not uniquely Kurnik; narrative of \"framing\" is weak vs. progress/direction/building"},"R02/I14":{"sc":8.0,"bn":7.0,"di":7.0,"lh":7.0,"ip":7.0,"er":6.0,"p2":70.5,"str":"C-bracket receiving circle is a strong socket/plug metaphor; clean void language; stroke weight (5px) reads well at small sizes; conceptually suggests connection and precision; unusual and memorable silhouette","wk":"Opening faces right which may feel incomplete as standalone; circle not centered in bracket creates slight tension; emotional warmth is low \u2014 feels more functional/mechanical than warm; lockup pairing may be awkward with the rightward opening"},"R03/T3-08":{"sc":9.0,"bn":7.0,"di":4.0,"lh":7.0,"ip":8.0,"er":7.0,"p2":70.0,"str":"Two solid angled rectangles = maximum scalability; upward chevron V is immediately energetic; fills icon frame well; pairs cleanly with horizontal text baseline; bold and warm without being aggressive","wk":"Upward V/chevron is extremely common mark territory \u2014 airlines, navigation apps, financial services all use this form; the specific execution (thick rectangles not arrow) adds some distinction but the category is crowded; no structural complexity \u2014 may read as too simple"},"R02/I07":{"sc":8.0,"bn":6.0,"di":7.0,"lh":7.0,"ip":8.0,"er":6.0,"p2":70.0,"str":"Single filled silhouette morphing rect-to-semicircle is formally elegant; zero complexity scales perfectly; bold amber fill reads at any size; fills squircle icon frame well; genuinely unusual path","wk":"Narrative reads as transformation/morph but not directional or growth-oriented \u2014 ambiguous about what it means; D-shape has some precedent in logo landscape; warmth is neutral; brand story requires explanation"},"R02/I02":{"sc":8.0,"bn":6.0,"di":7.0,"lh":7.0,"ip":8.0,"er":6.0,"p2":70.0,"str":"Angular-left to arc-right morph, single filled path; scales perfectly; distinctive notched-D silhouette; fills frame well","wk":"Functionally very close to I07 with slightly different proportions; same narrative ambiguity; notch detail (squared top-left corner) is subtle and may not register at small sizes; emotional warmth is low"},"R05/T110-06":{"sc":8.0,"bn":6.0,"di":6.0,"lh":7.0,"ip":8.0,"er":6.0,"p2":68.5,"str":"bold 8px stroke holds well at favicon sizes, filled inner diamond reads cleanly at 32px, symmetrical and stable","wk":"outer-stroke-plus-inner-fill is a very generic geometric combination, low distinctiveness, no directional or narrative energy"},"R03/T3-09":{"sc":7.0,"bn":7.0,"di":5.0,"lh":6.0,"ip":7.0,"er":7.0,"p2":68.5,"str":"Breakout arrow is a powerful directional statement \u2014 momentum beyond boundaries is ideal incubator metaphor; large filled arrow reads at all sizes; open circle creates tension with the escaping form","wk":"Arrow-breaking-through-circle exists in many forms (launch icons, expansion metaphors); right-side open creates asymmetry that complicates lockup; the form reads as \"escaping\" which may have ambiguous connotations"},"R03/T1-09":{"sc":8.0,"bn":6.0,"di":5.0,"lh":7.0,"ip":8.0,"er":7.0,"p2":68.5,"str":"Four filled solid chevrons pointing inward \u2014 maximum boldness, impossible to lose at any scale; fills squircle frame powerfully; four-point arrangement creates strong rotational symmetry; converging motion is directionally resonant","wk":"Four-point inward arrangement reads as target/crosshair/sight \u2014 potential for unintended \"aim\" or \"target\" associations; fairly close to a stylized X which reduces distinctiveness; emotion is precise and focused but slightly cool"},"R02/I29":{"sc":9.0,"bn":5.0,"di":7.0,"lh":7.0,"ip":9.0,"er":5.0,"p2":68.5,"str":"circle with vertical slit scales perfectly \u2014 both shapes bold and simple, fills icon frame completely, unmistakable silhouette at any size","wk":"the aperture/slit narrative reads as camera, photography, or surveillance rather than incubation or building, emotionally cold, limited brand narrative alignment"},"R05/H15-11":{"sc":6.0,"bn":5.0,"di":7.0,"lh":6.0,"ip":7.0,"er":6.0,"p2":67.5,"str":"Four-corner anchor with center diamond creates focal hierarchy; diamond echoes L-geometry; strong in icon frame (corners fill the squircle well)","wk":"Nine SVG elements is over-engineered; cross lines at stroke-width 2 disappear at 32px leaving corners+diamond which reads differently than intended; cross-hairs motif has targeting/camera connotations; narrative weak"},"R02/C11":{"sc":8.0,"bn":7.0,"di":5.0,"lh":7.0,"ip":7.0,"er":6.0,"p2":67.5,"str":"Three ascending bars is the clearest growth/progress narrative in batch; scales perfectly \u2014 three solid rectangles never degrade; fills frame well; pairing with logotype would be natural","wk":"Ascending bar chart is extremely common in startup/growth sector \u2014 Stripe, Amplitude, countless analytics tools use this motif; distinctiveness is low; feels like a data visualization rather than a brand mark; not premium enough for an incubator"},"F20-R6-09":{"sc":8.0,"bn":7.0,"di":5.0,"lh":7.0,"ip":6.0,"er":7.0,"p2":67.5,"str":"Ultra-minimal two-element mark pairs cleanly with logotype; extreme weight differential (4px vs 12px) is memorable; thin chevron becomes graceful ghost at scale while bold top dominates","wk":"Two-chevron motif is familiar sports/performance territory; lower thin chevron approaches invisibility at 16px favicon"},"R05/T509-20":{"sc":5.0,"bn":7.0,"di":8.0,"lh":5.0,"ip":5.0,"er":6.0,"p2":65.5,"str":"Fan structure from shared left anchor is compositionally novel; fill-stroke-stroke hierarchy creates depth; strong directional energy","wk":"Asymmetric composition resists icon cropping; at 32px three angled polygons merge; lockup pairing difficult \u2014 directional element fights horizontal text anchor; fanning/splaying reads as dispersal not focus"},"R05/H15-09":{"sc":6.0,"bn":5.0,"di":6.0,"lh":6.0,"ip":7.0,"er":5.0,"p2":65.5,"str":"Chunky 12px corner mass creates maximum perimeter tension; boldest of the H15 family; corners survive all scales","wk":"1.5px cross is invisible at any scale below 48px \u2014 invisible element by design is a flaw; chunky corners feel corporate-seal rather than premium-minimal; camera/viewfinder connotation; low emotional warmth"},"B25-R6-08":{"sc":6.0,"bn":7.0,"di":6.0,"lh":5.0,"ip":9.0,"er":6.0,"p2":65.0,"str":"Native icon format \u2014 near-total amber fill creating arrow negative space is maximum positive-negative drama; decisive pivot narrative; boldest icon presence in batch","wk":"Built-in squircle frame limits flexibility as standalone mark; right-turn arrow carries mechanical/UI vocabulary; turn-arrow concept is more familiar than distinctive"},"R05/T110-05":{"sc":7.0,"bn":6.0,"di":5.0,"lh":7.0,"ip":7.0,"er":6.0,"p2":64.5,"str":"fill/stroke inversion is legible at most sizes, balanced proportions, pairs reasonably with text","wk":"6px stroke is borderline at 16px, less distinctive than heavier sibling T110-06, the combination reads as generic corporate geometry"},"R03/T2-08":{"sc":7.0,"bn":6.0,"di":6.0,"lh":7.0,"ip":7.0,"er":6.0,"p2":64.5,"str":"Four-arm chevron cross with consistent chevron language across all arms is a specific and memorable choice; open stroke creates lightness that suits \"infrastructure\" sensibility; inward-pointing creates convergence narrative; symmetric","wk":"Four-element open stroke mark \u2014 at 32px the eight individual polyline segments become approximately 2.5px stroke pairs, borderline but legible; \"cross\" as base form has extensive precedent; open strokes create ink-trap risk at small sizes"},"R03/T1-05":{"sc":7.0,"bn":6.0,"di":6.0,"lh":6.0,"ip":7.0,"er":6.0,"p2":64.5,"str":"Four L-corner framing with large central void is distinctive \u2014 \"framing what matters\" is a strong conceptual metaphor for an incubator; solid forms ensure small-size legibility; the void is active not passive","wk":"Camera/selection-frame language exists heavily in design tool branding (Figma-adjacent risk); at 16px favicon the four L-shapes may read as a solid square with no void \u2014 concept collapses; emotion is tool-like rather than warm-confident"},"F20-R6-02":{"sc":5.0,"bn":8.0,"di":5.0,"lh":7.0,"ip":6.0,"er":7.0,"p2":63.5,"str":"Four ascending chevrons with increasing weight and span is the strongest F20 variant \u2014 thickening weight narrative conveys accelerating momentum; pairs well with logotype at medium sizes","wk":"Bottom 1.5px chevron vanishes at 32px; 3px second-from-bottom struggles at favicon; concept requires full four layers to read correctly but layers disappear sequentially at scale"},"R05/E26-19":{"sc":6.0,"bn":6.0,"di":7.0,"lh":5.0,"ip":6.0,"er":5.0,"p2":62.0,"str":"the near-collision tip zone creates genuine visual tension, mix of fill and stroke adds sophistication","wk":"two-triangle composition is highly common, hourglass/delta territory widely occupied, fill+stroke asymmetry can feel inconsistent at small sizes, weak lockup pairing"},"R04/E10":{"sc":5.0,"bn":6.0,"di":6.0,"lh":6.0,"ip":6.0,"er":6.0,"p2":61.5,"str":"Woven square interlocking is systematic and methodical \u2014 fits \"methodology\" aspect of incubator; square-in-square is architecturally satisfying; Celtic knot energy is relatively rare in modern tech","wk":"Mask-based weaving creates ~4px intersection windows that will collapse at 32px \u2014 serious scalability risk; too intricate for \"minimal, scalable\" brand mandate; woven/knot marks are categorized as \"complex\" not \"infrastructure-feel\""},"R02/H25":{"sc":5.0,"bn":7.0,"di":8.0,"lh":6.0,"ip":5.0,"er":6.0,"p2":61.5,"str":"Three converging lines with implied triangle void is conceptually the sharpest in batch \u2014 precision, focus, convergence; highly unusual in mark landscape; strong narrative of convergence","wk":"2.5px strokes at 32px are marginal \u2014 three thin lines barely read as a unified form; the void is implied not defined which fails at favicon; does not fill squircle frame well \u2014 too sparse; feels more like a diagram than a mark"},"R05/T110-03":{"sc":7.0,"bn":5.0,"di":5.0,"lh":7.0,"ip":7.0,"er":5.0,"p2":61.0,"str":"thicker frame than T110-04 improves small-scale legibility, diamond void is precise and clean","wk":"still primarily a frame with negative space \u2014 low narrative, the square-with-diamond-hole is not distinctive in the logo landscape, no forward momentum"},"R03/T3-01":{"sc":9.0,"bn":5.0,"di":3.0,"lh":6.0,"ip":8.0,"er":5.0,"p2":61.0,"str":"Unbeatable scalability \u2014 single filled polygon reads at 8px; maximum icon presence; road-sign confidence is instant","wk":"Right-pointing arrow is the most generic direction mark possible; no conceptual nuance; carries logistics/delivery associations; distinctiveness is severely compromised"},"R02/F13":{"sc":7.0,"bn":7.0,"di":4.0,"lh":6.0,"ip":7.0,"er":5.0,"p2":61.0,"str":"Negative-space void as the mark is conceptually elegant \u2014 the threshold reads as a liminal space; pillars are bold and scalable; strong icon presence","wk":"Two vertical rectangles read as pause button or Roman numeral II \u2014 heavy semiotics burden; basic rectangular form limits distinctiveness"},"T110-R6-01":{"sc":6.0,"bn":7.0,"di":4.0,"lh":7.0,"ip":7.0,"er":5.0,"p2":60.5,"str":"Bold outer frame (8px) grounds the composition; square-to-diamond rotation reads as transformation; pairs cleanly with logotype","wk":"Heavy Angular DNA in nested rotating squares; pure geometry without organic variation feels engineered not inspired; limited distinctiveness"},"R03/T5-04":{"sc":8.0,"bn":6.0,"di":3.0,"lh":6.0,"ip":7.0,"er":5.0,"p2":60.5,"str":"Strong isometric read \u2014 the filled-top + stroke-sides fill/stroke contrast is elegant; \"building blocks\" narrative is directly resonant; bold and readable at small sizes","wk":"Isometric cube is severely overused in tech (Airtable, countless blockchain/crypto logos, Notion-adjacent tools) \u2014 immediate association problem; side-face stroke lines at 2.5px may thin below 32px; narrative is literal \"building\" which may be too on-the-nose"},"R05/T509-09":{"sc":5.0,"bn":5.0,"di":7.0,"lh":5.0,"ip":5.0,"er":5.0,"p2":60.0,"str":"Fill-stroke-fill alternation creates layered depth cue; three-plane rhythm has systematic quality","wk":"Left-pointing direction is regressive \u2014 wrong narrative for incubator brand; at 32px three parallelogram bands read as generic stack; low emotional resonance; no strong icon presence"},"R02/H15":{"sc":6.0,"bn":6.0,"di":6.0,"lh":6.0,"ip":6.0,"er":6.0,"p2":60.0,"str":"Four corner brackets with connecting cross is classic registration/precision language; balanced structure fills frame evenly; familiar infrastructure vocabulary","wk":"1.5px cross strokes disappear at 32px leaving only floating corner marks; bracket cross is a well-worn motif (Airtable, Frame, many design tools) reducing distinctiveness; the cross adds noise without narrative; feels like indecision"},"B25-R6-01":{"sc":6.0,"bn":6.0,"di":5.0,"lh":5.0,"ip":8.0,"er":6.0,"p2":60.0,"str":"Strong icon presence with thick equal bars creating stable pivot arrow; confident and readable at icon scale","wk":"Squircle containment limits lockup flexibility; equal-bar proportions make it read closer to a road sign than a premium mark; less dramatic than R6-08 without being substantially different"},"R04/J05":{"sc":7.0,"bn":4.0,"di":4.0,"lh":7.0,"ip":7.0,"er":5.0,"p2":59.0,"str":"Single solid path is maximally simple; strong compact silhouette; excellent lockup height alignment; works as icon","wk":"The notch/void reads as \"missing piece\" or \"removed\" rather than \"building\"; blocky glyph-with-cutout is common in tech logos; F-shape association may be confusing; low brand narrative \u2014 form is bold but says nothing specific"},"R02/H13":{"sc":8.0,"bn":5.0,"di":4.0,"lh":6.0,"ip":7.0,"er":5.0,"p2":59.0,"str":"Four thick filled arms creating diamond void at center is highly scalable \u2014 8px arms survive any size reduction; diamond center void is a nice touch; fills frame very well","wk":"Plus/crosshair is one of the most saturated shapes in the mark landscape; narrative of focus/aim has limited connection to incubation or progress; feels cold and geometric without warmth; similar to countless targeting/health/tech logos"},"T110-R6-08":{"sc":5.0,"bn":7.0,"di":5.0,"lh":6.0,"ip":7.0,"er":5.0,"p2":58.5,"str":"Reversed weight pulling eye inward is intellectually interesting; inner heavy diamond centers well in squircle; systematic rotation progression reads as refinement","wk":"Outer 3px square vanishes at 32px \u2014 loses its frame; nested rotating squares territory shared with Angular and others; cool/sterile emotional register"},"R05/F06-10":{"sc":6.0,"bn":5.0,"di":5.0,"lh":6.0,"ip":6.0,"er":5.0,"p2":57.5,"str":"Split-fill diamond creates memorable tension; fill/stroke contrast within single form is elegant; compact diamond silhouette","wk":"Seam between halves (47/53 gap) creates fragile thin line at small sizes; split concept reads as \"divided\" not \"growing\"; fill+stroke duality already explored in many marks; brand narrative is ambiguous \u2014 duality without direction"},"R04/I01":{"sc":5.0,"bn":5.0,"di":7.0,"lh":4.0,"ip":6.0,"er":5.0,"p2":57.5,"str":"crossed ellipses create genuinely orbital and dynamic geometry, distinctive crossing pattern","wk":"3px strokes drop out at 16px favicon, circular composition is hard to pair in lockup, the slingshot read is athletic/scientific not incubator-premium, three-element composition feels busy at small scale"},"R05/T110-04":{"sc":6.0,"bn":5.0,"di":5.0,"lh":6.0,"ip":6.0,"er":5.0,"p2":56.5,"str":"open airy feel with large void, thin frame creates delicate premium quality","wk":"thin corner sections drop out at favicon sizes, large void creates weak icon fill, no directional energy, frame-only marks feel fragile at small scale"},"R02/H03":{"sc":6.0,"bn":5.0,"di":6.0,"lh":6.0,"ip":6.0,"er":5.0,"p2":56.5,"str":"Four L-corner crop marks plus center square is classic registration language; balanced symmetry; the center dot anchors the composition","wk":"Eight separate stroke paths at 2.5px are marginal at 32px; highly familiar camera/registration/focus motif; center 8px square is too small relative to corner marks; narrative is weak \u2014 crop marks suggest framing not building; emotional warmth is low"},"R04/I03":{"sc":8.0,"bn":4.0,"di":3.0,"lh":6.0,"ip":7.0,"er":4.0,"p2":56.0,"str":"Two-element composition is maximally minimal; reads at any size without degradation; perfect proportions","wk":"Planet-and-ring is one of the most overused concepts in tech branding \u2014 immediate association with Saturn logos; \"orbital\" metaphor is cool/scientific not warm-confident; brand narrative is space-themed rather than incubator-themed; low distinctiveness penalty is significant"},"R02/I06":{"sc":6.0,"bn":5.0,"di":7.0,"lh":4.0,"ip":4.0,"er":5.0,"p2":56.0,"str":"tangency relationship between L-bracket and circle is a precise compositional idea, engineering precision resonates with infrastructure sensibility","wk":"composition is highly asymmetric making lockup very difficult, L-bracket is explicit code/dev territory which may over-narrow the brand, thin stroke elements compress at small sizes, feels sparse to the point of arbitrary"},"H15-R6-07":{"sc":7.0,"bn":6.0,"di":5.0,"lh":5.0,"ip":5.0,"er":5.0,"p2":56.0,"str":"Filled corner brackets create precise framing; bold cross+dot adds systematic hierarchy; compound composition holds at 32px","wk":"Nine-element composition is too busy beside a logotype; viewfinder/crosshair territory is well-worn; clinical and sterile \u2014 fights warm incubator personality"},"R02/H18":{"sc":4.0,"bn":6.0,"di":9.0,"lh":5.0,"ip":4.0,"er":5.0,"p2":54.5,"str":"Highest distinctiveness in batch \u2014 broken arc plus diagonal plus tick marks is a unique calibration/instrument language; nothing in the mark landscape quite like it","wk":"Too many thin elements (1.5px ticks) \u2014 nearly invisible at 32px; calibration/instrument narrative doesn't map to Kurnik's warmth or incubator story; does not fill frame well; lockup would be very difficult; complexity works against it everywhere except conceptual novelty"},"R02/I30":{"sc":5.0,"bn":5.0,"di":6.0,"lh":5.0,"ip":4.0,"er":5.0,"p2":52.5,"str":"Angular chevron + opposing arc creates a specific lock-and-key tension; the pairing of angular and curved is conceptually interesting; relatively rare combination","wk":"Two open-stroke elements at 5.5px stroke \u2014 at 32px each element is borderline; the left-right asymmetric composition creates lockup difficulties; large empty center means weak icon fill in squircle; brand narrative is too abstract \u2014 \"coupled\" doesn't read as incubator values"},"R05/F06-20":{"sc":5.0,"bn":6.0,"di":4.0,"lh":5.0,"ip":6.0,"er":5.0,"p2":52.0,"str":"Near-monolithic mass reads boldly at all sizes; the precision 4px gap creates visual tension; confident silhouette","wk":"Gap closes at small sizes reverting to plain diamond; diamond form carries fintech/corporate associations; diagonal shape fights horizontal text flow"},"R02/I24":{"sc":4.0,"bn":6.0,"di":7.0,"lh":4.0,"ip":4.0,"er":5.0,"p2":52.0,"str":"Three-cell grid with center bulge is a genuinely unusual concept \u2014 \"innovation within structure\" reads clearly; very high distinctiveness for this class of mark","wk":"At 32px the three-cell 30-unit-tall row renders to approximately 10px actual height with ~1.5px strokes \u2014 readability fails at small sizes; horizontal wide form is difficult to pair in standard lockup; the grid concept is more \"UI component\" than \"brand mark\"; at icon scale in squircle the concept is lost"},"R04/E09":{"sc":7.0,"bn":5.0,"di":4.0,"lh":4.0,"ip":6.0,"er":4.0,"p2":51.0,"str":"Thick bars are supremely scalable; over-under weave rendering is technically elegant; fills frame at any size","wk":"Cross/plus is loaded UI vocabulary (close button, healthcare, add); woven detail lost below 48px; lockup beside text reads as medical or UI component"},"R02/I18":{"sc":4.0,"bn":6.0,"di":4.0,"lh":5.0,"ip":4.0,"er":5.0,"p2":49.5,"str":"Bracket + diagonal arc pairing creates engineering-meets-trajectory narrative; brackets suggest systematic/code-thinking appropriate for AI incubator","wk":"Code brackets as brand element is severely overused in tech branding; at 32px the 4.5px strokes become approximately 1.5px actual \u2014 below threshold; three loose elements (two brackets + arc) lack cohesion as single mark; wide horizontal span creates lockup problems; emotion is cold/technical not warm-confident"},"F20-R6-03":{"sc":3.0,"bn":6.0,"di":4.0,"lh":5.0,"ip":4.0,"er":5.0,"p2":45.0,"str":"Five-layer cascade has compelling conceptual momentum \u2014 each layer representing a stage of the journey","wk":"Bottom two layers (1.5px and 2.5px) vanish at 32px; at favicon only top bold chevron survives, losing the entire cascade concept; five layers creates visual anxiety rather than confidence; worst scalability in F20 family"},"R05/F06-18":{"sc":4.0,"bn":5.0,"di":3.0,"lh":5.0,"ip":5.0,"er":4.0,"p2":43.5,"str":"Bold amber diamond reads strongly at display sizes; the dark hairline is a clever conceptual trick","wk":"Hairline vanishes below 64px making it indistinguishable from plain diamond; gemstone reading conflicts with infrastructure personality; lowest distinctiveness in batch"},"H20-R6-02":{"sc":3.0,"bn":6.0,"di":5.0,"lh":6.0,"ip":2.0,"er":4.0,"p2":43.5,"str":"Conceptually elegant \u2014 ultra-minimal four-cardinal compass reads as precision and focus; symmetry pairs cleanly with logotype","wk":"Wedges are 3px base at 6px visual width \u2014 virtually invisible at 32px; near-total collapse at favicon scale; fatal scalability failure; too precious to be an icon"}};
+
+const FINALISTS = ["F20-R6-03","F20-R6-02","H1519-R6-03","T110-R6-01","T110-R6-08","B25-R6-01"];
+
+// SVG path derivation from ID
+function svgForId(id) {
+  if (id.includes('/')) {
+    const [rnd, name] = id.split('/');
+    const num = rnd.replace('R','').padStart(2,'0');
+    return '../phase-02/round-' + num + '/' + name + '.svg';
+  }
+  return '../phase-02/round-06/' + id + '.svg';
+}
+
+// Helpers
+const isFinalist = id => FINALISTS.includes(id) || FINALISTS.includes(id.split('/').pop());
+
+// Build sorted list
+const p2Sorted = Object.entries(P2).sort((a,b) => b[1].p2 - a[1].p2);
+const maxScore = p2Sorted[0][1].p2;
+
+const getRank = id => {
+  const idx = p2Sorted.findIndex(([k]) => k === id);
+  return idx >= 0 ? idx + 1 : null;
+};
+
+// ── Ranking Ladder ──
+const ladderEl = document.getElementById('ladder');
+let lastFinalistIdx = -1;
+const finalistIndices = [];
+
+p2Sorted.forEach(([id, scores], i) => {
+  const fin = isFinalist(id);
+  if (fin) finalistIndices.push(i);
+});
+
+p2Sorted.forEach(([id, scores], i) => {
+  const svg = svgForId(id);
+  const pct = (scores.p2 / maxScore * 100).toFixed(1);
+  const fin = isFinalist(id);
+
+  const row = document.createElement('div');
+  row.className = 'ladder-row' + (fin ? ' is-finalist' : '');
+  row.innerHTML = `
+    <span class="lr-rank">#${i+1}</span>
+    <div class="lr-img"><img src="${svg}" alt="${id}" loading="lazy"></div>
+    <span class="lr-id">${id}${fin ? '<span class="finalist-badge">Finalist</span>' : ''}</span>
+    <div class="lr-track"><div class="lr-fill ${fin ? 'amber' : 'dim'}" style="width:${pct}%"></div></div>
+    <span class="lr-score">${scores.p2.toFixed(1)}</span>
+  `;
+  row.onclick = () => openModal(id);
+  ladderEl.appendChild(row);
+});
+
+// ── Family Head-to-Head ──
+const FAMILIES = [
+  {
+    family: 'F20 — Chevron Cascade',
+    manual: [{id:'F20-R6-03', score:45.0, rank:74}, {id:'F20-R6-02', score:63.5, rank:46}],
+    aiChamp: {id:'R05/F20-14', score:83.0, rank:2}
+  },
+  {
+    family: 'H1519 — Bracket Arrows',
+    manual: [{id:'H1519-R6-03', score:73.5, rank:23}],
+    aiChamp: {id:'H1519-R6-05', score:80.0, rank:8}
+  },
+  {
+    family: 'T110 — Rotated Squares',
+    manual: [{id:'T110-R6-01', score:60.5, rank:53}, {id:'T110-R6-08', score:58.5, rank:60}],
+    aiChamp: {id:'T110-R6-10', score:80.5, rank:5}
+  },
+  {
+    family: 'B25 — Arrow Void',
+    manual: [{id:'B25-R6-01', score:60.0, rank:57}],
+    aiChamp: {id:'R05/B25-18', score:80.0, rank:7}
+  }
+];
+
+const CRITERIA = [
+  {key:'sc', label:'SC', full:'Scalability', weight:'×2'},
+  {key:'bn', label:'BN', full:'Brand Narrative', weight:'×2'},
+  {key:'di', label:'DI', full:'Distinctiveness', weight:'×1.5'},
+  {key:'lh', label:'LH', full:'Lockup Harmony', weight:'×1.5'},
+  {key:'ip', label:'IP', full:'Icon Presence', weight:'×1.5'},
+  {key:'er', label:'ER', full:'Emotional Resonance', weight:'×1.5'}
+];
+
+const h2hEl = document.getElementById('h2hGrid');
+
+FAMILIES.forEach(fam => {
+  fam.manual.forEach(man => {
+    const ai = fam.aiChamp;
+    const delta = (ai.score - man.score).toFixed(1);
+    const manP2 = P2[man.id] || {};
+    const aiP2 = P2[ai.id] || {};
+
+    let criteriaManual = '';
+    let criteriaAI = '';
+    CRITERIA.forEach(c => {
+      const mv = manP2[c.key] || 0;
+      const av = aiP2[c.key] || 0;
+      criteriaManual += `<div class="h2h-cr"><span class="h2h-cr-label">${c.label}</span><div class="h2h-cr-track"><div class="h2h-cr-fill manual" style="width:${mv*10}%"></div></div><span class="h2h-cr-val">${mv}</span></div>`;
+      criteriaAI += `<div class="h2h-cr"><span class="h2h-cr-label">${c.label}</span><div class="h2h-cr-track"><div class="h2h-cr-fill ai" style="width:${av*10}%"></div></div><span class="h2h-cr-val">${av}</span></div>`;
+    });
+
+    const manStr = (manP2.str || '').substring(0, 120);
+    const aiStr = (aiP2.str || '').substring(0, 120);
+
+    h2hEl.innerHTML += `
+    <div class="h2h-card">
+      <div class="h2h-header">
+        <span class="h2h-family">${fam.family}</span>
+        <span class="h2h-delta">+${delta}</span>
+      </div>
+      <div class="h2h-body">
+        <div class="h2h-side" onclick="openModal('${man.id}')">
+          <div class="h2h-label">Manual Pick</div>
+          <div class="h2h-preview"><img src="${svgForId(man.id)}" alt="${man.id}"></div>
+          <div class="h2h-id">${man.id}</div>
+          <div class="h2h-score-big">${man.score.toFixed(1)}</div>
+          <div class="h2h-rank">Rank #${man.rank}/76</div>
+          <div class="h2h-criteria">${criteriaManual}</div>
+          <div class="h2h-text"><p>${manStr}...</p></div>
+        </div>
+        <div class="h2h-vs">VS</div>
+        <div class="h2h-side" onclick="openModal('${ai.id}')">
+          <div class="h2h-label">AI Champion</div>
+          <div class="h2h-preview"><img src="${svgForId(ai.id)}" alt="${ai.id}"></div>
+          <div class="h2h-id">${ai.id}</div>
+          <div class="h2h-score-big">${ai.score.toFixed(1)}</div>
+          <div class="h2h-rank">Rank #${ai.rank}/76</div>
+          <div class="h2h-criteria">${criteriaAI}</div>
+          <div class="h2h-text"><p>${aiStr}...</p></div>
+        </div>
+      </div>
+    </div>`;
+  });
+});
+
+// ── Criteria Gap Analysis ──
+const gapEl = document.getElementById('gapChart');
+
+// Calculate averages
+const manualIds = FINALISTS;
+const aiTopIds = p2Sorted.slice(0, 8).map(([id]) => id);
+
+function avgCriteria(ids) {
+  const sums = {sc:0,bn:0,di:0,lh:0,ip:0,er:0};
+  let count = 0;
+  ids.forEach(id => {
+    const d = P2[id];
+    if (d) {
+      Object.keys(sums).forEach(k => sums[k] += d[k]);
+      count++;
+    }
+  });
+  Object.keys(sums).forEach(k => sums[k] = count ? +(sums[k]/count).toFixed(1) : 0);
+  return sums;
+}
+
+const manAvg = avgCriteria(manualIds);
+const aiAvg = avgCriteria(aiTopIds);
+
+CRITERIA.forEach(c => {
+  const mv = manAvg[c.key];
+  const av = aiAvg[c.key];
+  const diff = (av - mv).toFixed(1);
+  const diffSign = diff > 0 ? '+' : '';
+
+  gapEl.innerHTML += `
+  <div class="gap-row">
+    <div class="gap-label">${c.full} <span style="color:var(--text-muted);font-size:9px">${c.weight}</span></div>
+    <div class="gap-bars">
+      <div class="gap-bar">
+        <span class="gap-bar-tag">Manual</span>
+        <div class="gap-bar-track"><div class="gap-bar-fill manual-fill" style="width:${mv*10}%"></div></div>
+        <span class="gap-bar-val">${mv}</span>
+      </div>
+      <div class="gap-bar">
+        <span class="gap-bar-tag">AI Top 8</span>
+        <div class="gap-bar-track"><div class="gap-bar-fill ai-fill" style="width:${av*10}%"></div></div>
+        <span class="gap-bar-val">${av}</span>
+      </div>
+    </div>
+  </div>`;
+});
+
+// ── Modal ──
+function openModal(id) {
+  const p2 = P2[id];
+  if (!p2) return;
+  const svg = svgForId(id);
+  const rank = getRank(id);
+  const fin = isFinalist(id);
+
+  let html = `
+    <div class="modal-head">
+      <div class="modal-preview"><img src="${svg}" alt="${id}"></div>
+      <div class="modal-meta">
+        <h3>${id}${fin ? ' <span class="finalist-badge">Manual Finalist</span>' : ''}</h3>
+        <div class="m-round">AI Rank: #${rank}/76 &middot; Score: ${p2.p2.toFixed(1)}/100</div>
+      </div>
+    </div>
+    <div class="modal-sizes">
+      <div class="sz"><div class="sz-box" style="width:80px;height:80px;border-radius:14px"><img src="${svg}" style="width:60px;height:60px"></div><span class="sz-label">80px</span></div>
+      <div class="sz"><div class="sz-box" style="width:48px;height:48px;border-radius:10px"><img src="${svg}" style="width:36px;height:36px"></div><span class="sz-label">48px</span></div>
+      <div class="sz"><div class="sz-box" style="width:32px;height:32px;border-radius:8px"><img src="${svg}" style="width:24px;height:24px"></div><span class="sz-label">32px</span></div>
+      <div class="sz"><div class="sz-box" style="width:16px;height:16px;border-radius:4px"><img src="${svg}" style="width:12px;height:12px"></div><span class="sz-label">16px</span></div>
+    </div>
+  `;
+
+  html += '<div class="modal-scores mt-16"><h4>Pass 2 Scores (' + p2.p2.toFixed(1) + '/100)</h4>';
+  CRITERIA.forEach(c => {
+    html += '<div class="ms-row"><span class="ms-label">' + c.full + ' (' + c.weight + ')</span><div class="ms-track"><div class="ms-fill" style="width:' + (p2[c.key]*10) + '%"></div></div><span class="ms-val">' + p2[c.key] + '/10</span></div>';
+  });
+  html += '</div>';
+  html += '<div class="modal-text"><h4 class="strength">Strengths</h4><p>' + p2.str + '</p></div>';
+  html += '<div class="modal-text"><h4 class="weakness">Weaknesses</h4><p>' + p2.wk + '</p></div>';
+
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modal').classList.add('open');
+}
+
+document.getElementById('modalClose').onclick = () => document.getElementById('modal').classList.remove('open');
+document.getElementById('modal').onclick = e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); };
+document.onkeydown = e => { if (e.key === 'Escape') document.getElementById('modal').classList.remove('open'); };
+</script>
+</body>
+</html>
